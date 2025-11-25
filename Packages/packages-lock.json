@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.propixelizer": {
+      "version": "ssh://git@github.com/ProPixelizer/ProPixelizer.git#upm_compliant",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "964062313a977b10d0a295ca51d95c4d50410b9e"
+    },
     "com.unity.ai.navigation": {
       "version": "2.0.9",
       "depth": 0,
