@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -40,15 +41,17 @@ public class PlayerInteractionController : MonoBehaviour
 
     private void CheckForInteractable()
     {
-        Vector3 origin = transform.position + Vector3.up * 0.2f;
-        Vector3 dir = transform.forward;
-        Debug.DrawRay(origin, dir * interactionRange, Color.blue);
+        Vector3 center = transform.position + transform.forward * 0.2f + Vector3.up * 0.2f;
+        Vector3 extends = new Vector3(0.2f, 0.4f, 0.2f);
+        Quaternion orientation = transform.rotation;
+        Collider[] hits = Physics.OverlapBox(center, extends, transform.rotation, interactableLayer);
+        DrawBox(center, extends, orientation, Color.cyan);
 
-        if (Physics.Raycast(origin, dir, out RaycastHit hit, interactionRange, interactableLayer))
+        if (hits.Length > 0)
         {
-            Debug.Log("Hit: " + hit.collider.name);
-            Debug.DrawLine(origin, hit.point, Color.green);
-            currentTarget = hit.collider.GetComponent<IInteractable>();
+            Debug.Log("Hit: " + hits[0].name);
+            DrawBox(center, extends, orientation, Color.darkGreen);
+            currentTarget = hits[0].GetComponent<IInteractable>();
             if (currentTarget != null)
             {
                 // hier ui einblenden oder so
@@ -57,5 +60,28 @@ public class PlayerInteractionController : MonoBehaviour
         }
         currentTarget = null;
         // ui wieder hiden
+    }
+    void DrawBox(Vector3 center, Vector3 extents, Quaternion orientation, Color color)
+    {
+        Vector3[] points = new Vector3[8];
+
+        // Alle 8 Ecken der Box generieren
+        points[0] = center + orientation * new Vector3(extents.x, extents.y, extents.z);
+        points[1] = center + orientation * new Vector3(-extents.x, extents.y, extents.z);
+        points[2] = center + orientation * new Vector3(-extents.x, -extents.y, extents.z);
+        points[3] = center + orientation * new Vector3(extents.x, -extents.y, extents.z);
+
+        points[4] = center + orientation * new Vector3(extents.x, extents.y, -extents.z);
+        points[5] = center + orientation * new Vector3(-extents.x, extents.y, -extents.z);
+        points[6] = center + orientation * new Vector3(-extents.x, -extents.y, -extents.z);
+        points[7] = center + orientation * new Vector3(extents.x, -extents.y, -extents.z);
+
+        // Box-Kanten zeichnen
+        for (int i = 0; i < 4; i++)
+        {
+            Debug.DrawLine(points[i], points[(i + 1) % 4], color, 0.1f);
+            Debug.DrawLine(points[i + 4], points[((i + 1) % 4) + 4], color, 0.1f);
+            Debug.DrawLine(points[i], points[i + 4], color, 0.1f);
+        }
     }
 }
