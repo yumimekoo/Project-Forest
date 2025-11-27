@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d3436e83afa61f34da1cdf7c6d14e201, type: 2}
+  - {fileID: 2100000, guid: 7b8995e43a6361c4a8a79a086ddb569b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -120,10 +120,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6360653944862574429}
-  - component: {fileID: 1861745432992688238}
-  - component: {fileID: 2425052922330292581}
+  - component: {fileID: 7902538778231241451}
+  - component: {fileID: 2218939652954058456}
   m_Layer: 6
-  m_Name: Milk
+  m_Name: CoffeBean
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,7 +145,7 @@ Transform:
   - {fileID: 701728701642958543}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1861745432992688238
+--- !u!65 &7902538778231241451
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,9 +164,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.21, y: 0.19, z: 0.22}
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2425052922330292581
+--- !u!114 &2218939652954058456
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,4 +178,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f856e2b154e984e95910c3cfecdcb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
-  item: {fileID: 11400000, guid: b862ff9c766f69c438e84754895300fa, type: 2}
+  item: {fileID: 11400000, guid: b30e931c688effd439a56018be592ef5, type: 2}

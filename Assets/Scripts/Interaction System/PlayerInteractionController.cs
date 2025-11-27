@@ -1,3 +1,4 @@
+using NUnit.Framework.Interfaces;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,8 +7,10 @@ public class PlayerInteractionController : MonoBehaviour
 {
     public float interactionRange = 5f;
     public LayerMask interactableLayer;
+    public LayerMask placementLayer;
 
     private IInteractable currentTarget;
+    private IPlacableSurface currentPlacementSurface;
 
     public InputActionAsset InputActions;
     public InputAction interactAction;
@@ -30,13 +33,19 @@ public class PlayerInteractionController : MonoBehaviour
         CheckForInteractable();
         if (interactAction.WasPressedThisFrame())
         { 
-            Debug.Log("Interact action pressed"); 
+            Debug.Log("Interact action pressed");
+            if (PlayerInventory.Instance.HasItem())
+            {
+                TryPlace(PlayerInventory.Instance);
+            }
+
+            if (currentTarget != null)
+            {
+                Debug.Log("Interacting with " + currentTarget);
+                currentTarget.Interact(PlayerInventory.Instance);
+            }
         }
-        if (currentTarget != null && interactAction.WasPressedThisFrame())
-        {
-            Debug.Log("Interacting with " + currentTarget);
-            currentTarget.Interact(PlayerInventory.Instance);
-        }
+
     }
 
     private void CheckForInteractable()
@@ -60,6 +69,31 @@ public class PlayerInteractionController : MonoBehaviour
         }
         currentTarget = null;
         // ui wieder hiden
+    }
+
+    void TryPlace(PlayerInventory player)
+    {
+        Vector3 center = transform.position + transform.forward * 0.2f + Vector3.up * 0.2f;
+        Vector3 extends = new Vector3(0.2f, 0.4f, 0.2f);
+        Quaternion orientation = transform.rotation;
+
+        Collider[] hits = Physics.OverlapBox(center, extends, orientation, placementLayer);
+
+        foreach (var hit in hits)
+        {
+            var surface = hit.GetComponent<IPlacableSurface>();
+            if (surface != null && surface.CanPlace(player.heldItem))
+            {
+                PlaceItem(player.heldItem, surface);
+                player.DropItem();
+                return;
+            }
+        }
+    }
+
+    void PlaceItem(ItemDataSO item, IPlacableSurface surface)
+    {
+        Instantiate(item.itemPrefab, surface.GetPlacementPoint().position, surface.GetPlacementPoint().rotation);
     }
     void DrawBox(Vector3 center, Vector3 extents, Quaternion orientation, Color color)
     {
