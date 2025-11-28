@@ -58,7 +58,6 @@ public class PlayerInteractionController : MonoBehaviour
 
         if (hits.Length > 0)
         {
-            Debug.Log("Hit: " + hits[0].name);
             DrawBox(center, extends, orientation, Color.darkGreen);
             currentTarget = hits[0].GetComponent<IInteractable>();
             if (currentTarget != null)
@@ -99,7 +98,6 @@ public class PlayerInteractionController : MonoBehaviour
     {
         Vector3[] points = new Vector3[8];
 
-        // Alle 8 Ecken der Box generieren
         points[0] = center + orientation * new Vector3(extents.x, extents.y, extents.z);
         points[1] = center + orientation * new Vector3(-extents.x, extents.y, extents.z);
         points[2] = center + orientation * new Vector3(-extents.x, -extents.y, extents.z);
@@ -110,7 +108,6 @@ public class PlayerInteractionController : MonoBehaviour
         points[6] = center + orientation * new Vector3(-extents.x, -extents.y, -extents.z);
         points[7] = center + orientation * new Vector3(extents.x, -extents.y, -extents.z);
 
-        // Box-Kanten zeichnen
         for (int i = 0; i < 4; i++)
         {
             Debug.DrawLine(points[i], points[(i + 1) % 4], color, 0.1f);

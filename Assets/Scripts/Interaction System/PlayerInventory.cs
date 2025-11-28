@@ -47,4 +47,11 @@ public class PlayerInventory : MonoBehaviour
                 Destroy(heldObjectInstance);
         }
     }
+
+    public void Clear()
+    {
+        heldItem = null;
+        if (heldObjectInstance != null)
+            Destroy(heldObjectInstance);
+    }
 }
