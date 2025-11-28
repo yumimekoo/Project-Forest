@@ -11,7 +11,7 @@ public class TrashCan : MonoBehaviour, IInteractable
     {
         if(player.HasItem())
         {
-            player.Clear();
+            player.DropItem();
             Debug.Log("Item trashed.");
         }
         else

@@ -5,7 +5,7 @@ public class PlayerInventory : MonoBehaviour
     public static PlayerInventory Instance;
     public ItemDataSO heldItem;
     public Transform handSlot;
-    private GameObject heldObjectInstance;
+    public GameObject heldObjectInstance;
 
     private void Awake()
     {
@@ -27,6 +27,17 @@ public class PlayerInventory : MonoBehaviour
         Debug.Log($"Picked up: {item.itemName}");
     }
 
+    public void PickUpCup(ItemDataSO item, GameObject cup)
+    {
+        heldItem = item;
+        heldObjectInstance = cup;
+        heldObjectInstance.transform.SetParent(handSlot);
+        SetLayerRecursively(heldObjectInstance, LayerMask.NameToLayer("HeldItem"));
+        heldObjectInstance.transform.localPosition = Vector3.zero;
+        heldObjectInstance.transform.localRotation = Quaternion.identity;
+        Debug.Log($"Picked up: {item.itemName}");
+    }
+
     private void SetLayerRecursively(GameObject obj, int newLayer)
     {
         obj.layer = newLayer;
@@ -42,16 +53,8 @@ public class PlayerInventory : MonoBehaviour
         {
             Debug.Log($"Dropped: {heldItem.itemName}");
             heldItem = null;
-
             if (heldObjectInstance != null)
                 Destroy(heldObjectInstance);
         }
-    }
-
-    public void Clear()
-    {
-        heldItem = null;
-        if (heldObjectInstance != null)
-            Destroy(heldObjectInstance);
     }
 }
