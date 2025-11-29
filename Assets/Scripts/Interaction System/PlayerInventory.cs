@@ -17,20 +17,10 @@ public class PlayerInventory : MonoBehaviour
         return heldItem != null;
     }
 
-    public void PickUpItem(ItemDataSO item)
+    public void PickUp(ItemDataSO item, GameObject obj)
     {
         heldItem = item;
-        heldObjectInstance = Instantiate(item.itemPrefab, handSlot);
-        SetLayerRecursively(heldObjectInstance, LayerMask.NameToLayer("HeldItem"));
-        heldObjectInstance.transform.localPosition = Vector3.zero;
-        heldObjectInstance.transform.localRotation = Quaternion.identity;
-        Debug.Log($"Picked up: {item.itemName}");
-    }
-
-    public void PickUpCup(ItemDataSO item, GameObject cup)
-    {
-        heldItem = item;
-        heldObjectInstance = cup;
+        heldObjectInstance = obj;
         heldObjectInstance.transform.SetParent(handSlot);
         SetLayerRecursively(heldObjectInstance, LayerMask.NameToLayer("HeldItem"));
         heldObjectInstance.transform.localPosition = Vector3.zero;
@@ -38,6 +28,17 @@ public class PlayerInventory : MonoBehaviour
         Debug.Log($"Picked up: {item.itemName}");
     }
 
+    public void PlaceDown(IPlacableSurface surface)
+    {
+        Transform placementPoint = surface.GetPlacementPoint();
+        SetLayerRecursively(heldObjectInstance, LayerMask.NameToLayer("Interactables"));
+        heldObjectInstance.transform.SetParent(placementPoint);
+        heldObjectInstance.transform.localPosition = Vector3.zero;
+        heldObjectInstance.transform.localRotation = Quaternion.identity;
+        Debug.Log($"Placed down: {heldItem.itemName}");
+        heldItem = null;
+        heldObjectInstance = null;
+    }
     private void SetLayerRecursively(GameObject obj, int newLayer)
     {
         obj.layer = newLayer;
@@ -47,11 +48,11 @@ public class PlayerInventory : MonoBehaviour
             SetLayerRecursively(child.gameObject, newLayer);
         }
     }
-    public void DropItem()
+    public void ClearItem()
     {
         if (heldItem != null)
         {
-            Debug.Log($"Dropped: {heldItem.itemName}");
+            Debug.Log($"Item: {heldItem.itemName} cleared.");
             heldItem = null;
             if (heldObjectInstance != null)
                 Destroy(heldObjectInstance);

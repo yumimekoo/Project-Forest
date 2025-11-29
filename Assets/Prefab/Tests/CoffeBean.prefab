@@ -179,3 +179,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
   item: {fileID: 11400000, guid: b30e931c688effd439a56018be592ef5, type: 2}
+  selfObj: {fileID: 8037415141159388369}

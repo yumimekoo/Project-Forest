@@ -89,33 +89,11 @@ public class PlayerInteractionController : MonoBehaviour
             var surface = hit.GetComponent<IPlacableSurface>();
             if (surface != null && surface.CanPlace(player.heldItem))
             {
-                if(player.heldItem.itemType == ItemType.CoffeeCup)
-                {
-                    PlaceCup(player, surface);
-                    return;
-                }
-                PlaceItem(player.heldItem, surface); // hier gleich in inventory verschieben die funktion
-                player.DropItem();
+                player.PlaceDown(surface);
                 return;
             }
         }
     }
-    private void PlaceCup(PlayerInventory player, IPlacableSurface surface)
-    {
-        GameObject cupInstance = player.heldObjectInstance;
-        Transform placementPoint = surface.GetPlacementPoint();
-        SetLayerRecursively(cupInstance, LayerMask.NameToLayer("Interactables"));
-        cupInstance.transform.SetParent(placementPoint);
-        cupInstance.transform.localPosition = Vector3.zero;
-        cupInstance.transform.localRotation = Quaternion.identity;
-        player.heldItem = null;
-        player.heldObjectInstance = null;
-    }
-    void PlaceItem(ItemDataSO item, IPlacableSurface surface)
-    {
-        Instantiate(item.itemPrefab, surface.GetPlacementPoint().position, surface.GetPlacementPoint().rotation);
-    }
-
     private void SetLayerRecursively(GameObject obj, int newLayer)
     {
         obj.layer = newLayer;

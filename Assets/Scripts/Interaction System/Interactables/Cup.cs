@@ -23,11 +23,11 @@ public class Cup : MonoBehaviour, IInteractable
             {
                 Debug.Log(item.itemName);
             }
-            player.DropItem();
+            player.ClearItem();
         }
         else
         {
-            player.PickUpCup(cupItem, cup);
+            player.PickUp(cupItem, cup);
         }
     }
 }
