@@ -10,7 +10,6 @@ public class PlayerInteractionController : MonoBehaviour
     public LayerMask placementLayer;
 
     private IInteractable currentTarget;
-    private IPlacableSurface currentPlacementSurface;
 
     public InputActionAsset InputActions;
     public InputAction interactAction;
@@ -33,7 +32,6 @@ public class PlayerInteractionController : MonoBehaviour
         CheckForInteractable();
         if (interactAction.WasPressedThisFrame())
         { 
-            Debug.Log("Interact action pressed");
             if (PlayerInventory.Instance.HasItem())
             {
                 if(currentTarget is Cup)
