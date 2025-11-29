@@ -22,7 +22,7 @@ public class PlayerInventory : MonoBehaviour
         heldItem = item;
         heldObjectInstance = obj;
         heldObjectInstance.transform.SetParent(handSlot);
-        SetLayerRecursively(heldObjectInstance, LayerMask.NameToLayer("HeldItem"));
+        SetLayer(heldObjectInstance, LayerMask.NameToLayer("HeldItem"));
         heldObjectInstance.transform.localPosition = Vector3.zero;
         heldObjectInstance.transform.localRotation = Quaternion.identity;
         Debug.Log($"Picked up: {item.itemName}");
@@ -31,7 +31,7 @@ public class PlayerInventory : MonoBehaviour
     public void PlaceDown(IPlacableSurface surface)
     {
         Transform placementPoint = surface.GetPlacementPoint();
-        SetLayerRecursively(heldObjectInstance, LayerMask.NameToLayer("Interactables"));
+        SetLayer(heldObjectInstance, LayerMask.NameToLayer("Interactables"));
         heldObjectInstance.transform.SetParent(placementPoint);
         heldObjectInstance.transform.localPosition = Vector3.zero;
         heldObjectInstance.transform.localRotation = Quaternion.identity;
@@ -39,14 +39,9 @@ public class PlayerInventory : MonoBehaviour
         heldItem = null;
         heldObjectInstance = null;
     }
-    private void SetLayerRecursively(GameObject obj, int newLayer)
+    private void SetLayer(GameObject obj, int newLayer)
     {
         obj.layer = newLayer;
-
-        foreach (Transform child in obj.transform)
-        {
-            SetLayerRecursively(child.gameObject, newLayer);
-        }
     }
     public void ClearItem()
     {

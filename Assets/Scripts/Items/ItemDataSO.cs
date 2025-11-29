@@ -5,6 +5,7 @@ public class ItemDataSO : ScriptableObject
 {
     public string itemName;
     public ItemType itemType;
-    public GameObject itemPrefab;
+
+    public GameObject contentVisualPrefab;
     //public Sprite icon;
 }
