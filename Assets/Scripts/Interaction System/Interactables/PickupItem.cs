@@ -3,6 +3,7 @@ using UnityEngine;
 public class PickupItem : MonoBehaviour, IInteractable
 {
     public ItemDataSO item;
+    public GameObject selfObj;
 
     public string GetInteractionPrompt()
     {
@@ -12,8 +13,7 @@ public class PickupItem : MonoBehaviour, IInteractable
     {
         if(player.HasItem()) return;
 
-        player.PickUpItem(item);
-        Destroy(gameObject); // maybe noch pooling, but i dont think we need that tho
+        player.PickUp(item, selfObj);
     }
 
 }

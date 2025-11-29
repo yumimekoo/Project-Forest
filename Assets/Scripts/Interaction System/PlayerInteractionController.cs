@@ -36,6 +36,12 @@ public class PlayerInteractionController : MonoBehaviour
             Debug.Log("Interact action pressed");
             if (PlayerInventory.Instance.HasItem())
             {
+                if(currentTarget is Cup)
+                {
+                    Debug.Log("Interacting with cup");
+                    currentTarget.Interact(PlayerInventory.Instance);
+                    return;
+                }
                 TryPlace(PlayerInventory.Instance);
             }
 
@@ -58,7 +64,6 @@ public class PlayerInteractionController : MonoBehaviour
 
         if (hits.Length > 0)
         {
-            Debug.Log("Hit: " + hits[0].name);
             DrawBox(center, extends, orientation, Color.darkGreen);
             currentTarget = hits[0].GetComponent<IInteractable>();
             if (currentTarget != null)
@@ -84,22 +89,24 @@ public class PlayerInteractionController : MonoBehaviour
             var surface = hit.GetComponent<IPlacableSurface>();
             if (surface != null && surface.CanPlace(player.heldItem))
             {
-                PlaceItem(player.heldItem, surface);
-                player.DropItem();
+                player.PlaceDown(surface);
                 return;
             }
         }
     }
-
-    void PlaceItem(ItemDataSO item, IPlacableSurface surface)
+    private void SetLayerRecursively(GameObject obj, int newLayer)
     {
-        Instantiate(item.itemPrefab, surface.GetPlacementPoint().position, surface.GetPlacementPoint().rotation);
+        obj.layer = newLayer;
+
+        foreach (Transform child in obj.transform)
+        {
+            SetLayerRecursively(child.gameObject, newLayer);
+        }
     }
     void DrawBox(Vector3 center, Vector3 extents, Quaternion orientation, Color color)
     {
         Vector3[] points = new Vector3[8];
 
-        // Alle 8 Ecken der Box generieren
         points[0] = center + orientation * new Vector3(extents.x, extents.y, extents.z);
         points[1] = center + orientation * new Vector3(-extents.x, extents.y, extents.z);
         points[2] = center + orientation * new Vector3(-extents.x, -extents.y, extents.z);
@@ -110,7 +117,6 @@ public class PlayerInteractionController : MonoBehaviour
         points[6] = center + orientation * new Vector3(-extents.x, -extents.y, -extents.z);
         points[7] = center + orientation * new Vector3(extents.x, -extents.y, -extents.z);
 
-        // Box-Kanten zeichnen
         for (int i = 0; i < 4; i++)
         {
             Debug.DrawLine(points[i], points[(i + 1) % 4], color, 0.1f);
