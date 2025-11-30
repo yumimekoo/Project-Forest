@@ -8,4 +8,8 @@ public class ItemDataSO : ScriptableObject
 
     public GameObject contentVisualPrefab;
     //public Sprite icon;
+
+    [Header("World Prefab for Instantiating the Item")]
+
+    public GameObject itemPrefab;
 }

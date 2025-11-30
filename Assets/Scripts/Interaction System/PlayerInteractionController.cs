@@ -30,7 +30,7 @@ public class PlayerInteractionController : MonoBehaviour
     private void Update()
     {
         CheckForInteractable();
-        if (interactAction.WasPressedThisFrame())
+        if (interactAction.WasPressedThisFrame() && GameState.playerInteractionAllowed)
         { 
             if (PlayerInventory.Instance.HasItem())
             {
