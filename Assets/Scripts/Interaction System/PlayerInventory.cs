@@ -43,6 +43,13 @@ public class PlayerInventory : MonoBehaviour
     {
         obj.layer = newLayer;
     }
+
+    public void RemoveReference()
+    {
+        heldItem = null;
+        heldObjectInstance = null;
+    }
+
     public void ClearItem()
     {
         if (heldItem != null)
