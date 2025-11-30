@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UnlockDatabaseSO
   fridgeItems:
   - {fileID: 11400000, guid: b862ff9c766f69c438e84754895300fa, type: 2}
-  - {fileID: 11400000, guid: b30e931c688effd439a56018be592ef5, type: 2}
   unlockedFridgeItems:
   - {fileID: 11400000, guid: b862ff9c766f69c438e84754895300fa, type: 2}
+  storageItems:
+  - {fileID: 11400000, guid: b30e931c688effd439a56018be592ef5, type: 2}
+  unlockedStorageItems:
   - {fileID: 11400000, guid: b30e931c688effd439a56018be592ef5, type: 2}

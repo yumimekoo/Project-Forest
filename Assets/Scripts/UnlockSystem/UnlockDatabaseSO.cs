@@ -4,10 +4,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "UnlockDatabaseSO", menuName = "Unlock/UnlockDatabase")]
 public class UnlockDatabaseSO : ScriptableObject
 {
+    [Header("Fridge Items")]
     public List<ItemDataSO> fridgeItems; // all frigde items
     public List<ItemDataSO> unlockedFridgeItems = new List<ItemDataSO>(); // unlocked fridge items
 
-    public bool IsUnlocked(ItemDataSO item) => unlockedFridgeItems.Contains(item);
+    [Header("Storage Items")]
+    public List<ItemDataSO> storageItems; // all storage items
+    public List<ItemDataSO> unlockedStorageItems = new List<ItemDataSO>(); // unlocked storage items
+   /// public bool IsUnlocked(ItemDataSO item) => unlockedFridgeItems.Contains(item);
 
     public List<ItemDataSO> GetUnlockedFridgeItems() => unlockedFridgeItems;
+    public List<ItemDataSO> GetUnlockedStorageItems() => unlockedStorageItems;
 }
