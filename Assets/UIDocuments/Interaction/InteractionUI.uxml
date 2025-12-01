@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; background-color: rgb(255, 215, 158); border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; border-left-color: rgb(183, 127, 47); border-right-color: rgb(183, 127, 47); border-top-color: rgb(183, 127, 47); border-bottom-color: rgb(183, 127, 47);">
+        <ui:VisualElement style="flex-grow: 1; justify-content: center; align-self: center; align-items: center;">
+            <ui:Label text="Label" name="interactionLabel" style="-unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=c12bd26c3455be346b29a3b3c9caafe6&amp;type=3#NotInter-Regular&quot;); font-size: 15px; -unity-font-style: bold;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

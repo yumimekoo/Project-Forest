@@ -66,12 +66,15 @@ public class PlayerInteractionController : MonoBehaviour
             currentTarget = hits[0].GetComponent<IInteractable>();
             if (currentTarget != null)
             {
-                // hier ui einblenden oder so
+                InteractionUI.Instance.Show(
+                    currentTarget.GetInteractionPrompt(),
+                    hits[0].transform.position + Vector3.up * 1f
+                );
                 return;
             }
         }
         currentTarget = null;
-        // ui wieder hiden
+        InteractionUI.Instance.HideUI();
     }
 
     void TryPlace(PlayerInventory player)
