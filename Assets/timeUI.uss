@@ -1,0 +1,6 @@
+:root {
+}
+
+VisualElement > VisualElement > #progressTime > #unity-progress-bar > .unity-progress-bar__background > .unity-progress-bar__progress {
+    background-color: rgb(229, 192, 83);
+}
