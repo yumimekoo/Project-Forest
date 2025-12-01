@@ -15,6 +15,7 @@ public class CoffeMachine : MonoBehaviour, IInteractable
 
     private bool isBrewing = false;
     private bool hasBeans = false;
+    private bool cupReady = false;
     private Cup cupInMachine;
 
     public string GetInteractionPrompt()
@@ -27,13 +28,16 @@ public class CoffeMachine : MonoBehaviour, IInteractable
         {
             return "Brewing coffee...";
         }
+        else if (cupReady)
+        {
+            return "Coffee is ready! Collect your cup.";
+        }
         else if (!hasBeans)
         {
             return "Add coffee beans to start brewing.";
         }
-        else
-        {
-            return "Collect your brewed coffee.";
+        else{
+            return "you broke something";
         }
     }
 
@@ -97,7 +101,7 @@ public class CoffeMachine : MonoBehaviour, IInteractable
     private void ReturnCup(PlayerInventory player)
     {
         if (isBrewing) return;
-
+        cupReady = false;
         player.PickUp(cupInMachine.currentItemData, cupInMachine.gameObject);
         cupInMachine = null;
     }
@@ -121,6 +125,7 @@ public class CoffeMachine : MonoBehaviour, IInteractable
         beanVisual.SetActive(false);
         Debug.Log("Coffee is ready! You can now collect your cup.");
 
+        cupReady = true;
         isBrewing = false;
         hasBeans = false;
     }

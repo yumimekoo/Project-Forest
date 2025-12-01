@@ -7,7 +7,7 @@ public class PickupItem : MonoBehaviour, IInteractable
 
     public string GetInteractionPrompt()
     {
-        return $"Press 'E' to pick up {item.itemName}";
+        return $"Pick up {item.itemName}";
     }
     public void Interact(PlayerInventory player)
     {
