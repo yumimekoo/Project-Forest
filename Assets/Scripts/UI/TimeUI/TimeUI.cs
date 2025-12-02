@@ -44,7 +44,7 @@ public class TimeUI : MonoBehaviour
 
     private void UpdateProgress(float progress)
     {
-        Debug.Log($"Updating progress to {progress}");
+
         progressBar.value = progress;
     }
 
