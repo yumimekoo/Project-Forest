@@ -15,3 +15,4 @@ MonoBehaviour:
   itemName: Cup
   itemType: 3
   contentVisualPrefab: {fileID: 8019389323391787378, guid: 6e5bcbb3d4237d444aa91b4666038ab5, type: 3}
+  itemPrefab: {fileID: 8037415141159388369, guid: 3d4344331cc91fd488a395b340c26af3, type: 3}
