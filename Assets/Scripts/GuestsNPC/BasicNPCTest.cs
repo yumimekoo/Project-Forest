@@ -1,16 +1,29 @@
+using System;
 using UnityEngine;
 
 public class BasicNPCTest : MonoBehaviour, IInteractable, INPC
 {
+    public NPCDataSO npcData;
     public ItemDataSO currentOrder { get; private set; }
     public bool hasOrderRunning { get; private set; }
+    public event Action<int> OnCorrectOrderGiven;
+    public event Action<int> OnWrongOrderGiven;
 
+    private void OnEnable()
+    {
+        CurrencyManager.Instance.RegisterNPC(this);
+    }
+
+    private void OnDisable()
+    {
+        CurrencyManager.Instance.UnregisterNPC(this);
+    }
     private void MakeOrder()
     {
         // For testing purposes, we can assign a dummy order
         hasOrderRunning = true;
         var unlockedRecipes = UnlockManager.Instance.runtimeDatabase.GetUnlockedRecipes();
-        int randomIndex = Random.Range(0, unlockedRecipes.Count);
+        int randomIndex = UnityEngine.Random.Range(0, unlockedRecipes.Count);
         currentOrder = unlockedRecipes[randomIndex].resultingState;
 
         Debug.Log($"NPC has made an order for: {currentOrder.itemName}");
@@ -20,10 +33,12 @@ public class BasicNPCTest : MonoBehaviour, IInteractable, INPC
     {
         if (item == currentOrder)
         {
+            OnCorrectOrderGiven?.Invoke(npcData.baseReward);
             Debug.Log("currect order! shanks!");
         }
         else
         {
+            OnWrongOrderGiven?.Invoke(npcData.baseReward);
             Debug.Log("thats the wrong one :(");
         }
         hasOrderRunning = false;
