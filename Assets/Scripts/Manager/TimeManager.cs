@@ -26,7 +26,7 @@ public class TimeManager : MonoBehaviour
     Instance = this;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (dayEnded)
             return;

@@ -40,6 +40,12 @@ public class PlayerInteractionController : MonoBehaviour
                     currentTarget.Interact(PlayerInventory.Instance);
                     return;
                 }
+                if(currentTarget is BasicNPCTest)
+                {
+                    Debug.Log("Interacting with NPC");
+                    currentTarget.Interact(PlayerInventory.Instance);
+                    return;
+                }
                 TryPlace(PlayerInventory.Instance);
             }
 

@@ -25,7 +25,7 @@ public class Cup : MonoBehaviour, IInteractable
         }
         else
         {
-            string contentNames = "Cup contains: ";
+            string contentNames = $"{currentItemData.itemName} contains: ";
             foreach (var item in contents)
             {
                 contentNames += item.itemName + ", ";
