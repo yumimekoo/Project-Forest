@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.propixelizer": "ssh://git@github.com/ProPixelizer/ProPixelizer.git#upm_compliant",
+    "com.propixelizer": "git@github.com:yumimekoo/Pixelizer-Copy.git#upm_compliant",
     "com.unity.ai.navigation": "2.0.9",
     "com.unity.collab-proxy": "2.10.2",
     "com.unity.ide.visualstudio": "2.0.23",
