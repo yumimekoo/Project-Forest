@@ -20,7 +20,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b30e931c688effd439a56018be592ef5, type: 2}
   - {fileID: 11400000, guid: 0c55166b6b1cb9d44bba687097b9820b, type: 2}
   unlockedStorageItems:
-  - {fileID: 11400000, guid: b30e931c688effd439a56018be592ef5, type: 2}
   - {fileID: 11400000, guid: 0c55166b6b1cb9d44bba687097b9820b, type: 2}
   recipes:
   - {fileID: 11400000, guid: 5f4995d951d2ee44288a0564c9d44420, type: 2}

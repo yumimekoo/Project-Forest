@@ -65,4 +65,11 @@ public class CurrencyManager : MonoBehaviour
         OnMoneyChanged?.Invoke(CurrentMoney);
         return true;
     }
+
+    public void SetMoney(int amount)
+    {
+        CurrentMoney = amount;
+        OnMoneyChanged?.Invoke(CurrentMoney);
+    }
+
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ItemData", menuName = "Game/Item")]
 public class ItemDataSO : ScriptableObject
 {
+    public int id;
     public string itemName;
     public ItemType itemType;
 

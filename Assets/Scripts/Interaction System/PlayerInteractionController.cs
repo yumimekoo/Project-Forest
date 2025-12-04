@@ -101,15 +101,7 @@ public class PlayerInteractionController : MonoBehaviour
             }
         }
     }
-    private void SetLayerRecursively(GameObject obj, int newLayer)
-    {
-        obj.layer = newLayer;
 
-        foreach (Transform child in obj.transform)
-        {
-            SetLayerRecursively(child.gameObject, newLayer);
-        }
-    }
     void DrawBox(Vector3 center, Vector3 extents, Quaternion orientation, Color color)
     {
         Vector3[] points = new Vector3[8];
