@@ -20,7 +20,8 @@ public class SaveManager : MonoBehaviour
     {
         GameSaveData saveData = new GameSaveData
         {
-            currentMoney = CurrencyManager.Instance.CurrentMoney
+            currentMoney = CurrencyManager.Instance.CurrentMoney,
+            unlocks = UnlockManager.Instance.GetSaveData()
         };
         SaveSystem.Save(saveData);
     }
@@ -28,6 +29,8 @@ public class SaveManager : MonoBehaviour
     public void LoadGame()
     {
         GameSaveData saveData = SaveSystem.Load();
+        Debug.Log($"Loaded save data: {saveData.unlocks.unlockedFridgeItemIDs.Count} fridge, {saveData.unlocks.unlockedStorageItemIDs.Count} storage, {saveData.unlocks.unlockedRecipeIDs.Count} recipes");
+        UnlockManager.Instance.ApplySaveData(saveData.unlocks);
         CurrencyManager.Instance.SetMoney(saveData.currentMoney);
     }
 }

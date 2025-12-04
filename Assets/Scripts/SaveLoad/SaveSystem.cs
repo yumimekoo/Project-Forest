@@ -11,6 +11,10 @@ public static class SaveSystem
         string json = JsonUtility.ToJson(saveData);
         File.WriteAllText(savePath, json);
         Debug.Log($"Game saved to {savePath}");
+
+        Debug.Log(File.Exists(SaveSystem.savePath)); // sollte true sein
+        string content = File.ReadAllText(SaveSystem.savePath);
+        Debug.Log(content);
     }
 
     public static GameSaveData Load()
@@ -36,5 +40,10 @@ public static class SaveSystem
         {
             Debug.Log("No save file to delete.");
         }
+    }
+
+    public static bool SaveExists()
+    {
+        return File.Exists(savePath);
     }
 }
