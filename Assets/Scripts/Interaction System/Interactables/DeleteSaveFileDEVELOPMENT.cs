@@ -9,6 +9,7 @@ public class DeleteSaveFileDEVELOPMENT : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInventory player)
     {
-        SaveSystem.DeleteSave();
+        SaveSystem.DeleteSave(SaveManager.Instance.ActiveSaveSlot);
+
     }
 }
