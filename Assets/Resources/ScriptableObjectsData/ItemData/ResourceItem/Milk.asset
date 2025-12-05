@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12dbe847075c82f439393ce578da41b9, type: 3}
   m_Name: Milk
   m_EditorClassIdentifier: Assembly-CSharp::ItemDataSO
+  id: 8
   itemName: Milk
   itemType: 1
+  contentVisualPrefab: {fileID: 0}
   itemPrefab: {fileID: 8037415141159388369, guid: 0b9e4c3d982e32a4197ca80ff4a95cda, type: 3}
