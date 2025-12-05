@@ -16,7 +16,6 @@ public class SaveManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        LoadGame();
     }
 
     public void SetActiveSaveSlot(int slot)

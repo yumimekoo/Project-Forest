@@ -1,0 +1,10 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; align-self: stretch; flex-direction: column; justify-content: center;">
+        <ui:VisualElement style="flex-grow: 1; align-self: center; justify-content: center; width: 60%; align-items: center;">
+            <ui:Button text="Button" name="save1" style="font-size: 15px; width: 50%; height: 10%;" />
+            <ui:Button text="Button" name="save2" style="font-size: 15px; width: 50%; height: 10%;" />
+            <ui:Button text="Button" name="save3" style="font-size: 15px; width: 50%; height: 10%;" />
+            <ui:Button text="Exit" name="exit" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
