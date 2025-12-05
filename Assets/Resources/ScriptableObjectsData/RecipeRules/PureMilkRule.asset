@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fa8246566791384e838700d90751efe, type: 3}
   m_Name: PureMilkRule
   m_EditorClassIdentifier: Assembly-CSharp::DrinkRuleSO
+  id: 4
   ruleName: Pure Milk
   requiredState: {fileID: 11400000, guid: 0c55166b6b1cb9d44bba687097b9820b, type: 2}
   addedIngredient: {fileID: 11400000, guid: b862ff9c766f69c438e84754895300fa, type: 2}

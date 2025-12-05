@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12dbe847075c82f439393ce578da41b9, type: 3}
   m_Name: CoffeBean
   m_EditorClassIdentifier: Assembly-CSharp::ItemDataSO
+  id: 7
   itemName: Coffe Bean
   itemType: 2
+  contentVisualPrefab: {fileID: 0}
   itemPrefab: {fileID: 8037415141159388369, guid: 9777dd5884e813d4fa6b6dc2c45ded50, type: 3}
