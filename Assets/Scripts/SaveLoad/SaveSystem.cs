@@ -3,9 +3,42 @@ using UnityEngine;
 
 public static class SaveSystem
 {
-    private static readonly string savePath = 
-        Path.Combine(Application.persistentDataPath, "idontgive.eeffoc");
+    //private static readonly string savePath = 
+    //    Path.Combine(Application.persistentDataPath, "idontgive.eeffoc");
+
     private static readonly string KEY = "JonathernDerStinkerhihi";
+
+    private static string GetSaveFilePath(int slot)
+    {
+        switch (slot)
+        {
+            case 0:
+                return Path.Combine(Application.persistentDataPath, "idontgive.eeffoc");
+            case 1:
+                return Path.Combine(Application.persistentDataPath, "igive.eeffoc");
+            case 2:
+                return Path.Combine(Application.persistentDataPath, "perchanceigive.eeffoc");
+            default:
+                Debug.LogWarning($"Invalid save slot {slot}. Defaulting to slot 0.");
+                return Path.Combine(Application.persistentDataPath, "idontgive.eeffoc");
+        }
+    }
+
+    private static string GetInfoFilePath(int slot)
+    {
+        switch (slot)
+        {
+            case 0:
+                return Path.Combine(Application.persistentDataPath, "idontgive.iiffoc");
+            case 1:
+                return Path.Combine(Application.persistentDataPath, "igive.iiffoc");
+            case 2:
+                return Path.Combine(Application.persistentDataPath, "perchanceigive.iiffoc");
+            default:
+                Debug.LogWarning($"Invalid save slot {slot}. Defaulting to slot 0.");
+                return Path.Combine(Application.persistentDataPath, "idontgive.iiffoc");
+        }
+    }
 
     private static string EncryptDecrypt(string data)
     {
@@ -20,42 +53,69 @@ public static class SaveSystem
         return new string(output);
     }
 
-    //public static void Save(GameSaveData saveData)
-    //{
-    //    string json = JsonUtility.ToJson(saveData);
-    //    File.WriteAllText(savePath, json);
-    //    Debug.Log($"Game saved to {savePath}");
-
-    //    Debug.Log(File.Exists(SaveSystem.savePath)); // sollte true sein
-    //    string content = File.ReadAllText(SaveSystem.savePath);
-    //    Debug.Log(content);
-    //}
-
-    //public static GameSaveData Load()
-    //{
-    //    if (!File.Exists(savePath))
-    //    {
-    //        Debug.LogWarning("No save file found. Creating New");
-    //        return new GameSaveData();
-    //    }
-    //    string json = File.ReadAllText(savePath);
-    //    Debug.Log($"Game loaded from {savePath}");
-    //    return JsonUtility.FromJson<GameSaveData>(json);
-    //}
-    public static void Save(GameSaveData saveData)
+    public static void Save(GameSaveData saveData, int slot)
     {
+        string savePath = GetSaveFilePath(slot);
         string json = JsonUtility.ToJson(saveData);
         string encrypted = EncryptDecrypt(json);
         File.WriteAllText(savePath, encrypted);
         Debug.Log($"Game saved to {savePath}");
 
-        Debug.Log(File.Exists(SaveSystem.savePath)); // sollte true sein
-        string content = File.ReadAllText(SaveSystem.savePath);
+        Debug.Log(File.Exists(savePath)); // sollte true sein
+        string content = File.ReadAllText(savePath);
         Debug.Log(content);
+
+        SaveSlotInfo info = new SaveSlotInfo();
+        info.exists = true;
+        info.slotNumber = slot;
+        info.saveName = "My Cafe Save";      // Oder dynamisch vergeben
+        info.createdDate = File.Exists(GetInfoFilePath(slot))
+                            ? LoadSlotInfo(slot).createdDate   // beibehalten
+                            : System.DateTime.Now.ToString();
+
+        info.lastModifiedDate = System.DateTime.Now.ToString();
+
+        string infoJson = JsonUtility.ToJson(info, true);
+        File.WriteAllText(GetInfoFilePath(slot), infoJson);
+
+        Debug.Log($"Slot info saved to {GetInfoFilePath(slot)}");
     }
 
-    public static GameSaveData Load()
+    public static void CreateNewSlotInfo(int slot, string saveName)
     {
+        SaveSlotInfo info = new SaveSlotInfo();
+        info.exists = true;
+        info.slotNumber = slot;
+        info.saveName = saveName;
+        info.createdDate = System.DateTime.Now.ToString();
+        info.lastModifiedDate = info.createdDate;
+
+        string json = JsonUtility.ToJson(info, true);
+        File.WriteAllText(GetInfoFilePath(slot), json);
+
+        Debug.Log($"Slot info created at {GetInfoFilePath(slot)}");
+    }
+
+    public static bool InfoExists(int slot)
+    {
+        return File.Exists(GetInfoFilePath(slot));
+    }
+
+    public static SaveSlotInfo LoadSlotInfo(int slot)
+    {
+        string path = GetInfoFilePath(slot);
+
+        if (!File.Exists(path))
+            return null;
+
+        string json = File.ReadAllText(path);
+        return JsonUtility.FromJson<SaveSlotInfo>(json);
+    }
+
+    public static GameSaveData Load(int slot)
+    {
+        string savePath = GetSaveFilePath(slot);
+
         if (!File.Exists(savePath))
         {
             Debug.LogWarning("No save file found. Creating New");
@@ -67,8 +127,10 @@ public static class SaveSystem
         return JsonUtility.FromJson<GameSaveData>(decrypted);
     }
 
-    public static void DeleteSave()
+    public static void DeleteSave(int slot)
     {
+        string savePath = GetSaveFilePath(slot);
+
         if (File.Exists(savePath))
         {
             File.Delete(savePath);
@@ -78,10 +140,20 @@ public static class SaveSystem
         {
             Debug.Log("No save file to delete.");
         }
+
+        if(InfoExists(slot))
+        {
+            File.Delete(GetInfoFilePath(slot));
+            Debug.Log("Save slot info deleted!");
+        }
+        else
+        {   
+            Debug.Log("No save slot info to delete."); 
+        }
     }
 
-    public static bool SaveExists()
+    public static bool SaveExists(int slot)
     {
-        return File.Exists(savePath);
+        return File.Exists(GetSaveFilePath(slot));
     }
 }
