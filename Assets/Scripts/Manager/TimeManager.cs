@@ -48,7 +48,7 @@ public class TimeManager : MonoBehaviour
         if (!dayEnded && timeElapsed >= dayDurationInSeconds)
         {
             dayEnded = true;
-            SaveManager.Instance.SaveGame();
+            GameState.doorUnlocked = true;
             OnDayEnded?.Invoke();
             Debug.Log("day has ended");
         }
