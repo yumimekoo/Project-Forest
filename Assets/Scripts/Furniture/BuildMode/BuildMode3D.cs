@@ -7,19 +7,25 @@ public class BuildMode3D : MonoBehaviour
 {
     public DynamicGrid grid;
     public Camera mainCamera;
+
     private FurnitureSO currentItem;
     private GameObject preview;
 
+    private bool isPlacing = false;
+    private bool placingMode = false;
+    private bool deleteMode = false;
+
     private HashSet<Vector2Int> occupiedCells = new();
+
     public InputActionAsset InputActions;
-    public InputAction escapeAction;
     public InputAction rotateAction;
     public InputAction clickAction;
+    public InputAction rightClickAction;
     public InputAction pointerPos;
     private void Awake()
     {
-        clickAction = InputSystem.actions.FindAction("Attack");
-        escapeAction = InputSystem.actions.FindAction("Interact");
+        clickAction = InputSystem.actions.FindAction("LeftClick");
+        rightClickAction = InputSystem.actions.FindAction("RightClick");
         rotateAction = InputSystem.actions.FindAction("Rotate");
         pointerPos = InputSystem.actions.FindAction("PointerPos");
     }
@@ -37,27 +43,29 @@ public class BuildMode3D : MonoBehaviour
 
     public void StartBuild(FurnitureSO item)
     {
+
         if(preview != null)
         {
             Destroy(preview);
         }
         currentItem = item;
-        GameState.isInBuildMode = true;
+        isPlacing = true;
         preview = Instantiate(item.furniturePreview);
     }
 
     public void StopBuild()
     {
-        GameState.isInBuildMode = false;
+        
         if (preview != null)
         {
             Destroy(preview);
         }
         currentItem = null;
+        isPlacing = false;
     }
     private void Update()
     {
-        if (GameState.isInBuildMode)
+        if (GameState.isInBuildMode && isPlacing)
         {
             StartPlacement();
         }

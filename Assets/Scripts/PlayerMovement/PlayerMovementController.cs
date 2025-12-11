@@ -26,7 +26,7 @@ public class PlayerMovementController : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (!GameState.playerMovementAllowed)
+        if (!GameState.playerMovementAllowed || GameState.isInBuildMode)
             return;
 
         Vector3 movement = moveAction.ReadValue<Vector2>();
