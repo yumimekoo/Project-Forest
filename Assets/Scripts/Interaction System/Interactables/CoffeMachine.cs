@@ -46,7 +46,7 @@ public class CoffeMachine : MonoBehaviour, IInteractable
         if (isBrewing)
             return;
 
-        if (player.HasItem() && player.heldItem.itemType == ItemType.CoffeeBean)
+        if (player.HasItem() && player.heldItem.id == 7) // hier noch ändern
         {
             AddBeans(player);
             return;
