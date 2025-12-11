@@ -14,4 +14,7 @@ public static class GameState
     public static bool isInRoom = false;
     public static bool isInCafe = true;
     public static bool doorUnlocked = false;
+
+    // --- Build Mode ---
+    public static bool isInBuildMode = false;
 }

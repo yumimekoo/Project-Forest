@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 2218939652954058456}
   m_Layer: 6
   m_Name: CoffeBean
-  m_TagString: Untagged
+  m_TagString: Furniture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3148054054674615834}
   m_Layer: 6
   m_Name: trashcan
-  m_TagString: Untagged
+  m_TagString: Furniture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1862542262716857225}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.40343, y: 0.7, z: 0.59}
+  m_LocalPosition: {x: -3.04, y: 0.5, z: 2.5}
   m_LocalScale: {x: 0.36, y: 0.36, z: 0.36}
   m_ConstrainProportionsScale: 1
   m_Children:

@@ -6,6 +6,7 @@ public class GameSaveData
 {
     public int currentMoney;
     public UnlockSaveData unlocks = new();
+    public List<PlacedFurnitureData> placedFurniture = new();
 }
 
 [System.Serializable]

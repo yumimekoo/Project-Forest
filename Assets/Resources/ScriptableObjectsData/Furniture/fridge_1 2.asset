@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6206092c6f5641d48b19f46ee8325c00, type: 3}
-  m_Name: fridge_1
+  m_Name: fridge_1 2
   m_EditorClassIdentifier: Assembly-CSharp::FurnitureSO
   furnitureName: Fridge
-  id: fridge_1
-  numericID: 10
-  furniturePrefab: {fileID: 1862542262716857225, guid: 2a86fa2f8d6089d4fa09e5f89b9e646d, type: 3}
+  id: fridge_3
+  numericID: 12
+  furniturePrefab: {fileID: 8037415141159388369, guid: 196347d66d6fbe845b8185bf68aa431e, type: 3}
   furniturePreview: {fileID: 1789459280500734020, guid: f7bd6e50af2b3bc4997dae8e2e31b749, type: 3}
-  size: {x: 0, y: 0}
+  size: {x: 1, y: 1}
