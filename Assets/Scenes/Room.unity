@@ -1714,6 +1714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BuildMode3D
   grid: {fileID: 691282002}
   mainCamera: {fileID: 1276157325}
+  deletionPreviewPrefab: {fileID: 1789459280500734020, guid: f7bd6e50af2b3bc4997dae8e2e31b749, type: 3}
   isPointerOverUI: 0
   InputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   rotateAction:

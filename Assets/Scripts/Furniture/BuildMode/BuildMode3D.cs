@@ -1,15 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.EventSystems;
 using System.Collections;
 
 public class BuildMode3D : MonoBehaviour
 {
     public DynamicGrid grid;
     public Camera mainCamera;
+    public GameObject deletionPreviewPrefab;
 
     private FurnitureSO currentItem;
+    private int rotY = 0;
     private GameObject preview;
 
     private bool isPlacing = false;
@@ -75,10 +76,14 @@ public class BuildMode3D : MonoBehaviour
 
     private void Update()
     {
-        if (!isPlacing)
+        if(!GameState.isInBuildMode)
             return;
 
         HandleDeleteToggle();
+
+        if (!isPlacing)
+            return;
+
         //HandleStopPlacementByButton();
 
         if(isPointerOverUI)
@@ -92,11 +97,28 @@ public class BuildMode3D : MonoBehaviour
         if (rightClickAction.WasPressedThisFrame())
         {
             deleteMode = !deleteMode;
-            placingMode = !deleteMode;
 
+            if (!isPlacing)
+            {
+                Debug.Log("Entering delete mode");
+                isPlacing = true;
+                deleteMode = true;
+                preview = Instantiate(deletionPreviewPrefab);
+                return;
+            }
             if (deleteMode && preview != null)
             {
-                preview.GetComponent<Renderer>().material.color = Color.red;
+                Destroy(preview);
+                Debug.Log("deleteMode && preview != null");
+                preview = Instantiate(deletionPreviewPrefab);
+                return;
+            }
+            if (!deleteMode && preview != null)
+            {
+                Debug.Log("!deleteMode && preview != null");
+                Destroy(preview);
+                isPlacing = false;
+                return;
             }
         }
     }
@@ -107,6 +129,12 @@ public class BuildMode3D : MonoBehaviour
 
     private void HandlePlacementOrDeletion()
     {
+        if(rotateAction.WasPressedThisFrame() && !deleteMode)
+        {
+            rotY += 90;
+            if(rotY > 270)
+                rotY = 0;
+        }
         Ray ray = mainCamera.ScreenPointToRay(pointerPos.ReadValue<Vector2>());
         if(!Physics.Raycast(ray, out RaycastHit hitInfo))
         {
@@ -157,7 +185,8 @@ public class BuildMode3D : MonoBehaviour
             return;
 
         preview.transform.position = snapPos;
-        if(deleteMode)
+        preview.transform.rotation = Quaternion.Euler(0, rotY, 0);
+        if (deleteMode)
         {
             preview.GetComponent<Renderer>().material.color = Color.red;
             return;
@@ -171,9 +200,9 @@ public class BuildMode3D : MonoBehaviour
 
     private void PlaceFurniture(Vector2Int cell, Vector3 position)
     {
-        Instantiate(currentItem.furniturePrefab, position, Quaternion.identity);
+        Instantiate(currentItem.furniturePrefab, position, Quaternion.Euler(0, rotY, 0));
         occupiedCells.Add(cell);
-        FurniturePlacementManager.Instance.RegisterPlacement(currentItem.numericID, cell, 0);
+        FurniturePlacementManager.Instance.RegisterPlacement(currentItem.numericID, cell, rotY);
     }
 
     private void TryDelete(Vector2Int cell)
@@ -193,60 +222,6 @@ public class BuildMode3D : MonoBehaviour
     // ---
     // Reload From Save
     // ---
-
-
-    //public void StartPlacement()
-    //{
-    //    Ray ray = mainCamera.ScreenPointToRay(pointerPos.ReadValue<Vector2>());
-    //    if (!Physics.Raycast(ray, out RaycastHit hitInfo))
-    //    {
-    //        return;
-    //    }
-
-    //    Vector2Int cellPosition = grid.WorldToGrid(hitInfo.point);
-    //    if (grid.IsInsideGrid(cellPosition.x, cellPosition.y))
-    //    {
-    //        Vector3 snapPos = grid.GetWorldPosition(cellPosition.x, cellPosition.y);
-    //        preview.transform.position = snapPos;
-    //    }
-
-    //    preview.GetComponent<Renderer>().material.color =
-    //        occupiedCells.Contains(cellPosition) ? Color.red : Color.green;
-
-    //    if (clickAction.WasPressedThisFrame() && !occupiedCells.Contains(cellPosition))
-    //    {
-    //        Vector2Int p = grid.WorldToGrid(hitInfo.point);
-    //        if (!grid.IsInsideGrid(p.x, p.y))
-    //        {
-    //            Debug.Log("Out of bounds");
-    //            return;
-    //        }
-    //        Vector3 spawn = grid.GetWorldPosition(p.x, p.y);
-    //        Instantiate(currentItem.furniturePrefab, spawn, Quaternion.identity);
-    //        occupiedCells.Add(cellPosition);
-    //        FurniturePlacementManager.Instance.RegisterPlacement(currentItem.numericID, p, 0);
-    //        return;
-    //    }
-    //    if (clickAction.WasPressedThisFrame() && occupiedCells.Contains(cellPosition))
-    //    {
-    //        RemoveAt(cellPosition);
-    //        occupiedCells.Remove(cellPosition);
-    //        FurniturePlacementManager.Instance.RemovePlacement(cellPosition);
-    //        Debug.Log("Cell is already occupied.");
-    //    }
-    //}
-
-    //private void RemoveAt(Vector2Int cellPosition)
-    //{
-    //    foreach (var obj in GameObject.FindGameObjectsWithTag("Furniture"))
-    //    {
-    //        Vector2Int objCell = grid.WorldToGrid(obj.transform.position);
-    //        if (objCell == cellPosition)
-    //        {
-    //            Destroy(obj);
-    //        }
-    //    }
-    //}
 
     public IEnumerator RebuildFromSave(List<PlacedFurnitureData> items)
     {

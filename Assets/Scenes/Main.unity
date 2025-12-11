@@ -787,7 +787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3ec3372101123f418c862c9c0642703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
-  dayDurationInSeconds: 30
+  dayDurationInSeconds: 3
 --- !u!1 &881709037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,6 +1046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BuildMode3D
   grid: {fileID: 1198380526}
   mainCamera: {fileID: 926100322}
+  deletionPreviewPrefab: {fileID: 0}
   isPointerOverUI: 0
   InputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   rotateAction:
