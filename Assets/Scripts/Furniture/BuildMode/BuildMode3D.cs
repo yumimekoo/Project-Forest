@@ -200,7 +200,13 @@ public class BuildMode3D : MonoBehaviour
 
     private void PlaceFurniture(Vector2Int cell, Vector3 position)
     {
-        Instantiate(currentItem.furniturePrefab, position, Quaternion.Euler(0, rotY, 0));
+        if(!FurnitureInventory.Instance.Remove(currentItem.numericID))
+        {
+            Debug.LogWarning("Not enough items in inventory to place furniture.");
+            return;
+        }
+        var go = Instantiate(currentItem.furniturePrefab, position, Quaternion.Euler(0, rotY, 0));
+        go.AddComponent<FurnitureIdentifier>().so = currentItem;
         occupiedCells.Add(cell);
         FurniturePlacementManager.Instance.RegisterPlacement(currentItem.numericID, cell, rotY);
     }
@@ -211,6 +217,9 @@ public class BuildMode3D : MonoBehaviour
         {
             if (grid.WorldToGrid(obj.transform.position) == cell)
             {
+                FurnitureSO soItem = obj.GetComponent<FurnitureIdentifier>().so;
+                FurnitureInventory.Instance.Add(soItem.numericID);
+
                 Destroy(obj);
                 occupiedCells.Remove(cell);
                 FurniturePlacementManager.Instance.RemovePlacement(cell);
@@ -236,7 +245,8 @@ public class BuildMode3D : MonoBehaviour
             }
             Vector3 spawn = grid.GetWorldPosition(item.x, item.y);
             Quaternion rotation = Quaternion.Euler(0, item.rotY, 0);
-            Instantiate(so.furniturePrefab, spawn, rotation);
+            var go = Instantiate(so.furniturePrefab, spawn, rotation);
+            go.AddComponent<FurnitureIdentifier>().so = so;
             occupiedCells.Add(new Vector2Int(item.x, item.y));
 
         }

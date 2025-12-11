@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -9,6 +10,7 @@ public class BuildModeUI : MonoBehaviour
     public UIDocument buildModeUI;
     public VisualTreeAsset itemTemplate;
 
+    private Dictionary<int, Label> quantityLabels = new();
     private VisualElement root;
     private VisualElement
         itemContainer,
@@ -19,6 +21,17 @@ public class BuildModeUI : MonoBehaviour
         btnDecor,
         btnUtility;
 
+    private void OnEnable()
+    {
+        if (FurnitureInventory.Instance != null)
+            FurnitureInventory.Instance.OnInventoryChanged += UpdateItemQuantity;
+    }
+
+    private void OnDisable()
+    {
+        if (FurnitureInventory.Instance != null)
+            FurnitureInventory.Instance.OnInventoryChanged -= UpdateItemQuantity;
+    }
     private void Awake()
     {
         // Safe Singleton
@@ -66,7 +79,18 @@ public class BuildModeUI : MonoBehaviour
             var button = itemElement.Q<Button>("itemButton");
             button.text = item.furnitureName;
             button.clicked += () => buildMode3D.StartBuild(item);
+            var quantityLabel = itemElement.Q<Label>("quantityLabel");
+            quantityLabel.text = FurnitureInventory.Instance.GetAmount(item.numericID).ToString();
+            quantityLabels[item.numericID] = quantityLabel;
             itemContainer.Add(itemElement);
+        }
+    }
+
+    private void UpdateItemQuantity(int id, int newQuantity)
+    {
+        if (quantityLabels.TryGetValue(id, out var label))
+        {
+            label.text = newQuantity.ToString();
         }
     }
 
