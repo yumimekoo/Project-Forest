@@ -29,6 +29,7 @@ public class PlayerInteractionController : MonoBehaviour
     }
     private void Update()
     {
+        if(GameState.isInBuildMode) return;
         CheckForInteractable();
         if (interactAction.WasPressedThisFrame() && GameState.playerInteractionAllowed)
         { 

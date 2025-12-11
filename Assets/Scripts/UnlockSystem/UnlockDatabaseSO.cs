@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "UnlockDatabaseSO", menuName = "Unlock/UnlockDatabase")]
+[CreateAssetMenu(fileName = "UnlockDatabaseSO", menuName = "Scriptable Objects/UnlockDatabase")]
 public class UnlockDatabaseSO : ScriptableObject
 {
     [Header("Fridge Items")]

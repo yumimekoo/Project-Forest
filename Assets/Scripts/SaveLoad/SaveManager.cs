@@ -1,4 +1,5 @@
-using JetBrains.Annotations;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SaveManager : MonoBehaviour
@@ -29,7 +30,9 @@ public class SaveManager : MonoBehaviour
         GameSaveData saveData = new GameSaveData
         {
             currentMoney = CurrencyManager.Instance.CurrentMoney,
-            unlocks = UnlockManager.Instance.GetSaveData()
+            unlocks = UnlockManager.Instance.GetSaveData(),
+            placedFurniture = FurniturePlacementManager.Instance.GetSaveData(),
+            furnitureInventory = FurnitureInventory.Instance.GetSaveData()
         };
         SaveSystem.Save(saveData, ActiveSaveSlot);
     }
@@ -43,5 +46,21 @@ public class SaveManager : MonoBehaviour
         GameSaveData saveData = SaveSystem.Load(ActiveSaveSlot);
         UnlockManager.Instance.ApplySaveData(saveData.unlocks);
         CurrencyManager.Instance.SetMoney(saveData.currentMoney);
+        FurniturePlacementManager.Instance.ApplySaveData(saveData.placedFurniture);
+        FurnitureInventory.Instance.ApplySaveData(saveData.furnitureInventory);
+
+        StartCoroutine(StartRebuildAfterSceneLoaded(saveData.placedFurniture));
+    }
+
+    private IEnumerator StartRebuildAfterSceneLoaded(List<PlacedFurnitureData> items)
+    {
+        yield return null;
+        BuildMode3D build = FindFirstObjectByType<BuildMode3D>();
+        if (build == null)
+        {
+            Debug.LogError("BuildMode3D not found in scene.");
+            yield break;
+        }
+        yield return StartCoroutine(build.RebuildFromSave(items));
     }
 }
