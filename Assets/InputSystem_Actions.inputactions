@@ -115,36 +115,27 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Item1",
-                    "type": "Button",
-                    "id": "84ed9d04-36e3-4406-a6c6-10cd84551a22",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Item2",
-                    "type": "Button",
-                    "id": "7904e07d-4cd1-4608-85f2-55e9b6df2845",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Item3",
-                    "type": "Button",
-                    "id": "165ce88e-dcf8-4c52-851f-eedf968e5296",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Delete",
                     "type": "Button",
                     "id": "90481ce4-19e3-4f1e-afca-d9c24589fe4f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LeftClick",
+                    "type": "Button",
+                    "id": "7b5b6d68-8e84-45ed-ab10-fe149f2cd7ff",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightClick",
+                    "type": "Button",
+                    "id": "ac3f3c18-b757-4213-a32b-c8022e948c2a",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -572,45 +563,34 @@
                 },
                 {
                     "name": "",
-                    "id": "ce4c6b9d-9bb8-4641-9812-40ee72f48428",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Item1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6d0bd335-deb1-4b49-bbb1-e578f31d3f13",
-                    "path": "<Keyboard>/3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Item3",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0472d465-d278-4c31-9b88-8488cb7f2b82",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Item2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "99870aa5-57db-4293-944f-b84a597a483c",
                     "path": "<Keyboard>/backspace",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Delete",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f861a270-3d71-4789-b868-969bf80a1d28",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "LeftClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "97cd59d6-6f21-4e2f-9678-b1d2ebb8bc66",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "RightClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -11,7 +11,8 @@ public class BuildModeUI : MonoBehaviour
 
     private VisualElement root;
     private VisualElement
-        itemContainer;
+        itemContainer,
+        uiHideLeft;
     private Button 
         exitBuildMode,
         btnFurniture,
@@ -35,12 +36,23 @@ public class BuildModeUI : MonoBehaviour
         btnDecor = root.Q<Button>("btnDecor");
         btnFurniture = root.Q<Button>("btnFurniture");
         btnUtility = root.Q<Button>("btnUtility");
+        uiHideLeft = root.Q<VisualElement>("uiHideLeft");
         btnDecor.clicked += () => ShowCategory(BuildCategory.Decorations);
         btnFurniture.clicked += () => ShowCategory(BuildCategory.Furniture);
         btnUtility.clicked += () => ShowCategory(BuildCategory.Utility);
         exitBuildMode.clicked += () => ExitBuildMode();
 
+        itemContainer.RegisterCallback<PointerEnterEvent>(_ => SetPointerOverUI(true));
+        itemContainer.RegisterCallback<PointerLeaveEvent>(_ => SetPointerOverUI(false));
+        uiHideLeft.RegisterCallback<PointerEnterEvent>(_ => SetPointerOverUI(true));
+        uiHideLeft.RegisterCallback<PointerLeaveEvent>(_ => SetPointerOverUI(false));
+
         HideUI();
+    }
+
+    public void SetPointerOverUI(bool isOverUI)
+    {
+        buildMode3D.isPointerOverUI = isOverUI;
     }
 
     public void ShowCategory(BuildCategory category)

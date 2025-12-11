@@ -1,7 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+using System.Collections;
 
 public class BuildMode3D : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class BuildMode3D : MonoBehaviour
     private bool isPlacing = false;
     private bool placingMode = false;
     private bool deleteMode = false;
+    public bool isPointerOverUI = false;
 
     private HashSet<Vector2Int> occupiedCells = new();
 
@@ -40,14 +42,20 @@ public class BuildMode3D : MonoBehaviour
     {
         InputActions.FindActionMap("Player").Disable();
     }
+    // ---
+    // UI Button Calls
+    // ---
 
     public void StartBuild(FurnitureSO item)
     {
+        deleteMode = false;
+        placingMode = true;
 
-        if(preview != null)
+        if (preview != null)
         {
             Destroy(preview);
         }
+
         currentItem = item;
         isPlacing = true;
         preview = Instantiate(item.furniturePreview);
@@ -55,74 +63,190 @@ public class BuildMode3D : MonoBehaviour
 
     public void StopBuild()
     {
-        
+        placingMode = false;
+        deleteMode = false;
+        isPlacing = false;
+
         if (preview != null)
         {
             Destroy(preview);
         }
-        currentItem = null;
-        isPlacing = false;
     }
+
     private void Update()
     {
-        if (GameState.isInBuildMode && isPlacing)
+        if (!isPlacing)
+            return;
+
+        HandleDeleteToggle();
+        //HandleStopPlacementByButton();
+
+        if(isPointerOverUI)
+            return;
+
+        HandlePlacementOrDeletion();
+    }
+
+    private void HandleDeleteToggle()
+    {
+        if (rightClickAction.WasPressedThisFrame())
         {
-            StartPlacement();
+            deleteMode = !deleteMode;
+            placingMode = !deleteMode;
+
+            if (deleteMode && preview != null)
+            {
+                preview.GetComponent<Renderer>().material.color = Color.red;
+            }
         }
     }
 
-    public void StartPlacement()
+    // ---
+    // Main Logic
+    // ---
+
+    private void HandlePlacementOrDeletion()
     {
         Ray ray = mainCamera.ScreenPointToRay(pointerPos.ReadValue<Vector2>());
-        if (!Physics.Raycast(ray, out RaycastHit hitInfo))
+        if(!Physics.Raycast(ray, out RaycastHit hitInfo))
         {
             return;
         }
 
-        Vector2Int cellPosition = grid.WorldToGrid(hitInfo.point);
-        if (grid.IsInsideGrid(cellPosition.x, cellPosition.y))
-        {
-            Vector3 snapPos = grid.GetWorldPosition(cellPosition.x, cellPosition.y);
-            preview.transform.position = snapPos;
-        }
+        Vector2Int cell = grid.WorldToGrid(hitInfo.point);
+        bool inside = grid.IsInsideGrid(cell.x, cell.y);
+        bool occupied = occupiedCells.Contains(cell);
 
-        preview.GetComponent<Renderer>().material.color =
-            occupiedCells.Contains(cellPosition) ? Color.red : Color.green;
+        if (!inside)
+            return;
 
-        if (clickAction.WasPressedThisFrame() && !occupiedCells.Contains(cellPosition))
+        Vector3 snapPos = grid.GetWorldPosition(cell.x, cell.y);
+
+        // DELETE MODE
+
+        if (deleteMode)
         {
-            Vector2Int p = grid.WorldToGrid(hitInfo.point);
-            if (!grid.IsInsideGrid(p.x, p.y))
+            Preview(cell, snapPos, occupied);
+            if (clickAction.WasPressedThisFrame())
             {
-                Debug.Log("Out of bounds");
-                return;
+                TryDelete(cell);
             }
-            Vector3 spawn = grid.GetWorldPosition(p.x, p.y);
-            Instantiate(currentItem.furniturePrefab, spawn, Quaternion.identity);
-            occupiedCells.Add(cellPosition);
-            FurniturePlacementManager.Instance.RegisterPlacement(currentItem.numericID, p, 0);
             return;
         }
-        if (clickAction.WasPressedThisFrame() && occupiedCells.Contains(cellPosition))
+
+        // PLACING MODE
+
+        if (placingMode)
         {
-            RemoveAt(cellPosition);
-            occupiedCells.Remove(cellPosition);
-            FurniturePlacementManager.Instance.RemovePlacement(cellPosition);
-            Debug.Log("Cell is already occupied.");
+            Preview(cell, snapPos, occupied);
+
+            if(clickAction.WasPressedThisFrame() && !occupied)
+            {
+                PlaceFurniture(cell, snapPos);
+            }
         }
     }
 
-    private void RemoveAt(Vector2Int cellPosition)
+    // ---
+    // Preview 
+    // ---
+
+    private void Preview(Vector2Int cell, Vector3 snapPos, bool occupied)
+    {
+        if (preview == null)
+            return;
+
+        preview.transform.position = snapPos;
+        if(deleteMode)
+        {
+            preview.GetComponent<Renderer>().material.color = Color.red;
+            return;
+        }
+        preview.GetComponent<Renderer>().material.color = occupied ? Color.red : Color.green;
+    }
+
+    // ---
+    // Placement / Removal
+    // ---
+
+    private void PlaceFurniture(Vector2Int cell, Vector3 position)
+    {
+        Instantiate(currentItem.furniturePrefab, position, Quaternion.identity);
+        occupiedCells.Add(cell);
+        FurniturePlacementManager.Instance.RegisterPlacement(currentItem.numericID, cell, 0);
+    }
+
+    private void TryDelete(Vector2Int cell)
     {
         foreach (var obj in GameObject.FindGameObjectsWithTag("Furniture"))
         {
-            Vector2Int objCell = grid.WorldToGrid(obj.transform.position);
-            if (objCell == cellPosition)
+            if (grid.WorldToGrid(obj.transform.position) == cell)
             {
                 Destroy(obj);
+                occupiedCells.Remove(cell);
+                FurniturePlacementManager.Instance.RemovePlacement(cell);
+                return;
             }
         }
     }
+
+    // ---
+    // Reload From Save
+    // ---
+
+
+    //public void StartPlacement()
+    //{
+    //    Ray ray = mainCamera.ScreenPointToRay(pointerPos.ReadValue<Vector2>());
+    //    if (!Physics.Raycast(ray, out RaycastHit hitInfo))
+    //    {
+    //        return;
+    //    }
+
+    //    Vector2Int cellPosition = grid.WorldToGrid(hitInfo.point);
+    //    if (grid.IsInsideGrid(cellPosition.x, cellPosition.y))
+    //    {
+    //        Vector3 snapPos = grid.GetWorldPosition(cellPosition.x, cellPosition.y);
+    //        preview.transform.position = snapPos;
+    //    }
+
+    //    preview.GetComponent<Renderer>().material.color =
+    //        occupiedCells.Contains(cellPosition) ? Color.red : Color.green;
+
+    //    if (clickAction.WasPressedThisFrame() && !occupiedCells.Contains(cellPosition))
+    //    {
+    //        Vector2Int p = grid.WorldToGrid(hitInfo.point);
+    //        if (!grid.IsInsideGrid(p.x, p.y))
+    //        {
+    //            Debug.Log("Out of bounds");
+    //            return;
+    //        }
+    //        Vector3 spawn = grid.GetWorldPosition(p.x, p.y);
+    //        Instantiate(currentItem.furniturePrefab, spawn, Quaternion.identity);
+    //        occupiedCells.Add(cellPosition);
+    //        FurniturePlacementManager.Instance.RegisterPlacement(currentItem.numericID, p, 0);
+    //        return;
+    //    }
+    //    if (clickAction.WasPressedThisFrame() && occupiedCells.Contains(cellPosition))
+    //    {
+    //        RemoveAt(cellPosition);
+    //        occupiedCells.Remove(cellPosition);
+    //        FurniturePlacementManager.Instance.RemovePlacement(cellPosition);
+    //        Debug.Log("Cell is already occupied.");
+    //    }
+    //}
+
+    //private void RemoveAt(Vector2Int cellPosition)
+    //{
+    //    foreach (var obj in GameObject.FindGameObjectsWithTag("Furniture"))
+    //    {
+    //        Vector2Int objCell = grid.WorldToGrid(obj.transform.position);
+    //        if (objCell == cellPosition)
+    //        {
+    //            Destroy(obj);
+    //        }
+    //    }
+    //}
 
     public IEnumerator RebuildFromSave(List<PlacedFurnitureData> items)
     {
@@ -130,7 +254,7 @@ public class BuildMode3D : MonoBehaviour
         foreach (var item in items)
         {
             FurnitureSO so = FurnitureDatabase.Instance.GetByID(item.id);
-            if(so == null)
+            if (so == null)
             {
                 Debug.LogWarning($"FurnitureSO with ID {item.id} not found in database.");
                 continue;
