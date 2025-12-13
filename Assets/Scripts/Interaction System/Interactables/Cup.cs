@@ -46,7 +46,7 @@ public class Cup : MonoBehaviour, IInteractable
                 contentNames += item.itemName + ", ";
             }
             contentNames = contentNames.TrimEnd(',', ' ');
-            Debug.Log(contentNames);
+            //Debug.Log(contentNames);
             player.ClearItem();
         }
         else
@@ -58,7 +58,7 @@ public class Cup : MonoBehaviour, IInteractable
     public void AddIngredient(ItemDataSO ingredient)
     {
         contents.Add(ingredient);
-        Debug.Log($"Ingredient {ingredient.itemName} added to the cup.");
+        //Debug.Log($"Ingredient {ingredient.itemName} added to the cup.");
         var recipes = Resources.LoadAll<DrinkRuleSO>("ScriptableObjectsData/RecipeRules/");
         foreach (var recipe in recipes)
         {
@@ -66,11 +66,11 @@ public class Cup : MonoBehaviour, IInteractable
             {
                 currentItemData = recipe.resultingState;
                 UpdateVisual(currentItemData);
-                Debug.Log($"Cup transformed to {currentItemData.itemName}.");
+                //Debug.Log($"Cup transformed to {currentItemData.itemName}.");
                 return;
             }
         }
-        Debug.Log("Ingredient added, but no recipe rule matched.");
+        //Debug.Log("Ingredient added, but no recipe rule matched.");
         currentItemData = suspiciousDrinkData;
         UpdateVisual(currentItemData);
     }

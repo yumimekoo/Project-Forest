@@ -63,7 +63,7 @@ public class UnlockManager : MonoBehaviour
             saveData.unlockedStorageItemIDs.Add(item.id);
         foreach (var recipe in runtimeDatabase.unlockedRecipes)
             saveData.unlockedRecipeIDs.Add(recipe.id);
-        Debug.Log($"{saveData.unlockedFridgeItemIDs.Count} fridge items, {saveData.unlockedStorageItemIDs.Count} storage items, and {saveData.unlockedRecipeIDs.Count} recipes loaded into unlock database.");
+        //Debug.Log($"{saveData.unlockedFridgeItemIDs.Count} fridge items, {saveData.unlockedStorageItemIDs.Count} storage items, and {saveData.unlockedRecipeIDs.Count} recipes loaded into unlock database.");
 
         return saveData;
     }
@@ -72,7 +72,7 @@ public class UnlockManager : MonoBehaviour
     {
         if(saveData.unlockedRecipeIDs.Count == 0 && saveData.unlockedFridgeItemIDs.Count == 0 && saveData.unlockedStorageItemIDs.Count == 0)
         {
-            Debug.Log("No unlock data to apply.");
+            //Debug.Log("No unlock data to apply.");
             return;
         }
         runtimeDatabase.unlockedFridgeItems.Clear();
@@ -81,32 +81,32 @@ public class UnlockManager : MonoBehaviour
 
         foreach (var itemID in saveData.unlockedFridgeItemIDs)
         {
-            Debug.Log($"Processing fridge item ID: {itemID}");
+            //Debug.Log($"Processing fridge item ID: {itemID}");
             var item = runtimeDatabase.fridgeItems.Find(i => i.id == itemID);
             if (item != null)
             {
-                Debug.Log($"Unlocking fridge item: {item.name}");
+                //Debug.Log($"Unlocking fridge item: {item.name}");
                 runtimeDatabase.unlockedFridgeItems.Add(item);
             }      
         }
         foreach (var itemID in saveData.unlockedStorageItemIDs)
         {
-            Debug.Log($"Processing storage item ID: {itemID}");
+            //Debug.Log($"Processing storage item ID: {itemID}");
             var item = runtimeDatabase.storageItems.Find(i => i.id == itemID);
             if (item != null)
             {
-                Debug.Log($"Unlocking storage item: {item.name}");
+                //Debug.Log($"Unlocking storage item: {item.name}");
                 runtimeDatabase.unlockedStorageItems.Add(item);
             }
                 
         }
         foreach (var recipeID in saveData.unlockedRecipeIDs)
         {
-            Debug.Log($"Processing recipe ID: {recipeID}");
+            //Debug.Log($"Processing recipe ID: {recipeID}");
             var recipe = runtimeDatabase.recipes.Find(r => r.id == recipeID);
             if (recipe != null)
             {
-                Debug.Log($"Unlocking recipe: {recipe.name}");
+                //Debug.Log($"Unlocking recipe: {recipe.name}");
                 runtimeDatabase.unlockedRecipes.Add(recipe);
             }
                 
