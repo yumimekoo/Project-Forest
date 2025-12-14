@@ -25,7 +25,7 @@ public class PlayerInventory : MonoBehaviour
         SetLayer(heldObjectInstance, LayerMask.NameToLayer("HeldItem"));
         heldObjectInstance.transform.localPosition = Vector3.zero;
         heldObjectInstance.transform.localRotation = Quaternion.identity;
-        Debug.Log($"Picked up: {item.itemName}");
+        //Debug.Log($"Picked up: {item.itemName}");
     }
 
     public void PlaceDown(IPlacableSurface surface)
@@ -35,7 +35,7 @@ public class PlayerInventory : MonoBehaviour
         heldObjectInstance.transform.SetParent(placementPoint);
         heldObjectInstance.transform.localPosition = Vector3.zero;
         heldObjectInstance.transform.localRotation = Quaternion.identity;
-        Debug.Log($"Placed down: {heldItem.itemName}");
+        //Debug.Log($"Placed down: {heldItem.itemName}");
         heldItem = null;
         heldObjectInstance = null;
     }
@@ -54,7 +54,7 @@ public class PlayerInventory : MonoBehaviour
     {
         if (heldItem != null)
         {
-            Debug.Log($"Item: {heldItem.itemName} cleared.");
+            //Debug.Log($"Item: {heldItem.itemName} cleared.");
             heldItem = null;
             if (heldObjectInstance != null)
                 Destroy(heldObjectInstance);

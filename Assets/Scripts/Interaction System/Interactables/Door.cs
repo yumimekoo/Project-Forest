@@ -34,7 +34,7 @@ public class Door : MonoBehaviour, IInteractable
             GameState.isInRoom = false;
             GameState.isInCafe = true;
             GameState.doorUnlocked = false;
-            Debug.Log("Player has exited the room to the cafe.");
+            //Debug.Log("Player has exited the room to the cafe.");
             SaveManager.Instance.SaveGame();
             UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
         }
@@ -42,12 +42,15 @@ public class Door : MonoBehaviour, IInteractable
         {
             GameState.isInRoom = true;
             GameState.isInCafe = false;
-            Debug.Log("Player has entered the room from the cafe.");
+            //Debug.Log("Player has entered the room from the cafe.");
             SaveManager.Instance.SaveGame();
             UnityEngine.SceneManagement.SceneManager.LoadScene("Room");
-        } else
+        } else if (!GameState.doorUnlocked)
+        { 
+            //Debug.Log("The door is locked.");
+        } else 
         {
-            Debug.Log("Player is not in a recognized location.");
+            Debug.LogWarning("Player is not in a recognized location.");
         }
 
     }

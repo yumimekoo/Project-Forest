@@ -12,11 +12,11 @@ public class TrashCan : MonoBehaviour, IInteractable
         if(player.HasItem())
         {
             player.ClearItem();
-            Debug.Log("Item trashed.");
+            //Debug.Log("Item trashed.");
         }
         else
         {
-            Debug.Log("No item to trash.");
+            //Debug.Log("No item to trash.");
         }
     }
 }

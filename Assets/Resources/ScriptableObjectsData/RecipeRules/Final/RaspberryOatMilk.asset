@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa8246566791384e838700d90751efe, type: 3}
+  m_Name: RaspberryOatMilk
+  m_EditorClassIdentifier: Assembly-CSharp::DrinkRuleSO
+  id: 783
+  ruleName: Raspberry Oat Milk
+  ruleType: 2
+  requiredState: {fileID: 11400000, guid: 7240ccfbcca111b4b9dc3726e67b0c42, type: 2}
+  addedIngredient: {fileID: 11400000, guid: 1b7515bca1207b744848f5b5cd244b75, type: 2}
+  resultingState: {fileID: 11400000, guid: f7c851b25d590da45b1e8feed4340442, type: 2}
+  putMachine: 0

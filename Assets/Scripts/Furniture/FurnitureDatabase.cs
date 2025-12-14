@@ -24,7 +24,7 @@ public class FurnitureDatabase : MonoBehaviour
         FurnitureSO[] loaded = Resources.LoadAll<FurnitureSO>("ScriptableObjectsData/Furniture");
 
         items.AddRange(loaded);
-        Debug.Log($"[FurnitureDatabase] Loaded {items.Count} furniture items from Resources.");
+        //Debug.Log($"[FurnitureDatabase] Loaded {items.Count} furniture items from Resources.");
     }
 
     private void BuildLookup()

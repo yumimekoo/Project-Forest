@@ -100,7 +100,7 @@ public class BuildMode3D : MonoBehaviour
 
             if (!isPlacing)
             {
-                Debug.Log("Entering delete mode");
+                //Debug.Log("Entering delete mode");
                 isPlacing = true;
                 deleteMode = true;
                 preview = Instantiate(deletionPreviewPrefab);
@@ -109,13 +109,13 @@ public class BuildMode3D : MonoBehaviour
             if (deleteMode && preview != null)
             {
                 Destroy(preview);
-                Debug.Log("deleteMode && preview != null");
+                //Debug.Log("deleteMode && preview != null");
                 preview = Instantiate(deletionPreviewPrefab);
                 return;
             }
             if (!deleteMode && preview != null)
             {
-                Debug.Log("!deleteMode && preview != null");
+                //Debug.Log("!deleteMode && preview != null");
                 Destroy(preview);
                 isPlacing = false;
                 return;
@@ -202,7 +202,7 @@ public class BuildMode3D : MonoBehaviour
     {
         if(!FurnitureInventory.Instance.Remove(currentItem.numericID))
         {
-            Debug.LogWarning("Not enough items in inventory to place furniture.");
+            //Debug.Log("Not enough items in inventory to place furniture.");
             return;
         }
         var go = Instantiate(currentItem.furniturePrefab, position, Quaternion.Euler(0, rotY, 0));

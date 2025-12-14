@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa8246566791384e838700d90751efe, type: 3}
+  m_Name: StarfallMatchaOat
+  m_EditorClassIdentifier: Assembly-CSharp::DrinkRuleSO
+  id: 856
+  ruleName: Starfall Matcha (Oat)
+  ruleType: 3
+  requiredState: {fileID: 11400000, guid: 0814b4dc69dd1b9439d5e3aedaed34dc, type: 2}
+  addedIngredient: {fileID: 11400000, guid: 674088e9b161069448e85afec43c61a8, type: 2}
+  resultingState: {fileID: 11400000, guid: ae23d461a9395a44e807de770b87aa20, type: 2}
+  putMachine: 0

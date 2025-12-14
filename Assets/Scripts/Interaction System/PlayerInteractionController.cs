@@ -37,13 +37,13 @@ public class PlayerInteractionController : MonoBehaviour
             {
                 if(currentTarget is Cup)
                 {
-                    Debug.Log("Interacting with cup");
+                    //Debug.Log("Interacting with cup");
                     currentTarget.Interact(PlayerInventory.Instance);
                     return;
                 }
                 if(currentTarget is BasicNPCTest)
                 {
-                    Debug.Log("Interacting with NPC");
+                    //Debug.Log("Interacting with NPC");
                     currentTarget.Interact(PlayerInventory.Instance);
                     return;
                 }
@@ -52,7 +52,7 @@ public class PlayerInteractionController : MonoBehaviour
 
             if (currentTarget != null)
             {
-                Debug.Log("Interacting with " + currentTarget);
+                //Debug.Log("Interacting with " + currentTarget);
                 currentTarget.Interact(PlayerInventory.Instance);
             }
         }

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa8246566791384e838700d90751efe, type: 3}
+  m_Name: BlueberrySoyMilk
+  m_EditorClassIdentifier: Assembly-CSharp::DrinkRuleSO
+  id: 717
+  ruleName: Blueberry Soy Milk
+  ruleType: 2
+  requiredState: {fileID: 11400000, guid: 77c551284627a8b4fb398fa6b558f15d, type: 2}
+  addedIngredient: {fileID: 11400000, guid: 9e0020f3e898d5140aa8667cf846d989, type: 2}
+  resultingState: {fileID: 11400000, guid: 1be07d9b6edfa5546b1f7d8463c79323, type: 2}
+  putMachine: 0

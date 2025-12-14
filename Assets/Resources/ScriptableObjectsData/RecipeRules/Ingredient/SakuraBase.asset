@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa8246566791384e838700d90751efe, type: 3}
+  m_Name: SakuraBase
+  m_EditorClassIdentifier: Assembly-CSharp::DrinkRuleSO
+  id: 553
+  ruleName: Sakura Base
+  ruleType: 0
+  requiredState: {fileID: 11400000, guid: 479f54fb77f1656448e3c9540df25198, type: 2}
+  addedIngredient: {fileID: 11400000, guid: 5ae42d4976ef6ef45ab3c771de9884c4, type: 2}
+  resultingState: {fileID: 11400000, guid: 5e5e903e816cd084ebe0c494abf290e7, type: 2}
+  putMachine: 0

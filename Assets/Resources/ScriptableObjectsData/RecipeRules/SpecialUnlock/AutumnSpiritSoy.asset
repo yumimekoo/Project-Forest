@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa8246566791384e838700d90751efe, type: 3}
+  m_Name: AutumnSpiritSoy
+  m_EditorClassIdentifier: Assembly-CSharp::DrinkRuleSO
+  id: 818
+  ruleName: Autumn Spirit (Soy)
+  ruleType: 3
+  requiredState: {fileID: 11400000, guid: 458ba9b52b800c24bb7e188aafae4571, type: 2}
+  addedIngredient: {fileID: 11400000, guid: e7bfbef76cdf2aa498ec3650e0f5517e, type: 2}
+  resultingState: {fileID: 11400000, guid: 09431f28c0cb59f4c997226c93eab5b7, type: 2}
+  putMachine: 0

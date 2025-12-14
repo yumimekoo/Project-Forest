@@ -26,7 +26,7 @@ public class BasicNPCTest : MonoBehaviour, IInteractable, INPC
         int randomIndex = UnityEngine.Random.Range(0, unlockedRecipes.Count);
         currentOrder = unlockedRecipes[randomIndex].resultingState;
 
-        Debug.Log($"NPC has made an order for: {currentOrder.itemName}");
+        //Debug.Log($"NPC has made an order for: {currentOrder.itemName}");
     }
 
     public void GiveOrder(ItemDataSO item)
@@ -55,7 +55,7 @@ public class BasicNPCTest : MonoBehaviour, IInteractable, INPC
         else if (!hasOrderRunning)
         {
             MakeOrder();
-            Debug.Log("I would like to order a " + currentOrder.itemName);
+            //Debug.Log("I would like to order a " + currentOrder.itemName);
         }
         else
         {

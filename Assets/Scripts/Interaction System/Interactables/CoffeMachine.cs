@@ -46,7 +46,7 @@ public class CoffeMachine : MonoBehaviour, IInteractable
         if (isBrewing)
             return;
 
-        if (player.HasItem() && player.heldItem.itemType == ItemType.CoffeeBean)
+        if (player.HasItem() && player.heldItem.id == 7) // hier noch ändern
         {
             AddBeans(player);
             return;
@@ -66,7 +66,7 @@ public class CoffeMachine : MonoBehaviour, IInteractable
 
         if (!player.HasItem())
         {
-            Debug.Log("You need to place a cup and add coffee beans first.");
+            //Debug.Log("You need to place a cup and add coffee beans first.");
         }
     }
 
@@ -74,7 +74,7 @@ public class CoffeMachine : MonoBehaviour, IInteractable
     {
         if (hasBeans)
         {
-            Debug.Log("Coffee beans are already added.");
+            //Debug.Log("Coffee beans are already added.");
             return;
         }
         beanVisual.SetActive(true);
@@ -87,7 +87,7 @@ public class CoffeMachine : MonoBehaviour, IInteractable
     {
         if (cupInMachine != null)
         {
-            Debug.Log("Cup is already in the machine.");
+            //Debug.Log("Cup is already in the machine.");
             return;
         }
         cupInMachine = cup;
@@ -117,13 +117,13 @@ public class CoffeMachine : MonoBehaviour, IInteractable
     private IEnumerator BrewCoffee()
     {
         isBrewing = true;
-        Debug.Log("Brewing coffee...");
+        //Debug.Log("Brewing coffee...");
 
         yield return new WaitForSeconds(brewingTime);
 
         cupInMachine.AddIngredient(ingredientToAdd);
         beanVisual.SetActive(false);
-        Debug.Log("Coffee is ready! You can now collect your cup.");
+       // Debug.Log("Coffee is ready! You can now collect your cup.");
 
         cupReady = true;
         isBrewing = false;

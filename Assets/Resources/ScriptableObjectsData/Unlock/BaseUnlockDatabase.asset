@@ -12,22 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24e45ecf5f2639458e90888e10571fb, type: 3}
   m_Name: BaseUnlockDatabase
   m_EditorClassIdentifier: Assembly-CSharp::UnlockDatabaseSO
-  fridgeItems:
-  - {fileID: 11400000, guid: b862ff9c766f69c438e84754895300fa, type: 2}
-  unlockedFridgeItems:
-  - {fileID: 11400000, guid: b862ff9c766f69c438e84754895300fa, type: 2}
-  storageItems:
-  - {fileID: 11400000, guid: b30e931c688effd439a56018be592ef5, type: 2}
-  - {fileID: 11400000, guid: 0c55166b6b1cb9d44bba687097b9820b, type: 2}
-  unlockedStorageItems:
-  - {fileID: 11400000, guid: 0c55166b6b1cb9d44bba687097b9820b, type: 2}
-  recipes:
-  - {fileID: 11400000, guid: 5f4995d951d2ee44288a0564c9d44420, type: 2}
-  - {fileID: 11400000, guid: ecd99842615912340a7ff9b293ad7d0d, type: 2}
-  - {fileID: 11400000, guid: 4a2a4426385547d4c90804855356f855, type: 2}
-  - {fileID: 11400000, guid: 63bc2d18340ae3f468d81f5c9a82d7ca, type: 2}
-  unlockedRecipes:
-  - {fileID: 11400000, guid: 5f4995d951d2ee44288a0564c9d44420, type: 2}
-  - {fileID: 11400000, guid: ecd99842615912340a7ff9b293ad7d0d, type: 2}
-  - {fileID: 11400000, guid: 4a2a4426385547d4c90804855356f855, type: 2}
-  - {fileID: 11400000, guid: 63bc2d18340ae3f468d81f5c9a82d7ca, type: 2}
+  fridgeItems: []
+  unlockedFridgeItems: []
+  storageItems: []
+  unlockedStorageItems: []
+  recipes: []
+  unlockedRecipes: []

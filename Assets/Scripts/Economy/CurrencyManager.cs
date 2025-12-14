@@ -32,13 +32,13 @@ public class CurrencyManager : MonoBehaviour
     private void HandleCorrectOrder(int reward)
     {
         AddMoney(reward);
-        Debug.Log($"Earned {reward} money for correct order! Current Money: {CurrentMoney}");
+        // Debug.Log($"Earned {reward} money for correct order! Current Money: {CurrentMoney}");
     }
     private void HandleWrongOrder(int penalty)
     {
         int finalPenalty = Mathf.RoundToInt(penalty / 2);
         LoseMoney(finalPenalty);
-        Debug.Log($"Lost {finalPenalty} money for wrong order! Current Money: {CurrentMoney}");
+        // Debug.Log($"Lost {finalPenalty} money for wrong order! Current Money: {CurrentMoney}");
     }
     public void AddMoney(int amount)
     {
@@ -57,7 +57,7 @@ public class CurrencyManager : MonoBehaviour
     {
         if(CurrentMoney < amount)
             {
-            Debug.LogWarning("Not enough money!");
+            // Debug.Log("Not enough money!");
             return false;
         }
 

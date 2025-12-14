@@ -42,7 +42,7 @@ public class TimeManager : MonoBehaviour
             OnNightTriggered?.Invoke();
             GameState.isDay = false;
             GameState.isNight = true;
-            Debug.Log("now is night");
+            //Debug.Log("now is night");
         }
 
         if (!dayEnded && timeElapsed >= dayDurationInSeconds)
@@ -50,7 +50,7 @@ public class TimeManager : MonoBehaviour
             dayEnded = true;
             GameState.doorUnlocked = true;
             OnDayEnded?.Invoke();
-            Debug.Log("day has ended");
+            //Debug.Log("day has ended");
         }
     }
 

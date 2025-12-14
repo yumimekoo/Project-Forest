@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa8246566791384e838700d90751efe, type: 3}
+  m_Name: SoyMilkGlass
+  m_EditorClassIdentifier: Assembly-CSharp::DrinkRuleSO
+  id: 796
+  ruleName: Soy Milk (Glass)
+  ruleType: 2
+  requiredState: {fileID: 11400000, guid: 37c1e8e3776d30d438fcddc0f7a9d295, type: 2}
+  addedIngredient: {fileID: 11400000, guid: cd4f234c49b03ed40b7582fc564865b0, type: 2}
+  resultingState: {fileID: 11400000, guid: 77c551284627a8b4fb398fa6b558f15d, type: 2}
+  putMachine: 0

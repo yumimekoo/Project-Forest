@@ -2,6 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+[System.Serializable]
+public class ItemUIRefs
+{
+    public VisualElement root;
+    public Label quantityLabel;
+}
 public class BuildModeUI : MonoBehaviour
 {
     public static BuildModeUI Instance { get; private set; }
@@ -10,7 +16,7 @@ public class BuildModeUI : MonoBehaviour
     public UIDocument buildModeUI;
     public VisualTreeAsset itemTemplate;
 
-    private Dictionary<int, Label> quantityLabels = new();
+    private Dictionary<int, ItemUIRefs> itemUI = new();
     private VisualElement root;
     private VisualElement
         itemContainer,
@@ -80,17 +86,32 @@ public class BuildModeUI : MonoBehaviour
             button.text = item.furnitureName;
             button.clicked += () => buildMode3D.StartBuild(item);
             var quantityLabel = itemElement.Q<Label>("quantityLabel");
-            quantityLabel.text = FurnitureInventory.Instance.GetAmount(item.numericID).ToString();
-            quantityLabels[item.numericID] = quantityLabel;
+            int amount = FurnitureInventory.Instance.GetAmount(item.numericID);
+            quantityLabel.text = amount.ToString();
+            itemUI[item.numericID] = new ItemUIRefs
+            {
+                root = itemElement,
+                quantityLabel = quantityLabel
+            };
+            UpdateItemVisualState(item.numericID, amount);
             itemContainer.Add(itemElement);
         }
     }
 
     private void UpdateItemQuantity(int id, int newQuantity)
     {
-        if (quantityLabels.TryGetValue(id, out var label))
+        if (itemUI.TryGetValue(id, out var ui))
         {
-            label.text = newQuantity.ToString();
+            ui.quantityLabel.text = newQuantity.ToString();
+            UpdateItemVisualState(id, newQuantity);
+        }
+    }
+
+    private void UpdateItemVisualState(int id, int amount)
+    {
+        if (itemUI.TryGetValue(id, out var uiRefs))
+        {
+            uiRefs.root.SetEnabled(amount > 0);
         }
     }
 

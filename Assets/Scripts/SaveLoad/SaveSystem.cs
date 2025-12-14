@@ -35,7 +35,7 @@ public static class SaveSystem
             case 2:
                 return Path.Combine(Application.persistentDataPath, "perchanceigive.iiffoc");
             default:
-                Debug.LogWarning($"Invalid save slot {slot}. Defaulting to slot 0.");
+                Debug.LogWarning($"Invalid save-info slot {slot}. Defaulting to slot 0.");
                 return Path.Combine(Application.persistentDataPath, "idontgive.iiffoc");
         }
     }
@@ -60,10 +60,6 @@ public static class SaveSystem
         string encrypted = EncryptDecrypt(json);
         File.WriteAllText(savePath, encrypted);
         Debug.Log($"Game saved to {savePath}");
-
-        Debug.Log(File.Exists(savePath)); // sollte true sein
-        string content = File.ReadAllText(savePath);
-        Debug.Log(content);
 
         SaveSlotInfo info = new SaveSlotInfo();
         info.exists = true;
@@ -134,21 +130,21 @@ public static class SaveSystem
         if (File.Exists(savePath))
         {
             File.Delete(savePath);
-            Debug.Log("Save file deleted!");
+            //Debug.Log("Save file deleted!");
         }
         else
         {
-            Debug.Log("No save file to delete.");
+            //Debug.Log("No save file to delete.");
         }
 
         if(InfoExists(slot))
         {
             File.Delete(GetInfoFilePath(slot));
-            Debug.Log("Save slot info deleted!");
+            //Debug.Log("Save slot info deleted!");
         }
         else
         {   
-            Debug.Log("No save slot info to delete."); 
+            //Debug.Log("No save slot info to delete."); 
         }
     }
 

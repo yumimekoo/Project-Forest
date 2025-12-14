@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa8246566791384e838700d90751efe, type: 3}
+  m_Name: PumpkinSoyMilk
+  m_EditorClassIdentifier: Assembly-CSharp::DrinkRuleSO
+  id: 781
+  ruleName: Pumpkin Soy Milk
+  ruleType: 2
+  requiredState: {fileID: 11400000, guid: 93ba31db42c7cb8479232c838660531a, type: 2}
+  addedIngredient: {fileID: 11400000, guid: dc95f057c7a427b43b72510492e51c86, type: 2}
+  resultingState: {fileID: 11400000, guid: bee3870201728f341bb57d1b799b7bc1, type: 2}
+  putMachine: 0

@@ -36,7 +36,7 @@ public class FurnitureInventory : MonoBehaviour
         foreach (var item in defaultInventory)
         {
             inventory[item.id] = item.amount;
-            Debug.Log($"[FurnitureInventory] Default: ID {item.id} = {item.amount}");
+            //Debug.Log($"[FurnitureInventory] Default: ID {item.id} = {item.amount}");
         }
     }
 
@@ -76,7 +76,7 @@ public class FurnitureInventory : MonoBehaviour
         foreach (var kvp in inventory)
         {
             saveData.Add(new FurnitureInventorySaveData(kvp.Key, kvp.Value));
-            Debug.Log($"[FurnitureInventory] Saved item ID {kvp.Key} with amount {kvp.Value}");
+            //Debug.Log($"[FurnitureInventory] Saved item ID {kvp.Key} with amount {kvp.Value}");
         }
         return saveData;
     }
@@ -85,7 +85,7 @@ public class FurnitureInventory : MonoBehaviour
     {
         if (data == null || data.Count == 0)
         {
-            Debug.Log("[FurnitureInventory] SaveData empty keeping default inventory.");
+            //Debug.Log("[FurnitureInventory] SaveData empty keeping default inventory.");
             return;
         }
 
@@ -93,7 +93,7 @@ public class FurnitureInventory : MonoBehaviour
         foreach (var item in data)
         {
             inventory[item.id] = item.amount;
-            Debug.Log($"[FurnitureInventory] Loaded item ID {item.id} with amount {item.amount}");
+            //Debug.Log($"[FurnitureInventory] Loaded item ID {item.id} with amount {item.amount}");
         }
     }
 }

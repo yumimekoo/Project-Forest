@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa8246566791384e838700d90751efe, type: 3}
+  m_Name: GoldenHiveBrewAlmond
+  m_EditorClassIdentifier: Assembly-CSharp::DrinkRuleSO
+  id: 832
+  ruleName: Golden Hive Brew (Almond)
+  ruleType: 3
+  requiredState: {fileID: 11400000, guid: 620b1a348dfd5624d894831c8828fde6, type: 2}
+  addedIngredient: {fileID: 11400000, guid: 8da78b521bca9f440a7b8a8edbe77c46, type: 2}
+  resultingState: {fileID: 11400000, guid: 4f87c201c3e360f4a8d517b0f7869d25, type: 2}
+  putMachine: 0
