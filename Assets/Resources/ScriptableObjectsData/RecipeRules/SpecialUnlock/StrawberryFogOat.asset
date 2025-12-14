@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa8246566791384e838700d90751efe, type: 3}
+  m_Name: StrawberryFogOat
+  m_EditorClassIdentifier: Assembly-CSharp::DrinkRuleSO
+  id: 859
+  ruleName: Strawberry Fog (Oat)
+  ruleType: 3
+  requiredState: {fileID: 11400000, guid: 0141a058372150642ace72287e7b3c76, type: 2}
+  addedIngredient: {fileID: 11400000, guid: 4bf4f4cc212d0cf459e52f148c8c8490, type: 2}
+  resultingState: {fileID: 11400000, guid: d192ff170b992484693b0f5b376e5d41, type: 2}
+  putMachine: 0

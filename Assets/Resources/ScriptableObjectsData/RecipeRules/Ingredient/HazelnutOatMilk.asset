@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa8246566791384e838700d90751efe, type: 3}
+  m_Name: HazelnutOatMilk
+  m_EditorClassIdentifier: Assembly-CSharp::DrinkRuleSO
+  id: 520
+  ruleName: Hazelnut Oat Milk
+  ruleType: 0
+  requiredState: {fileID: 11400000, guid: 863c050e2ae4fab44b9a0e4e41fcaba0, type: 2}
+  addedIngredient: {fileID: 11400000, guid: 2b548b82c06e18249beb983f1f1ae06e, type: 2}
+  resultingState: {fileID: 11400000, guid: b39f5f02c4c59b04a8b9aa4098456da5, type: 2}
+  putMachine: 0

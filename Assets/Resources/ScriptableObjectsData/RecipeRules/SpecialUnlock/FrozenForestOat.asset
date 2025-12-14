@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa8246566791384e838700d90751efe, type: 3}
+  m_Name: FrozenForestOat
+  m_EditorClassIdentifier: Assembly-CSharp::DrinkRuleSO
+  id: 830
+  ruleName: Frozen Forest (Oat)
+  ruleType: 3
+  requiredState: {fileID: 11400000, guid: 4b612c2af09cb6045bf05dcecc1aa570, type: 2}
+  addedIngredient: {fileID: 11400000, guid: 5128fe22b60e245448cc59798f97b541, type: 2}
+  resultingState: {fileID: 11400000, guid: 4de2f60f72bd2644393f564e86c1fcf3, type: 2}
+  putMachine: 0
