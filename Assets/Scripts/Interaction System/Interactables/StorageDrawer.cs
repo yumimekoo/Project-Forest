@@ -12,9 +12,10 @@ public class StorageDrawer : MonoBehaviour, IInteractable
             if (player.HasItem())
                 return;
 
-            var unlockedItems = UnlockManager.Instance.runtimeDatabase.GetUnlockedStorageItems();
+            var unlockedItems = UnlockManager.Instance.runtimeDatabase.GetUnlockedItems();
+            var filteredItems = unlockedItems.FindAll(item => item.id == 9 || item.id == 8); // here with itemType then? or StorageType enum
 
-            FridgeUI.Instance.OpenFridge(unlockedItems, (ItemDataSO selectedItem) =>
+        FridgeUI.Instance.OpenFridge(filteredItems, (ItemDataSO selectedItem) =>
             {
                 if (selectedItem.itemPrefab == null)
                 {

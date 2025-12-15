@@ -59,7 +59,7 @@ public class Cup : MonoBehaviour, IInteractable
     {
         contents.Add(ingredient);
         //Debug.Log($"Ingredient {ingredient.itemName} added to the cup.");
-        var recipes = Resources.LoadAll<DrinkRuleSO>("ScriptableObjectsData/RecipeRules/");
+        var recipes = UnlockManager.Instance.runtimeDatabase.GetUnlockedRecipes();
         foreach (var recipe in recipes)
         {
             if (recipe.requiredState == currentItemData && recipe.addedIngredient == ingredient)

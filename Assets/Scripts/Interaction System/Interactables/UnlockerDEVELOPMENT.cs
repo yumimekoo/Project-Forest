@@ -10,7 +10,7 @@ public class UnlockerDEVELOPMENT : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInventory player)
     {
-        UnlockManager.Instance.UnlockStorageItem(itemToUnlock);
+        UnlockManager.Instance.UnlockItem(itemToUnlock);
     }
 
 }

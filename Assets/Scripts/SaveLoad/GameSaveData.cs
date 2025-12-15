@@ -15,8 +15,8 @@ public class GameSaveData
 [System.Serializable]
 public class UnlockSaveData
 {
-    public List<int> unlockedFridgeItemIDs = new();
-    public List<int> unlockedStorageItemIDs = new();
+    public List<int> unlockedItemIDs = new();
+    public List<int> activeRecipeIDs = new();
     public List<int> unlockedRecipeIDs = new();
 }
 

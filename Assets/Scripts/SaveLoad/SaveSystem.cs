@@ -3,9 +3,6 @@ using UnityEngine;
 
 public static class SaveSystem
 {
-    //private static readonly string savePath = 
-    //    Path.Combine(Application.persistentDataPath, "idontgive.eeffoc");
-
     private static readonly string KEY = "JonathernDerStinkerhihi";
 
     private static string GetSaveFilePath(int slot)

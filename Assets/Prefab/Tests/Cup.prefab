@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cup
   contents: []
-  currentItemData: {fileID: 11400000, guid: 0c55166b6b1cb9d44bba687097b9820b, type: 2}
+  currentItemData: {fileID: 11400000, guid: 479f54fb77f1656448e3c9540df25198, type: 2}
   pickupCup: {fileID: 8037415141159388369}
   contentVisualRoot: {fileID: 1374371844647017296}
-  suspiciousDrinkData: {fileID: 11400000, guid: 9f37dff0410fa964f820239b2f6c65f8, type: 2}
+  suspiciousDrinkData: {fileID: 11400000, guid: de6294c32ad051d4dac4ed8911c2c342, type: 2}
