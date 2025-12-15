@@ -125,7 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb82ba756db268488f38b6887d30d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnlockerDEVELOPMENT
-  itemToUnlock: {fileID: 11400000, guid: b30e931c688effd439a56018be592ef5, type: 2}
+  itemToUnlock: {fileID: 11400000, guid: 11ea756e68ef55445ab0e3e5ca90eaea, type: 2}
+  itemToUnlock2: {fileID: 11400000, guid: 981d680e2c556f2469396477b769a573, type: 2}
 --- !u!1 &8569538602845710441
 GameObject:
   m_ObjectHideFlags: 0

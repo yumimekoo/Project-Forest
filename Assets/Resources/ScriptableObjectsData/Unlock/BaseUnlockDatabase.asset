@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24e45ecf5f2639458e90888e10571fb, type: 3}
   m_Name: BaseUnlockDatabase
   m_EditorClassIdentifier: Assembly-CSharp::UnlockDatabaseSO
-  fridgeItems: []
-  unlockedFridgeItems: []
-  storageItems: []
-  unlockedStorageItems: []
-  recipes: []
+  allItems: []
+  unlockedItems:
+  - {fileID: 11400000, guid: b7bad3d40804239408e54fdaae1cceec, type: 2}
+  - {fileID: 11400000, guid: 479f54fb77f1656448e3c9540df25198, type: 2}
+  allRecipes: []
+  activeRecipes: []
   unlockedRecipes: []

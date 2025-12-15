@@ -178,5 +178,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f856e2b154e984e95910c3cfecdcb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupItem
-  item: {fileID: 11400000, guid: b862ff9c766f69c438e84754895300fa, type: 2}
+  item: {fileID: 11400000, guid: b7bad3d40804239408e54fdaae1cceec, type: 2}
   selfObj: {fileID: 8037415141159388369}
