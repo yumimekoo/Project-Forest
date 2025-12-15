@@ -15,5 +15,6 @@ MonoBehaviour:
   id: 9
   itemName: Cup
   itemType: 0
-  contentVisualPrefab: {fileID: 0}
-  itemPrefab: {fileID: 0}
+  contentVisualPrefab: {fileID: 8019389323391787378, guid: 6e5bcbb3d4237d444aa91b4666038ab5, type: 3}
+  icon: {fileID: 0}
+  itemPrefab: {fileID: 8019389323391787378, guid: 6e5bcbb3d4237d444aa91b4666038ab5, type: 3}

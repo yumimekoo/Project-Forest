@@ -24,6 +24,7 @@ public class UnlockManager : MonoBehaviour
         runtimeDatabase.allRecipes = new List<DrinkRuleSO>(Resources.LoadAll<DrinkRuleSO>("ScriptableObjectsData/RecipeRules"));
         runtimeDatabase.activeRecipes = new List<DrinkRuleSO>(Resources.LoadAll<DrinkRuleSO>("ScriptableObjectsData/RecipeRules/ActiveDefault"));
         runtimeDatabase.allItems = new List<ItemDataSO>(Resources.LoadAll<ItemDataSO>("ScriptableObjectsData/ItemData"));
+        RecalculateUnlocks();
     }
 
     // --- UNLOCK METHODS ---
@@ -35,7 +36,40 @@ public class UnlockManager : MonoBehaviour
             runtimeDatabase.unlockedItems.Add(item);
             Debug.Log("[Unlock] item unlocked: " + item.name);
         }
+        RecalculateUnlocks();
+    }
 
+    bool CanUnlockRule(DrinkRuleSO rule, List<ItemDataSO> unlocked)
+    {
+        return unlocked.Contains(rule.requiredState) &&
+               unlocked.Contains(rule.addedIngredient);
+    }
+
+    void RecalculateUnlocks()
+    {
+        bool unlockedSomething;
+        do
+        {
+            unlockedSomething = false;
+            foreach (var rule in runtimeDatabase.activeRecipes)
+            {
+                if(runtimeDatabase.unlockedRecipes.Contains(rule))
+                    continue;
+
+                if (CanUnlockRule(rule, runtimeDatabase.unlockedItems))
+                {
+                    runtimeDatabase.unlockedRecipes.Add(rule);
+                    Debug.Log("[Unlock] Recipe unlocked: " + rule.name);
+
+                    if (!runtimeDatabase.unlockedItems.Contains(rule.resultingState))
+                    {
+                        runtimeDatabase.unlockedItems.Add(rule.resultingState);
+                        unlockedSomething = true;
+                        Debug.Log("[Unlock] item unlocked: " + rule.resultingState.name);
+                    }
+                }
+            }
+        } while (unlockedSomething);
     }
     //public void UnlockRecipe(DrinkRuleSO recipe)
     //{
