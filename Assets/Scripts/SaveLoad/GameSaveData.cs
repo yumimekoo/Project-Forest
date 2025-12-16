@@ -9,6 +9,7 @@ public class GameSaveData
     public UnlockSaveData unlocks = new();
     public List<PlacedFurnitureData> placedFurniture = new();
     public List<FurnitureInventorySaveData> furnitureInventory = new();
+    public List<ItemSaveData> itemInventory = new();
 }
 
 // subclasses for GameSaveData
@@ -54,6 +55,18 @@ public class FurnitureInventorySaveData
     public int amount;
 
     public FurnitureInventorySaveData(int id, int amount)
+    {
+        this.id = id;
+        this.amount = amount;
+    }
+}
+
+[System.Serializable]
+public class ItemSaveData
+{
+    public int id;
+    public int amount;
+    public ItemSaveData(int id, int amount)
     {
         this.id = id;
         this.amount = amount;

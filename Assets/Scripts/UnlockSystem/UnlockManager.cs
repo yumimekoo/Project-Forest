@@ -114,31 +114,31 @@ public class UnlockManager : MonoBehaviour
 
         foreach (var itemID in saveData.unlockedItemIDs)
         {
-            Debug.Log($"Processing item ID: {itemID}");
+            //Debug.Log($"Processing item ID: {itemID}");
             var item = runtimeDatabase.allItems.Find(i => i.id == itemID);
             if (item != null)
             {
-                Debug.Log($"Unlocking item: {item.name}");
+                //Debug.Log($"Unlocking item: {item.name}");
                 runtimeDatabase.unlockedItems.Add(item);
             }      
         }
         foreach (var recipeID in saveData.activeRecipeIDs)
         {
-            Debug.Log($"Processing active recipe ID: {recipeID}");
+            //Debug.Log($"Processing active recipe ID: {recipeID}");
             var recipe = runtimeDatabase.allRecipes.Find(r => r.id == recipeID);
             if (recipe != null)
             {
-                Debug.Log($"Activating recipe: {recipe.name}");
+                //Debug.Log($"Activating recipe: {recipe.name}");
                 runtimeDatabase.activeRecipes.Add(recipe);
             }
         }
         foreach (var recipeID in saveData.unlockedRecipeIDs)
         {
-            Debug.Log($"Processing recipe ID: {recipeID}");
+            //Debug.Log($"Processing recipe ID: {recipeID}");
             var recipe = runtimeDatabase.allRecipes.Find(r => r.id == recipeID);
             if (recipe != null)
             {
-                Debug.Log($"Unlocking recipe: {recipe.name}");
+                //Debug.Log($"Unlocking recipe: {recipe.name}");
                 runtimeDatabase.unlockedRecipes.Add(recipe);
             }
                 
