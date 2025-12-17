@@ -32,7 +32,8 @@ public class SaveManager : MonoBehaviour
             currentMoney = CurrencyManager.Instance.CurrentMoney,
             unlocks = UnlockManager.Instance.GetSaveData(),
             placedFurniture = FurniturePlacementManager.Instance.GetSaveData(),
-            furnitureInventory = FurnitureInventory.Instance.GetSaveData()
+            furnitureInventory = FurnitureInventory.Instance.GetSaveData(),
+            itemInventory = ItemsInventory.Instance.GetSaveData()
         };
         SaveSystem.Save(saveData, ActiveSaveSlot);
     }
@@ -46,6 +47,7 @@ public class SaveManager : MonoBehaviour
         GameSaveData saveData = SaveSystem.Load(ActiveSaveSlot);
         UnlockManager.Instance.ApplySaveData(saveData.unlocks);
         CurrencyManager.Instance.SetMoney(saveData.currentMoney);
+        ItemsInventory.Instance.ApplySaveData(saveData.itemInventory);
         FurniturePlacementManager.Instance.ApplySaveData(saveData.placedFurniture);
         FurnitureInventory.Instance.ApplySaveData(saveData.furnitureInventory);
 

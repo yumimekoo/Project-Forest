@@ -9,7 +9,9 @@ public class FridgeUI : MonoBehaviour
 
     [SerializeField] UIDocument fridgeUIDoc;
 
-    private VisualElement root;
+    private VisualElement 
+        root,
+        focusCatcher;
 
     Action<ItemDataSO> onItemClicked;
 
@@ -17,31 +19,63 @@ public class FridgeUI : MonoBehaviour
     {
         Instance = this;
         root = fridgeUIDoc.rootVisualElement;
+        focusCatcher = root.Q<VisualElement>("focusCatcher");
         HideUI();
     }
 
-    public void OpenFridge(List<ItemDataSO> items, Action<ItemDataSO> clickCallback)
+    public void OpenFridge(
+        List<ItemDataSO> items, 
+        Func<ItemDataSO, bool> canSelectItem,
+        Func<ItemDataSO, int> getAmount,
+        Action<ItemDataSO> clickCallback)
     {
+
         onItemClicked = clickCallback;
+
         var itemContainer = root.Q<VisualElement>("ItemContainer");
         itemContainer.Clear();
 
         foreach (var item in items)
         {
-            var button = new Button(() => OnItemSelected(item)) { text = item.itemName };
+            int amount = getAmount(item);
+            var button = new Button(() => OnItemSelected(item)) { text = $"{item.itemName} x{amount}" };
             itemContainer.Add(button);
+            button.SetEnabled(canSelectItem(item));
         }
+
+        focusCatcher.focusable = true;
+        focusCatcher.RegisterCallback<KeyDownEvent>(OnKeyDown);
+
         ShowUI();
         GameState.playerMovementAllowed = false;
         GameState.playerInteractionAllowed = false;
+
+        focusCatcher.Focus();
+    }
+
+    private void OnKeyDown(KeyDownEvent evt)
+    {
+        Debug.Log($"Key pressed: {evt.keyCode}");
+        if (evt.keyCode == KeyCode.Escape)
+        {
+            CloseUI();
+            evt.StopPropagation();
+        }
+    }
+
+    private void CloseUI()
+    {
+        focusCatcher.UnregisterCallback<KeyDownEvent>(OnKeyDown);
+        HideUI();
+
+        GameState.playerMovementAllowed = true;
+        GameState.playerInteractionAllowed = true;
     }
 
     private void OnItemSelected(ItemDataSO selectedItem)
     {
         onItemClicked?.Invoke(selectedItem);
-        HideUI();
-        GameState.playerMovementAllowed = true;
-        GameState.playerInteractionAllowed = true;
+        CloseUI();
     }
 
     private void HideUI() => root.style.display = DisplayStyle.None;

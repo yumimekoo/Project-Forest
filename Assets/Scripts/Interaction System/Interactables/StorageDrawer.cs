@@ -15,15 +15,22 @@ public class StorageDrawer : MonoBehaviour, IInteractable
             var unlockedItems = UnlockManager.Instance.runtimeDatabase.GetUnlockedItems();
             var filteredItems = unlockedItems.FindAll(item => item.id == 9 || item.id == 8); // here with itemType then? or StorageType enum
 
-        FridgeUI.Instance.OpenFridge(filteredItems, (ItemDataSO selectedItem) =>
+        FridgeUI.Instance.OpenFridge(
+            filteredItems, 
+            item => ItemsInventory.Instance.GetAmount(item.id) > 0,
+            item => ItemsInventory.Instance.GetAmount(item.id),
+            (ItemDataSO selectedItem) =>
             {
                 if (selectedItem.itemPrefab == null)
                 {
                     Debug.LogWarning("Selected item has no prefab assigned.");
                     return;
                 }
-                GameObject itemInstance = Instantiate(selectedItem.itemPrefab);
-                player.PickUp(selectedItem, itemInstance);
+                if (ItemsInventory.Instance.TryRemove(selectedItem.id, 1))
+                {
+                    GameObject itemInstance = Instantiate(selectedItem.itemPrefab);
+                    player.PickUp(selectedItem, itemInstance);
+                }
             });
         }
     }

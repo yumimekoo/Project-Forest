@@ -43,11 +43,11 @@ public class PauseUI : MonoBehaviour
 
     private void Update()
     {
-        if(openPause.WasPressedThisFrame() && isOpen)
+        if(openPause.WasPressedThisFrame() && isOpen && GameState.playerInteractionAllowed)
         {
             HideUI();
         }
-        else if(openPause.WasPressedThisFrame() && !isOpen)
+        else if(openPause.WasPressedThisFrame() && !isOpen && GameState.playerInteractionAllowed)
         {
             ShowUI();
         }
