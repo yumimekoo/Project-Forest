@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NPCController : MonoBehaviour
+public class NPCController : MonoBehaviour, IInteractable
 {
     public NPCIdentitySO identity;
     private NavMeshAgent agent;
@@ -48,6 +48,16 @@ public class NPCController : MonoBehaviour
 
         transform.position = targetChair.seatPoint.position;
         transform.rotation = targetChair.seatPoint.rotation;
+    }
+
+    public string GetInteractionPrompt()
+    {
+        return state == NPCState.Sitting ? $"Talk to {identity.npcName}" : "";
+    }
+
+    public void Interact(PlayerInventory player)
+    {
+        NPCInteractionManager.Instance.StartInteraction(this);
     }
 }
 
