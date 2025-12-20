@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7261641177529034544}
   - component: {fileID: 7073831999238523610}
   - component: {fileID: -1726445440857842661}
+  - component: {fileID: -8446828764524716335}
   m_Layer: 6
   m_Name: unlockerDEVELOPMENT
   m_TagString: Untagged
@@ -125,8 +126,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb82ba756db268488f38b6887d30d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnlockerDEVELOPMENT
-  itemToUnlock: {fileID: 11400000, guid: 11ea756e68ef55445ab0e3e5ca90eaea, type: 2}
-  itemToUnlock2: {fileID: 11400000, guid: 981d680e2c556f2469396477b769a573, type: 2}
+--- !u!208 &-8446828764524716335
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862542262716857225}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8569538602845710441
 GameObject:
   m_ObjectHideFlags: 0

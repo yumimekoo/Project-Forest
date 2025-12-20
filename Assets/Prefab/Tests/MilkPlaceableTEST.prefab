@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 1566334759499225129}
   - component: {fileID: 8389562176417599151}
   - component: {fileID: 8271184131721639237}
+  - component: {fileID: -5693665233906189828}
   m_Layer: 7
   m_Name: MilkPlaceableTEST
   m_TagString: Untagged
@@ -158,3 +159,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlacementSurface
   allowedTypes: 01000000
   placementPoint: {fileID: 8063436387494798216}
+--- !u!208 &-5693665233906189828
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3776990978333648785}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
