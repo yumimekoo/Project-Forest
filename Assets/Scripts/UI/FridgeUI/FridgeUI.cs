@@ -8,6 +8,7 @@ public class FridgeUI : MonoBehaviour
     public static FridgeUI Instance;
 
     [SerializeField] UIDocument fridgeUIDoc;
+    [SerializeField] VisualTreeAsset buttonTemp;
 
     private VisualElement 
         root,
@@ -39,6 +40,7 @@ public class FridgeUI : MonoBehaviour
         {
             int amount = getAmount(item);
             var button = new Button(() => OnItemSelected(item)) { text = $"{item.itemName} x{amount}" };
+            button.style.height = 20;
             itemContainer.Add(button);
             button.SetEnabled(canSelectItem(item));
         }

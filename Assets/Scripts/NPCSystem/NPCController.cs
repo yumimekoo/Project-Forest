@@ -68,7 +68,10 @@ public class NPCController : MonoBehaviour, IInteractable
             case NPCState.Sitting:
                 return $"Take order from {identity.npcName}";
             case NPCState.WaitingForDrink:
-                return $"Serve {currentOrder.requestedDrink.itemName} to {identity.npcName}";
+                if(currentOrder.requestedDrink != null)
+                    return $"Serve {currentOrder.requestedDrink.itemName} to {identity.npcName}";
+                else
+                    return $"Serve drink to {identity.npcName}";
             case NPCState.Drinking:
                 return $"start conversation with {identity.npcName}";
             default:
