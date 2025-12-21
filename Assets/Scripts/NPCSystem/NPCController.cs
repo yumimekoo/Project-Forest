@@ -8,6 +8,7 @@ public class NPCController : MonoBehaviour, IInteractable
     private Chair targetChair;
     private NPCState state;
 
+    public DrinkOrder currentOrder { get; private set; }
     public void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -50,9 +51,29 @@ public class NPCController : MonoBehaviour, IInteractable
         transform.rotation = targetChair.seatPoint.rotation;
     }
 
+    public void CreateOrder()
+    {
+        currentOrder = NPCOrderGenerator.GenerateOrder(identity);
+        if(currentOrder != null)
+        {
+            Debug.Log($"{identity.npcName} has ordered: {currentOrder}");
+            state = NPCState.WaitingForDrink;
+        }
+    }
+
     public string GetInteractionPrompt()
     {
-        return state == NPCState.Sitting ? $"Talk to {identity.npcName}" : "";
+        switch (state)
+        {
+            case NPCState.Sitting:
+                return $"Take order from {identity.npcName}";
+            case NPCState.WaitingForDrink:
+                return $"Serve {currentOrder.requestedDrink.itemName} to {identity.npcName}";
+            case NPCState.Drinking:
+                return $"start conversation with {identity.npcName}";
+            default:
+                return "";
+        }
     }
 
     public void Interact(PlayerInventory player)

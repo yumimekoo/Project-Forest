@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum NPCSpecies
@@ -28,4 +29,9 @@ public class NPCIdentitySO : ScriptableObject
     public NPCSpecies species;
     public Sprite portrait;
     public GameObject npcPrefab;
+
+    [Header("Order Preferences")]
+    public List<ItemDataSO> favDrinks;
+    public List<ItemDataSO> dislikedIngredients;
+    public List<ItemDataSO> likedIngredients;
 }
