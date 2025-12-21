@@ -17,6 +17,14 @@ public class PlayerInventory : MonoBehaviour
         return heldItem != null;
     }
 
+    public bool IsHoldingCup()
+    {
+        if (heldObjectInstance == null)
+            return false;
+        var cup = heldObjectInstance.GetComponent<Cup>();
+        return cup != null;
+    }
+
     public void PickUp(ItemDataSO item, GameObject obj)
     {
         heldItem = item;

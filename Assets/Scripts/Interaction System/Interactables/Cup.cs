@@ -75,6 +75,11 @@ public class Cup : MonoBehaviour, IInteractable
         UpdateVisual(currentItemData);
     }
 
+    public List<ItemDataSO> GetContents()
+    {
+        return contents;
+    }
+
     public void UpdateVisual(ItemDataSO newItem)
     {
         if(currentContentVisual != null)
