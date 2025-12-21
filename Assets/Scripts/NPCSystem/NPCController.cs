@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NPCController : MonoBehaviour
+public class NPCController : MonoBehaviour, IInteractable
 {
     public NPCIdentitySO identity;
     private NavMeshAgent agent;
     private Chair targetChair;
     private NPCState state;
 
+    public DrinkOrder currentOrder { get; private set; }
     public void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -48,6 +49,36 @@ public class NPCController : MonoBehaviour
 
         transform.position = targetChair.seatPoint.position;
         transform.rotation = targetChair.seatPoint.rotation;
+    }
+
+    public void CreateOrder()
+    {
+        currentOrder = NPCOrderGenerator.GenerateOrder(identity);
+        if(currentOrder != null)
+        {
+            Debug.Log($"{identity.npcName} has ordered: {currentOrder}");
+            state = NPCState.WaitingForDrink;
+        }
+    }
+
+    public string GetInteractionPrompt()
+    {
+        switch (state)
+        {
+            case NPCState.Sitting:
+                return $"Take order from {identity.npcName}";
+            case NPCState.WaitingForDrink:
+                return $"Serve {currentOrder.requestedDrink.itemName} to {identity.npcName}";
+            case NPCState.Drinking:
+                return $"start conversation with {identity.npcName}";
+            default:
+                return "";
+        }
+    }
+
+    public void Interact(PlayerInventory player)
+    {
+        NPCInteractionManager.Instance.StartInteraction(this);
     }
 }
 
