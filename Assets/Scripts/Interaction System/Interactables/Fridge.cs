@@ -29,6 +29,8 @@ public class Fridge : MonoBehaviour, IInteractable
             if (ItemsInventory.Instance.TryRemove(selectedItem.id, 1))
             {
                 GameObject itemInstance = Instantiate(selectedItem.itemPrefab);
+                var pickup = itemInstance.GetComponent<PickupItem>();
+                pickup.Initialize(selectedItem);
                 player.PickUp(selectedItem, itemInstance);
             }
         });

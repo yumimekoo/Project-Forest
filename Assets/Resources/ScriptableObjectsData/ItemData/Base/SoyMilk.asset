@@ -15,5 +15,7 @@ MonoBehaviour:
   id: 29
   itemName: Soy Milk
   itemType: 0
-  contentVisualPrefab: {fileID: 0}
-  itemPrefab: {fileID: 0}
+  contentVisualPrefab: {fileID: 8037415141159388369, guid: 437e81fe418859a4daf3041ba449bc50, type: 3}
+  icon: {fileID: 0}
+  storageType: 0
+  itemPrefab: {fileID: 8037415141159388369, guid: 0b9e4c3d982e32a4197ca80ff4a95cda, type: 3}

@@ -14,6 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BaseItemInventorySO
   startItems:
   - id: 30
-    amount: 2
+    amount: 20
   - id: 9
-    amount: 3
+    amount: 20
+  - id: 28
+    amount: 20
+  - id: 29
+    amount: 20
+  - id: 13
+    amount: 20

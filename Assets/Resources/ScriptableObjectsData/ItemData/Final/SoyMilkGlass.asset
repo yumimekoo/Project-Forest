@@ -15,5 +15,7 @@ MonoBehaviour:
   id: 339
   itemName: Soy Milk (Glass)
   itemType: 2
-  contentVisualPrefab: {fileID: 0}
+  contentVisualPrefab: {fileID: 8037415141159388369, guid: 45b9520f33d89d74f9dca52c14185495, type: 3}
+  icon: {fileID: 0}
+  storageType: 0
   itemPrefab: {fileID: 0}

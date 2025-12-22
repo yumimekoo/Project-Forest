@@ -59,7 +59,7 @@ public class NPCController : MonoBehaviour, IInteractable
             return;
 
         Debug.Log($"{identity.npcName} order result: {result.outcome}, Money: {result.moneyDelta}, Friendship: {result.friendshipDelta}");
-
+        FriendshipManager.Instance.AddXP(identity.npcID, result.friendshipDelta);  
         // change here to drinking or something
         state = NPCState.Sitting;
         currentOrder = null;
@@ -99,7 +99,6 @@ public class NPCController : MonoBehaviour, IInteractable
         {
             case NPCState.Sitting:
                 NPCInteractionManager.Instance.StartInteraction(this);
-                CreateOrder();
                 break;
             case NPCState.WaitingForDrink:
                 if(!player.IsHoldingCup())

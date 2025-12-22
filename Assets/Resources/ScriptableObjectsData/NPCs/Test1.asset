@@ -17,3 +17,12 @@ MonoBehaviour:
   species: 0
   portrait: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   npcPrefab: {fileID: 1862542262716857225, guid: e8c4ae7b6791fb342bb5e6d19479954e, type: 3}
+  favDrinks: []
+  dislikedIngredients: []
+  likedIngredients: []
+  friendshipRewards:
+  - rewardDescription: Almond Black Tea!
+    requiredLevel: 3
+    rewardType: 1
+    rewardedRecipe: {fileID: 11400000, guid: 0781defc75d920344abea87a0cc33866, type: 2}
+    rewardedDecoration: {fileID: 0}

@@ -126,6 +126,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb82ba756db268488f38b6887d30d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnlockerDEVELOPMENT
+  itemsList:
+  - {fileID: 11400000, guid: b7bad3d40804239408e54fdaae1cceec, type: 2}
+  - {fileID: 11400000, guid: cd4f234c49b03ed40b7582fc564865b0, type: 2}
+  - {fileID: 11400000, guid: df1b836b0dd42d84e97a0d3f5c767acb, type: 2}
+  - {fileID: 11400000, guid: 37c1e8e3776d30d438fcddc0f7a9d295, type: 2}
 --- !u!208 &-8446828764524716335
 NavMeshObstacle:
   m_ObjectHideFlags: 0

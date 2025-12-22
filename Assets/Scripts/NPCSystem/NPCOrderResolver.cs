@@ -46,14 +46,14 @@ public static class NPCOrderResolver
                 else
                 {
                     money = 15;
-                    friendship = 2;
+                    friendship = 10;
                     return Result(OrderOutcome.Correct, money, friendship);
                 }
             }
             else
             {
                 money = 3;
-                friendship = -3;
+                friendship = -10;
                 return Result(OrderOutcome.Wrong, money, friendship);
             }
         }

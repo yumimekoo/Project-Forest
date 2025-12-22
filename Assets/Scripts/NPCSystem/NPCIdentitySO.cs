@@ -20,6 +20,21 @@ public enum NPCState
     InConversation
 }
 
+public enum RewardType
+{
+    Decoration,
+    Recipe,
+}
+[System.Serializable]
+public class FriendshipReward
+{
+    public string rewardDescription;
+    public int requiredLevel;
+    public RewardType rewardType;
+    public DrinkRuleSO rewardedRecipe;
+    public FurnitureSO rewardedDecoration;
+}
+
 [CreateAssetMenu(menuName = "Scriptable Objects/NPCs Identity")]
 public class NPCIdentitySO : ScriptableObject
 {
@@ -34,4 +49,7 @@ public class NPCIdentitySO : ScriptableObject
     public List<ItemDataSO> favDrinks;
     public List<ItemDataSO> dislikedIngredients;
     public List<ItemDataSO> likedIngredients;
+
+    [Header("Friendship Rewards")]
+    public List<FriendshipReward> friendshipRewards;
 }
