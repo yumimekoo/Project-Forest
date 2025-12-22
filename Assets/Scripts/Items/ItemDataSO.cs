@@ -9,6 +9,7 @@ public class ItemDataSO : ScriptableObject
 
     public GameObject contentVisualPrefab;
     public Sprite icon;
+    public StorageType storageType;
 
     [Header("World Prefab for Instantiating the Item")]
 

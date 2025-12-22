@@ -39,6 +39,16 @@ public class UnlockManager : MonoBehaviour
         RecalculateUnlocks();
     }
 
+    public void UnlockRecipe(DrinkRuleSO recipe)
+    {
+        if (!runtimeDatabase.unlockedRecipes.Contains(recipe))
+        {
+            runtimeDatabase.unlockedRecipes.Add(recipe);
+            Debug.Log("[Unlock] Recipe unlocked: " + recipe.name);
+        }
+        RecalculateUnlocks();
+    }
+
     bool CanUnlockRule(DrinkRuleSO rule, List<ItemDataSO> unlocked)
     {
         return unlocked.Contains(rule.requiredState) &&

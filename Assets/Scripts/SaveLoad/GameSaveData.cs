@@ -10,6 +10,7 @@ public class GameSaveData
     public List<PlacedFurnitureData> placedFurniture = new();
     public List<FurnitureInventorySaveData> furnitureInventory = new();
     public List<ItemSaveData> itemInventory = new();
+    public List<FriendshipSaveData> friendships = new();
 }
 
 // subclasses for GameSaveData
@@ -70,5 +71,19 @@ public class ItemSaveData
     {
         this.id = id;
         this.amount = amount;
+    }
+}
+
+[System.Serializable]
+public class FriendshipSaveData
+{
+    public string npcID;
+    public int xp;
+    public int level;
+    public FriendshipSaveData(string npcID, int xp, int level)
+    {
+        this.npcID = npcID;
+        this.xp = xp;
+        this.level = level;
     }
 }

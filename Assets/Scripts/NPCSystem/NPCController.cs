@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -51,6 +52,19 @@ public class NPCController : MonoBehaviour, IInteractable
         transform.rotation = targetChair.seatPoint.rotation;
     }
 
+    public void ResolveOrder(ItemDataSO givenDrink, List<ItemDataSO> contents)
+    {
+        var result = NPCOrderResolver.Evaluate(identity, currentOrder, givenDrink, contents);
+        if (result == null)
+            return;
+
+        Debug.Log($"{identity.npcName} order result: {result.outcome}, Money: {result.moneyDelta}, Friendship: {result.friendshipDelta}");
+        FriendshipManager.Instance.AddXP(identity.npcID, result.friendshipDelta);  
+        // change here to drinking or something
+        state = NPCState.Sitting;
+        currentOrder = null;
+    }
+
     public void CreateOrder()
     {
         currentOrder = NPCOrderGenerator.GenerateOrder(identity);
@@ -68,7 +82,10 @@ public class NPCController : MonoBehaviour, IInteractable
             case NPCState.Sitting:
                 return $"Take order from {identity.npcName}";
             case NPCState.WaitingForDrink:
-                return $"Serve {currentOrder.requestedDrink.itemName} to {identity.npcName}";
+                if(currentOrder.requestedDrink != null)
+                    return $"Serve {currentOrder.requestedDrink.itemName} to {identity.npcName}";
+                else
+                    return $"Serve drink to {identity.npcName}";
             case NPCState.Drinking:
                 return $"start conversation with {identity.npcName}";
             default:
@@ -78,7 +95,33 @@ public class NPCController : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInventory player)
     {
-        NPCInteractionManager.Instance.StartInteraction(this);
+        switch (state)
+        {
+            case NPCState.Sitting:
+                NPCInteractionManager.Instance.StartInteraction(this);
+                break;
+            case NPCState.WaitingForDrink:
+                if(!player.IsHoldingCup())
+                {
+                    Debug.Log("Player has no item to serve.");
+                    break;
+                } else if (player.IsHoldingCup())
+                {
+                    var cup = player.heldObjectInstance.GetComponent<Cup>();
+                    NPCInteractionManager.Instance.GiveDrink(this, cup.GetContents(), player.heldItem);
+                    player.ClearItem();
+                    break;
+                }
+                Debug.LogWarning("something went wrong serving drink to NPC.");
+                break;
+            case NPCState.Drinking:
+                Debug.Log($"Starting conversation with {identity.npcName}");
+                // Implement conversation logic here
+                break;
+            default:
+                break;
+        }
+
     }
 }
 

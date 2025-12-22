@@ -15,5 +15,7 @@ MonoBehaviour:
   id: 28
   itemName: Oat Milk
   itemType: 0
-  contentVisualPrefab: {fileID: 0}
-  itemPrefab: {fileID: 0}
+  contentVisualPrefab: {fileID: 8037415141159388369, guid: dc62902aa11c4644e833e8461e83e92b, type: 3}
+  icon: {fileID: 0}
+  storageType: 0
+  itemPrefab: {fileID: 8037415141159388369, guid: 0b9e4c3d982e32a4197ca80ff4a95cda, type: 3}

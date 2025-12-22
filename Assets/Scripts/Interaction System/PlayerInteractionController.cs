@@ -41,7 +41,7 @@ public class PlayerInteractionController : MonoBehaviour
                     currentTarget.Interact(PlayerInventory.Instance);
                     return;
                 }
-                if(currentTarget is BasicNPCTest)
+                if(currentTarget is NPCController)
                 {
                     //Debug.Log("Interacting with NPC");
                     currentTarget.Interact(PlayerInventory.Instance);

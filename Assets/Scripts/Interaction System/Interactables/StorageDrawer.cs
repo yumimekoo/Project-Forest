@@ -13,7 +13,7 @@ public class StorageDrawer : MonoBehaviour, IInteractable
                 return;
 
             var unlockedItems = UnlockManager.Instance.runtimeDatabase.GetUnlockedItems();
-            var filteredItems = unlockedItems.FindAll(item => item.id == 9 || item.id == 8); // here with itemType then? or StorageType enum
+            var filteredItems = unlockedItems.FindAll(item => item.storageType == StorageType.Fridge && item.itemType == ItemType.Base); // here with itemType then? or StorageType enum
 
         FridgeUI.Instance.OpenFridge(
             filteredItems, 
@@ -29,6 +29,9 @@ public class StorageDrawer : MonoBehaviour, IInteractable
                 if (ItemsInventory.Instance.TryRemove(selectedItem.id, 1))
                 {
                     GameObject itemInstance = Instantiate(selectedItem.itemPrefab);
+                    var pickup = itemInstance.GetComponent<PickupItem>();
+                    if(pickup != null)
+                        pickup.Initialize(selectedItem);
                     player.PickUp(selectedItem, itemInstance);
                 }
             });

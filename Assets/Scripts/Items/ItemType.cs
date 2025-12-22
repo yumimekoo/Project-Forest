@@ -5,3 +5,9 @@ public enum ItemType
     Drink,
     Test,
 }
+
+public enum StorageType
+{
+    Fridge,
+    Drawer
+}

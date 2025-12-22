@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UnlockerDEVELOPMENT : MonoBehaviour, IInteractable
 {
+    [SerializeField] List<ItemDataSO> itemsList;
     private int counter = 1;
     private List<ItemDataSO> items;
 
@@ -20,6 +21,11 @@ public class UnlockerDEVELOPMENT : MonoBehaviour, IInteractable
     {
         UnlockManager.Instance.UnlockItem(items.Find(item => item.id == counter));
         counter++;
+        foreach (var itme in itemsList)
+        {
+            UnlockManager.Instance.UnlockItem(itme);
+        }
+
     }
 
 }

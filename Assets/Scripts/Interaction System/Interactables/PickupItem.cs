@@ -3,7 +3,37 @@ using UnityEngine;
 public class PickupItem : MonoBehaviour, IInteractable
 {
     public ItemDataSO item;
-    public GameObject selfObj;
+
+    public void Initialize(ItemDataSO newItem)
+    {
+        item = newItem;
+
+        SetupVisuals();
+    }
+
+    private void SetupVisuals()
+    {
+        if (item.contentVisualPrefab == null)
+            return;
+
+        // Child "Visuals" suchen
+        Transform visualsChild = transform.Find("visuals");
+        if (visualsChild == null)
+        {
+            Debug.LogWarning($"No 'Visuals' child found on {gameObject.name}");
+            return;
+        }
+
+        // Alten Inhalt löschen
+        foreach (Transform child in visualsChild)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // Neues Visual hinzufügen
+        GameObject newVisual = Instantiate(item.contentVisualPrefab, visualsChild);
+        newVisual.name = item.contentVisualPrefab.name;
+    }
 
     public string GetInteractionPrompt()
     {
@@ -13,7 +43,7 @@ public class PickupItem : MonoBehaviour, IInteractable
     {
         if(player.HasItem()) return;
 
-        player.PickUp(item, selfObj);
+        player.PickUp(item, gameObject);
     }
 
 }

@@ -15,6 +15,7 @@ MonoBehaviour:
   id: 30
   itemName: Almond Milk
   itemType: 0
-  contentVisualPrefab: {fileID: 8037415141159388369, guid: 0b9e4c3d982e32a4197ca80ff4a95cda, type: 3}
+  contentVisualPrefab: {fileID: 8037415141159388369, guid: 45b9520f33d89d74f9dca52c14185495, type: 3}
   icon: {fileID: 0}
+  storageType: 0
   itemPrefab: {fileID: 8037415141159388369, guid: 0b9e4c3d982e32a4197ca80ff4a95cda, type: 3}
