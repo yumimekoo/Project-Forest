@@ -17,6 +17,9 @@ MonoBehaviour:
   species: 0
   portrait: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   npcPrefab: {fileID: 1862542262716857225, guid: e8c4ae7b6791fb342bb5e6d19479954e, type: 3}
+  timeToAcceptOrder: 10
+  timeToGiveOrder: 30
+  timeDrinking: 5
   favDrinks: []
   dislikedIngredients: []
   likedIngredients: []
