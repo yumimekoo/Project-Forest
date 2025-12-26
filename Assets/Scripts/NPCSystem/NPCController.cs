@@ -147,7 +147,7 @@ public class NPCController : MonoBehaviour, IInteractable
             case NPCState.Drinking:
                 return $"start conversation with {identity.npcName}";
             default:
-                return "";
+                return null;
         }
     }
 
@@ -161,7 +161,7 @@ public class NPCController : MonoBehaviour, IInteractable
             case NPCState.WaitingForDrink:
                 if(!player.IsHoldingCup())
                 {
-                    Debug.Log("Player has no item to serve.");
+                    Debug.Log("Player has no item to serve. (U need a Cup/Glass)");
                     break;
                 } else if (player.IsHoldingCup())
                 {
@@ -177,6 +177,7 @@ public class NPCController : MonoBehaviour, IInteractable
                 // Implement conversation logic here
                 break;
             default:
+                Debug.LogWarning("NPC is not in a state to interact.");
                 break;
         }
 
