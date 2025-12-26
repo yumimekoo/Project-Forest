@@ -31,7 +31,7 @@ public class TimeManager : MonoBehaviour
         if (dayEnded)
             return;
 
-        timeElapsed += Time.deltaTime;
+        timeElapsed += GameTime.DeltaTime;
 
         OnTimeChanged?.Invoke(GetTimeElapsed());
         OnProgressChanged?.Invoke(GetDayProgress());

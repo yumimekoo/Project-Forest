@@ -57,7 +57,7 @@ public class NPCController : MonoBehaviour, IInteractable
 
         if (stateTimer > 0f)
         {
-            stateTimer -= Time.deltaTime;
+            stateTimer -= GameTime.DeltaTime;
             if(stateTimer <= 0f)
             {
                 OnStateTimerEnded();
