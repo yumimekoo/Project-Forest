@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Yarn.Unity;
 
 public class NPCController : MonoBehaviour, IInteractable
 {
@@ -9,6 +10,7 @@ public class NPCController : MonoBehaviour, IInteractable
     private Chair targetChair;
     private NPCState state;
     private float stateTimer;
+    private bool hasTalked = false;
 
     private float navmeshSpeed = 1.5f;
     private float navmeshAcceleration = 3f;
@@ -20,6 +22,7 @@ public class NPCController : MonoBehaviour, IInteractable
         agent = GetComponent<NavMeshAgent>();
         agent.speed = navmeshSpeed;
         agent.acceleration = navmeshAcceleration;
+
     }
 
     private void Start()
@@ -63,6 +66,20 @@ public class NPCController : MonoBehaviour, IInteractable
                 OnStateTimerEnded();
             }
         }
+    }
+
+    // maybe? 
+    public void Reset()
+    {
+        hasTalked = false;
+        currentOrder = null;
+        stateTimer = 0f;
+    }
+
+    public void Initialize()
+    {
+        agent.enabled = true;
+        FindChairAndGo();
     }
 
     private void OnStateTimerEnded()
@@ -133,6 +150,14 @@ public class NPCController : MonoBehaviour, IInteractable
         }
     }
 
+    public void StartConversation()
+    {
+        Debug.Log($"Starting conversation with {identity.npcName}...");
+        GameTime.SetPaused(true);
+        hasTalked = true;
+        YarnManager.Instance.StartDialogue(identity.dialogueProject, identity.startNode);
+    }
+
     public string GetInteractionPrompt()
     {
         switch (state)
@@ -145,6 +170,8 @@ public class NPCController : MonoBehaviour, IInteractable
                 else
                     return $"Serve drink to {identity.npcName}";
             case NPCState.Drinking:
+                if (hasTalked)
+                    return null;
                 return $"start conversation with {identity.npcName}";
             default:
                 return null;
@@ -173,8 +200,12 @@ public class NPCController : MonoBehaviour, IInteractable
                 Debug.LogWarning("something went wrong serving drink to NPC.");
                 break;
             case NPCState.Drinking:
-                Debug.Log($"Starting conversation with {identity.npcName}");
-                // Implement conversation logic here
+                if (hasTalked)
+                {
+                    Debug.LogWarning($"{identity.npcName} has already talked.");
+                    break;
+                }
+                StartConversation();
                 break;
             default:
                 Debug.LogWarning("NPC is not in a state to interact.");

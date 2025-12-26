@@ -19,7 +19,7 @@ MonoBehaviour:
   npcPrefab: {fileID: 1862542262716857225, guid: e8c4ae7b6791fb342bb5e6d19479954e, type: 3}
   timeToAcceptOrder: 10
   timeToGiveOrder: 30
-  timeDrinking: 5
+  timeDrinking: 90
   favDrinks: []
   dislikedIngredients: []
   likedIngredients: []
@@ -29,3 +29,5 @@ MonoBehaviour:
     rewardType: 1
     rewardedRecipe: {fileID: 11400000, guid: 0781defc75d920344abea87a0cc33866, type: 2}
     rewardedDecoration: {fileID: 0}
+  dialogueProject: {fileID: 7545569452688597077, guid: dfa0bd12f76271544b77c3480bbb4279, type: 3}
+  startNode: Start

@@ -1,4 +1,15 @@
-﻿title: NewYarnScript
+﻿title : Start
+position: 10,-42
 ---
-This is an example of a Yarn Spinner script. Write your dialogue here!
-===
+Herbert: Hi Sophia! How are you today?
+Herbert: Would you like to sit down and chat for a bit?
+-> Yes, I'd love to!
+    Sophia: Hi Herbert! I'm doing well, thank you. I'd love to chat.
+    Herbert: Great! So, what have you been up to lately?
+-> Not much, just the usual.
+    Sophia: Not much, just the usual. How about you?
+    Herbert: Same here. Just working and trying to stay busy.
+-> Actually, I'm a bit busy right now. Maybe later?
+    Sophia: Actually, I'm a bit busy right now. Maybe later?
+    Herbert: No worries! We can catch up another time.
+=== 

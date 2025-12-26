@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
+using Yarn.Unity;
 
 public enum NPCSpecies
 {
@@ -59,4 +60,8 @@ public class NPCIdentitySO : ScriptableObject
 
     [Header("Friendship Rewards")]
     public List<FriendshipReward> friendshipRewards;
+
+    [Header("Yarn")]
+    public YarnProject dialogueProject;
+    public string startNode;
 }
