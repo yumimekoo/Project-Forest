@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public enum NPCSpecies
@@ -44,6 +45,12 @@ public class NPCIdentitySO : ScriptableObject
     public NPCSpecies species;
     public Sprite portrait;
     public GameObject npcPrefab;
+
+    [Header("Timers")]
+    [Description("Timers are specific, can represent the tolerance of diverse npcs")]
+    public float timeToAcceptOrder;
+    public float timeToGiveOrder;
+    public float timeDrinking;
 
     [Header("Order Preferences")]
     public List<ItemDataSO> favDrinks;

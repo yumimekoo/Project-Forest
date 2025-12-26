@@ -5,6 +5,7 @@ public class ChairManager : MonoBehaviour
 {
     public static ChairManager Instance;
     private List<Chair> chairs = new List<Chair>();
+    public Transform exitPoint;
     private void Awake()
     {
         Instance = this;
@@ -19,5 +20,10 @@ public class ChairManager : MonoBehaviour
                 return chair;
         }
         return null;
+    }
+
+    public Vector3 GetExitPoint()
+    {
+        return exitPoint.position;
     }
 }
