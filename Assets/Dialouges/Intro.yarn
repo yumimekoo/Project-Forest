@@ -1,4 +1,33 @@
-﻿title: NewYarnScript
+﻿title : Start
+position: -95,-253
 ---
-This is an example of a Yarn Spinner script. Write your dialogue here!
+<<if get_level("bear_herbert") >= 1>>
+    <<jump Herbert_Friendship_Intro>>
+<<endif>>
+Herbert: uhm hi???
+<<jump Choices>>
+=== 
+title : Herbert_Friendship_Intro
+position: -50,25
+---
+Herbert: Hey Sophia! It's great to see you again.
+Sophia: Hi Herbert! It's great to see you too.
+<<jump Choices >>
+=== 
+title : Choices
+position: 241,-126
+---
+Herbert: Would you like to sit down and chat for a bit?
+-> Yes, I'd love to!
+    <<friendship "bear_herbert" 50>>
+    Sophia: Hi Herbert! I'm doing well, thank you. I'd love to chat.
+    Herbert: Great! So, what have you been up to lately?
+-> Not much, just the usual.
+    Sophia: Not much, just the usual. How about you?
+    Herbert: Same here. Just working and trying to stay busy.
+-> Actually, I'm a bit busy right now. Maybe later?
+    <<set_emotion bear_herbert angry>>
+    Sophia: Actually, I'm a bit busy right now. Maybe later?
+    Herbert: No worries! We can catch up another time.
+    <<set_emotion bear_herbert default>>
 ===

@@ -28,7 +28,6 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (!GameState.playerMovementAllowed || GameState.isInBuildMode)
             return;
-
         Vector3 movement = moveAction.ReadValue<Vector2>();
         Vector3 camForward = cam.transform.forward;
         Vector3 camRight = cam.transform.right;

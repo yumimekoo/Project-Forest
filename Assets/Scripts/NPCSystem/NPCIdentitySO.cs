@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
+using Yarn.Unity;
 
 public enum NPCSpecies
 {
@@ -36,6 +37,13 @@ public class FriendshipReward
     public FurnitureSO rewardedDecoration;
 }
 
+[System.Serializable]
+public class NPCEmotion
+{
+    public string emotion;
+    public Sprite emotionSprite;
+}
+
 [CreateAssetMenu(menuName = "Scriptable Objects/NPCs Identity")]
 public class NPCIdentitySO : ScriptableObject
 {
@@ -47,7 +55,7 @@ public class NPCIdentitySO : ScriptableObject
     public GameObject npcPrefab;
 
     [Header("Timers")]
-    [Description("Timers are specific, can represent the tolerance of diverse npcs")]
+    [Tooltip("Timers are specific, can represent the tolerance of diverse npcs")]
     public float timeToAcceptOrder;
     public float timeToGiveOrder;
     public float timeDrinking;
@@ -59,4 +67,12 @@ public class NPCIdentitySO : ScriptableObject
 
     [Header("Friendship Rewards")]
     public List<FriendshipReward> friendshipRewards;
+
+    [Header("Yarn")]
+    public YarnProject dialogueProject;
+    public string startNode;
+
+    [Header("Emotions")]
+    [Tooltip("'happy', 'default', 'angry', 'sad'")]
+    public List<NPCEmotion> emotions;
 }
