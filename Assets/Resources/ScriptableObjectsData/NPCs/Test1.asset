@@ -31,3 +31,8 @@ MonoBehaviour:
     rewardedDecoration: {fileID: 0}
   dialogueProject: {fileID: 7545569452688597077, guid: dfa0bd12f76271544b77c3480bbb4279, type: 3}
   startNode: Start
+  emotions:
+  - emotion: angry
+    emotionSprite: {fileID: -2107290080, guid: 2bc06336c450e78418b76ded6563e957, type: 3}
+  - emotion: default
+    emotionSprite: {fileID: -212154450, guid: 49e189f259b962942ac1e0ffbed9ca4a, type: 3}
