@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd79a15c77b9434bb1ef54cf4de5c14, type: 3}
+  m_Name: fox_sophia
+  m_EditorClassIdentifier: Assembly-CSharp::NPCIdentitySO
+  npcID: fox_sophia
+  npcName: Sophia
+  species: 1
+  portrait: {fileID: 21300000, guid: 7a184148437294a7b8d96378a700727d, type: 3}
+  availability: 0
+  npcPrefab: {fileID: 1862542262716857225, guid: 4d0e87d07c7dc374da5a0611664dfcc2, type: 3}
+  timeToAcceptOrder: 5
+  timeToGiveOrder: 5
+  timeDrinking: 5
+  favDrinks: []
+  dislikedIngredients: []
+  likedIngredients: []
+  friendshipRewards: []
+  dialogueProject: {fileID: 7545569452688597077, guid: dfa0bd12f76271544b77c3480bbb4279, type: 3}
+  startNode: Start
+  emotions: []

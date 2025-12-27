@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 using Yarn.Unity;
 
@@ -7,7 +6,16 @@ public enum NPCSpecies
 {
     Bear,
     Fox,
-    Shroom
+    Owl,
+    Deer,
+    Raccoon,
+    Bat,
+}
+
+public enum NPCDaytimeAvailability
+{
+    Day,
+    Night
 }
 
 public enum NPCState
@@ -52,6 +60,7 @@ public class NPCIdentitySO : ScriptableObject
     public string npcName;
     public NPCSpecies species;
     public Sprite portrait;
+    public NPCDaytimeAvailability availability;
     public GameObject npcPrefab;
 
     [Header("Timers")]
