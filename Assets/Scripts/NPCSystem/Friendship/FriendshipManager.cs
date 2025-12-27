@@ -25,6 +25,22 @@ public class FriendshipManager : MonoBehaviour
         }
     }
 
+    public Sprite GetSpriteFromNPC(string npcID, string emotion)
+    {
+        if (!npcLookup.TryGetValue(npcID, out var npc))
+        {
+            Debug.LogWarning($"[FriendshipManager] NPC with ID {npcID} not found.");
+            return null;
+        }
+        var emotionData = npc.emotions.Find(e => e.emotion == emotion);
+        if (emotionData == null)
+        {
+            Debug.LogWarning($"[FriendshipManager] Emotion '{emotion}' not found for NPC {npcID}.");
+            return null;
+        }
+        return emotionData.emotionSprite;
+    }
+
     public FriendshipSaveData Get(string npcID)
     {
         if(!freindships.TryGetValue(npcID, out var data))

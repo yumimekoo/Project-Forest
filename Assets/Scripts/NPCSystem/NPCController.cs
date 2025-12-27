@@ -135,6 +135,7 @@ public class NPCController : MonoBehaviour, IInteractable
             return;
 
         Debug.Log($"{identity.npcName} order result: {result.outcome}, Money: {result.moneyDelta}, Friendship: {result.friendshipDelta}");
+        // insert ui feedback here
         FriendshipManager.Instance.AddXP(identity.npcID, result.friendshipDelta);  
         SetState(NPCState.Drinking, identity.timeDrinking);
         currentOrder = null;
