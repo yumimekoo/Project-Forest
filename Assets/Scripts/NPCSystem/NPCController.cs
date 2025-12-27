@@ -55,7 +55,7 @@ public class NPCController : MonoBehaviour, IInteractable
         if(state == NPCState.Leaving && !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
             Debug.Log($"{identity.npcName} has exited the cafe.");
-            Destroy(gameObject);
+            NPCPool.Instance.ReturnNPC(identity);
         }
 
         if (stateTimer > 0f)
