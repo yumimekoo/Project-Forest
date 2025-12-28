@@ -11,3 +11,11 @@ public enum StorageType
     Fridge,
     Drawer
 }
+
+public enum ShoppingCategory
+{
+    None,
+    Resources,
+    Furniture, //and more
+}
+

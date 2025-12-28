@@ -34,14 +34,11 @@ public class ItemsInventory : MonoBehaviour
 
     public void Add(int itemID, int amount)
     {
-        if (itemInventory.ContainsKey(itemID))
+        if (!itemInventory.ContainsKey(itemID))
         {
-            itemInventory[itemID] += amount;
+            itemInventory[itemID] = 0;
         }
-        else
-        {
-            itemInventory[itemID] = amount;
-        }
+        itemInventory[itemID] += amount;
     }
 
     public bool TryRemove(int itemID, int amount = 1)

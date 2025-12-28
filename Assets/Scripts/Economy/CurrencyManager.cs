@@ -61,7 +61,7 @@ public class CurrencyManager : MonoBehaviour
             return false;
         }
 
-        CurrentMoney -= amount;
+        LoseMoney(amount);
         OnMoneyChanged?.Invoke(CurrentMoney);
         return true;
     }
