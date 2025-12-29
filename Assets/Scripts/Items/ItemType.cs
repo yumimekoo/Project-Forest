@@ -16,6 +16,8 @@ public enum ShoppingCategory
 {
     None,
     Resources,
-    Furniture, //and more
+    Furniture,
+    Items,
+    Decoration,//and more
 }
 

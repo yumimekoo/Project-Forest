@@ -20,6 +20,7 @@ public class UnlockSaveData
     public List<int> unlockedItemIDs = new();
     public List<int> activeRecipeIDs = new();
     public List<int> unlockedRecipeIDs = new();
+    public List<int> unlockedFurnitureIDs = new();
 }
 
 [System.Serializable]

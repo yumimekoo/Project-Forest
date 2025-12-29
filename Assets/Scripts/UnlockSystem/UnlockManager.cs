@@ -24,6 +24,7 @@ public class UnlockManager : MonoBehaviour
         runtimeDatabase.allRecipes = new List<DrinkRuleSO>(Resources.LoadAll<DrinkRuleSO>("ScriptableObjectsData/RecipeRules"));
         runtimeDatabase.activeRecipes = new List<DrinkRuleSO>(Resources.LoadAll<DrinkRuleSO>("ScriptableObjectsData/RecipeRules/ActiveDefault"));
         runtimeDatabase.allItems = new List<ItemDataSO>(Resources.LoadAll<ItemDataSO>("ScriptableObjectsData/ItemData"));
+        runtimeDatabase.allFurniture = new List<FurnitureSO>(Resources.LoadAll<FurnitureSO>("ScriptableObjectsData/Furniture"));
         RecalculateUnlocks();
     }
 
@@ -47,6 +48,15 @@ public class UnlockManager : MonoBehaviour
             Debug.Log("[Unlock] Recipe unlocked: " + recipe.name);
         }
         RecalculateUnlocks();
+    }
+
+    public void UnlockFurniture(FurnitureSO furniture)
+    {
+        if (!runtimeDatabase.unlockedFurniture.Contains(furniture))
+        {
+            runtimeDatabase.unlockedFurniture.Add(furniture);
+            Debug.Log("[Unlock] Furniture unlocked: " + furniture.name);
+        }
     }
 
     bool CanUnlockRule(DrinkRuleSO rule, List<ItemDataSO> unlocked)
@@ -81,14 +91,6 @@ public class UnlockManager : MonoBehaviour
             }
         } while (unlockedSomething);
     }
-    //public void UnlockRecipe(DrinkRuleSO recipe)
-    //{
-    //    if (!runtimeDatabase.unlockedRecipes.Contains(recipe))
-    //    {
-    //        runtimeDatabase.unlockedRecipes.Add(recipe);
-    //        Debug.Log("[Unlock] Recipe unlocked: " + recipe.name);
-    //    }
-    //}
 
     // --- CHECK UNLOCKED METHODS ---
 
@@ -96,6 +98,8 @@ public class UnlockManager : MonoBehaviour
         => runtimeDatabase.unlockedItems.Contains(item);
     public bool IsRecipeUnlocked(DrinkRuleSO recipe)
         => runtimeDatabase.unlockedRecipes.Contains(recipe);
+    public bool IsFurnitureUnlocked(FurnitureSO furniture)
+        => runtimeDatabase.unlockedFurniture.Contains(furniture);
 
     // --- SAVING / LOADING METHODS ---
 
@@ -108,12 +112,17 @@ public class UnlockManager : MonoBehaviour
             saveData.unlockedRecipeIDs.Add(recipe.id);
         foreach (var recipe in runtimeDatabase.activeRecipes)
             saveData.activeRecipeIDs.Add(recipe.id);
+        foreach (var furniture in runtimeDatabase.unlockedFurniture)
+            saveData.unlockedFurnitureIDs.Add(furniture.numericID);
         return saveData;
     }
 
     public void ApplySaveData(UnlockSaveData saveData)
     {
-        if(saveData.unlockedRecipeIDs.Count == 0 && saveData.unlockedItemIDs.Count == 0)
+        if(saveData.unlockedRecipeIDs.Count == 0 
+            && saveData.unlockedItemIDs.Count == 0 
+            && saveData.activeRecipeIDs.Count == 0 
+            && saveData.unlockedFurnitureIDs.Count == 0)
         {
             Debug.Log("No unlock data to apply.");
             return;
@@ -121,6 +130,7 @@ public class UnlockManager : MonoBehaviour
         runtimeDatabase.unlockedItems.Clear();
         runtimeDatabase.unlockedRecipes.Clear();
         runtimeDatabase.activeRecipes.Clear();
+        runtimeDatabase.unlockedFurniture.Clear();
 
         foreach (var itemID in saveData.unlockedItemIDs)
         {
@@ -152,6 +162,14 @@ public class UnlockManager : MonoBehaviour
                 runtimeDatabase.unlockedRecipes.Add(recipe);
             }
                 
+        }
+        foreach (var furnitureID in saveData.unlockedFurnitureIDs)
+        {
+            var furniture = runtimeDatabase.allFurniture.Find(f => f.numericID == furnitureID);
+            if (furniture != null)
+            {
+                runtimeDatabase.unlockedFurniture.Add(furniture);
+            }
         }
     }
 }

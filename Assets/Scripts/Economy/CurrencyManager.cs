@@ -66,6 +66,11 @@ public class CurrencyManager : MonoBehaviour
         return true;
     }
 
+    public bool HasEnoughMoney(int amount)
+    {
+        return CurrentMoney >= amount;
+    }
+
     public void SetMoney(int amount)
     {
         CurrentMoney = amount;

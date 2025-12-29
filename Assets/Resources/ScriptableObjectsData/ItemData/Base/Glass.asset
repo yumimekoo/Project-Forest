@@ -19,3 +19,5 @@ MonoBehaviour:
   icon: {fileID: 0}
   storageType: 0
   itemPrefab: {fileID: 8037415141159388369, guid: 1333472ca73be9340ac68d15d534889f, type: 3}
+  shoppingCategory: 3
+  price: 0

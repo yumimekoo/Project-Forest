@@ -5,14 +5,20 @@ using UnityEngine;
 public class UnlockDatabaseSO : ScriptableObject
 {
     [Header("Items")]
-    public List<ItemDataSO> allItems;
+    [HideInInspector] public List<ItemDataSO> allItems;
     public List<ItemDataSO> unlockedItems = new List<ItemDataSO>();
 
     [Header("Recipes")]
-    public List<DrinkRuleSO> allRecipes; // all recipes
-    public List<DrinkRuleSO> activeRecipes = new List<DrinkRuleSO>(); // locked recipes
+    [HideInInspector] public List<DrinkRuleSO> allRecipes; // all recipes
+    [HideInInspector] public List<DrinkRuleSO> activeRecipes = new List<DrinkRuleSO>(); // locked recipes
     public List<DrinkRuleSO> unlockedRecipes = new List<DrinkRuleSO>(); // unlocked recipes
+
+    [Header("Furniture")]
+    [HideInInspector] public List<FurnitureSO> allFurniture;
+    public List<FurnitureSO> unlockedFurniture = new List<FurnitureSO>();
+    // Functions
     public List<ItemDataSO> GetUnlockedItems() => unlockedItems;
     public List<DrinkRuleSO> GetUnlockedRecipes() => unlockedRecipes;
     public List<DrinkRuleSO> GetActiveRecipes() => activeRecipes;
+    public List<FurnitureSO> GetUnlockedFurniture() => unlockedFurniture;
 }
