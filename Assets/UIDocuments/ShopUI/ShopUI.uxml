@@ -1,0 +1,16 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="ShopItemElement" src="project://database/Assets/UIDocuments/ShopUI/ShopItemElement.uxml?fileID=9197481963319205126&amp;guid=2f2f08eac76a42249b93cf204d7bbf4a&amp;type=3#ShopItemElement" />
+    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement name="tabsContainer" style="flex-grow: 0; width: 30%; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
+            <ui:Button text="Button" name="itemsTab" />
+            <ui:Button text="Button" name="furnitureTab" />
+            <ui:Button text="Button" name="somewhatTab" />
+        </ui:VisualElement>
+        <ui:ScrollView name="itemContainer" style="width: auto; flex-grow: 1;">
+            <ui:Instance template="ShopItemElement" name="ShopItemElement" />
+        </ui:ScrollView>
+        <ui:VisualElement style="flex-grow: 0;">
+            <ui:Button text="Exit" name="exitButton" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

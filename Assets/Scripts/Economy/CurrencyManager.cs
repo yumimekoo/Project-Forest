@@ -61,9 +61,14 @@ public class CurrencyManager : MonoBehaviour
             return false;
         }
 
-        CurrentMoney -= amount;
+        LoseMoney(amount);
         OnMoneyChanged?.Invoke(CurrentMoney);
         return true;
+    }
+
+    public bool HasEnoughMoney(int amount)
+    {
+        return CurrentMoney >= amount;
     }
 
     public void SetMoney(int amount)

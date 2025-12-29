@@ -19,3 +19,8 @@ MonoBehaviour:
   allRecipes: []
   activeRecipes: []
   unlockedRecipes: []
+  allFurniture: []
+  unlockedFurniture:
+  - {fileID: 11400000, guid: a165bd10ae948674b8084b4ce628266c, type: 2}
+  - {fileID: 11400000, guid: 67860131c4716304e882af7a4dfb0d16, type: 2}
+  - {fileID: 11400000, guid: 627122a627801184db15c8b2c8af222f, type: 2}

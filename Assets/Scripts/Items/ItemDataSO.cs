@@ -14,4 +14,8 @@ public class ItemDataSO : ScriptableObject
     [Header("World Prefab for Instantiating the Item")]
 
     public GameObject itemPrefab;
+
+    [Header("Shopping Info")]
+    public ShoppingCategory shoppingCategory = ShoppingCategory.None;
+    public int price = 0;
 }
