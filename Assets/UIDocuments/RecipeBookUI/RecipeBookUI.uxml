@@ -1,0 +1,28 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="recipeFinal" src="project://database/Assets/UIDocuments/RecipeBookUI/recipeFinal.uxml?fileID=9197481963319205126&amp;guid=eb4adcf45ca2d1d45ad93b07fcfd8239&amp;type=3#recipeFinal" />
+    <ui:VisualElement class="book-root" style="flex-direction: column; flex-grow: 1; background-color: rgba(255, 255, 255, 0.47);">
+        <ui:VisualElement name="bookHeader" style="flex-grow: 0; height: 5%; flex-direction: row; justify-content: space-between;">
+            <ui:Label text="Recipe Book" class="book-title" style="font-size: 30px;" />
+            <ui:Button name="exitButton" text="X" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement name="leftPage" class="book-header" style="justify-content: space-between; width: 50%;">
+                <ui:VisualElement style="flex-grow: 1;">
+                    <ui:Label text="Current Orders" />
+                    <ui:VisualElement name="ordersContainer" style="flex-grow: 1;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="rightPage" class="book-content" style="width: 50%;">
+                <ui:Label text="(Recipes will appear here)" style="font-size: 20px;" />
+                <ui:VisualElement name="recipesContainer" style="flex-grow: 1; margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 15px;">
+                    <ui:Instance template="recipeFinal" name="recipeFinal" />
+                </ui:VisualElement>
+                <ui:VisualElement name="pageControls" style="flex-grow: 0; flex-direction: row; height: 5%; justify-content: space-between; align-self: stretch; align-items: center;">
+                    <ui:Button text="&lt;-" name="prevPage" emoji-fallback-support="false" />
+                    <ui:Label text="0" name="pageLabel" />
+                    <ui:Button text="-&gt;" name="nextPage" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

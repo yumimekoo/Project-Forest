@@ -140,6 +140,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "BookInteract",
+                    "type": "Button",
+                    "id": "a35f18dc-bff8-49fb-93db-a1a0469f8dd2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -591,6 +600,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "RightClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8ce97f0e-5f1f-4206-800d-fe11f7d49146",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "BookInteract",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
