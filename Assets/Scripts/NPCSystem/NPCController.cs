@@ -90,6 +90,7 @@ public class NPCController : MonoBehaviour, IInteractable
                 Leave("order was not Taken");
                 break;
             case NPCState.WaitingForDrink:
+                OrderManager.Instance.RemoveOrder(identity);
                 Leave("drink was not served");
                 break;
             case NPCState.Drinking:
@@ -136,6 +137,7 @@ public class NPCController : MonoBehaviour, IInteractable
 
         Debug.Log($"{identity.npcName} order result: {result.outcome}, Money: {result.moneyDelta}, Friendship: {result.friendshipDelta}");
         // insert ui feedback here
+        OrderManager.Instance.RemoveOrder(identity);
         FriendshipManager.Instance.AddXP(identity.npcID, result.friendshipDelta);  
         SetState(NPCState.Drinking, identity.timeDrinking);
         currentOrder = null;
@@ -146,6 +148,7 @@ public class NPCController : MonoBehaviour, IInteractable
         currentOrder = NPCOrderGenerator.GenerateOrder(identity);
         if(currentOrder != null)
         {
+            OrderManager.Instance.AddOrder(identity, currentOrder.requestedDrink);
             Debug.Log($"{identity.npcName} has ordered: {currentOrder}");
             SetState(NPCState.WaitingForDrink, identity.timeToGiveOrder);
         }

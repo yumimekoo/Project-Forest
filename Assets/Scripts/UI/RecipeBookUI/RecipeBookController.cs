@@ -14,27 +14,33 @@ public class RecipeBookController : MonoBehaviour
     private int currentPage = 0;
     const int recipesPerPage = 3;
 
-    // testing only
     List<DrinkRuleSO> bookRecipes = new();
+    List<DrinkRuleSO> filteredRecipes = new();
 
     private bool isBookOpen = false;
     private VisualElement
         root,
-        recipesContainer;
+        recipesContainer,
+        ordersContainer;
     private Button
         closeButton,
         prevPageButton,
         nextPageButton;
     private Label
         pageNumberLabel;
+    private TextField
+        searchField;
 
     private void OnEnable()
     {
         InputActions.FindActionMap("Player").Enable();
+        OrderManager.Instance.OnOrderChanged += RefreshOrders;
     }
     private void OnDisable()
     {
         InputActions.FindActionMap("Player").Disable();
+        if (OrderManager.Instance != null)
+            OrderManager.Instance.OnOrderChanged -= RefreshOrders;
     }
     private void Awake()
     {
@@ -44,11 +50,17 @@ public class RecipeBookController : MonoBehaviour
         prevPageButton = root.Q<Button>("prevPage");
         nextPageButton = root.Q<Button>("nextPage");
         recipesContainer = root.Q<VisualElement>("recipesContainer");
+        ordersContainer = root.Q<VisualElement>("ordersContainer");
         pageNumberLabel = root.Q<Label>("pageLabel");
+        searchField = root.Q<TextField>("searchField");
 
         prevPageButton.clicked += PrevPage;
         nextPageButton.clicked += NextPage;
         closeButton.clicked += Close;
+        searchField.RegisterValueChangedCallback(evt =>
+        {
+            ApplySearch(evt.newValue);
+        });
 
         LoadRecipes();
         RefreshRecipesPage();
@@ -74,6 +86,58 @@ public class RecipeBookController : MonoBehaviour
         }
     }
 
+    private void ApplySearch(string search)
+    {
+        if(string.IsNullOrWhiteSpace(search))
+        {
+            filteredRecipes = new List<DrinkRuleSO>(bookRecipes);
+        }
+        else
+        {
+            filteredRecipes = bookRecipes.FindAll(r =>
+                r.resultingState.itemName.ToLower().Contains(search.ToLower())
+            );
+        }   
+
+        currentPage = 0;
+        RefreshRecipesPageFiltered();
+    }
+
+    void RefreshOrders()
+    {
+        ordersContainer.Clear();
+
+        foreach (var pair in OrderManager.Instance.ActiveOrders)
+        {
+            NPCIdentitySO npc = pair.Key;
+            string npcName = npc.npcName;
+            ItemDataSO drink = pair.Value;
+            string drinkName = drink.itemName;
+            // hier dann template machen
+            var label = new Label(
+                npcName + " -> " + drinkName // {npc.npcName} -> {drink.itemName}
+            );
+
+            label.RegisterCallback<ClickEvent>(_ =>
+            {
+                ShowSingleRecipe(drink);
+            });
+
+            ordersContainer.Add(label);
+        }
+    }
+
+    void ShowSingleRecipe(ItemDataSO drink)
+    {
+        recipesContainer.Clear();
+        currentPage = 0;
+
+        var rule = FindRuleFromResult(drink);
+        if(rule == null)
+            return;
+        BuildRecipeItem(rule);
+    }
+
     private void RefreshRecipesPage()
     {
         recipesContainer.Clear();
@@ -87,6 +151,21 @@ public class RecipeBookController : MonoBehaviour
         for (int i = startIndex; i < end; i++)
         {
             BuildRecipeItem(bookRecipes[i]);
+        }
+
+        pageNumberLabel.text = $"Page {currentPage + 1}";
+    }
+
+    private void RefreshRecipesPageFiltered()
+    {
+        recipesContainer.Clear();
+        
+        int startIndex = currentPage * recipesPerPage;
+        int end = Mathf.Min(startIndex + recipesPerPage, filteredRecipes.Count);
+
+        for (int i = startIndex; i < end; i++)
+        {
+            BuildRecipeItem(filteredRecipes[i]);
         }
 
         pageNumberLabel.text = $"Page {currentPage + 1}";
@@ -157,6 +236,7 @@ public class RecipeBookController : MonoBehaviour
     {
         LoadRecipes();
         RefreshRecipesPage();
+        RefreshOrders();
         isBookOpen = true;
         root.style.display = DisplayStyle.Flex;
         Time.timeScale = 0f;

@@ -4,6 +4,7 @@
         <ui:VisualElement name="bookHeader" style="flex-grow: 0; height: 5%; flex-direction: row; justify-content: space-between;">
             <ui:Label text="Recipe Book" class="book-title" style="font-size: 30px;" />
             <ui:Button name="exitButton" text="X" />
+            <ui:TextField label="Text Field" placeholder-text="filler text" name="searchField" />
         </ui:VisualElement>
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement name="leftPage" class="book-header" style="justify-content: space-between; width: 50%;">
