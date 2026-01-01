@@ -139,6 +139,18 @@ public class NPCController : MonoBehaviour, IInteractable
         // insert ui feedback here
         OrderManager.Instance.RemoveOrder(identity);
         FriendshipManager.Instance.AddXP(identity.npcID, result.friendshipDelta);  
+        CurrencyManager.Instance.AddMoney(result.moneyDelta);
+        TimeManager.Instance.TrackFriendship(identity.npcName, result.friendshipDelta);
+        TimeManager.Instance.TrackMoney(result.moneyDelta);
+        TimeManager.Instance.TrackOrderCompleted();
+        if(result.outcome != OrderOutcome.Wrong)
+        {
+            TimeManager.Instance.TrackOrderSuccsess();
+        } 
+        else
+        {
+            TimeManager.Instance.TrackOrderFailed();
+        }
         SetState(NPCState.Drinking, identity.timeDrinking);
         currentOrder = null;
     }
@@ -150,6 +162,7 @@ public class NPCController : MonoBehaviour, IInteractable
         {
             OrderManager.Instance.AddOrder(identity, currentOrder.requestedDrink);
             Debug.Log($"{identity.npcName} has ordered: {currentOrder}");
+            TimeManager.Instance.TrackOrderAccepted();
             SetState(NPCState.WaitingForDrink, identity.timeToGiveOrder);
         }
     }

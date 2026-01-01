@@ -21,5 +21,6 @@ public class NPCSpawner : MonoBehaviour
         if (npc == null) 
             return;
         npc.transform.position = transform.position;
+        TimeManager.Instance.TrackCostumers();
     }
 }

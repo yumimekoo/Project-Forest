@@ -21,7 +21,7 @@ public class DayStats
     public int ordersAcceped;
     public int ordersCompleted;
     public int ordersFailed;
-    public int ordersSuccsess;
+    public int ordersSuccess;
     public Dictionary<string, int> freindshipPerNPCgained = new();
 
     public void ResetStats()
@@ -31,7 +31,7 @@ public class DayStats
         ordersAcceped = 0;
         ordersCompleted = 0;
         ordersFailed = 0;
-        ordersSuccsess = 0;
+        ordersSuccess = 0;
         freindshipPerNPCgained.Clear();
     }
 }
@@ -58,7 +58,7 @@ public class TimeManager : MonoBehaviour
     public DayStats todayStats = new();
     public int baseRentAmount = 100;
 
-    public event Action <DayStats, int, Weekday> OnDaySummaryReady;
+    public event Action <DayStats, int, Weekday, int> OnDaySummaryReady;
     public event Action <int, Weekday> OnNewDayStarted;
     //public event Action OnRentDue;
     public event Action OnGameOver;
@@ -94,9 +94,9 @@ public class TimeManager : MonoBehaviour
         if (!GameState.dayEnded && timeElapsed >= dayDurationInSeconds)
         {
             GameState.dayEnded = true;
-            GameState.doorUnlocked = true;
             //OnDayEnded?.Invoke();
             //Debug.Log("day has ended");
+            ShowDaySummary();
         }
     }
 
@@ -153,7 +153,7 @@ public class TimeManager : MonoBehaviour
 
     public void ShowDaySummary()
     {
-        OnDaySummaryReady?.Invoke(todayStats, currentDay, currentWeekday);
+        OnDaySummaryReady?.Invoke(todayStats, currentDay, currentWeekday, currentWeek);
     }
 
     public void ConfirmEndOfDay()
@@ -197,7 +197,7 @@ public class TimeManager : MonoBehaviour
     }
     public void TrackOrderSuccsess()
     {
-        todayStats.ordersSuccsess += 1;
+        todayStats.ordersSuccess += 1;
     }
     public void TrackFriendship(string npcName, int amount)
     {
