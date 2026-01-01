@@ -34,7 +34,8 @@ public class SaveManager : MonoBehaviour
             placedFurniture = FurniturePlacementManager.Instance.GetSaveData(),
             furnitureInventory = FurnitureInventory.Instance.GetSaveData(),
             itemInventory = ItemsInventory.Instance.GetSaveData(),
-            friendships = FriendshipManager.Instance.GetSaveData()
+            friendships = FriendshipManager.Instance.GetSaveData(),
+            currentDay = TimeManager.Instance.GetSaveData()
         };
         SaveSystem.Save(saveData, ActiveSaveSlot);
     }
@@ -52,6 +53,7 @@ public class SaveManager : MonoBehaviour
         FriendshipManager.Instance.ApplySaveData(saveData.friendships);
         FurniturePlacementManager.Instance.ApplySaveData(saveData.placedFurniture);
         FurnitureInventory.Instance.ApplySaveData(saveData.furnitureInventory);
+        TimeManager.Instance.ApplySaveData(saveData.currentDay);
 
         StartCoroutine(StartRebuildAfterSceneLoaded(saveData.placedFurniture));
     }

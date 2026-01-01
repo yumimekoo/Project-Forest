@@ -1030,7 +1030,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3ec3372101123f418c862c9c0642703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
-  dayDurationInSeconds: 20
+  dayDurationInSeconds: 3
+  currentDay: 1
+  currentWeek: 1
+  currentWeekday: 0
+  todayStats:
+    moneyEarned: 0
+    totalCustomers: 0
+    ordersAcceped: 0
+    ordersCompleted: 0
+    ordersFailed: 0
+    ordersSuccsess: 0
+  baseRentAmount: 100
 --- !u!1 &881709037
 GameObject:
   m_ObjectHideFlags: 0

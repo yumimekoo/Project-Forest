@@ -11,6 +11,7 @@ public class GameSaveData
     public List<FurnitureInventorySaveData> furnitureInventory = new();
     public List<ItemSaveData> itemInventory = new();
     public List<FriendshipSaveData> friendships = new();
+    public DaySaveData currentDay;
 }
 
 // subclasses for GameSaveData
@@ -86,5 +87,20 @@ public class FriendshipSaveData
         this.npcID = npcID;
         this.xp = xp;
         this.level = level;
+    }
+}
+
+[System.Serializable]
+public class DaySaveData
+{
+    public int day;
+    public int weekDay;
+    public int week;
+
+    public DaySaveData(int day, int weekDay, int week)
+    {
+        this.day = day;
+        this.weekDay = weekDay;
+        this.week = week;
     }
 }
