@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -13,6 +14,7 @@ public class RecipeBookController : MonoBehaviour
 
     private int currentPage = 0;
     const int recipesPerPage = 3;
+    private bool isSinleRecipeView = false;
 
     List<DrinkRuleSO> bookRecipes = new();
     List<DrinkRuleSO> filteredRecipes = new();
@@ -70,7 +72,10 @@ public class RecipeBookController : MonoBehaviour
     private void LoadRecipes()
     {
         bookRecipes = UnlockManager.Instance.runtimeDatabase.GetUnlockedRecipes()
-            .FindAll(r => r.ruleType == RuleType.FinalDrink || r.ruleType == RuleType.SpecialUnlock);
+            .FindAll(r => r.ruleType == RuleType.FinalDrink || r.ruleType == RuleType.SpecialUnlock)
+            .OrderBy(r => r.ruleType)
+            .ThenBy(r => r.resultingState.itemName)
+            .ToList();
 
         currentPage = Mathf.Clamp(currentPage, 0, Mathf.Max(0, (bookRecipes.Count - 1) / recipesPerPage));
     }
@@ -121,6 +126,7 @@ public class RecipeBookController : MonoBehaviour
             label.RegisterCallback<ClickEvent>(_ =>
             {
                 ShowSingleRecipe(drink);
+                isSinleRecipeView = true;
             });
 
             ordersContainer.Add(label);
@@ -216,6 +222,13 @@ public class RecipeBookController : MonoBehaviour
 
     private void NextPage()
     {
+        if(isSinleRecipeView)
+        {
+            isSinleRecipeView = false;
+            RefreshRecipesPage();
+            return;
+        }
+
         if ((currentPage + 1) * recipesPerPage >= bookRecipes.Count)
             return;
 
@@ -225,6 +238,13 @@ public class RecipeBookController : MonoBehaviour
 
     private void PrevPage()
     {
+        if(isSinleRecipeView)
+        {
+            isSinleRecipeView = false;
+            RefreshRecipesPage();
+            return;
+        }
+
         if (currentPage == 0)
             return;
 
