@@ -50,6 +50,16 @@ public class UnlockManager : MonoBehaviour
         RecalculateUnlocks();
     }
 
+    public void ActivateRecipe(DrinkRuleSO recipe)
+    {
+        if (!runtimeDatabase.activeRecipes.Contains(recipe))
+        {
+            runtimeDatabase.activeRecipes.Add(recipe);
+            Debug.Log("[Activate] Recipe activated: " + recipe.name);
+        }
+        RecalculateUnlocks();
+    }
+
     public void UnlockFurniture(FurnitureSO furniture)
     {
         if (!runtimeDatabase.unlockedFurniture.Contains(furniture))

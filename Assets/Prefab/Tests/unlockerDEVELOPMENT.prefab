@@ -131,6 +131,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cd4f234c49b03ed40b7582fc564865b0, type: 2}
   - {fileID: 11400000, guid: df1b836b0dd42d84e97a0d3f5c767acb, type: 2}
   - {fileID: 11400000, guid: 37c1e8e3776d30d438fcddc0f7a9d295, type: 2}
+  - {fileID: 11400000, guid: 86b472c18d7bc914aa7f105577fccc47, type: 2}
+  - {fileID: 11400000, guid: b6b240efda28647438d63c5a4ec4329e, type: 2}
+  - {fileID: 11400000, guid: 49a6c738e1b740a44ae16e59372d9d3d, type: 2}
+  - {fileID: 11400000, guid: f8f48e39ab3734b4cb5135b5091b974a, type: 2}
+  rulesToActivate:
+  - {fileID: 11400000, guid: 0d7bfc3a692610b4ca0299c467705807, type: 2}
+  - {fileID: 11400000, guid: 58f0b0b85c83aef42a5f9b6659301b41, type: 2}
+  - {fileID: 11400000, guid: 8995aef6e23eca144b81cb268e3a64bd, type: 2}
 --- !u!208 &-8446828764524716335
 NavMeshObstacle:
   m_ObjectHideFlags: 0

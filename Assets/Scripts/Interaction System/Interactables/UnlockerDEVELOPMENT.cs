@@ -7,6 +7,7 @@ public class UnlockerDEVELOPMENT : MonoBehaviour, IInteractable
     [SerializeField] List<ItemDataSO> itemsList;
     private int counter = 1;
     private List<ItemDataSO> items;
+    [SerializeField] private List<DrinkRuleSO> rulesToActivate; 
 
     public void Start()
     {
@@ -24,6 +25,11 @@ public class UnlockerDEVELOPMENT : MonoBehaviour, IInteractable
         foreach (var itme in itemsList)
         {
             UnlockManager.Instance.UnlockItem(itme);
+        }
+
+        foreach (var rule in rulesToActivate)
+        {
+            UnlockManager.Instance.ActivateRecipe(rule);
         }
 
     }
