@@ -5,6 +5,7 @@ using UnityEngine;
 public class FurnitureInventory : MonoBehaviour
 {
     public static FurnitureInventory Instance;
+    public BuildMode3D buildMode3D;
     private Dictionary<int,int> inventory = new Dictionary<int,int>();
 
     [System.Serializable]
@@ -85,6 +86,7 @@ public class FurnitureInventory : MonoBehaviour
     {
         if (data == null || data.Count == 0)
         {
+            buildMode3D.RandomizeGrid();
             //Debug.Log("[FurnitureInventory] SaveData empty keeping default inventory.");
             return;
         }
@@ -95,5 +97,11 @@ public class FurnitureInventory : MonoBehaviour
             inventory[item.id] = item.amount;
             //Debug.Log($"[FurnitureInventory] Loaded item ID {item.id} with amount {item.amount}");
         }
+    }
+
+    //helper to get occupied cells from buildmode3D
+    public int GetOccupiedCellsCount()
+    {
+        return buildMode3D.GetOccupiedCells();
     }
 }

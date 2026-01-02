@@ -123,6 +123,11 @@ public class BuildMode3D : MonoBehaviour
         }
     }
 
+    public int GetOccupiedCells()
+    {
+        return occupiedCells.Count;
+    }
+
     // ---
     // Main Logic
     // ---
@@ -211,6 +216,34 @@ public class BuildMode3D : MonoBehaviour
         FurniturePlacementManager.Instance.RegisterPlacement(currentItem.numericID, cell, rotY);
     }
 
+    private void TryRandomPlace(FurnitureSO item)
+    {
+        List<Vector2Int> freeCells = new List<Vector2Int>();
+        for (int x = 0; x < grid.width; x++)
+        {
+            for (int y = 0; y < grid.height; y++)
+            {
+                Vector2Int cell = new Vector2Int(x, y);
+                if (!occupiedCells.Contains(cell))
+                {
+                    freeCells.Add(cell);
+                }
+            }
+        }
+        if (freeCells.Count == 0)
+        {
+            // No free cells available
+            return;
+        }
+        Vector2Int randomCell = freeCells[Random.Range(0, freeCells.Count)];
+        Vector3 position = grid.GetWorldPosition(randomCell.x, randomCell.y);
+        var go = Instantiate(item.furniturePrefab, position, Quaternion.Euler(0, 0, 0));
+        go.AddComponent<FurnitureIdentifier>().so = item;
+        occupiedCells.Add(randomCell);
+        FurniturePlacementManager.Instance.RegisterPlacement(item.numericID, randomCell, 0);
+        FurnitureInventory.Instance.Remove(item.numericID);
+    }
+
     private void TryDelete(Vector2Int cell)
     {
         foreach (var obj in GameObject.FindGameObjectsWithTag("Furniture"))
@@ -249,6 +282,34 @@ public class BuildMode3D : MonoBehaviour
             go.AddComponent<FurnitureIdentifier>().so = so;
             occupiedCells.Add(new Vector2Int(item.x, item.y));
 
+        }
+    }
+
+    // ---
+    // randomizer 
+    // 
+
+    public void RandomizeGrid()
+    {
+        StartCoroutine(RandomPlacer());
+    }
+
+    private IEnumerator RandomPlacer()
+    {
+        yield return null;
+
+        Dictionary<int, int> inventoryItems = new Dictionary<int, int>(FurnitureInventory.Instance.GetAll());
+
+        foreach (var entry in inventoryItems)
+        {
+            FurnitureSO so = FurnitureDatabase.Instance.GetByID(entry.Key);
+            if (so == null)
+                continue;
+
+            for(int i = 0; i < entry.Value; i++)
+            {
+                TryRandomPlace(so);
+            }
         }
     }
 }
