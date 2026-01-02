@@ -29,6 +29,13 @@ public class Door : MonoBehaviour, IInteractable
 
     public void ChangeScene()
     {
+        if (FurnitureInventory.Instance.GetOccupiedCellsCount() < 5)
+        {
+            Debug.Log("You need to have at least 5 pieces of furniture placed to enter the room.");
+            return;
+        }
+           
+
         if (GameState.isInRoom)
         {
             GameState.isInRoom = false;

@@ -1964,8 +1964,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4372e209f3dca434fad69042d22615d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FurnitureInventory
+  buildMode3D: {fileID: 1050913549}
   defaultInventory:
   - id: 10
+    amount: 5
+  - id: 11
+    amount: 5
+  - id: 12
     amount: 5
 --- !u!1 &1314382293
 GameObject:

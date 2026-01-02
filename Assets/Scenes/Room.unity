@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4372e209f3dca434fad69042d22615d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FurnitureInventory
+  buildMode3D: {fileID: 1603184434}
   defaultInventory: []
 --- !u!1001 &162685251
 PrefabInstance:
@@ -1343,6 +1344,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
   dayDurationInSeconds: 30
+  currentDay: 1
+  currentWeek: 1
+  currentWeekday: 0
+  todayStats:
+    moneyEarned: 0
+    totalCustomers: 0
+    ordersAcceped: 0
+    ordersCompleted: 0
+    ordersFailed: 0
+    ordersSuccess: 0
+  baseRentAmount: 100
 --- !u!1 &1181194891
 GameObject:
   m_ObjectHideFlags: 0
