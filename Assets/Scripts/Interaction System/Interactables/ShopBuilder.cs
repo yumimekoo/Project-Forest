@@ -19,6 +19,11 @@ public class ShopBuilder : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInventory player)
     {
+        if(GameState.inTutorial)
+        {
+            TutorialManager.Instance.OnBuilderUsed();
+        }
+
         GameState.playerInteractionAllowed = false;
         GameState.isInBuildMode = true;
 

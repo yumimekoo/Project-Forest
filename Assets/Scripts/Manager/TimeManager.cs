@@ -74,7 +74,7 @@ public class TimeManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameState.dayEnded)
+        if (GameState.dayEnded || GameState.inTutorial)
             return;
 
         timeElapsed += GameTime.DeltaTime;
@@ -88,15 +88,11 @@ public class TimeManager : MonoBehaviour
             OnNightTriggered?.Invoke();
             GameState.isDay = false;
             GameState.isNight = true;
-            //Debug.Log("now is night");
         }
 
         if (!GameState.dayEnded && timeElapsed >= dayDurationInSeconds)
         {
             GameState.dayEnded = true;
-            //OnDayEnded?.Invoke();
-            //Debug.Log("day has ended");
-            //ShowDaySummary();
         }
     }
 
