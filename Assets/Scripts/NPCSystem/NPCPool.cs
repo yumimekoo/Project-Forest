@@ -62,4 +62,9 @@ public class NPCPool : MonoBehaviour
 
         availableNPCs.Add(npcInstance);
     }
+
+    public bool AllNPCsReturned()
+    {
+        return availableNPCs.Count == npcInstances.Count;
+    }
 }

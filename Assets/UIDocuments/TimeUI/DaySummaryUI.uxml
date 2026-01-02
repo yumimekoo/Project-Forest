@@ -1,0 +1,27 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; margin-top: 180px; margin-right: 180px; margin-bottom: 180px; margin-left: 180px;">
+        <ui:VisualElement style="flex-grow: 1; background-color: rgb(207, 207, 207);">
+            <ui:Label text="Label" name="moneyEarnedLabel" />
+            <ui:VisualElement name="VisualElement" style="flex-grow: 0; flex-direction: row;">
+                <ui:Label text="Label" name="day" />
+                <ui:Label text="Label" name="weekday" />
+                <ui:Label text="Label" name="week" />
+            </ui:VisualElement>
+            <ui:VisualElement name="VisualElement" style="flex-grow: 0; flex-direction: row;">
+                <ui:Label text="Label" name="totalLabel" />
+                <ui:Label text="Label" name="acceptedLabel" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                <ui:Label text="Label" name="completedLabel" />
+                <ui:Label text="Label" name="successLabel" />
+                <ui:Label text="Label" name="failedLabel" />
+            </ui:VisualElement>
+            <ui:Label text="Label" name="friendshipLabel" />
+            <ui:Label text="Label" name="friendshipXPLabel" />
+            <ui:VisualElement style="flex-grow: 1;">
+                <ui:Button text="Okay" name="okButton" />
+                <ui:Button text="Pay Rent" name="payRentButton" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

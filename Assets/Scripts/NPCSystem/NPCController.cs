@@ -24,13 +24,7 @@ public class NPCController : MonoBehaviour, IInteractable
         agent.acceleration = navmeshAcceleration;
 
     }
-
-    private void Start()
-    {
-        FindChairAndGo();
-    }
-
-    private void FindChairAndGo()
+    public void FindChairAndGo()
     {
         targetChair = ChairManager.Instance.GetFreeChair();
 
@@ -55,6 +49,7 @@ public class NPCController : MonoBehaviour, IInteractable
         if(state == NPCState.Leaving && !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
             Debug.Log($"{identity.npcName} has exited the cafe.");
+            agent.enabled = false;
             NPCPool.Instance.ReturnNPC(identity);
         }
 
@@ -139,6 +134,18 @@ public class NPCController : MonoBehaviour, IInteractable
         // insert ui feedback here
         OrderManager.Instance.RemoveOrder(identity);
         FriendshipManager.Instance.AddXP(identity.npcID, result.friendshipDelta);  
+        CurrencyManager.Instance.AddMoney(result.moneyDelta);
+        TimeManager.Instance.TrackFriendship(identity.npcName, result.friendshipDelta);
+        TimeManager.Instance.TrackMoney(result.moneyDelta);
+        TimeManager.Instance.TrackOrderCompleted();
+        if(result.outcome != OrderOutcome.Wrong)
+        {
+            TimeManager.Instance.TrackOrderSuccsess();
+        } 
+        else
+        {
+            TimeManager.Instance.TrackOrderFailed();
+        }
         SetState(NPCState.Drinking, identity.timeDrinking);
         currentOrder = null;
     }
@@ -150,6 +157,7 @@ public class NPCController : MonoBehaviour, IInteractable
         {
             OrderManager.Instance.AddOrder(identity, currentOrder.requestedDrink);
             Debug.Log($"{identity.npcName} has ordered: {currentOrder}");
+            TimeManager.Instance.TrackOrderAccepted();
             SetState(NPCState.WaitingForDrink, identity.timeToGiveOrder);
         }
     }

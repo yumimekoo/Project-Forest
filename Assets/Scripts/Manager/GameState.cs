@@ -9,6 +9,7 @@ public static class GameState
     // --- Game Time and Day-Night Cycle ---
     public static bool isNight = false;
     public static bool isDay = true;
+    public static bool dayEnded = false;
 
     // --- Room States ---
     public static bool isInRoom = false;
