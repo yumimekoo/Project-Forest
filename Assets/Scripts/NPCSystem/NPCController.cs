@@ -24,13 +24,7 @@ public class NPCController : MonoBehaviour, IInteractable
         agent.acceleration = navmeshAcceleration;
 
     }
-
-    private void Start()
-    {
-        FindChairAndGo();
-    }
-
-    private void FindChairAndGo()
+    public void FindChairAndGo()
     {
         targetChair = ChairManager.Instance.GetFreeChair();
 
@@ -55,6 +49,7 @@ public class NPCController : MonoBehaviour, IInteractable
         if(state == NPCState.Leaving && !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
             Debug.Log($"{identity.npcName} has exited the cafe.");
+            agent.enabled = false;
             NPCPool.Instance.ReturnNPC(identity);
         }
 

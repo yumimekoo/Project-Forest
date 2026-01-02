@@ -58,7 +58,7 @@ public class TimeManager : MonoBehaviour
     public DayStats todayStats = new();
     public int baseRentAmount = 100;
 
-    public event Action <DayStats, int, Weekday, int> OnDaySummaryReady;
+    public event Action <DayStats, int, Weekday, int, int> OnDaySummaryReady;
     public event Action <int, Weekday> OnNewDayStarted;
     //public event Action OnRentDue;
     public event Action OnGameOver;
@@ -96,7 +96,7 @@ public class TimeManager : MonoBehaviour
             GameState.dayEnded = true;
             //OnDayEnded?.Invoke();
             //Debug.Log("day has ended");
-            ShowDaySummary();
+            //ShowDaySummary();
         }
     }
 
@@ -153,7 +153,7 @@ public class TimeManager : MonoBehaviour
 
     public void ShowDaySummary()
     {
-        OnDaySummaryReady?.Invoke(todayStats, currentDay, currentWeekday, currentWeek);
+        OnDaySummaryReady?.Invoke(todayStats, currentDay, currentWeekday, currentWeek, baseRentAmount*currentWeek);
     }
 
     public void ConfirmEndOfDay()

@@ -11,7 +11,7 @@ public class DaySummaryUI : MonoBehaviour
         weekdayLabel,
         weekLabel,
         totalLabel,
-        //acceptedLabel,
+        rentDueToLabel,
         completedLabel,
         //successLabel,
         //failedLabel,
@@ -30,7 +30,7 @@ public class DaySummaryUI : MonoBehaviour
         weekdayLabel = root.Q<Label>("weekday");
         weekLabel = root.Q<Label>("week");
         totalLabel = root.Q<Label>("totalLabel");
-        //acceptedLabel = root.Q<Label>("acceptedLabel");
+        rentDueToLabel = root.Q<Label>("acceptedLabel");
         completedLabel = root.Q<Label>("completedLabel");
         //successLabel = root.Q<Label>("successLabel");
         //failedLabel = root.Q<Label>("failedLabel");
@@ -54,7 +54,7 @@ public class DaySummaryUI : MonoBehaviour
         TimeManager.Instance.OnDaySummaryReady -= Show;
     }
 
-    private void Show(DayStats stats, int day, Weekday weekday, int week)
+    private void Show(DayStats stats, int day, Weekday weekday, int week, int nextRentPrice)
     {
         dayLabel.text = $"Day {day}";
         weekdayLabel.text = weekday.ToString();
@@ -63,8 +63,12 @@ public class DaySummaryUI : MonoBehaviour
         moneyEarnedLabel.text = $"Money earned: {stats.moneyEarned}";
         totalLabel.text = $"Customer Orders Accepted: {stats.ordersAcceped} / {stats.totalCustomers}";
         completedLabel.text = $"Orders completed: {stats.ordersCompleted} with Success/Failed rate of {stats.ordersSuccess} / {stats.ordersFailed}";
+        int daysUntilSunday = ((int)Weekday.Sunday - (int)weekday + 7) % 7;
+        rentDueToLabel.text = $"{nextRentPrice}$ due in: {daysUntilSunday}";
 
         bool isSunday = weekday == Weekday.Sunday;
+
+        payRentButton.text = $"Pay Rent: {nextRentPrice}";
 
         okButton.style.display = isSunday ? DisplayStyle.None : DisplayStyle.Flex;
         payRentButton.style.display = isSunday ? DisplayStyle.Flex : DisplayStyle.None;
