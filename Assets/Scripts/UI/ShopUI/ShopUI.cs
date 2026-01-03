@@ -17,6 +17,8 @@ public class ShopUI : MonoBehaviour
     private ShoppingCategory currentCategory;
     List<IShopItem> allShopItems;
 
+    private Dictionary<ShoppingCategory, Button> categoryButtons = new();
+
     private void Awake()
     {
         Instance = this;
@@ -30,12 +32,12 @@ public class ShopUI : MonoBehaviour
         tabsContainer = root.Q<VisualElement>("tabsContainer");
         exitButton = root.Q<Button>("exitButton");
 
-        exitButton.clicked += HideUI;
+        exitButton.clicked += OnExitButton;
 
         BuildShopItems();
         BuildCategoryTabs();
 
-        ShowCategory(ShoppingCategory.Resources);
+        ShowCategory(ShoppingCategory.Items);
         HideUI();
     }
 
@@ -53,6 +55,16 @@ public class ShopUI : MonoBehaviour
         shopUI.rootVisualElement.style.display = DisplayStyle.None;
         GameState.playerInteractionAllowed = true;
         GameState.playerMovementAllowed = true;
+    }
+
+    private void OnExitButton()
+    {
+        HideUI();
+
+        if (GameState.inTutorial && TutorialManager.Instance != null)
+        {
+            TutorialManager.Instance.OnExitPressed();
+        }
     }
 
     private void BuildShopItems()
@@ -126,6 +138,12 @@ public class ShopUI : MonoBehaviour
         buyButton.clicked += () =>
         {
             shopItem.Buy(buyAmount);
+
+            if (GameState.inTutorial && TutorialManager.Instance != null)
+            {
+                TutorialManager.Instance.OnItemBought(buyAmount);
+            }
+
             Refresh();
         };
         itemContainer.Add(entry);
@@ -144,7 +162,35 @@ public class ShopUI : MonoBehaviour
             {
                 text = category.ToString()
             };
+
+            categoryButtons[category] = tabButton;
             tabsContainer.Add(tabButton);
+        }
+
+        UpdateButtons();
+    }
+
+    public void UpdateButtons()
+    {
+        if (!GameState.inTutorial)
+        {
+            exitButton.SetEnabled(true);
+
+            foreach (var btn in categoryButtons.Values)
+                btn.SetEnabled(true);
+
+            return;
+        }
+
+        // --- Tutorial Mode ---
+
+        exitButton.SetEnabled(TutorialManager.Instance != null &&
+            TutorialManager.Instance.currentStep >= TutorialStep.ExitShop);
+
+        foreach (var kvp in categoryButtons)
+        {
+            bool allowed = kvp.Key == ShoppingCategory.Items;
+            kvp.Value.SetEnabled(allowed);
         }
     }
 }

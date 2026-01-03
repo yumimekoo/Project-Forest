@@ -156,11 +156,11 @@ GameObject:
   - component: {fileID: 2765406958314070622}
   m_Layer: 0
   m_Name: glow
-  m_TagString: Untagged
+  m_TagString: BuilderGlow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7144606659973717903
 Transform:
   m_ObjectHideFlags: 0

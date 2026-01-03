@@ -98,6 +98,12 @@ public class BuildMode3D : MonoBehaviour
         {
             deleteMode = !deleteMode;
 
+            if (GameState.inTutorial)
+            {
+                if(TutorialManager.Instance != null)
+                    TutorialManager.Instance.OnDeletionModePressed();
+            }
+
             if (!isPlacing)
             {
                 //Debug.Log("Entering delete mode");
@@ -214,6 +220,13 @@ public class BuildMode3D : MonoBehaviour
         go.AddComponent<FurnitureIdentifier>().so = currentItem;
         occupiedCells.Add(cell);
         FurniturePlacementManager.Instance.RegisterPlacement(currentItem.numericID, cell, rotY);
+
+        if(GameState.inTutorial)
+        {
+            if(TutorialManager.Instance != null)
+                TutorialManager.Instance.OnObjectPlaced();
+        }
+
     }
 
     private void TryRandomPlace(FurnitureSO item)
@@ -257,6 +270,13 @@ public class BuildMode3D : MonoBehaviour
                 Destroy(obj);
                 occupiedCells.Remove(cell);
                 FurniturePlacementManager.Instance.RemovePlacement(cell);
+
+                if(GameState.inTutorial)
+                {
+                    if(TutorialManager.Instance != null)
+                        TutorialManager.Instance.OnObjectDeleted();
+                }
+
                 return;
             }
         }

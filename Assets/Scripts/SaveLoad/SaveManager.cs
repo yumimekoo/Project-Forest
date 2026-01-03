@@ -56,7 +56,7 @@ public class SaveManager : MonoBehaviour
         FurnitureInventory.Instance.ApplySaveData(saveData.furnitureInventory);
         TimeManager.Instance.ApplySaveData(saveData.currentDay);
         GameState.ApplySaveData(saveData.gameState);
-
+        TutorialManager.Instance?.CheckDestroyment();
         if (saveData.placedFurniture == null || saveData.placedFurniture.Count == 0)
         {
             return;

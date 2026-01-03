@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UnlockDatabaseSO
   allItems: []
   unlockedItems:
-  - {fileID: 11400000, guid: b7bad3d40804239408e54fdaae1cceec, type: 2}
   - {fileID: 11400000, guid: 479f54fb77f1656448e3c9540df25198, type: 2}
+  - {fileID: 11400000, guid: f8f48e39ab3734b4cb5135b5091b974a, type: 2}
+  - {fileID: 11400000, guid: 11ea756e68ef55445ab0e3e5ca90eaea, type: 2}
   allRecipes: []
   activeRecipes: []
   unlockedRecipes: []

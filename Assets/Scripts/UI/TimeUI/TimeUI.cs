@@ -19,8 +19,9 @@ public class TimeUI : MonoBehaviour
             TimeManager.Instance.OnTimeChanged += UpdateTime;
             TimeManager.Instance.OnProgressChanged += UpdateProgress;
             TimeManager.Instance.OnNightTriggered += HandleNightTriggered;
+            TimeManager.Instance.OnTutorialComplete += ShowUI;
         }
-        if(GameState.inTutorial)
+        if(GameState.inTutorial || GameState.isInRoom)
         {
             root.style.display = DisplayStyle.None;
         }
@@ -33,6 +34,7 @@ public class TimeUI : MonoBehaviour
             TimeManager.Instance.OnTimeChanged -= UpdateTime;
             TimeManager.Instance.OnProgressChanged -= UpdateProgress;
             TimeManager.Instance.OnNightTriggered -= HandleNightTriggered;
+            TimeManager.Instance.OnTutorialComplete -= ShowUI;
         }
     }
 

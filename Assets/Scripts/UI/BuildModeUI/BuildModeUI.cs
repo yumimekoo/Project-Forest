@@ -65,7 +65,7 @@ public class BuildModeUI : MonoBehaviour
         itemContainer.RegisterCallback<PointerLeaveEvent>(_ => SetPointerOverUI(false));
         uiHideLeft.RegisterCallback<PointerEnterEvent>(_ => SetPointerOverUI(true));
         uiHideLeft.RegisterCallback<PointerLeaveEvent>(_ => SetPointerOverUI(false));
-
+        UpdateButtons();
         HideUI();
     }
 
@@ -122,6 +122,32 @@ public class BuildModeUI : MonoBehaviour
         buildMode3D.StopBuild();
         cameraFollow.ChangeFollowTarget(GameState.isInBuildMode);
         HideUI();
+
+        if(GameState.inTutorial && TutorialManager.Instance != null)
+        {
+             TutorialManager.Instance.OnExitPressed();
+        }
+
+    }
+
+    public void UpdateButtons()
+    {
+        if (!GameState.inTutorial)
+        {
+            btnDecor.SetEnabled(true);
+            btnFurniture.SetEnabled(true);
+            btnUtility.SetEnabled(true);
+            exitBuildMode.SetEnabled(true);
+            return;
+        }
+
+        btnDecor.SetEnabled(false);
+        btnFurniture.SetEnabled(false);
+
+        btnUtility.SetEnabled(TutorialManager.Instance != null &&
+                       TutorialManager.Instance.currentStep >= TutorialStep.PlaceAllObjects);
+        exitBuildMode.SetEnabled(TutorialManager.Instance != null &&
+                       TutorialManager.Instance.currentStep >= TutorialStep.ExitBuildMode);
     }
 
     public void ShowUI() => buildModeUI.rootVisualElement.style.display = DisplayStyle.Flex;

@@ -184,7 +184,7 @@ MonoBehaviour:
   cupPlacementPoint: {fileID: 3886042818584531893}
   beanVisual: {fileID: 3219721344506954704}
   brewingTime: 5
-  ingredientToAdd: {fileID: 11400000, guid: b30e931c688effd439a56018be592ef5, type: 2}
+  ingredientToAdd: {fileID: 11400000, guid: f8f48e39ab3734b4cb5135b5091b974a, type: 2}
 --- !u!208 &-930094833198061142
 NavMeshObstacle:
   m_ObjectHideFlags: 0

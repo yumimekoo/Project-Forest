@@ -82,7 +82,7 @@ public class RecipeBookController : MonoBehaviour
 
     private void Update()
     {
-        if (bookInteract.WasPressedThisFrame() && GameState.playerInteractionAllowed)
+        if (bookInteract.WasPressedThisFrame() && !GameState.isInConversation)
         {
             if(isBookOpen)
                 Close();
@@ -254,12 +254,19 @@ public class RecipeBookController : MonoBehaviour
 
     private void Open()
     {
+        if(GameState.inTutorial && TutorialManager.Instance != null)
+        {
+            if (TutorialManager.Instance.currentStep != TutorialStep.OpenRecipeBook)
+                return;
+            TutorialManager.Instance.OnRecipeBookOpened();
+        }
+
         LoadRecipes();
         RefreshRecipesPage();
         RefreshOrders();
         isBookOpen = true;
         root.style.display = DisplayStyle.Flex;
-        Time.timeScale = 0f;
+        GameTime.SetPaused(true);
         // Pause the game or disable player controls if necessary
     }
 
@@ -267,7 +274,13 @@ public class RecipeBookController : MonoBehaviour
     {
         isBookOpen = false;
         root.style.display = DisplayStyle.None;
-        Time.timeScale = 1f;
-        // Resume the game or enable player controls if necessary
+        GameTime.SetPaused(false);
+
+        if (GameState.inTutorial && TutorialManager.Instance != null)
+        {
+            if (TutorialManager.Instance.currentStep != TutorialStep.CloseRecipeBook)
+                return;
+            TutorialManager.Instance.OnRecipeBookClosed();
+        }
     }
 }

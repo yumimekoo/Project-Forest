@@ -8,6 +8,16 @@ public class NPCSpawner : MonoBehaviour
 
     private void Update()
     {
+        if(GameState.inTutorial && TutorialManager.Instance != null)
+        {
+            if (TutorialManager.Instance.currentStep == TutorialStep.WaitingForNPCSpawn)
+            {
+                SpawnTutorialNPC();
+                TutorialManager.Instance.OnNPCSpawned();
+            }
+            return;
+        }
+
         if (allnpcretunred)
             return;
 
@@ -38,6 +48,16 @@ public class NPCSpawner : MonoBehaviour
         var controller = npc.GetComponent<NPCController>();
         controller.Initialize();
         TimeManager.Instance.TrackCostumers();
+    }
+
+    public void SpawnTutorialNPC()
+    {
+        var npc = NPCPool.Instance.GetTutorialNPC();
+        if (npc == null) 
+            return;
+        npc.transform.position = transform.position;
+        var controller = npc.GetComponent<NPCController>();
+        controller.Initialize();
     }
 
 }
