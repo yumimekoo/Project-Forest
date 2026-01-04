@@ -32,8 +32,7 @@ public enum TutorialStep
     NPCMonologue, // text to approach the NPC and take order
     TakeOrder,
     RecipeBookMonologue, // text to open recipe book and press TAB 
-    OpenRecipeBook,  
-    OrderMonologue, // add text to close book
+    OpenRecipeBook,   // add text to close book
     CloseRecipeBook, // add text to make coffe
     MakeCoffeeMonologue, // add text to add coffee cup to the machine, and coffee beans
     MakeCoffee, // add text to give coffee to NPC
@@ -70,6 +69,9 @@ public class TutorialManager : MonoBehaviour
     private GameObject builderGlow;
     private GameObject shopGlow;
     private GameObject doorGlow;
+    private GameObject npcGlow;
+    private GameObject coffeeMachineGlow;
+    private GameObject drawerGlow;
 
     private void OnEnable()
     {
@@ -93,6 +95,14 @@ public class TutorialManager : MonoBehaviour
         .FirstOrDefault(go => go.CompareTag("ShopGlow"));
         doorGlow = Resources.FindObjectsOfTypeAll<GameObject>()
         .FirstOrDefault(go => go.CompareTag("DoorGlow"));
+        npcGlow = Resources.FindObjectsOfTypeAll<GameObject>()
+        .FirstOrDefault(go => go.CompareTag("NPCGlow"));
+        coffeeMachineGlow = Resources.FindObjectsOfTypeAll<GameObject>()
+        .FirstOrDefault(go => go.CompareTag("CoffeeMachineGlow"));
+        drawerGlow = Resources.FindObjectsOfTypeAll<GameObject>()
+        .FirstOrDefault(go => go.CompareTag("DrawerGlow"));
+
+
 
         if (builderGlow == null)
             Debug.LogWarning("BuilderHighlight not found in scene");
@@ -103,6 +113,12 @@ public class TutorialManager : MonoBehaviour
 
         HandleHighlight(TutorialStep.StartMonologue);
 
+    }
+
+    private void ReloadNPCGlow()
+    {
+        npcGlow = Resources.FindObjectsOfTypeAll<GameObject>()
+        .FirstOrDefault(go => go.CompareTag("NPCGlow"));
     }
 
     private void Awake()
@@ -252,6 +268,7 @@ public class TutorialManager : MonoBehaviour
     public void OnNPCSpawned() { 
         if(currentStep == TutorialStep.WaitingForNPCSpawn) 
             Advance();
+            ReloadNPCGlow();
     }
     public void OnNPCSatDown() { 
         if(currentStep == TutorialStep.FirstNPCSpawned) 
@@ -291,7 +308,6 @@ public class TutorialManager : MonoBehaviour
            currentStep == TutorialStep.CafeIntroMonologue ||
            currentStep == TutorialStep.NPCMonologue ||
            currentStep == TutorialStep.RecipeBookMonologue ||
-           currentStep == TutorialStep.OrderMonologue ||
            currentStep == TutorialStep.MakeCoffeeMonologue)
 
         {
@@ -316,7 +332,7 @@ public class TutorialManager : MonoBehaviour
 
     void HandleGameStates(TutorialStep step)
     {
-        if(step == TutorialStep.CloseRecipeBook || step == TutorialStep.OrderMonologue || step == TutorialStep.OpenRecipeBook)
+        if(step == TutorialStep.CloseRecipeBook || step == TutorialStep.OpenRecipeBook)
         {
             GameState.playerMovementAllowed = false;
             GameState.playerInteractionAllowed = false;
@@ -327,15 +343,21 @@ public class TutorialManager : MonoBehaviour
     void HandleHighlight(TutorialStep step)
     {
         Debug.Log("Handling Highlight for step: " + step);
-        if(builderGlow != null)
+        if (builderGlow != null)
             builderGlow.SetActive(step == TutorialStep.PressEOnBuilder);
-        if(shopGlow != null)
+        if (shopGlow != null)
             shopGlow.SetActive(step == TutorialStep.PressEOnShop);
-        if(doorGlow != null)
+        if (doorGlow != null)
             doorGlow.SetActive(step == TutorialStep.PressEOnDoor);
+        if (npcGlow != null)
+            npcGlow.SetActive(step == TutorialStep.TakeOrder || step == TutorialStep.GiveCoffee);
+        if (coffeeMachineGlow != null)
+            coffeeMachineGlow.SetActive(step == TutorialStep.MakeCoffee);
+        if (drawerGlow != null)
+            drawerGlow.SetActive(step == TutorialStep.MakeCoffee);
     }
 
-    void HandleText(TutorialStep step)
+        void HandleText(TutorialStep step)
     {
         switch (step)
         {
@@ -346,31 +368,28 @@ public class TutorialManager : MonoBehaviour
                 yarnManagerTutorial.StartDialogue("BuilderMonologue");
                 break;
             case TutorialStep.PlaceMonologue:
-                yarnManagerTutorial.StartDialogue("StartMonologue");
+                yarnManagerTutorial.StartDialogue("PlaceMonologue");
                 break;
             case TutorialStep.BuyMonologue:
-                yarnManagerTutorial.StartDialogue("StartMonologue");
+                yarnManagerTutorial.StartDialogue("BuyMonologue");
                 break;
             case TutorialStep.DoorMonologue:
-                yarnManagerTutorial.StartDialogue("StartMonologue");
+                yarnManagerTutorial.StartDialogue("DoorMonologue");
                 break;
             case TutorialStep.CafeIntroMonologue:
-                yarnManagerTutorial.StartDialogue("StartMonologue");
+                yarnManagerTutorial.StartDialogue("CafeIntroMonologue");
                 break;
             case TutorialStep.NPCMonologue:
-                yarnManagerTutorial.StartDialogue("StartMonologue");
+                yarnManagerTutorial.StartDialogue("NPCMonologue");
                 break;
             case TutorialStep.RecipeBookMonologue:
-                yarnManagerTutorial.StartDialogue("StartMonologue");
-                break;
-            case TutorialStep.OrderMonologue:
-                yarnManagerTutorial.StartDialogue("StartMonologue");
+                yarnManagerTutorial.StartDialogue("RecipeBookMonologue");
                 break;
             case TutorialStep.MakeCoffeeMonologue:
-                yarnManagerTutorial.StartDialogue("StartMonologue");
+                yarnManagerTutorial.StartDialogue("MakeCoffeeMonologue");
                 break;
             case TutorialStep.EndMonologue:
-                yarnManagerTutorial.StartDialogue("StartMonologue");
+                yarnManagerTutorial.StartDialogue("EndMonologue");
                 break;
             default:
                 Debug.Log("No dialogue for this step: " + step);
@@ -383,8 +402,8 @@ public class TutorialManager : MonoBehaviour
         switch (step)
         {
             case TutorialStep.PressEOnBuilder:
-                titleLabel.text = "Use the Builder.";
-                descriptionLabel.text = "Press 'E' on the Builder to open build mode.";
+                titleLabel.text = "Open Builder.";
+                descriptionLabel.text = "Walk up to the Builder and press E to open build mode.";
                 StartUIRoutine(ShowUIAnimated());
                 break;
             case TutorialStep.BuilderMonologue:
@@ -393,8 +412,8 @@ public class TutorialManager : MonoBehaviour
                 descriptionLabel.text = "";
                 break;
             case TutorialStep.PressDeleteMode:
-                titleLabel.text = "Delete Objects.";
-                descriptionLabel.text = "Delete " + objectsToDeleteandPlace + " more objects.";
+                titleLabel.text = "Remove Objects";
+                descriptionLabel.text = "Press X to enter Remove Mode, then Left Click objects to remove them. Remove "+ objectsToDeleteandPlace +" more objects to continue.";
                 StartUIRoutine(ShowUIAnimated());
                 break;
             case TutorialStep.PlaceMonologue:
@@ -403,13 +422,13 @@ public class TutorialManager : MonoBehaviour
                 descriptionLabel.text = "";
                 break;
             case TutorialStep.PlaceAllObjects:
-                titleLabel.text = "Place Objects.";
-                descriptionLabel.text = "Press the Delete button again to exit build mode and place all objects." +
-                    "Place "+objectsToDeleteandPlace+" more objects.";
+                titleLabel.text = "Place Furniture";
+                descriptionLabel.text = "Press X again to leave Remove Mode." +
+                    "Select furniture and place " + objectsToDeleteandPlace+ " objects in your café.";
                 StartUIRoutine(ShowUIAnimated());
                 break;
             case TutorialStep.ExitBuildMode:
-                StartUIRoutine(SwapRoutine("Exit Build Mode", "exit by presingg the Exit button or escape"));
+                StartUIRoutine(SwapRoutine("Exit Build Mode", "When you’re done building, press Esc or click the Exit button."));
                 break;
             case TutorialStep.BuyMonologue:
                 StartUIRoutine(HideUIAnimated());
@@ -418,14 +437,14 @@ public class TutorialManager : MonoBehaviour
                 break;
             case TutorialStep.PressEOnShop:
                 titleLabel.text = "Open Shop";
-                descriptionLabel.text = "Press 'E' on the Shop to buy items.";
+                descriptionLabel.text = "Walk up to the Shop and press E to browse and buy items.";
                 StartUIRoutine(ShowUIAnimated());
                 break;
             case TutorialStep.BuyItem:
-                StartUIRoutine(SwapRoutine("Buy Items", "Buy the required items from the shop."));
+                StartUIRoutine(SwapRoutine("Buy Items", "Buy "+itemsToBuy+" Coffee Beans from the Shop to prepare for making coffee."));
                 break;
             case TutorialStep.ExitShop:
-                StartUIRoutine(SwapRoutine("Exit Shop", "Press the Exit button to leave the shop."));
+                StartUIRoutine(SwapRoutine("Exit Shop", "Click the Exit button to leave the Shop"));
                 break;
             case TutorialStep.DoorMonologue:
                 StartUIRoutine(HideUIAnimated());
@@ -433,8 +452,8 @@ public class TutorialManager : MonoBehaviour
                 descriptionLabel.text = "";
                 break;
             case TutorialStep.PressEOnDoor:
-                titleLabel.text = "Exit to Cafe";
-                descriptionLabel.text = "Press 'E' on the Door to enter your cafe.";
+                titleLabel.text = "Enter Café";
+                descriptionLabel.text = "Press E at the Door to enter your café and start the day.";
                 StartUIRoutine(ShowUIAnimated());
                 break;
             case TutorialStep.CafeIntroMonologue:
@@ -444,8 +463,8 @@ public class TutorialManager : MonoBehaviour
                 break;
             case TutorialStep.FirstNPCSpawned:
                 StartUIRoutine(ShowUIAnimated());
-                titleLabel.text = "wait for npc to sit down";
-                descriptionLabel.text = "wait";
+                titleLabel.text = "A Customer Arrived";
+                descriptionLabel.text = "Wait a moment until the customer finds a seat and sits down.";
                 break;
             case TutorialStep.NPCMonologue:
                 StartUIRoutine(HideUIAnimated());
@@ -454,7 +473,7 @@ public class TutorialManager : MonoBehaviour
                 break;
             case TutorialStep.TakeOrder:
                 titleLabel.text = "Take Order";
-                descriptionLabel.text = "Press 'E' to take order from NPC";
+                descriptionLabel.text = "Walk up to the customer and press E to take their order.";
                 StartUIRoutine(ShowUIAnimated());
                 break;
             case TutorialStep.RecipeBookMonologue:
@@ -464,18 +483,11 @@ public class TutorialManager : MonoBehaviour
                 break;
             case TutorialStep.OpenRecipeBook:
                 titleLabel.text = "Open Recipe Book";
-                descriptionLabel.text = "Press 'TAB' to open the recipe book.";
+                descriptionLabel.text = "Press TAB to open the Recipe Book and check active orders.";
                 StartUIRoutine(ShowUIAnimated());
-                break;
-            case TutorialStep.OrderMonologue:
-                StartUIRoutine(HideUIAnimated());
-                titleLabel.text = "";
-                descriptionLabel.text = "";
                 break;
             case TutorialStep.CloseRecipeBook:
-                titleLabel.text = "Close Recipe Book";
-                descriptionLabel.text = "Press 'TAB' to close the recipe book.";
-                StartUIRoutine(ShowUIAnimated());
+                StartUIRoutine(SwapRoutine("Close Recipe Book", "Press TAB again to close the Recipe Book and continue playing."));
                 break;
             case TutorialStep.MakeCoffeeMonologue:
                 StartUIRoutine(HideUIAnimated());
@@ -484,11 +496,11 @@ public class TutorialManager : MonoBehaviour
                 break;
             case TutorialStep.MakeCoffee:
                 titleLabel.text = "Make Coffee";
-                descriptionLabel.text = "Make coffee using the coffee machine.";
+                descriptionLabel.text = "Use the Coffee Machine to prepare the ordered drink. Add a mug and the required ingredients.";
                 StartUIRoutine(ShowUIAnimated());
                 break;
             case TutorialStep.GiveCoffee:
-                StartUIRoutine(SwapRoutine("Give Coffee", "Give the coffee to the NPC."));
+                StartUIRoutine(SwapRoutine("Serve Customer", "Bring the finished coffee to the customer and give it to them."));
                 break;
             case TutorialStep.EndMonologue:
                 StartUIRoutine(HideUIAnimated());

@@ -8,6 +8,9 @@ TagManager:
   - BuilderGlow
   - DoorGlow
   - ShopGlow
+  - NPCGlow
+  - CoffeeMachineGlow
+  - DrawerGlow
   layers:
   - Default
   - TransparentFX
