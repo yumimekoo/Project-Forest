@@ -1,0 +1,18 @@
+:root {
+}
+
+.tutorial-root {
+	transition-property: translate, opacity;
+    transition-duration: 0.75s;
+    transition-timing-function: ease-in-out-cubic;
+}
+
+.tutorial-hidden {
+    translate: 0px -300px;
+    opacity: 1;
+}
+
+.tutorial-visible {
+    translate: 0px 0px;
+    opacity: 1;
+}

@@ -74,4 +74,20 @@ public static class NPCOrderGenerator
             requestedDrink = null
         };
     }
+
+    public static DrinkOrder GenerateTutorialOrder()
+    {
+        var tutorialDrink = UnlockManager.Instance.runtimeDatabase.GetUnlockedItems()
+            .FirstOrDefault(i => i.id == 218);
+        if(tutorialDrink == null)
+        {
+            Debug.LogWarning("Tutorial drink not found in database.");
+            return null;
+        }
+        return new DrinkOrder
+        {
+            isSpecific = true,
+            requestedDrink = tutorialDrink
+        };
+    }
 }

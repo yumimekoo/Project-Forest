@@ -1,0 +1,74 @@
+﻿title: StartMonologue
+---
+[wave] Welcome! [/wave] This room is your main hub - a calm place to plan, build, and prepare between café days.
+But before anything else…  let’s take a look at your café space ☕
+Walk to the highlighted Café Builder and press E to interact.
+===
+
+title: BuilderMonologue
+---
+This is your <place>Blueprint Builder</place>.Here you can remove, place, and rotate everything in your café.
+Hmm… it looks a bit rough right now 😅 Let’s clean things up first.
+Press <key>X</key> to enter <action>Remove Mode</action>. While in this mode, Left Click objects to remove them.
+Remove <important>X objects</important> to continue.    
+===
+
+title: PlaceMonologue
+---
+Much better already ✨ Now it’s time to place furniture back and shape your café.
+Press <key>X</key> again to exit <action>Remove Mode</action>. Open the <ui>All</ui> tab to see everything you own.
+Select an object, then Left Click to place it in the café. Place <important>X objects</important> to continue. Make it cozy!!
+===
+
+title: BuyMonologue
+---
+A café needs supplies! 🛒
+To brew coffee or unlock new furniture, you’ll need to visit the <place>Shop</place>.
+Here you can buy ingredients, decorations and machines for your café.
+Buy <important>10 Coffee Beans</important> to prepare for your first day.
+===
+
+title: DoorMonologue
+---
+Everything’s set — time to open! 🚪
+Walk to the <place>highlighted door</place> and press <key>E</key> to <action>enter your café</action>.
+This will start your first day as a café owner ☕
+===
+
+title: CafeIntroMonologue
+---
+Welcome to your café ☕✨ This is where the magic happens :3
+You’ll serve customers, make drinks and grow your cozy little business. (MAKE MONEEEEEY AND FREINDS!!)
+Let's wait for our first customer!
+===
+
+title: NPCMonologue
+---
+Here comes your first customer! 🎉
+Customers will only arrive if there’s a seat available, so make sure your café has enough chairs.
+Press <key>E</key> to <action>interact</action> and see what they want to order.
+Prepare their drink at the <place>coffee machine</place>. Be quick — their <important>patience bar</important> appears above their head.
+With some of them, you can also <action>chat</action> to build friendship!
+===
+
+title: RecipeBookMonologue
+---
+Not sure how to make a drink? 📖
+Press <key>TAB</key> to open your <ui>Recipe Book</ui>. Here you can see all unlocked recipes and the ingredients needed for each one.
+On the left side, you’ll find active customer orders. Click an order to view its recipe instantly.
+===
+title: MakeCoffeeMonologue
+---
+Let’s brew your first coffee ☕
+First, grab a mug and ingredients
+from the <place>highlighted storage drawer</place>. Press <key>E</key> to open it and select you Item. Then walk to the <place>coffee machine</place>.
+While holding an item, press <key>E</key> to <action>add it to the machine</action>. And there you go — your first coffee! 🎉
+(Later on, recipes will become more complex and exciting. There is a lot to unlock!)
+===
+title: EndMonologue
+---
+Each café day ends after some time 🌙 .. There’s a day and night cycle, and customers depend on the time of day.
+Once all guests leave, you’ll see a daily recap of your progress. After that, the door back to the hub unlocks.
+.. And don’t forget — <important>every Sunday</important>, rent is due! ..
+That’s all you need to know. Enjoy your first day and have fun ☕💛
+===

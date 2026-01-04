@@ -1,16 +1,14 @@
 using UnityEngine;
 using Yarn.Unity;
 
-public class YarnManager : MonoBehaviour
+public class YarnManagerTutorial : MonoBehaviour
 {
-    public static YarnManager Instance;
-
     public DialogueRunner dialogueRunner;
     public GameObject dialogueObject;
 
     private void Awake()
     {
-        Instance = this;
+
     }
 
     private void OnEnable()
@@ -28,13 +26,17 @@ public class YarnManager : MonoBehaviour
         dialogueObject.SetActive(false);
         Debug.Log("[Yarn] Dialogue finished");
         GameTime.SetPaused(false);
+        GameState.playerMovementAllowed = true;
+        GameState.playerInteractionAllowed = true;
+        TutorialManager.Instance.OnDialogueFinished();
     }
 
-    public void StartDialogue(YarnProject project, string startNode)
+    public void StartDialogue(string startNode)
     {
         dialogueObject.SetActive(true);
-        dialogueRunner.SetProject(project);
         dialogueRunner.StartDialogue(startNode);
+        GameState.playerMovementAllowed = false;
+        GameState.playerInteractionAllowed = false;
     }
 
     public void StopDialogue()
@@ -43,3 +45,4 @@ public class YarnManager : MonoBehaviour
         dialogueRunner.Stop();
     }
 }
+

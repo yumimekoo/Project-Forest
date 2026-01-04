@@ -45,7 +45,7 @@ public class CoffeMachine : MonoBehaviour, IInteractable
         if (isBrewing)
             return;
 
-        if (player.HasItem() && player.heldItem.id == 7) // hier noch ändern
+        if (player.HasItem() && player.heldItem.id == 8) // hier noch ändern maybe
         {
             AddBeans(player);
             return;
@@ -127,5 +127,11 @@ public class CoffeMachine : MonoBehaviour, IInteractable
         cupReady = true;
         isBrewing = false;
         hasBeans = false;
+
+        if(GameState.inTutorial && TutorialManager.Instance != null)
+        {
+            TutorialManager.Instance.OnCoffeeMade();
+        }
+
     }
 }

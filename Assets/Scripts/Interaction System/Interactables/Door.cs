@@ -4,7 +4,13 @@ public class Door : MonoBehaviour, IInteractable
 {
     public string GetInteractionPrompt()
     {
-        if(GameState.isInRoom)
+        if(GameState.inTutorial && TutorialManager.Instance != null)
+        {
+            if (TutorialManager.Instance.currentStep < TutorialStep.PressEOnDoor)
+                return "The door is also not the GLOWING object";
+        }
+
+        if (GameState.isInRoom)
         {
             return "Exit Room";
         }
@@ -16,6 +22,13 @@ public class Door : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInventory player)
     {
+        if(GameState.inTutorial && TutorialManager.Instance != null)
+        {
+            if (TutorialManager.Instance.currentStep < TutorialStep.PressEOnDoor)
+                return;
+            TutorialManager.Instance.OnDoorUsed();
+        }
+
         if (player.HasItem())
         {
             player.ClearItem();

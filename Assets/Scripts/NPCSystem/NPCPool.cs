@@ -5,6 +5,7 @@ public class NPCPool : MonoBehaviour
 {
     public static NPCPool Instance;
 
+    public GameObject tutorialNPC;
     private Dictionary<NPCIdentitySO, GameObject> npcInstances = new();
     private List<NPCIdentitySO> availableNPCs = new();
 
@@ -66,5 +67,12 @@ public class NPCPool : MonoBehaviour
     public bool AllNPCsReturned()
     {
         return availableNPCs.Count == npcInstances.Count;
+    }
+
+    public GameObject GetTutorialNPC()
+    {
+        var npcInstance = Instantiate(tutorialNPC);
+        npcInstance.SetActive(true);
+        return npcInstance;
     }
 }

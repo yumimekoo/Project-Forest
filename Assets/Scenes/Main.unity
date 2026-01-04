@@ -1965,13 +1965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FurnitureInventory
   buildMode3D: {fileID: 1050913549}
-  defaultInventory:
-  - id: 10
-    amount: 5
-  - id: 11
-    amount: 5
-  - id: 12
-    amount: 5
+  defaultInventory: []
 --- !u!1 &1314382293
 GameObject:
   m_ObjectHideFlags: 0
@@ -2517,6 +2511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 417ba2ec9a1ca0447800616d2a791831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCPool
+  tutorialNPC: {fileID: 1862542262716857225, guid: 7b0a6db4101ee774a9a1be2d2f1a6725, type: 3}
 --- !u!1001 &1516450814
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -122,6 +122,15 @@ public class NPCController : MonoBehaviour, IInteractable
 
         transform.position = targetChair.seatPoint.position;
         transform.rotation = targetChair.seatPoint.rotation;
+
+        if (GameState.inTutorial && TutorialManager.Instance != null)
+        {
+            if (TutorialManager.Instance.currentStep == TutorialStep.FirstNPCSpawned)
+            {
+                TutorialManager.Instance.OnNPCSatDown();
+                SetState(NPCState.Sitting, 9999f); // prevent leaving during tutorial
+            }
+        }
     }
 
     public void ResolveOrder(ItemDataSO givenDrink, List<ItemDataSO> contents)
@@ -148,17 +157,42 @@ public class NPCController : MonoBehaviour, IInteractable
         }
         SetState(NPCState.Drinking, identity.timeDrinking);
         currentOrder = null;
+
+        if(GameState.inTutorial && TutorialManager.Instance != null)
+        {
+            if (TutorialManager.Instance.currentStep == TutorialStep.GiveCoffee)
+            {
+                TutorialManager.Instance.OnCoffeeGiven();
+
+                Destroy(gameObject);
+            }
+        }
+
     }
 
     public void CreateOrder()
     {
         currentOrder = NPCOrderGenerator.GenerateOrder(identity);
-        if(currentOrder != null)
+
+        if(GameState.inTutorial && TutorialManager.Instance != null)
+        {
+            if (TutorialManager.Instance.currentStep == TutorialStep.TakeOrder)
+            {
+                currentOrder = NPCOrderGenerator.GenerateTutorialOrder();
+                TutorialManager.Instance.OnOrderTaken();
+            }
+        }
+
+        if (currentOrder != null)
         {
             OrderManager.Instance.AddOrder(identity, currentOrder.requestedDrink);
             Debug.Log($"{identity.npcName} has ordered: {currentOrder}");
             TimeManager.Instance.TrackOrderAccepted();
             SetState(NPCState.WaitingForDrink, identity.timeToGiveOrder);
+            if(GameState.inTutorial && TutorialManager.Instance != null)
+            {
+                SetState(NPCState.WaitingForDrink, 9999f); // prevent leaving during tutorial
+            }
         }
     }
 

@@ -19,8 +19,12 @@ public class TimeUI : MonoBehaviour
             TimeManager.Instance.OnTimeChanged += UpdateTime;
             TimeManager.Instance.OnProgressChanged += UpdateProgress;
             TimeManager.Instance.OnNightTriggered += HandleNightTriggered;
+            TimeManager.Instance.OnTutorialComplete += ShowUI;
         }
-
+        if(GameState.inTutorial || GameState.isInRoom)
+        {
+            root.style.display = DisplayStyle.None;
+        }
     }
 
     private void OnDisable()
@@ -30,7 +34,13 @@ public class TimeUI : MonoBehaviour
             TimeManager.Instance.OnTimeChanged -= UpdateTime;
             TimeManager.Instance.OnProgressChanged -= UpdateProgress;
             TimeManager.Instance.OnNightTriggered -= HandleNightTriggered;
+            TimeManager.Instance.OnTutorialComplete -= ShowUI;
         }
+    }
+
+    public void ShowUI()
+    {
+        timeUI.rootVisualElement.style.display = DisplayStyle.Flex;
     }
 
     private void UpdateTime(float currentTime)

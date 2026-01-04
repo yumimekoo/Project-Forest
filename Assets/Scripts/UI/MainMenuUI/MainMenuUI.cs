@@ -55,7 +55,7 @@ public class MainMenuUI : MonoBehaviour
     private void OnSaveButtonClicked(int slot)
     {
         SaveManager.Instance.SetActiveSaveSlot(slot);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Room");
     }
 
     private void OnExitButtonClicked()

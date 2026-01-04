@@ -42,7 +42,7 @@ public class TimeManager : MonoBehaviour
 
     [Header("Time Settings")]
     public float dayDurationInSeconds;
-    private float timeElapsed;
+    private float timeElapsed = 0f;
 
     private bool nightTriggered = false;
 
@@ -62,6 +62,7 @@ public class TimeManager : MonoBehaviour
     public event Action <int, Weekday> OnNewDayStarted;
     //public event Action OnRentDue;
     public event Action OnGameOver;
+    public event Action OnTutorialComplete;
     private void Awake()
     {
         if (Instance != null)
@@ -74,7 +75,7 @@ public class TimeManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameState.dayEnded)
+        if (GameState.dayEnded || GameState.inTutorial)
             return;
 
         timeElapsed += GameTime.DeltaTime;
@@ -88,15 +89,11 @@ public class TimeManager : MonoBehaviour
             OnNightTriggered?.Invoke();
             GameState.isDay = false;
             GameState.isNight = true;
-            //Debug.Log("now is night");
         }
 
         if (!GameState.dayEnded && timeElapsed >= dayDurationInSeconds)
         {
             GameState.dayEnded = true;
-            //OnDayEnded?.Invoke();
-            //Debug.Log("day has ended");
-            //ShowDaySummary();
         }
     }
 
@@ -115,6 +112,11 @@ public class TimeManager : MonoBehaviour
         StartDay();
     }
 
+    public void TutorialComplete()
+    {
+        OnTutorialComplete?.Invoke();
+    }
+
     public void InitializeFirstDay()
     {
         currentDay = 1;
@@ -125,6 +127,8 @@ public class TimeManager : MonoBehaviour
 
     private void AdvanceDay()
     {
+        if(GameState.inTutorial)
+            return;
         Debug.LogWarning("Advancing to next day");
         currentDay++;
         currentWeekday = (Weekday)(((int)currentWeekday + 1) % 7);
@@ -136,6 +140,7 @@ public class TimeManager : MonoBehaviour
 
     private void StartDay()
     {
+
         Debug.Log($"Starting Day {currentDay} - {currentWeekday} : Current Week {currentWeek}");
         OnNewDayStarted?.Invoke(currentDay, currentWeekday);
     }

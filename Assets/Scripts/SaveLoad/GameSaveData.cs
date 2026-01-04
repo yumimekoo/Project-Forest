@@ -12,6 +12,19 @@ public class GameSaveData
     public List<ItemSaveData> itemInventory = new();
     public List<FriendshipSaveData> friendships = new();
     public DaySaveData currentDay;
+    public GameStateSaveData gameState;
+}
+
+[System.Serializable]
+public class GameStateSaveData
+{
+
+    public bool inTutorial;
+
+    public GameStateSaveData(bool inTutorial)
+    {
+        this.inTutorial = inTutorial;
+    }
 }
 
 // subclasses for GameSaveData
