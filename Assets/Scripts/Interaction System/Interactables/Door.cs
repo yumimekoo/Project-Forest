@@ -42,9 +42,9 @@ public class Door : MonoBehaviour, IInteractable
 
     public void ChangeScene()
     {
-        if (FurnitureInventory.Instance.GetOccupiedCellsCount() < 5)
+        if (FurnitureInventory.Instance.GetOccupiedCellsCount() < 5) // chnage that here please
         {
-            Debug.Log("You need to have at least 5 pieces of furniture placed to enter the room.");
+            //Debug.Log("You need to have at least 5 pieces of furniture placed to enter the room.");
             return;
         }
            

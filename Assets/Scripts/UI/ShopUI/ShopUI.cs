@@ -187,8 +187,6 @@ public class ShopUI : MonoBehaviour
             return;
         }
 
-        // --- Tutorial Mode ---
-
         exitButton.SetEnabled(TutorialManager.Instance != null &&
             TutorialManager.Instance.currentStep >= TutorialStep.ExitShop);
 

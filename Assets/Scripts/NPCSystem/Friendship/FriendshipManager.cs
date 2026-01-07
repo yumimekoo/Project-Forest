@@ -20,7 +20,7 @@ public class FriendshipManager : MonoBehaviour
 
         foreach (var npc in npcs)
         {
-            Debug.Log($"[FriendshipManager] Loaded NPC: {npc.npcName} with ID: {npc.npcID}");
+            //Debug.Log($"[FriendshipManager] Loaded NPC: {npc.npcName} with ID: {npc.npcID}");
             npcLookup[npc.npcID] = npc;
         }
     }
@@ -58,22 +58,22 @@ public class FriendshipManager : MonoBehaviour
         data.xp += amount;
         data.xp = Mathf.Max(0, data.xp);
 
-        Debug.Log($"[FriendshipManager] Added {amount} XP to {npcID}. Total XP: {data.xp}");
+        //Debug.Log($"[FriendshipManager] Added {amount} XP to {npcID}. Total XP: {data.xp}");
 
         int newLevel = data.xp / 10;
 
-        Debug.Log($"[FriendshipManager] Calculated new level for {npcID}: {newLevel}");
+        //Debug.Log($"[FriendshipManager] Calculated new level for {npcID}: {newLevel}");
 
         if (newLevel > data.level)
         {
             data.level = newLevel;
-            Debug.Log($"[FriendshipManager] {npcID} leveled up to level {data.level}!");
+            //Debug.Log($"[FriendshipManager] {npcID} leveled up to level {data.level}!");
             HandleLevelUp(npcID, newLevel);
         }
         else if (newLevel < data.level)
         {
             data.level = newLevel;
-            Debug.Log($"[FriendshipManager] {npcID} leveled down to level {data.level}.");
+            //Debug.Log($"[FriendshipManager] {npcID} leveled down to level {data.level}.");
         }
     }
 
@@ -96,13 +96,13 @@ public class FriendshipManager : MonoBehaviour
 
     private void UnlockReward(FriendshipReward reward)
     {
-        Debug.Log($"[FriendshipManager] Unlocked friendship reward: {reward.rewardDescription}");
+        //Debug.Log($"[FriendshipManager] Unlocked friendship reward: {reward.rewardDescription}");
         UnlockManager.Instance.UnlockRecipe(reward.rewardedRecipe);
     }
 
     public List<FriendshipSaveData> GetSaveData()
     {
-        Debug.Log($"[FriendshipManager] Saving {freindships.Count} friendships.");
+        //Debug.Log($"[FriendshipManager] Saving {freindships.Count} friendships.");
         return new List<FriendshipSaveData>(freindships.Values);
     }
 
@@ -111,7 +111,7 @@ public class FriendshipManager : MonoBehaviour
         freindships.Clear();
         foreach (var entry in data)
         {
-            Debug.Log($"[FriendshipManager] Loaded friendship data for NPC ID: {entry.npcID}, Level: {entry.level}, XP: {entry.xp}");
+            //Debug.Log($"[FriendshipManager] Loaded friendship data for NPC ID: {entry.npcID}, Level: {entry.level}, XP: {entry.xp}");
             freindships[entry.npcID] = entry;
         }
     }

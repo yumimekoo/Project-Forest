@@ -13,7 +13,7 @@ public class StorageDrawer : MonoBehaviour, IInteractable
                 return;
 
             var unlockedItems = UnlockManager.Instance.runtimeDatabase.GetUnlockedItems();
-            var filteredItems = unlockedItems.FindAll(item => item.storageType == StorageType.Fridge && item.itemType == ItemType.Base); // here with itemType then? or StorageType enum
+            var filteredItems = unlockedItems.FindAll(item => item.storageType == StorageType.Fridge && item.itemType == ItemType.Base);
 
         FridgeUI.Instance.OpenFridge(
             filteredItems, 

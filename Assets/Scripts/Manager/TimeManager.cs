@@ -47,7 +47,6 @@ public class TimeManager : MonoBehaviour
     private bool nightTriggered = false;
 
     public event Action OnNightTriggered;
-    //public event Action OnDayEnded;
     public event Action<float> OnTimeChanged;
     public event Action<float> OnProgressChanged;
 
@@ -60,7 +59,6 @@ public class TimeManager : MonoBehaviour
 
     public event Action <DayStats, int, Weekday, int, int> OnDaySummaryReady;
     public event Action <int, Weekday> OnNewDayStarted;
-    //public event Action OnRentDue;
     public event Action OnGameOver;
     public event Action OnTutorialComplete;
     private void Awake()
@@ -100,8 +98,6 @@ public class TimeManager : MonoBehaviour
     public float GetDayProgress() => Mathf.Clamp01(timeElapsed / dayDurationInSeconds);
     public float GetTimeElapsed() => timeElapsed;
 
-    // -- Day tracking --
-
     public void StartNewDay()
     {
         if (GameState.isInRoom)
@@ -129,7 +125,7 @@ public class TimeManager : MonoBehaviour
     {
         if(GameState.inTutorial)
             return;
-        Debug.LogWarning("Advancing to next day");
+        //Debug.LogWarning("Advancing to next day");
         currentDay++;
         currentWeekday = (Weekday)(((int)currentWeekday + 1) % 7);
         if(currentWeekday == Weekday.Monday && currentDay > 1)
@@ -177,9 +173,6 @@ public class TimeManager : MonoBehaviour
         GameState.doorUnlocked = true;
 
     }
-
-    // tracking day stats
-
     public void TrackMoney(int amount)
     {
         todayStats.moneyEarned += amount;
@@ -216,8 +209,6 @@ public class TimeManager : MonoBehaviour
         }
     }
 
-    // save and load day data
-
     public DaySaveData GetSaveData()
     {
         return new DaySaveData(currentDay, (int)currentWeekday, currentWeek);
@@ -227,11 +218,11 @@ public class TimeManager : MonoBehaviour
     {
         if(data == null)
         {
-            Debug.LogWarning("No TimeManager Save Data to apply, INITIALIZING");
+            //Debug.LogWarning("No TimeManager Save Data to apply, INITIALIZING");
             InitializeFirstDay();
             return;
         }
-        Debug.LogWarning("Applying TimeManager Save Data");
+        //Debug.LogWarning("Applying TimeManager Save Data");
         currentDay = data.day;
         currentWeekday = (Weekday)data.weekDay;
         currentWeek = data.week;

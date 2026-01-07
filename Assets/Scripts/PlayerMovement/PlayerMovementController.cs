@@ -36,7 +36,7 @@ public class PlayerMovementController : MonoBehaviour
         camForward.Normalize();
         camRight.Normalize();
 
-        Vector3 move = (camForward * movement.y + camRight * movement.x) * speed; // immer richtung der kamera
+        Vector3 move = (camForward * movement.y + camRight * movement.x) * speed;
         rb.MovePosition(rb.position + move * Time.fixedDeltaTime);
 
         if (move.sqrMagnitude > 0.001f)

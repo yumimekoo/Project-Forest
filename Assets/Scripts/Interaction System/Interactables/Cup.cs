@@ -5,7 +5,7 @@ using UnityEngine;
 public class Cup : MonoBehaviour, IInteractable
 {
     public List<ItemDataSO> contents = new List<ItemDataSO>();
-    public ItemDataSO currentItemData; // current state
+    public ItemDataSO currentItemData;
     public GameObject pickupCup;
     public Transform contentVisualRoot;
     public ItemDataSO suspiciousDrinkData;
@@ -18,7 +18,6 @@ public class Cup : MonoBehaviour, IInteractable
     }
     public string GetInteractionPrompt()
     {
-        // return a list of all contents in the cup
         if (contents.Count == 0)
         {
             return "Add contents to the Cup.";

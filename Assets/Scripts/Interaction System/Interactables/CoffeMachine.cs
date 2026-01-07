@@ -116,7 +116,6 @@ public class CoffeMachine : MonoBehaviour, IInteractable
     private IEnumerator BrewCoffee()
     {
         isBrewing = true;
-        //Debug.Log("Brewing coffee...");
 
         yield return new WaitForSeconds(brewingTime);
 

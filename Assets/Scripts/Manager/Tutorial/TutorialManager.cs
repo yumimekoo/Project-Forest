@@ -6,36 +6,34 @@ using UnityEngine.UIElements;
 
 public enum TutorialStep
 {
-    StartMonologue, // add UI: text to go to builder
+    StartMonologue,
     PressEOnBuilder,
-    BuilderMonologue, // add text to press Deletebutton and then LeftClick to delete all object
+    BuilderMonologue,
 
     PressDeleteMode,  
     DeleteAllObjects,
-    PlaceMonologue, // change text to press delete button again to exit build mode and place all objects
-    PlaceAllObjects, // probably 7 objects to place, 2 counters, 1 coffee machine, 1 table, 2 chairs, 1 shelf
-    ExitBuildMode, // press exit button to exit build mode, make Exit button visible now
+    PlaceMonologue,
+    PlaceAllObjects,
+    ExitBuildMode,
 
     BuyMonologue,
-    PressEOnShop, // add text to buy coffe
-    BuyItem,     // add text to exit shop (button enables)
+    PressEOnShop,
+    BuyItem,
     ExitShop,
 
-    DoorMonologue, // add text to go to door and press E
+    DoorMonologue,
     PressEOnDoor,
-
-    //--- Switch Scene ---//
 
     CafeIntroMonologue, 
     WaitingForNPCSpawn,
     FirstNPCSpawned,
-    NPCMonologue, // text to approach the NPC and take order
+    NPCMonologue,
     TakeOrder,
-    RecipeBookMonologue, // text to open recipe book and press TAB 
-    OpenRecipeBook,   // add text to close book
-    CloseRecipeBook, // add text to make coffe
-    MakeCoffeeMonologue, // add text to add coffee cup to the machine, and coffee beans
-    MakeCoffee, // add text to give coffee to NPC
+    RecipeBookMonologue,
+    OpenRecipeBook,
+    CloseRecipeBook,
+    MakeCoffeeMonologue,
+    MakeCoffee,
     
     GiveCoffee,
     EndMonologue,
@@ -102,15 +100,6 @@ public class TutorialManager : MonoBehaviour
         drawerGlow = Resources.FindObjectsOfTypeAll<GameObject>()
         .FirstOrDefault(go => go.CompareTag("DrawerGlow"));
 
-
-
-        if (builderGlow == null)
-            Debug.LogWarning("BuilderHighlight not found in scene");
-        if (shopGlow == null)
-            Debug.LogWarning("ShopHighlight not found in scene");
-        if (doorGlow == null)
-            Debug.LogWarning("DoorHighlight not found in scene");
-
         HandleHighlight(TutorialStep.StartMonologue);
 
     }
@@ -146,14 +135,14 @@ public class TutorialManager : MonoBehaviour
 
         root.style.display = DisplayStyle.None;
 
-        Debug.Log("Tutorial Manager Initialized");
+        //Debug.Log("Tutorial Manager Initialized");
     }
 
     private void SetStep(TutorialStep step)
     {
-        Debug.LogWarning("Setting Tutorial Step to: " + step);
+        //Debug.LogWarning("Setting Tutorial Step to: " + step);
         currentStep = step;
-        Debug.Log($"Tutorial Step set to: {step}");
+        //Debug.Log($"Tutorial Step set to: {step}");
         HandleHighlight(step);
         HandleText(step);
         HandleUI(step);
@@ -185,15 +174,10 @@ public class TutorialManager : MonoBehaviour
     {
         GameState.inTutorial = false;
         SetStep(TutorialStep.TutorialDone);
-        Debug.Log("Tutorial Completed!");
+        //Debug.Log("Tutorial Completed!");
         TimeManager.Instance.TutorialComplete();
         Destroy(gameObject);
     }
-
-    // ---
-    // Events
-    // ---
-
     public void OnBuilderUsed()
     {
         if(currentStep == TutorialStep.PressEOnBuilder) 
@@ -328,10 +312,6 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    // ---
-    // Handlers
-    // ---
-
     void HandleGameStates(TutorialStep step)
     {
         if(step == TutorialStep.CloseRecipeBook || step == TutorialStep.OpenRecipeBook)
@@ -344,7 +324,7 @@ public class TutorialManager : MonoBehaviour
 
     void HandleHighlight(TutorialStep step)
     {
-        Debug.Log("Handling Highlight for step: " + step);
+        //Debug.Log("Handling Highlight for step: " + step);
         if (builderGlow != null)
             builderGlow.SetActive(step == TutorialStep.PressEOnBuilder);
         if (shopGlow != null)
@@ -394,7 +374,7 @@ public class TutorialManager : MonoBehaviour
                 yarnManagerTutorial.StartDialogue("EndMonologue");
                 break;
             default:
-                Debug.Log("No dialogue for this step: " + step);
+                //Debug.Log("No dialogue for this step: " + step);
                 break;
         }
     }

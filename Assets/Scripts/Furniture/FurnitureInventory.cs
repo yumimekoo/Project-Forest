@@ -98,8 +98,6 @@ public class FurnitureInventory : MonoBehaviour
             //Debug.Log($"[FurnitureInventory] Loaded item ID {item.id} with amount {item.amount}");
         }
     }
-
-    //helper to get occupied cells from buildmode3D
     public int GetOccupiedCellsCount()
     {
         return buildMode3D.GetOccupiedCells();
