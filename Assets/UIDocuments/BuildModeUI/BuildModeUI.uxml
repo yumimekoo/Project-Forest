@@ -1,16 +1,17 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
         <ui:VisualElement name="uiHideLeft" style="flex-grow: 0; width: 20%;">
+            <ui:Button text="All" name="btnAll" style="font-size: 30px; -unity-font-style: bold;" />
             <ui:Button text="Decoration" name="btnDecor" style="font-size: 30px; -unity-font-style: bold;" />
             <ui:Button text="Furniture" name="btnFurniture" style="font-size: 30px; -unity-font-style: bold;" />
             <ui:Button text="Utility" name="btnUtility" style="font-size: 30px; -unity-font-style: bold;" />
-            <ui:VisualElement style="flex-grow: 1; justify-content: flex-end;">
-                <ui:Button text="Exit" name="exitButton" style="font-size: 34px; -unity-font-style: bold;" />
+            <ui:VisualElement style="font-size: 30px; -unity-font-style: bold;">
+                <ui:Button text="Exit" name="exitButton" style="flex-grow: 1; justify-content: flex-end;" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 1; justify-content: space-between;">
-            <ui:VisualElement style="flex-grow: 0; height: 70%;" />
-            <ui:VisualElement name="itemContainer" style="flex-grow: 0; flex-direction: row; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+        <ui:VisualElement style="font-size: 34px; -unity-font-style: bold;">
+            <ui:VisualElement style="flex-grow: 1; justify-content: space-between;" />
+            <ui:VisualElement name="itemContainer" style="flex-grow: 0; height: 70%;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
