@@ -40,7 +40,7 @@ public class SaveManager : MonoBehaviour
     public void SetActiveSaveSlot(int slot)
     {
         ActiveSaveSlot = slot;
-        Debug.Log($"Active save slot set to {slot}");
+        //Debug.Log($"Active save slot set to {slot}");
     }
 
     public void SaveGame()

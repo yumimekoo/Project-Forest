@@ -255,7 +255,7 @@ public class BuildMode3D : MonoBehaviour
         occupiedCells.Add(randomCell);
         FurniturePlacementManager.Instance.RegisterPlacement(item.numericID, randomCell, 0);
         FurnitureInventory.Instance.Remove(item.numericID);
-        Debug.Log($"Randomly placed furniture: {item.furnitureName} (ID: {item.numericID}) at ({randomCell.x}, {randomCell.y})");
+        //Debug.Log($"Randomly placed furniture: {item.furnitureName} (ID: {item.numericID}) at ({randomCell.x}, {randomCell.y})");
     }
 
     private void TryDelete(Vector2Int cell)
@@ -266,7 +266,7 @@ public class BuildMode3D : MonoBehaviour
             {
                 FurnitureSO soItem = obj.GetComponent<FurnitureIdentifier>().so;
                 FurnitureInventory.Instance.Add(soItem.numericID);
-                Debug.Log($"Deleted furniture: {soItem.furnitureName} (ID: {soItem.numericID})");
+                //Debug.Log($"Deleted furniture: {soItem.furnitureName} (ID: {soItem.numericID})");
                 Destroy(obj);
                 occupiedCells.Remove(cell);
                 FurniturePlacementManager.Instance.RemovePlacement(cell);
@@ -302,7 +302,7 @@ public class BuildMode3D : MonoBehaviour
             var go = Instantiate(so.furniturePrefab, spawn, rotation);
             go.AddComponent<FurnitureIdentifier>().so = so;
             occupiedCells.Add(new Vector2Int(item.x, item.y));
-            Debug.Log($"Rebuilt furniture: {so.furnitureName} (ID: {so.numericID}) at ({item.x}, {item.y}) with rotation {item.rotY}");
+            //Debug.Log($"Rebuilt furniture: {so.furnitureName} (ID: {so.numericID}) at ({item.x}, {item.y}) with rotation {item.rotY}");
         }
     }
 

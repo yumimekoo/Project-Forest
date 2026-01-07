@@ -40,6 +40,6 @@ public static class GameState
 
         inTutorial = saveData.inTutorial;
 
-        Debug.Log(GetSaveData());
+        //Debug.Log(GetSaveData());
     }
 }

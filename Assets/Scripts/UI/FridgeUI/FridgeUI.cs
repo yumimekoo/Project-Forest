@@ -57,7 +57,7 @@ public class FridgeUI : MonoBehaviour
 
     private void OnKeyDown(KeyDownEvent evt)
     {
-        Debug.Log($"Key pressed: {evt.keyCode}");
+        //Debug.Log($"Key pressed: {evt.keyCode}");
         if (evt.keyCode == KeyCode.Escape)
         {
             CloseUI();

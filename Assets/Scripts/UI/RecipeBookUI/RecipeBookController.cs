@@ -117,16 +117,27 @@ public class RecipeBookController : MonoBehaviour
             NPCIdentitySO npc = pair.Key;
             string npcName = npc.npcName;
             ItemDataSO drink = pair.Value;
-            string drinkName = drink.itemName;
-            // hier dann template machen
-            var label = new Label(
-                npcName + " -> " + drinkName // {npc.npcName} -> {drink.itemName}
-            );
+            string drinkName;
+            if (drink != null)
+            {
+                drinkName = drink.itemName;
+            } else
+            {
+                drinkName = "Surprise Drink!";
+            }
+                // hier dann template machen
+                var label = new Label(
+                    npcName + " -> " + drinkName // {npc.npcName} -> {drink.itemName}
+                );
 
             label.RegisterCallback<ClickEvent>(_ =>
             {
-                ShowSingleRecipe(drink);
-                isSinleRecipeView = true;
+                if (drink != null)
+                {
+                    ShowSingleRecipe(drink);
+                    isSinleRecipeView = true;
+                }
+
             });
 
             ordersContainer.Add(label);

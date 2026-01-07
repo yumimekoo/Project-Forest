@@ -24,7 +24,7 @@ public class YarnManagerTutorial : MonoBehaviour
     void OnDialogueFinished()
     {
         dialogueObject.SetActive(false);
-        Debug.Log("[Yarn] Dialogue finished");
+        //Debug.Log("[Yarn] Dialogue finished");
         GameTime.SetPaused(false);
         GameState.playerMovementAllowed = true;
         GameState.playerInteractionAllowed = true;

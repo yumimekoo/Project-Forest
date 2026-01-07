@@ -35,7 +35,7 @@ public class UnlockManager : MonoBehaviour
         if (!runtimeDatabase.unlockedItems.Contains(item))
         {
             runtimeDatabase.unlockedItems.Add(item);
-            Debug.Log("[Unlock] item unlocked: " + item.name);
+            //Debug.Log("[Unlock] item unlocked: " + item.name);
         }
         RecalculateUnlocks();
     }
@@ -45,7 +45,7 @@ public class UnlockManager : MonoBehaviour
         if (!runtimeDatabase.unlockedRecipes.Contains(recipe))
         {
             runtimeDatabase.unlockedRecipes.Add(recipe);
-            Debug.Log("[Unlock] Recipe unlocked: " + recipe.name);
+            //Debug.Log("[Unlock] Recipe unlocked: " + recipe.name);
         }
         RecalculateUnlocks();
     }
@@ -55,7 +55,7 @@ public class UnlockManager : MonoBehaviour
         if (!runtimeDatabase.activeRecipes.Contains(recipe))
         {
             runtimeDatabase.activeRecipes.Add(recipe);
-            Debug.Log("[Activate] Recipe activated: " + recipe.name);
+            //Debug.Log("[Activate] Recipe activated: " + recipe.name);
         }
         RecalculateUnlocks();
     }
@@ -65,7 +65,7 @@ public class UnlockManager : MonoBehaviour
         if (!runtimeDatabase.unlockedFurniture.Contains(furniture))
         {
             runtimeDatabase.unlockedFurniture.Add(furniture);
-            Debug.Log("[Unlock] Furniture unlocked: " + furniture.name);
+            //Debug.Log("[Unlock] Furniture unlocked: " + furniture.name);
         }
     }
 
@@ -89,13 +89,13 @@ public class UnlockManager : MonoBehaviour
                 if (CanUnlockRule(rule, runtimeDatabase.unlockedItems))
                 {
                     runtimeDatabase.unlockedRecipes.Add(rule);
-                    Debug.Log("[Unlock] Recipe unlocked: " + rule.name);
+                    //Debug.Log("[Unlock] Recipe unlocked: " + rule.name);
 
                     if (!runtimeDatabase.unlockedItems.Contains(rule.resultingState))
                     {
                         runtimeDatabase.unlockedItems.Add(rule.resultingState);
                         unlockedSomething = true;
-                        Debug.Log("[Unlock] item unlocked: " + rule.resultingState.name);
+                        //Debug.Log("[Unlock] item unlocked: " + rule.resultingState.name);
                     }
                 }
             }
@@ -134,7 +134,7 @@ public class UnlockManager : MonoBehaviour
             && saveData.activeRecipeIDs.Count == 0 
             && saveData.unlockedFurnitureIDs.Count == 0)
         {
-            Debug.Log("No unlock data to apply.");
+            //Debug.Log("No unlock data to apply.");
             return;
         }
         runtimeDatabase.unlockedItems.Clear();

@@ -7,7 +7,7 @@ public class YarnCommands : MonoBehaviour
     [YarnCommand("friendship")]
     public static void IncreaseFriendship(string npcID, int amount)
     {
-        Debug.Log($"[YarnCommands] Increasing friendship for {npcID} by {amount}");
+        //Debug.Log($"[YarnCommands] Increasing friendship for {npcID} by {amount}");
         FriendshipManager.Instance.AddXP(npcID, amount);
     }
 

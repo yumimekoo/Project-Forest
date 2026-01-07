@@ -102,15 +102,6 @@ public class TutorialManager : MonoBehaviour
         drawerGlow = Resources.FindObjectsOfTypeAll<GameObject>()
         .FirstOrDefault(go => go.CompareTag("DrawerGlow"));
 
-
-
-        if (builderGlow == null)
-            Debug.LogWarning("BuilderHighlight not found in scene");
-        if (shopGlow == null)
-            Debug.LogWarning("ShopHighlight not found in scene");
-        if (doorGlow == null)
-            Debug.LogWarning("DoorHighlight not found in scene");
-
         HandleHighlight(TutorialStep.StartMonologue);
 
     }
@@ -146,14 +137,14 @@ public class TutorialManager : MonoBehaviour
 
         root.style.display = DisplayStyle.None;
 
-        Debug.Log("Tutorial Manager Initialized");
+        //Debug.Log("Tutorial Manager Initialized");
     }
 
     private void SetStep(TutorialStep step)
     {
-        Debug.LogWarning("Setting Tutorial Step to: " + step);
+        //Debug.LogWarning("Setting Tutorial Step to: " + step);
         currentStep = step;
-        Debug.Log($"Tutorial Step set to: {step}");
+        //Debug.Log($"Tutorial Step set to: {step}");
         HandleHighlight(step);
         HandleText(step);
         HandleUI(step);
@@ -185,7 +176,7 @@ public class TutorialManager : MonoBehaviour
     {
         GameState.inTutorial = false;
         SetStep(TutorialStep.TutorialDone);
-        Debug.Log("Tutorial Completed!");
+        //Debug.Log("Tutorial Completed!");
         TimeManager.Instance.TutorialComplete();
         Destroy(gameObject);
     }
@@ -344,7 +335,7 @@ public class TutorialManager : MonoBehaviour
 
     void HandleHighlight(TutorialStep step)
     {
-        Debug.Log("Handling Highlight for step: " + step);
+        //Debug.Log("Handling Highlight for step: " + step);
         if (builderGlow != null)
             builderGlow.SetActive(step == TutorialStep.PressEOnBuilder);
         if (shopGlow != null)
@@ -394,7 +385,7 @@ public class TutorialManager : MonoBehaviour
                 yarnManagerTutorial.StartDialogue("EndMonologue");
                 break;
             default:
-                Debug.Log("No dialogue for this step: " + step);
+                //Debug.Log("No dialogue for this step: " + step);
                 break;
         }
     }

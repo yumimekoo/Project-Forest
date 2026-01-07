@@ -48,7 +48,7 @@ public class NPCController : MonoBehaviour, IInteractable
 
         if(state == NPCState.Leaving && !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
-            Debug.Log($"{identity.npcName} has exited the cafe.");
+            //Debug.Log($"{identity.npcName} has exited the cafe.");
             agent.enabled = false;
             NPCPool.Instance.ReturnNPC(identity);
         }
@@ -100,12 +100,12 @@ public class NPCController : MonoBehaviour, IInteractable
     {
         state = newState;
         stateTimer = timer;
-        Debug.Log($"{identity.npcName} state changed to {state}");
+        //Debug.Log($"{identity.npcName} state changed to {state}");
     }
 
     private void Leave(string reason)
     {
-        Debug.Log($"{identity.npcName} leaving: {reason}");
+        //Debug.Log($"{identity.npcName} leaving: {reason}");
         if(targetChair != null)
         {
             targetChair.Free();
@@ -139,7 +139,7 @@ public class NPCController : MonoBehaviour, IInteractable
         if (result == null)
             return;
 
-        Debug.Log($"{identity.npcName} order result: {result.outcome}, Money: {result.moneyDelta}, Friendship: {result.friendshipDelta}");
+        //Debug.Log($"{identity.npcName} order result: {result.outcome}, Money: {result.moneyDelta}, Friendship: {result.friendshipDelta}");
         // insert ui feedback here
         OrderManager.Instance.RemoveOrder(identity);
         FriendshipManager.Instance.AddXP(identity.npcID, result.friendshipDelta);  
@@ -185,8 +185,14 @@ public class NPCController : MonoBehaviour, IInteractable
 
         if (currentOrder != null)
         {
+            if(currentOrder.requestedDrink != null)
+            {
+                Debug.Log($"{identity.npcName} has ordered: {currentOrder}");
+            } else
+            {                 
+                Debug.Log($"{identity.npcName} ordered a special Drink");
+            }
             OrderManager.Instance.AddOrder(identity, currentOrder.requestedDrink);
-            Debug.Log($"{identity.npcName} has ordered: {currentOrder}");
             TimeManager.Instance.TrackOrderAccepted();
             SetState(NPCState.WaitingForDrink, identity.timeToGiveOrder);
             if(GameState.inTutorial && TutorialManager.Instance != null)
@@ -198,7 +204,7 @@ public class NPCController : MonoBehaviour, IInteractable
 
     public void StartConversation()
     {
-        Debug.Log($"Starting conversation with {identity.npcName}...");
+        //Debug.Log($"Starting conversation with {identity.npcName}...");
         GameTime.SetPaused(true);
         hasTalked = true;
         YarnManager.Instance.StartDialogue(identity.dialogueProject, identity.startNode);
@@ -234,7 +240,7 @@ public class NPCController : MonoBehaviour, IInteractable
             case NPCState.WaitingForDrink:
                 if(!player.IsHoldingCup())
                 {
-                    Debug.Log("Player has no item to serve. (U need a Cup/Glass)");
+                    //Debug.Log("Player has no item to serve. (U need a Cup/Glass)");
                     break;
                 } else if (player.IsHoldingCup())
                 {

@@ -11,7 +11,7 @@ public class NPCInteractionManager : MonoBehaviour
     
     public void StartInteraction(NPCController npc)
     {
-        Debug.Log($"Starting interaction with {npc.identity.npcName}");
+        //Debug.Log($"Starting interaction with {npc.identity.npcName}");
         npc.CreateOrder();
         // Implement interaction logic here
     }

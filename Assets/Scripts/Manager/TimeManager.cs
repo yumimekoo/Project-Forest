@@ -129,7 +129,7 @@ public class TimeManager : MonoBehaviour
     {
         if(GameState.inTutorial)
             return;
-        Debug.LogWarning("Advancing to next day");
+        //Debug.LogWarning("Advancing to next day");
         currentDay++;
         currentWeekday = (Weekday)(((int)currentWeekday + 1) % 7);
         if(currentWeekday == Weekday.Monday && currentDay > 1)
@@ -227,11 +227,11 @@ public class TimeManager : MonoBehaviour
     {
         if(data == null)
         {
-            Debug.LogWarning("No TimeManager Save Data to apply, INITIALIZING");
+            //Debug.LogWarning("No TimeManager Save Data to apply, INITIALIZING");
             InitializeFirstDay();
             return;
         }
-        Debug.LogWarning("Applying TimeManager Save Data");
+        //Debug.LogWarning("Applying TimeManager Save Data");
         currentDay = data.day;
         currentWeekday = (Weekday)data.weekDay;
         currentWeek = data.week;

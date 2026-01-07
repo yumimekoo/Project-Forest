@@ -30,7 +30,7 @@ public class NPCPool : MonoBehaviour
         {
             var npcInstance = Instantiate(npc.npcPrefab);
             npcInstance.SetActive(false);
-            Debug.Log($"NPC Pool: Created instance of {npc.npcName}");
+            //Debug.Log($"NPC Pool: Created instance of {npc.npcName}");
             npcInstances[npc] = npcInstance;
             availableNPCs.Add(npc);
         }
@@ -44,7 +44,7 @@ public class NPCPool : MonoBehaviour
             return null;
 
         int index = Random.Range(0, availableNPCs.Count);
-        Debug.Log($"NPC Pool: Providing NPC at index {index}");
+        //Debug.Log($"NPC Pool: Providing NPC at index {index}");
         var npcIdentity = availableNPCs[index];
         availableNPCs.RemoveAt(index);
 

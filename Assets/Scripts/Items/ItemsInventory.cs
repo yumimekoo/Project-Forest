@@ -28,7 +28,7 @@ public class ItemsInventory : MonoBehaviour
             if (item.amount > 0)
                 itemInventory[item.id] = item.amount;
 
-            Debug.Log($"[ItemsInventory] Init: ID {item.id} = {item.amount}");
+            //Debug.Log($"[ItemsInventory] Init: ID {item.id} = {item.amount}");
         }
     }
 
@@ -66,7 +66,7 @@ public class ItemsInventory : MonoBehaviour
         foreach (var kvp in itemInventory)
         {
             saveData.Add(new ItemSaveData(kvp.Key, kvp.Value));
-            Debug.Log($"[ItemsInventory] Save: ID {kvp.Key} = {kvp.Value}");
+            //Debug.Log($"[ItemsInventory] Save: ID {kvp.Key} = {kvp.Value}");
         }
         return saveData;
     }
@@ -75,7 +75,7 @@ public class ItemsInventory : MonoBehaviour
     {
         if (data.Count == 0 || data == null)
         {
-            Debug.Log("[ItemsInventory] No item inventory data to apply.");
+            //Debug.Log("[ItemsInventory] No item inventory data to apply.");
             InitializeIfEmpty();
             return;
         }
@@ -83,7 +83,7 @@ public class ItemsInventory : MonoBehaviour
         foreach (var itemData in data)
         {
               itemInventory[itemData.id] = itemData.amount;
-              Debug.Log($"[ItemsInventory] Load: ID {itemData.id} = {itemData.amount}");
+              //Debug.Log($"[ItemsInventory] Load: ID {itemData.id} = {itemData.amount}");
         }
     }
 }
