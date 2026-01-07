@@ -278,7 +278,6 @@ public class RecipeBookController : MonoBehaviour
         isBookOpen = true;
         root.style.display = DisplayStyle.Flex;
         GameTime.SetPaused(true);
-        // Pause the game or disable player controls if necessary
     }
 
     private void Close()

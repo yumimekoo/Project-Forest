@@ -6,36 +6,34 @@ using UnityEngine.UIElements;
 
 public enum TutorialStep
 {
-    StartMonologue, // add UI: text to go to builder
+    StartMonologue,
     PressEOnBuilder,
-    BuilderMonologue, // add text to press Deletebutton and then LeftClick to delete all object
+    BuilderMonologue,
 
     PressDeleteMode,  
     DeleteAllObjects,
-    PlaceMonologue, // change text to press delete button again to exit build mode and place all objects
-    PlaceAllObjects, // probably 7 objects to place, 2 counters, 1 coffee machine, 1 table, 2 chairs, 1 shelf
-    ExitBuildMode, // press exit button to exit build mode, make Exit button visible now
+    PlaceMonologue,
+    PlaceAllObjects,
+    ExitBuildMode,
 
     BuyMonologue,
-    PressEOnShop, // add text to buy coffe
-    BuyItem,     // add text to exit shop (button enables)
+    PressEOnShop,
+    BuyItem,
     ExitShop,
 
-    DoorMonologue, // add text to go to door and press E
+    DoorMonologue,
     PressEOnDoor,
-
-    //--- Switch Scene ---//
 
     CafeIntroMonologue, 
     WaitingForNPCSpawn,
     FirstNPCSpawned,
-    NPCMonologue, // text to approach the NPC and take order
+    NPCMonologue,
     TakeOrder,
-    RecipeBookMonologue, // text to open recipe book and press TAB 
-    OpenRecipeBook,   // add text to close book
-    CloseRecipeBook, // add text to make coffe
-    MakeCoffeeMonologue, // add text to add coffee cup to the machine, and coffee beans
-    MakeCoffee, // add text to give coffee to NPC
+    RecipeBookMonologue,
+    OpenRecipeBook,
+    CloseRecipeBook,
+    MakeCoffeeMonologue,
+    MakeCoffee,
     
     GiveCoffee,
     EndMonologue,
@@ -180,11 +178,6 @@ public class TutorialManager : MonoBehaviour
         TimeManager.Instance.TutorialComplete();
         Destroy(gameObject);
     }
-
-    // ---
-    // Events
-    // ---
-
     public void OnBuilderUsed()
     {
         if(currentStep == TutorialStep.PressEOnBuilder) 
@@ -318,10 +311,6 @@ public class TutorialManager : MonoBehaviour
             AdvanceToEnd();
         }
     }
-
-    // ---
-    // Handlers
-    // ---
 
     void HandleGameStates(TutorialStep step)
     {

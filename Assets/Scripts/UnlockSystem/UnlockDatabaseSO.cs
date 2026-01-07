@@ -9,14 +9,13 @@ public class UnlockDatabaseSO : ScriptableObject
     public List<ItemDataSO> unlockedItems = new List<ItemDataSO>();
 
     [Header("Recipes")]
-    [HideInInspector] public List<DrinkRuleSO> allRecipes; // all recipes
-    [HideInInspector] public List<DrinkRuleSO> activeRecipes = new List<DrinkRuleSO>(); // locked recipes
-    public List<DrinkRuleSO> unlockedRecipes = new List<DrinkRuleSO>(); // unlocked recipes
+    [HideInInspector] public List<DrinkRuleSO> allRecipes;
+    [HideInInspector] public List<DrinkRuleSO> activeRecipes = new List<DrinkRuleSO>();
+    public List<DrinkRuleSO> unlockedRecipes = new List<DrinkRuleSO>();
 
     [Header("Furniture")]
     [HideInInspector] public List<FurnitureSO> allFurniture;
     public List<FurnitureSO> unlockedFurniture = new List<FurnitureSO>();
-    // Functions
     public List<ItemDataSO> GetUnlockedItems() => unlockedItems;
     public List<DrinkRuleSO> GetUnlockedRecipes() => unlockedRecipes;
     public List<DrinkRuleSO> GetActiveRecipes() => activeRecipes;

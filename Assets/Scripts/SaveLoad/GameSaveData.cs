@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Class wich is saved to json 
 [System.Serializable]
 public class GameSaveData
 {
@@ -27,7 +26,6 @@ public class GameStateSaveData
     }
 }
 
-// subclasses for GameSaveData
 [System.Serializable]
 public class UnlockSaveData
 {

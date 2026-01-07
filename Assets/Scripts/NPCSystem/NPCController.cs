@@ -62,8 +62,7 @@ public class NPCController : MonoBehaviour, IInteractable
             }
         }
     }
-
-    // maybe? 
+ 
     public void Reset()
     {
         hasTalked = false;
@@ -197,7 +196,7 @@ public class NPCController : MonoBehaviour, IInteractable
             SetState(NPCState.WaitingForDrink, identity.timeToGiveOrder);
             if(GameState.inTutorial && TutorialManager.Instance != null)
             {
-                SetState(NPCState.WaitingForDrink, 9999f); // prevent leaving during tutorial
+                SetState(NPCState.WaitingForDrink, 9999f);
             }
         }
     }

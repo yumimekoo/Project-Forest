@@ -56,7 +56,6 @@ public class NPCEmotion
 public class NPCIdentitySO : ScriptableObject
 {
     public string npcID;
-    // public int numericID;
     public string npcName;
     public NPCSpecies species;
     public Sprite portrait;

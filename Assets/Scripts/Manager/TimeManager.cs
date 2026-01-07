@@ -47,7 +47,6 @@ public class TimeManager : MonoBehaviour
     private bool nightTriggered = false;
 
     public event Action OnNightTriggered;
-    //public event Action OnDayEnded;
     public event Action<float> OnTimeChanged;
     public event Action<float> OnProgressChanged;
 
@@ -60,7 +59,6 @@ public class TimeManager : MonoBehaviour
 
     public event Action <DayStats, int, Weekday, int, int> OnDaySummaryReady;
     public event Action <int, Weekday> OnNewDayStarted;
-    //public event Action OnRentDue;
     public event Action OnGameOver;
     public event Action OnTutorialComplete;
     private void Awake()
@@ -99,8 +97,6 @@ public class TimeManager : MonoBehaviour
 
     public float GetDayProgress() => Mathf.Clamp01(timeElapsed / dayDurationInSeconds);
     public float GetTimeElapsed() => timeElapsed;
-
-    // -- Day tracking --
 
     public void StartNewDay()
     {
@@ -177,9 +173,6 @@ public class TimeManager : MonoBehaviour
         GameState.doorUnlocked = true;
 
     }
-
-    // tracking day stats
-
     public void TrackMoney(int amount)
     {
         todayStats.moneyEarned += amount;
@@ -215,8 +208,6 @@ public class TimeManager : MonoBehaviour
             todayStats.freindshipPerNPCgained[npcName] = amount;
         }
     }
-
-    // save and load day data
 
     public DaySaveData GetSaveData()
     {

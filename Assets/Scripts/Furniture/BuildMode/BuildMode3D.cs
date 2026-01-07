@@ -43,9 +43,6 @@ public class BuildMode3D : MonoBehaviour
     {
         InputActions.FindActionMap("Player").Disable();
     }
-    // ---
-    // UI Button Calls
-    // ---
 
     public void StartBuild(FurnitureSO item)
     {
@@ -83,8 +80,6 @@ public class BuildMode3D : MonoBehaviour
 
         if (!isPlacing)
             return;
-
-        //HandleStopPlacementByButton();
 
         if(isPointerOverUI)
             return;
@@ -133,11 +128,6 @@ public class BuildMode3D : MonoBehaviour
     {
         return occupiedCells.Count;
     }
-
-    // ---
-    // Main Logic
-    // ---
-
     private void HandlePlacementOrDeletion()
     {
         if(rotateAction.WasPressedThisFrame() && !deleteMode)
@@ -161,8 +151,6 @@ public class BuildMode3D : MonoBehaviour
 
         Vector3 snapPos = grid.GetWorldPosition(cell.x, cell.y);
 
-        // DELETE MODE
-
         if (deleteMode)
         {
             Preview(cell, snapPos, occupied);
@@ -172,8 +160,6 @@ public class BuildMode3D : MonoBehaviour
             }
             return;
         }
-
-        // PLACING MODE
 
         if (placingMode)
         {
@@ -185,11 +171,6 @@ public class BuildMode3D : MonoBehaviour
             }
         }
     }
-
-    // ---
-    // Preview 
-    // ---
-
     private void Preview(Vector2Int cell, Vector3 snapPos, bool occupied)
     {
         if (preview == null)
@@ -204,11 +185,6 @@ public class BuildMode3D : MonoBehaviour
         }
         preview.GetComponent<Renderer>().material.color = occupied ? Color.red : Color.green;
     }
-
-    // ---
-    // Placement / Removal
-    // ---
-
     private void PlaceFurniture(Vector2Int cell, Vector3 position)
     {
         if(!FurnitureInventory.Instance.Remove(currentItem.numericID))
@@ -245,7 +221,6 @@ public class BuildMode3D : MonoBehaviour
         }
         if (freeCells.Count == 0)
         {
-            // No free cells available
             return;
         }
         Vector2Int randomCell = freeCells[Random.Range(0, freeCells.Count)];
@@ -281,11 +256,6 @@ public class BuildMode3D : MonoBehaviour
             }
         }
     }
-
-    // ---
-    // Reload From Save
-    // ---
-
     public IEnumerator RebuildFromSave(List<PlacedFurnitureData> items)
     {
         yield return null;
@@ -305,11 +275,6 @@ public class BuildMode3D : MonoBehaviour
             //Debug.Log($"Rebuilt furniture: {so.furnitureName} (ID: {so.numericID}) at ({item.x}, {item.y}) with rotation {item.rotY}");
         }
     }
-
-    // ---
-    // randomizer 
-    // 
-
     public void RandomizeGrid()
     {
         StartCoroutine(RandomPlacer());

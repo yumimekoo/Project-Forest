@@ -16,7 +16,6 @@ public class PickupItem : MonoBehaviour, IInteractable
         if (item.contentVisualPrefab == null)
             return;
 
-        // Child "Visuals" suchen
         Transform visualsChild = transform.Find("visuals");
         if (visualsChild == null)
         {
@@ -24,13 +23,11 @@ public class PickupItem : MonoBehaviour, IInteractable
             return;
         }
 
-        // Alten Inhalt löschen
         foreach (Transform child in visualsChild)
         {
             Destroy(child.gameObject);
         }
 
-        // Neues Visual hinzufügen
         GameObject newVisual = Instantiate(item.contentVisualPrefab, visualsChild);
         newVisual.name = item.contentVisualPrefab.name;
     }

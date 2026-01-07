@@ -44,7 +44,7 @@ public static class NPCOrderGenerator
             return null;
         }
 
-        bool wantsSpecificDrink = Random.value < 0.25f; // % chance to want a specific drink, maybe later adjust based on NPC level freindship
+        bool wantsSpecificDrink = Random.value < 0.85f; // % chance to want a specific drink, maybe later adjust based on NPC level freindship
 
         if (wantsSpecificDrink)
         {

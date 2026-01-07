@@ -9,10 +9,6 @@ public class DynamicGrid : MonoBehaviour
     [Header("Cell Size")]
     public float cellSize = 1f;
 
-    // ---------------------------------------------------------
-    // ---- Coordinate Conversions
-    // ---------------------------------------------------------
-
     public Vector3 GetWorldPosition(int x, int y)
     {
         return transform.position + new Vector3((x+0.5f) * cellSize, 0, (y+0.5f) * cellSize);
@@ -38,9 +34,6 @@ public class DynamicGrid : MonoBehaviour
         return x >= 0 && y >= 0 && x < width && y < height;
     }
 
-    // ---------------------------------------------------------
-    // ---- Scene View Visualization
-    // ---------------------------------------------------------
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;

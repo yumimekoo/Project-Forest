@@ -20,7 +20,6 @@ public class UnlockManager : MonoBehaviour
 
     private void Initialize()
     {
-        // all recipes from Resource folder 
         runtimeDatabase.allRecipes = new List<DrinkRuleSO>(Resources.LoadAll<DrinkRuleSO>("ScriptableObjectsData/RecipeRules"));
         runtimeDatabase.activeRecipes = new List<DrinkRuleSO>(Resources.LoadAll<DrinkRuleSO>("ScriptableObjectsData/RecipeRules/ActiveDefault"));
         runtimeDatabase.allItems = new List<ItemDataSO>(Resources.LoadAll<ItemDataSO>("ScriptableObjectsData/ItemData"));

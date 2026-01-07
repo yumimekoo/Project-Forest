@@ -38,7 +38,6 @@ public class NPCSpawner : MonoBehaviour
             timeSinceLastSpawn = 0f;
         }
     }
-    // pooling later on
     public void Spawn()
     {
         var npc = NPCPool.Instance.GetNPC();

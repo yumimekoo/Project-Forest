@@ -14,7 +14,6 @@ public class CameraFollow : MonoBehaviour
     {
         currentTargetFollow = playerFollowObject;
     }
-    // Update is called once per frame
     void LateUpdate()
     {
         if (currentTargetFollow == null || followCamera == null)
