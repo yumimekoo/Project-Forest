@@ -25,6 +25,11 @@ public class ShopUI : MonoBehaviour
         InitUI();
     }
 
+    private void Start()
+    {
+        UpdateButtons();
+    }
+
     private void InitUI()
     {
         var root = shopUI.rootVisualElement;

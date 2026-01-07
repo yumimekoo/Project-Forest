@@ -25,7 +25,8 @@ public class BuildModeUI : MonoBehaviour
         exitBuildMode,
         btnFurniture,
         btnDecor,
-        btnUtility;
+        btnUtility,
+        btnAll;
 
     private void OnEnable()
     {
@@ -55,7 +56,9 @@ public class BuildModeUI : MonoBehaviour
         btnDecor = root.Q<Button>("btnDecor");
         btnFurniture = root.Q<Button>("btnFurniture");
         btnUtility = root.Q<Button>("btnUtility");
+        btnAll = root.Q<Button>("btnAll");
         uiHideLeft = root.Q<VisualElement>("uiHideLeft");
+        btnAll.clicked += () => ShowCategoryAll();
         btnDecor.clicked += () => ShowCategory(BuildCategory.Decorations);
         btnFurniture.clicked += () => ShowCategory(BuildCategory.Furniture);
         btnUtility.clicked += () => ShowCategory(BuildCategory.Utility);
@@ -81,6 +84,28 @@ public class BuildModeUI : MonoBehaviour
         {
             if (item.buildCategory != category) continue;
 
+            var itemElement = itemTemplate.Instantiate();
+            var button = itemElement.Q<Button>("itemButton");
+            button.text = item.furnitureName;
+            button.clicked += () => buildMode3D.StartBuild(item);
+            var quantityLabel = itemElement.Q<Label>("quantityLabel");
+            int amount = FurnitureInventory.Instance.GetAmount(item.numericID);
+            quantityLabel.text = amount.ToString();
+            itemUI[item.numericID] = new ItemUIRefs
+            {
+                root = itemElement,
+                quantityLabel = quantityLabel
+            };
+            UpdateItemVisualState(item.numericID, amount);
+            itemContainer.Add(itemElement);
+        }
+    }
+    // refactor this aswell man 
+    public void ShowCategoryAll()
+    {
+        itemContainer.Clear();
+        foreach (var item in FurnitureDatabase.Instance.items)
+        {
             var itemElement = itemTemplate.Instantiate();
             var button = itemElement.Q<Button>("itemButton");
             button.text = item.furnitureName;
@@ -129,22 +154,24 @@ public class BuildModeUI : MonoBehaviour
         }
 
     }
-
+    // refactor this shit bro9
     public void UpdateButtons()
     {
+        Debug.LogWarning("Updastinf Buttons" + GameState.inTutorial);
         if (!GameState.inTutorial)
         {
             btnDecor.SetEnabled(true);
             btnFurniture.SetEnabled(true);
             btnUtility.SetEnabled(true);
+            btnAll.SetEnabled(true);
             exitBuildMode.SetEnabled(true);
             return;
         }
 
         btnDecor.SetEnabled(false);
         btnFurniture.SetEnabled(false);
-
-        btnUtility.SetEnabled(TutorialManager.Instance != null &&
+        btnUtility.SetEnabled(false);
+        btnAll.SetEnabled(TutorialManager.Instance != null &&
                        TutorialManager.Instance.currentStep >= TutorialStep.PlaceAllObjects);
         exitBuildMode.SetEnabled(TutorialManager.Instance != null &&
                        TutorialManager.Instance.currentStep >= TutorialStep.ExitBuildMode);
