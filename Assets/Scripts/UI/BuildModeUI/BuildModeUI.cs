@@ -157,6 +157,7 @@ public class BuildModeUI : MonoBehaviour
     // refactor this shit bro9
     public void UpdateButtons()
     {
+        Debug.LogWarning("Updastinf Buttons" + GameState.inTutorial);
         if (!GameState.inTutorial)
         {
             btnDecor.SetEnabled(true);

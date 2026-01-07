@@ -165,6 +165,8 @@ public class TutorialManager : MonoBehaviour
 
         if (!GameState.inTutorial && Instance != null)
         {
+            ShopUI.Instance.UpdateButtons();
+            BuildModeUI.Instance.UpdateButtons();
             Destroy(gameObject);
             return;
         }

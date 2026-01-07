@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
@@ -17,6 +18,23 @@ public class SaveManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Main" || scene.name == "Room")
+        {
+            LoadGame();
+        }
     }
 
     public void SetActiveSaveSlot(int slot)
@@ -57,6 +75,9 @@ public class SaveManager : MonoBehaviour
         TimeManager.Instance.ApplySaveData(saveData.currentDay);
         GameState.ApplySaveData(saveData.gameState);
         TutorialManager.Instance?.CheckDestroyment();
+
+        // maybe a UI refresher handler? 
+
         if (saveData.placedFurniture == null || saveData.placedFurniture.Count == 0)
         {
             return;
