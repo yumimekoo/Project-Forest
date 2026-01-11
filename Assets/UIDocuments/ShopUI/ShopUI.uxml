@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="ShopItemElement" src="project://database/Assets/UIDocuments/ShopUI/ShopItemElement.uxml?fileID=9197481963319205126&amp;guid=2f2f08eac76a42249b93cf204d7bbf4a&amp;type=3#ShopItemElement" />
-    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+    <ui:VisualElement style="flex-grow: 1; flex-direction: row; background-image: url(&quot;project://database/Assets/UIDocuments/ShopUI/shopUI.aseprite?fileID=1460826678955456181&amp;guid=bd515e3fa119a524284f8758d5628c79&amp;type=3#shopUI&quot;);">
         <ui:VisualElement name="tabsContainer" style="flex-grow: 0; width: 30%; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
             <ui:Button text="Button" name="itemsTab" />
             <ui:Button text="Button" name="furnitureTab" />

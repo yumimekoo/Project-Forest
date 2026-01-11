@@ -1,7 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement picking-mode="Ignore" style="flex-grow: 1; background-image: none; flex-direction: row;">
-        <ui:VisualElement style="flex-grow: 1; width: 50%; background-image: url(&quot;project://database/Assets/UIDocuments/OverlayUI/Sprites/leftUI.aseprite?fileID=-602031710720506311&amp;guid=644e987e2a90459419c5a56f541b0fd9&amp;type=3#Frame_0&quot;);" />
-        <ui:VisualElement style="flex-grow: 1; width: 50%; background-image: url(&quot;project://database/Assets/UIDocuments/OverlayUI/Sprites/rightUI.aseprite?fileID=4930684722039675782&amp;guid=6d8069b2211029e4c80e6331a693bd52&amp;type=3#Frame_0&quot;);">
+        <ui:VisualElement picking-mode="Ignore" style="flex-grow: 1; width: 50%; background-image: url(&quot;project://database/Assets/UIDocuments/OverlayUI/Sprites/leftUI.aseprite?fileID=-602031710720506311&amp;guid=644e987e2a90459419c5a56f541b0fd9&amp;type=3#Frame_0&quot;);" />
+        <ui:VisualElement picking-mode="Ignore" style="flex-grow: 1; width: 50%; background-image: url(&quot;project://database/Assets/UIDocuments/OverlayUI/Sprites/rightUI.aseprite?fileID=4930684722039675782&amp;guid=6d8069b2211029e4c80e6331a693bd52&amp;type=3#Frame_0&quot;);">
             <ui:VisualElement picking-mode="Ignore" name="VisualElement" style="flex-grow: 1; align-self: flex-end;">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; align-self: center;">
                     <ui:VisualElement style="flex-grow: 0; justify-content: flex-end;">

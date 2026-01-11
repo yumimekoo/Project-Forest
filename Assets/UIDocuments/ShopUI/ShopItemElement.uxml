@@ -1,27 +1,27 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="shopItem" style="flex-grow: 0; height: auto; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; flex-direction: row; justify-content: flex-start;">
+    <ui:VisualElement name="shopItem" style="flex-grow: 0; height: auto; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; flex-direction: row; justify-content: flex-start; background-image: url(&quot;project://database/Assets/UIDocuments/ShopUI/Sprites/shopUIItem.aseprite?fileID=-2734967352733324803&amp;guid=8696ed5d93d98844482474f63abd0812&amp;type=3#shopUIItem&quot;); align-items: stretch; width: 772px;">
         <ui:VisualElement style="flex-grow: 0; justify-content: center; width: 30%;">
-            <ui:VisualElement style="flex-grow: 0; background-color: rgb(188, 188, 188); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 10px; flex-direction: row; justify-content: space-between;">
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(188, 188, 188, 0); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 10px; flex-direction: row; justify-content: space-between;">
                 <ui:Label text="Label" name="nameLabel" style="font-size: 40px;" />
                 <ui:Label text="Label" name="ownedAmountLabel" />
             </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 0; background-color: rgb(188, 188, 188); padding-left: 10px; flex-direction: row; justify-content: space-between;">
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(188, 188, 188, 0); padding-left: 10px; flex-direction: row; justify-content: space-between;">
                 <ui:Label text="Label" name="priceLabel" style="font-size: 40px;" />
                 <ui:Label text="Label" name="buyAmountLabel" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
             <ui:VisualElement style="flex-grow: 0;">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                    <ui:Button text="+1" name="plusOne" />
-                    <ui:Button text="+5" name="plusFive" />
+                    <ui:Button text="+1" name="plusOne" style="background-color: rgba(188, 188, 188, 0);" />
+                    <ui:Button text="+5" name="plusFive" style="background-color: rgba(188, 188, 188, 0);" />
                 </ui:VisualElement>
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                    <ui:Button text="- 1" name="minusOne" />
-                    <ui:Button text="- 5" name="minusFive" />
+                    <ui:Button text="- 1" name="minusOne" style="background-color: rgba(188, 188, 188, 0);" />
+                    <ui:Button text="- 5" name="minusFive" style="background-color: rgba(188, 188, 188, 0);" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:Button text="Buy" name="buyButton" style="height: 120px; width: 100px;">
+            <ui:Button text="Buy" name="buyButton" style="height: 120px; width: 100px; background-color: rgba(188, 188, 188, 0);">
                 <ui:Label text="Label" name="totalPrice" />
             </ui:Button>
         </ui:VisualElement>
