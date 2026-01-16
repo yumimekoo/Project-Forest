@@ -1783,6 +1783,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShopUI
   shopUI: {fileID: 1264877438}
   shopItemTemplate: {fileID: 9197481963319205126, guid: 2f2f08eac76a42249b93cf204d7bbf4a, type: 3}
+  shopCategoryTabTemplate: {fileID: 9197481963319205126, guid: a75d93a0a7c1e9d468350c24cd092bc9, type: 3}
+  tabDefault: {fileID: -4792888796012336926, guid: a16eb7fd641c98a4e926116d5cc2d3ee, type: 3}
+  tabSelected: {fileID: 354924663761723899, guid: a16eb7fd641c98a4e926116d5cc2d3ee, type: 3}
 --- !u!114 &1264877438
 MonoBehaviour:
   m_ObjectHideFlags: 0

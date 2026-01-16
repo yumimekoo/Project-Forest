@@ -8,6 +8,10 @@ public class ShopUI : MonoBehaviour
     public static ShopUI Instance;
     public UIDocument shopUI;
     public VisualTreeAsset shopItemTemplate;
+    public VisualTreeAsset shopCategoryTabTemplate;
+    public Sprite tabDefault;
+    public Sprite tabSelected;
+
 
     private VisualElement
         itemContainer,
@@ -86,12 +90,23 @@ public class ShopUI : MonoBehaviour
     private void ShowCategory(ShoppingCategory category)
     {
         currentCategory = category;
+
+        foreach (var kvp in categoryButtons)
+        {
+            SetSprite(kvp.Value, kvp.Key == category ? tabSelected : tabDefault);
+        }
+
         itemContainer.Clear();
         foreach (var shopItem in allShopItems.Where(i => i.Category == category))
         {
             CreateEntry(shopItem);
         }
 
+    }
+
+    private void SetSprite(Button button ,Sprite sprite)
+    {
+        button.style.backgroundImage = new StyleBackground(sprite);
     }
 
     private void CreateEntry(IShopItem shopItem)
@@ -163,13 +178,16 @@ public class ShopUI : MonoBehaviour
             if (category == ShoppingCategory.None)
                 continue;
 
-            var tabButton = new Button(() => ShowCategory(category))
-            {
-                text = category.ToString()
-            };
+            var tabTemplate = shopCategoryTabTemplate.Instantiate();
+            var tabButton = tabTemplate.Q<Button>("itemsTab");
+            var tabText = tabTemplate.Q<Label>("tabText");
+            tabButton.clicked += () => ShowCategory(category);
+            tabText.text = category.ToString();
+
+            SetSprite(tabButton, tabDefault);
 
             categoryButtons[category] = tabButton;
-            tabsContainer.Add(tabButton);
+            tabsContainer.Add(tabTemplate);
         }
 
         UpdateButtons();

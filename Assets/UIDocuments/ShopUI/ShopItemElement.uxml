@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UIDocuments/ShopUI/shopUI.uss?fileID=7433441132597879392&amp;guid=1276ae24017f6bb42a8e85d625e64e34&amp;type=3#shopUI" />
-    <ui:VisualElement name="shopItem" style="flex-grow: 1; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; flex-direction: row; justify-content: space-between; background-image: none; align-items: stretch; margin-bottom: 10px; height: 164px;">
+    <ui:VisualElement name="shopItem" style="flex-grow: 1; padding-top: 0; padding-right: 10px; padding-bottom: 0; padding-left: 0; flex-direction: row; justify-content: space-between; background-image: none; align-items: stretch; margin-bottom: 10px; height: 164px; width: 782px;">
         <ui:VisualElement style="flex-grow: 1; flex-direction: row; background-image: url(&quot;project://database/Assets/UIDocuments/ShopUI/Sprites/shopUIItem.aseprite?fileID=-2734967352733324803&amp;guid=8696ed5d93d98844482474f63abd0812&amp;type=3#shopUIItem&quot;); justify-content: space-between;">
             <ui:VisualElement style="flex-grow: 0; justify-content: flex-start; width: 56%; padding-left: 15px; padding-top: 20px; background-image: none;">
                 <ui:VisualElement style="flex-grow: 0; background-color: rgba(188, 188, 188, 0); padding-top: 3px; padding-right: 0; padding-bottom: 0; padding-left: 13px; flex-direction: row; justify-content: flex-start; width: 100%;">
@@ -33,10 +33,13 @@
                         <ui:Button text="-5" name="minusFive" class="buttonStyle" style="background-color: rgba(188, 188, 188, 0); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement style="flex-grow: 0; width: 14%;" />
-                <ui:Button text="Buy" name="buyButton" style="height: 120px; width: 100px; background-color: rgba(188, 188, 188, 0);">
-                    <ui:Label text="Label" name="totalPrice" />
-                </ui:Button>
+                <ui:VisualElement style="flex-grow: 0; width: 6%;" />
+                <ui:VisualElement style="flex-grow: 0;">
+                    <ui:Button text="&#10;" name="buyButton" class="buttonBuy" style="height: 164px; width: 148px; background-color: rgba(188, 188, 188, 0); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); justify-content: space-between;">
+                        <ui:Label text="Buy" style="padding-top: 40px;" />
+                        <ui:Label text="Label" name="totalPrice" style="padding-bottom: 32px;" />
+                    </ui:Button>
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
