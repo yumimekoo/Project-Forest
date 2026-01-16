@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Fridge : MonoBehaviour, IInteractable
 {
+    public string storageName;
     public string GetInteractionPrompt()
     {
         return "Open Fridge";
@@ -17,6 +18,7 @@ public class Fridge : MonoBehaviour, IInteractable
 
         FridgeUI.Instance.OpenFridge(
             filteredItems,
+            storageName,
             item => ItemsInventory.Instance.GetAmount(item.id) > 0,
             item => ItemsInventory.Instance.GetAmount(item.id),
             (ItemDataSO selectedItem) =>

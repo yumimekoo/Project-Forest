@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 06716243d88330c49942163d96d872ef
+guid: 1fd203429c2b82740b0a966c9893957a
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,7 +127,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: uiOverlay
+  - name: dayRecapHover
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 480
-      height: 270
-    spriteID: a308a3256a5db0741ba8ebaeb61a53d8
+      width: 110
+      height: 30
+    spriteID: f9918a406d2840040a7e7560cac86507
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -148,60 +148,30 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Frame_1
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 282
-      width: 480
-      height: 270
-    spriteID: f6d744dd3d4490e4c886f433cb30e40b
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 282}
   spriteSheetImportData: []
   tileSetImportData: []
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 1203620860
+      value0: 2200452315
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: uiOverlay
+    name: dayRecapHover
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Frame_0
+    - name: dayRecapHover
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 480
-        height: 270
-      spriteId: a308a3256a5db0741ba8ebaeb61a53d8
-    - name: Frame_1
-      frameIndex: 1
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 480
-        height: 270
-      spriteId: f6d744dd3d4490e4c886f433cb30e40b
+        width: 110
+        height: 30
+      spriteId: f9918a406d2840040a7e7560cac86507
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -211,5 +181,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 480, y: 270}
-  previousTextureSize: {x: 512, y: 1024}
+  canvasSize: {x: 110, y: 30}
+  previousTextureSize: {x: 128, y: 64}

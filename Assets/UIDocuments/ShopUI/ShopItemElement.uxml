@@ -1,29 +1,43 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="shopItem" style="flex-grow: 0; height: auto; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; flex-direction: row; justify-content: flex-start; background-image: url(&quot;project://database/Assets/UIDocuments/ShopUI/Sprites/shopUIItem.aseprite?fileID=-2734967352733324803&amp;guid=8696ed5d93d98844482474f63abd0812&amp;type=3#shopUIItem&quot;); align-items: stretch; width: 772px;">
-        <ui:VisualElement style="flex-grow: 0; justify-content: center; width: 30%;">
-            <ui:VisualElement style="flex-grow: 0; background-color: rgba(188, 188, 188, 0); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 10px; flex-direction: row; justify-content: space-between;">
-                <ui:Label text="Label" name="nameLabel" style="font-size: 40px;" />
-                <ui:Label text="Label" name="ownedAmountLabel" />
-            </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 0; background-color: rgba(188, 188, 188, 0); padding-left: 10px; flex-direction: row; justify-content: space-between;">
-                <ui:Label text="Label" name="priceLabel" style="font-size: 40px;" />
-                <ui:Label text="Label" name="buyAmountLabel" />
-            </ui:VisualElement>
-        </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
-            <ui:VisualElement style="flex-grow: 0;">
-                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                    <ui:Button text="+1" name="plusOne" style="background-color: rgba(188, 188, 188, 0);" />
-                    <ui:Button text="+5" name="plusFive" style="background-color: rgba(188, 188, 188, 0);" />
+    <Style src="project://database/Assets/UIDocuments/ShopUI/shopUI.uss?fileID=7433441132597879392&amp;guid=1276ae24017f6bb42a8e85d625e64e34&amp;type=3#shopUI" />
+    <ui:VisualElement name="shopItem" style="flex-grow: 1; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; flex-direction: row; justify-content: space-between; background-image: none; align-items: stretch; margin-bottom: 10px; height: 164px;">
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row; background-image: url(&quot;project://database/Assets/UIDocuments/ShopUI/Sprites/shopUIItem.aseprite?fileID=-2734967352733324803&amp;guid=8696ed5d93d98844482474f63abd0812&amp;type=3#shopUIItem&quot;); justify-content: space-between;">
+            <ui:VisualElement style="flex-grow: 0; justify-content: flex-start; width: 56%; padding-left: 15px; padding-top: 20px; background-image: none;">
+                <ui:VisualElement style="flex-grow: 0; background-color: rgba(188, 188, 188, 0); padding-top: 3px; padding-right: 0; padding-bottom: 0; padding-left: 13px; flex-direction: row; justify-content: flex-start; width: 100%;">
+                    <ui:VisualElement name="iconElement" style="flex-grow: 0; width: 64px; height: 64px; background-color: rgba(197, 0, 0, 0.43);" />
+                    <ui:VisualElement style="flex-grow: 0; width: 39px;" />
+                    <ui:Label text="Strawberry Syrup" name="nameLabel" style="font-size: 33px; -unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); -unity-text-align: lower-left; letter-spacing: 5px; color: rgb(83, 29, 4); text-shadow: 2px 2px 0 rgb(227, 164, 100); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 8px; padding-left: 0;" />
                 </ui:VisualElement>
-                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                    <ui:Button text="- 1" name="minusOne" style="background-color: rgba(188, 188, 188, 0);" />
-                    <ui:Button text="- 5" name="minusFive" style="background-color: rgba(188, 188, 188, 0);" />
+                <ui:VisualElement style="flex-grow: 0; background-color: rgba(188, 188, 188, 0); padding-left: 10px; flex-direction: row; justify-content: flex-start; margin-top: 10px;">
+                    <ui:VisualElement style="flex-grow: 0; justify-content: center; align-items: stretch;">
+                        <ui:Label text="Owned:" name="asd" style="-unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); margin-top: 0; padding-top: 0; padding-bottom: 0; margin-bottom: 0; font-size: 20px; color: rgb(83, 29, 4); text-shadow: 2px 2px 0 rgb(227, 164, 100); letter-spacing: 5px;" />
+                        <ui:Label text="43" name="ownedAmountLabel" style="-unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); margin-top: 0; padding-top: 0; padding-bottom: 0; margin-bottom: 0; font-size: 20px; color: rgb(83, 29, 4); text-shadow: 2px 2px 0 rgb(227, 164, 100); letter-spacing: 5px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 0; width: 28px;" />
+                    <ui:Label text="23" name="priceLabel" style="font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); color: rgb(83, 29, 4); text-shadow: 2px 2px 0 rgb(227, 164, 100); letter-spacing: 5px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    <ui:VisualElement style="flex-grow: 0; width: 24px; height: 24px; background-image: url(&quot;project://database/Assets/UIDocuments/OverlayUI/Sprites/nut_icon.aseprite?fileID=-7676717474986798981&amp;guid=c300f1e192aeb874dade7ff70c1ed55f&amp;type=3#nut_icon&quot;); justify-content: space-around; align-self: center; margin-top: 7px; margin-left: 5px;" />
+                    <ui:VisualElement style="flex-grow: 0; justify-content: center; align-items: stretch; width: 49%; margin-right: 0;">
+                        <ui:Label text="Buy:" name="asd" style="-unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); margin-top: 0; padding-top: 0; padding-bottom: 0; margin-bottom: 0; font-size: 20px; color: rgb(83, 29, 4); text-shadow: 2px 2px 0 rgb(227, 164, 100); letter-spacing: 5px; -unity-text-align: upper-right;" />
+                        <ui:Label text="x 1" name="buyAmountLabel" style="-unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); margin-top: 0; padding-top: 0; padding-bottom: 0; margin-bottom: 0; font-size: 20px; color: rgb(83, 29, 4); text-shadow: 2px 2px 0 rgb(227, 164, 100); letter-spacing: 5px; -unity-text-align: upper-right;" />
+                    </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:Button text="Buy" name="buyButton" style="height: 120px; width: 100px; background-color: rgba(188, 188, 188, 0);">
-                <ui:Label text="Label" name="totalPrice" />
-            </ui:Button>
+            <ui:VisualElement name="VisualElement" style="flex-grow: 0; flex-direction: row; width: 40%;">
+                <ui:VisualElement name="VisualElement" style="flex-grow: 0; width: 46%; justify-content: space-between; padding-bottom: 15px; padding-top: 0; margin-top: -5px;">
+                    <ui:VisualElement style="flex-grow: 0; flex-direction: row; margin-bottom: 0; padding-bottom: 0; margin-top: 0; justify-content: space-between; width: auto; padding-top: 15px; align-items: stretch; align-self: stretch;">
+                        <ui:Button text="+1" name="plusOne" class="buttonStyle" style="background-color: rgba(188, 188, 188, 0); padding-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; margin-bottom: 0; margin-right: 0; margin-left: 0; margin-top: 0; -unity-text-align: middle-center;" />
+                        <ui:Button text="+5" name="plusFive" class="buttonStyle" style="background-color: rgba(188, 188, 188, 0); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; -unity-text-align: middle-center;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 0; flex-direction: row; margin-bottom: 0; justify-content: space-between;">
+                        <ui:Button text="-1" name="minusOne" class="buttonStyle" style="background-color: rgba(188, 188, 188, 0); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                        <ui:Button text="-5" name="minusFive" class="buttonStyle" style="background-color: rgba(188, 188, 188, 0); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; width: 14%;" />
+                <ui:Button text="Buy" name="buyButton" style="height: 120px; width: 100px; background-color: rgba(188, 188, 188, 0);">
+                    <ui:Label text="Label" name="totalPrice" />
+                </ui:Button>
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

@@ -109,15 +109,15 @@ public class ShopUI : MonoBehaviour
 
         void Refresh()
         {
-            ownedAmountLabel.text = $"Owned: {shopItem.CurrentAmount}";
-            buyAmountLabel.text = $"Buy Amount: {buyAmount}";
-            totalPriceLabel.text = $"{shopItem.Price * buyAmount} $";
+            ownedAmountLabel.text = $"{shopItem.CurrentAmount}";
+            buyAmountLabel.text = $"{buyAmount}";
+            totalPriceLabel.text = $"{shopItem.Price * buyAmount}";
 
             buyButton.SetEnabled(CurrencyManager.Instance.HasEnoughMoney(shopItem.Price * buyAmount));
         }
 
         nameLabel.text = shopItem.Name;
-        priceLabel.text = $"Price: {shopItem.Price}";
+        priceLabel.text = $"{shopItem.Price}";
         Refresh();
 
         entry.Q<Button>("plusOne").clicked += () =>

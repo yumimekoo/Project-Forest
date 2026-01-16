@@ -1,0 +1,21 @@
+:root {
+}
+
+.buttonStyle {
+    width: 56px;
+    height: 56px;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    letter-spacing: 5px;
+    font-size: 40px;
+    color: rgb(83, 29, 4);
+    text-shadow: 1px 1px 0 rgb(227, 164, 100);
+}
+
+.buttonStyle:hover {
+    font-size: 50px;
+    color: rgb(83, 29, 4);
+}

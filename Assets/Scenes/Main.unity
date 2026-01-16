@@ -1862,7 +1862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FridgeUI
   fridgeUIDoc: {fileID: 1260743378}
-  buttonTemp: {fileID: 0}
+  buttonTemp: {fileID: 9197481963319205126, guid: b68e2a7e0bb13a042ba61d1d0abc7b80, type: 3}
 --- !u!1001 &1270779080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1871,6 +1871,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4404452888316198897, guid: 5e3671b61bdebde4685d45d61b6c2ab6, type: 3}
+      propertyPath: storageName
+      value: Drawer
+      objectReference: {fileID: 0}
     - target: {fileID: 1862542262716857225, guid: 5e3671b61bdebde4685d45d61b6c2ab6, type: 3}
       propertyPath: m_Name
       value: storageDrawer
@@ -2634,6 +2638,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6743844899700203324, guid: eb0e4c81a2d30344e9e46c7b6eda8975, type: 3}
+      propertyPath: storageName
+      value: Fridge
+      objectReference: {fileID: 0}
     - target: {fileID: 1862542262716857225, guid: eb0e4c81a2d30344e9e46c7b6eda8975, type: 3}
       propertyPath: m_Name
       value: fridge

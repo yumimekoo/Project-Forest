@@ -1,8 +1,15 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement focusable="true" style="flex-grow: 1;">
-        <ui:VisualElement name="ItemContainer" style="flex-grow: 1; align-self: center;">
-            <ui:Button text="Button" />
+    <ui:Template name="buttonTemplate" src="project://database/Assets/UIDocuments/FridgeUI/buttonTemplate.uxml?fileID=9197481963319205126&amp;guid=b68e2a7e0bb13a042ba61d1d0abc7b80&amp;type=3#buttonTemplate" />
+    <ui:VisualElement focusable="true" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UIDocuments/FridgeUI/Sprites/storageUI.aseprite?fileID=-2646889554517976256&amp;guid=01668d0c332c6c2469131bd1fe7958f6&amp;type=3#storageUI&quot;);">
+        <ui:VisualElement style="flex-grow: 0; height: 19%; justify-content: center; align-self: center;">
+            <ui:VisualElement style="flex-grow: 1;">
+                <ui:VisualElement style="flex-grow: 0; height: 50%;" />
+                <ui:Label text="Fridge" name="storageName" style="-unity-text-align: lower-center; -unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); font-size: 60px; color: rgb(83, 29, 4); text-shadow: 4px 4px 0 rgb(227, 164, 100); letter-spacing: 5px;" />
+            </ui:VisualElement>
         </ui:VisualElement>
+        <ui:ScrollView name="itemContainer" style="width: 31%; align-self: center; padding-bottom: 10px;">
+            <ui:Instance template="buttonTemplate" />
+        </ui:ScrollView>
+        <ui:VisualElement name="focusCatcher" style="flex-grow: 0;" />
     </ui:VisualElement>
-    <ui:VisualElement name="focusCatcher" style="flex-grow: 0;" />
 </ui:UXML>

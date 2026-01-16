@@ -6,9 +6,15 @@
             <ui:Button text="Button" name="furnitureTab" />
             <ui:Button text="Button" name="somewhatTab" />
         </ui:VisualElement>
-        <ui:ScrollView name="itemContainer" style="width: auto; flex-grow: 1;">
-            <ui:Instance template="ShopItemElement" name="ShopItemElement" />
-        </ui:ScrollView>
+        <ui:VisualElement style="flex-grow: 1; padding-left: 40px;">
+            <ui:VisualElement style="flex-grow: 0; height: 19%;" />
+            <ui:ScrollView name="itemContainer" style="width: 774px; flex-grow: 0; align-self: flex-start; justify-content: flex-start; align-items: stretch; height: 583px;">
+                <ui:Instance template="ShopItemElement" name="ShopItemElement" />
+                <ui:Instance template="ShopItemElement" name="ShopItemElement" />
+                <ui:Instance template="ShopItemElement" name="ShopItemElement" />
+                <ui:Instance template="ShopItemElement" name="ShopItemElement" />
+            </ui:ScrollView>
+        </ui:VisualElement>
         <ui:VisualElement style="flex-grow: 0;">
             <ui:Button text="Exit" name="exitButton" />
         </ui:VisualElement>

@@ -1,3 +1,20 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Button text="Button" style="background-size: 100% 25%; height: 20px;" />
+    <Style src="project://database/Assets/UIDocuments/FridgeUI/storageItemTemplate.uss?fileID=7433441132597879392&amp;guid=4594a538513bee74f9581369f25b9c51&amp;type=3#storageItemTemplate" />
+    <ui:VisualElement name="VisualElement" style="flex-grow: 1; margin-bottom: 9px;">
+        <ui:Button text="Button" name="itemButton" class="buttonStyle" style="height: 112px; width: 448px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; align-self: center;">
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                <ui:VisualElement style="flex-grow: 0; width: 26%; padding-top: 24px; padding-right: 24px; padding-bottom: 24px; padding-left: 24px;">
+                    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 136, 0, 0.45);" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; padding-left: 15px;">
+                    <ui:VisualElement style="flex-grow: 0; height: 50%; justify-content: flex-end;">
+                        <ui:Label text="x 13" name="quantityLabel" style="-unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); -unity-text-align: middle-left; font-size: 30px; padding-bottom: 0; margin-bottom: 2px; margin-left: 0; padding-left: 0;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 0;">
+                        <ui:Label text="Black Tea Leaves" name="nameLabel" style="-unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); -unity-text-align: middle-left; font-size: 30px; letter-spacing: 5px; padding-top: 0; margin-top: 0; padding-left: 0; margin-left: 0;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:Button>
+    </ui:VisualElement>
 </ui:UXML>

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class StorageDrawer : MonoBehaviour, IInteractable
 {
+        public string storageName;
         public string GetInteractionPrompt()
         {
             return "Open Storage";
@@ -16,7 +17,8 @@ public class StorageDrawer : MonoBehaviour, IInteractable
             var filteredItems = unlockedItems.FindAll(item => item.storageType == StorageType.Fridge && item.itemType == ItemType.Base);
 
         FridgeUI.Instance.OpenFridge(
-            filteredItems, 
+            filteredItems,
+            storageName,
             item => ItemsInventory.Instance.GetAmount(item.id) > 0,
             item => ItemsInventory.Instance.GetAmount(item.id),
             (ItemDataSO selectedItem) =>
