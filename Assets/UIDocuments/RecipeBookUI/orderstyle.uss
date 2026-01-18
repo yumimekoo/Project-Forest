@@ -1,0 +1,10 @@
+:root {
+}
+
+.orderStyles {
+    background-image: url("project://database/Assets/UIDocuments/RecipeBookUI/Sprites/order.aseprite?fileID=8905917991537762701&guid=2a97b725869b94d479a68b2d17efc3e6&type=3#Frame_0");
+}
+
+.orderStyles:hover {
+    background-image: url("project://database/Assets/UIDocuments/RecipeBookUI/Sprites/order.aseprite?fileID=-790673359267418988&guid=2a97b725869b94d479a68b2d17efc3e6&type=3#Frame_1");
+}

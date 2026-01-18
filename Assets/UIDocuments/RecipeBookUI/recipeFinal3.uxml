@@ -1,0 +1,17 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="recipeStep" src="project://database/Assets/UIDocuments/RecipeBookUI/recipeStep.uxml?fileID=9197481963319205126&amp;guid=b87e985c5d445ce4291b107821f0810d&amp;type=3#recipeStep" />
+    <Style src="project://database/Assets/UIDocuments/RecipeBookUI/recipeUSS.uss?fileID=7433441132597879392&amp;guid=3f8f181888e9d0b4e93751410ee3eef3&amp;type=3#recipeUSS" />
+    <ui:VisualElement style="flex-grow: 0; width: 620px; height: 340px; background-image: url(&quot;project://database/Assets/UIDocuments/RecipeBookUI/Sprites/recipe3.aseprite?fileID=8013133348380896911&amp;guid=454b1cb64c781144290b8178f31e6b2c&amp;type=3#recipe3&quot;);">
+        <ui:VisualElement name="recipeFinal" style="flex-grow: 0; width: 100%; height: 100%; rotate: -2deg; padding-left: 30px; padding-top: 65px; padding-right: 30px;">
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row; margin-top: 5px;">
+                <ui:VisualElement style="flex-grow: 0; width: 64px; height: 64px; background-color: rgba(0, 0, 0, 0.86); min-height: 64px; max-height: 64px; min-width: 64px; max-width: 64px;" />
+                <ui:Label text="Sweetened Iced Matcha Latte" name="recipeHeaderTitle" class="headerStyle" style="padding-left: 20px; padding-right: 0; text-overflow: clip; margin-top: 0; padding-top: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="recipeStepContainer" style="flex-grow: 1; padding-bottom: 50px; align-items: stretch; justify-content: flex-end;">
+                <ui:Instance template="recipeStep" name="recipeStep" class="stepStyle" />
+                <ui:Instance template="recipeStep" name="recipeStep" class="stepStyle" />
+                <ui:Instance template="recipeStep" name="recipeStep" class="stepStyle" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

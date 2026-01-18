@@ -3200,8 +3200,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RecipeBookController
   recipeBookUI: {fileID: 2127065693}
-  recipeFinalTemplate: {fileID: 9197481963319205126, guid: eb4adcf45ca2d1d45ad93b07fcfd8239, type: 3}
+  recipeFinalTemplate: {fileID: 9197481963319205126, guid: f636d336f4416074d80f45d31bf7fec8, type: 3}
   recipeStepTemplate: {fileID: 9197481963319205126, guid: b87e985c5d445ce4291b107821f0810d, type: 3}
+  recipeTemplate5: {fileID: 9197481963319205126, guid: c4b170e2f8ba3374aac348c01a68061d, type: 3}
+  recipeTemplate7: {fileID: 9197481963319205126, guid: eb4adcf45ca2d1d45ad93b07fcfd8239, type: 3}
+  orderTemplate: {fileID: 9197481963319205126, guid: 6885b24bcd83ae547adb1796b5a45e75, type: 3}
   InputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   bookInteract:
     m_Name: Book Interact

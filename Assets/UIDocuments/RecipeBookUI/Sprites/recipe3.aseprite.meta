@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 83b9e22f94bc26a418b8076cca8afac8
+guid: 454b1cb64c781144290b8178f31e6b2c
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: recipeBook
+  - name: recipe3
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5036232, y: -0.0121951215}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 480
-      height: 270
-    spriteID: 75c7a6319aebd044b8ddccd96dac086e
+      width: 138
+      height: 82
+    spriteID: 169e90cca641e204fb8cf305cf886309
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 2138592177
+      value0: 3485270387
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: recipeBook
+    name: recipe3
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: recipeBook
+    - name: recipe3
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 480
-        height: 270
-      spriteId: 75c7a6319aebd044b8ddccd96dac086e
+        x: 8
+        y: 1
+        width: 138
+        height: 82
+      spriteId: 169e90cca641e204fb8cf305cf886309
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -181,5 +181,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 480, y: 270}
-  previousTextureSize: {x: 512, y: 512}
+  canvasSize: {x: 155, y: 85}
+  previousTextureSize: {x: 256, y: 128}

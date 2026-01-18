@@ -9,11 +9,15 @@ public class RecipeBookController : MonoBehaviour
     public UIDocument recipeBookUI;
     public VisualTreeAsset recipeFinalTemplate;
     public VisualTreeAsset recipeStepTemplate;
+    public VisualTreeAsset recipeTemplate5;
+    public VisualTreeAsset recipeTemplate7;
+    public VisualTreeAsset orderTemplate;
     public InputActionAsset InputActions;
     public InputAction bookInteract;
 
     private int currentPage = 0;
-    const int recipesPerPage = 3;
+    const int recipesPerPage = 2;
+    private List<List<DrinkRuleSO>> pages = new();
     private bool isSinleRecipeView = false;
 
     List<DrinkRuleSO> bookRecipes = new();
@@ -48,25 +52,95 @@ public class RecipeBookController : MonoBehaviour
     {
         bookInteract = InputSystem.actions.FindAction("BookInteract");
         root = recipeBookUI.rootVisualElement;
-        closeButton = root.Q<Button>("exitButton");
+        //////closeButton = root.Q<Button>("exitButton");
         prevPageButton = root.Q<Button>("prevPage");
         nextPageButton = root.Q<Button>("nextPage");
         recipesContainer = root.Q<VisualElement>("recipesContainer");
         ordersContainer = root.Q<VisualElement>("ordersContainer");
         pageNumberLabel = root.Q<Label>("pageLabel");
-        searchField = root.Q<TextField>("searchField");
+        //searchField = root.Q<TextField>("searchField");
 
         prevPageButton.clicked += PrevPage;
         nextPageButton.clicked += NextPage;
-        closeButton.clicked += Close;
-        searchField.RegisterValueChangedCallback(evt =>
-        {
-            ApplySearch(evt.newValue);
-        });
+        ///closeButton.clicked += Close;
+        //searchField.RegisterValueChangedCallback(evt =>
+        //{
+        //    ApplySearch(evt.newValue);
+        //});
 
         LoadRecipes();
         RefreshRecipesPage();
         Close();
+    }
+
+    private void BuildPages(List<DrinkRuleSO> recipes)
+    {
+        pages.Clear();
+
+        List<DrinkRuleSO> currentPageRecipes = new();
+
+        foreach (var recipe in recipes)
+        {
+            int steps = CountSteps(recipe.resultingState);
+
+
+            if (steps > 4)
+            {
+                if (currentPageRecipes.Count > 0)
+                {
+                    pages.Add(new List<DrinkRuleSO>(currentPageRecipes));
+                    currentPageRecipes.Clear();
+                }
+
+                pages.Add(new List<DrinkRuleSO> { recipe });
+                continue;
+            }
+
+            currentPageRecipes.Add(recipe);
+
+            if (currentPageRecipes.Count == 2)
+            {
+                pages.Add(new List<DrinkRuleSO>(currentPageRecipes));
+                currentPageRecipes.Clear();
+            }
+        }
+
+        if (currentPageRecipes.Count > 0)
+            pages.Add(currentPageRecipes);
+    }
+
+    private int CountSteps(ItemDataSO result)
+    {
+        int count = 0;
+        var rule = FindRuleFromResult(result);
+        if (rule == null)
+            return 0;
+
+        void Recurse(ItemDataSO res)
+        {
+            var r = FindRuleFromResult(res);
+            if (r == null)
+                return;
+
+            Recurse(r.requiredState);
+            Recurse(r.addedIngredient);
+            count++;
+        }
+
+        Recurse(result);
+        return count;
+    }
+
+    private VisualTreeAsset GetTemplateForRecipe(DrinkRuleSO recipe)
+    {
+        int steps = CountSteps(recipe.resultingState);
+
+        if (steps <= 3)
+            return recipeFinalTemplate;
+        if (steps <= 4)
+            return recipeTemplate5;
+
+        return recipeTemplate7;
     }
 
     private void LoadRecipes()
@@ -77,7 +151,9 @@ public class RecipeBookController : MonoBehaviour
             .ThenBy(r => r.resultingState.itemName)
             .ToList();
 
-        currentPage = Mathf.Clamp(currentPage, 0, Mathf.Max(0, (bookRecipes.Count - 1) / recipesPerPage));
+        BuildPages(bookRecipes);
+
+        currentPage = Mathf.Clamp(currentPage, 0, pages.Count - 1);
     }
 
     private void Update()
@@ -126,11 +202,14 @@ public class RecipeBookController : MonoBehaviour
                 drinkName = "Surprise Drink!";
             }
                 // hier dann template machen
-                var label = new Label(
-                    npcName + " -> " + drinkName // {npc.npcName} -> {drink.itemName}
-                );
+            var orderItem = orderTemplate.Instantiate();
+            Label orderNPCName = orderItem.Q<Label>("npcName");
+            Label orderItemName = orderItem.Q<Label>("npcOrder");
 
-            label.RegisterCallback<ClickEvent>(_ =>
+            orderNPCName.text = npcName;
+            orderItemName.text = drinkName;
+
+            orderItem.RegisterCallback<ClickEvent>(_ =>
             {
                 if (drink != null)
                 {
@@ -140,7 +219,7 @@ public class RecipeBookController : MonoBehaviour
 
             });
 
-            ordersContainer.Add(label);
+            ordersContainer.Add(orderItem);
         }
     }
 
@@ -162,15 +241,12 @@ public class RecipeBookController : MonoBehaviour
         if (bookRecipes.Count == 0)
             return;
 
-        int startIndex = currentPage * recipesPerPage;
-        int end = Mathf.Min(startIndex + recipesPerPage, bookRecipes.Count);
-
-        for (int i = startIndex; i < end; i++)
+        foreach (var recipe in pages[currentPage])
         {
-            BuildRecipeItem(bookRecipes[i]);
+            BuildRecipeItem(recipe);
         }
 
-        pageNumberLabel.text = $"Page {currentPage + 1}";
+        pageNumberLabel.text = $"{currentPage + 1}";
     }
 
     private void RefreshRecipesPageFiltered()
@@ -190,7 +266,8 @@ public class RecipeBookController : MonoBehaviour
 
     private void BuildRecipeItem(DrinkRuleSO recipe)
     {
-        var recipeItem = recipeFinalTemplate.Instantiate();
+        var template = GetTemplateForRecipe(recipe);
+        var recipeItem = template.Instantiate();
 
         var headerLabel = recipeItem.Q<Label>("recipeHeaderTitle");
         var stepContainer = recipeItem.Q<VisualElement>("recipeStepContainer");
@@ -199,31 +276,34 @@ public class RecipeBookController : MonoBehaviour
 
         headerLabel.text = recipe.resultingState.itemName;
 
-        BuildStepsRecursive(recipe.resultingState, stepContainer);
+        int stepIndex = 1;
+        BuildStepsRecursive(recipe.resultingState, stepContainer, ref stepIndex);
 
         recipesContainer.Add(recipeItem);
     }
 
-    private void BuildStepsRecursive(ItemDataSO result, VisualElement stepContainer)
+    private void BuildStepsRecursive(ItemDataSO result, VisualElement stepContainer, ref int stepIndex)
     {
         var rule = FindRuleFromResult(result);
         if(rule == null) 
             return;
 
-        BuildStepsRecursive(rule.requiredState, stepContainer);
-        BuildStepsRecursive(rule.addedIngredient, stepContainer);
+        BuildStepsRecursive(rule.requiredState, stepContainer, ref stepIndex);
+        BuildStepsRecursive(rule.addedIngredient, stepContainer, ref stepIndex);
 
-        AddStep(rule, stepContainer);
+        AddStep(rule, stepContainer, ref stepIndex);
     }
 
-    private void AddStep(DrinkRuleSO rule, VisualElement stepContainer)
+    private void AddStep(DrinkRuleSO rule, VisualElement stepContainer, ref int stepIndex)
     {
         var step = recipeStepTemplate.Instantiate();
         step.Q<Label>("left").text = rule.requiredState.itemName;
         step.Q<Label>("right").text = rule.addedIngredient.itemName;
         step.Q<Label>("result").text = rule.resultingState.itemName;
+        step.Q<Label>("stepNumber").text = $"{stepIndex}.";
 
         stepContainer.Add(step);
+        stepIndex++;
     }
 
     private DrinkRuleSO FindRuleFromResult(ItemDataSO result)

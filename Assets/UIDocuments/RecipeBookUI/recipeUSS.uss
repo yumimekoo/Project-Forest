@@ -1,0 +1,20 @@
+:root {
+}
+
+.headerStyle {
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    font-size: 45px;
+    color: rgb(40, 14, 2);
+    text-shadow: 3px 3px 0 rgb(227, 164, 100);
+    letter-spacing: 2px;
+    white-space: normal;
+}
+
+.stepStyle {
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    letter-spacing: 2px;
+    rotate: 0;
+    font-size: 25px;
+    color: rgb(40, 14, 2);
+    text-shadow: 2px 2px 0 rgb(227, 164, 100);
+}
