@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -9,8 +10,6 @@ public class ShopUI : MonoBehaviour
     public UIDocument shopUI;
     public VisualTreeAsset shopItemTemplate;
     public VisualTreeAsset shopCategoryTabTemplate;
-    public Sprite tabDefault;
-    public Sprite tabSelected;
 
 
     private VisualElement
@@ -18,6 +17,7 @@ public class ShopUI : MonoBehaviour
         tabsContainer;
     private Button
         exitButton;
+    private Label moneyLabel;
     private ShoppingCategory currentCategory;
     List<IShopItem> allShopItems;
 
@@ -34,17 +34,32 @@ public class ShopUI : MonoBehaviour
         UpdateButtons();
     }
 
+    private void OnEnable()
+    {
+        if (CurrencyManager.Instance != null)
+            CurrencyManager.Instance.OnMoneyChanged += UpdateMoney;
+    }
+
+    private void OnDisable()
+    {
+        if (CurrencyManager.Instance != null)
+            CurrencyManager.Instance.OnMoneyChanged -= UpdateMoney;
+    }
     private void InitUI()
     {
         var root = shopUI.rootVisualElement;
         itemContainer = root.Q<VisualElement>("itemContainer");
         tabsContainer = root.Q<VisualElement>("tabsContainer");
         exitButton = root.Q<Button>("exitButton");
+        moneyLabel = root.Q<Label>("moneyLabel");
 
+        if(CurrencyManager.Instance != null)
+            moneyLabel.text = CurrencyManager.Instance.CurrentMoney.ToString();
         exitButton.clicked += OnExitButton;
 
         BuildShopItems();
         BuildCategoryTabs();
+        
 
         ShowCategory(ShoppingCategory.Items);
         HideUI();
@@ -76,6 +91,11 @@ public class ShopUI : MonoBehaviour
         }
     }
 
+    private void UpdateMoney(int newAmount)
+    {
+        moneyLabel.text = newAmount.ToString();
+    }
+
     private void BuildShopItems()
     {
         allShopItems = new List<IShopItem>();
@@ -93,8 +113,10 @@ public class ShopUI : MonoBehaviour
 
         foreach (var kvp in categoryButtons)
         {
-            SetSprite(kvp.Value, kvp.Key == category ? tabSelected : tabDefault);
+            kvp.Value.RemoveFromClassList("selected");
         }
+
+        categoryButtons[category].AddToClassList("selected");
 
         itemContainer.Clear();
         foreach (var shopItem in allShopItems.Where(i => i.Category == category))
@@ -102,11 +124,6 @@ public class ShopUI : MonoBehaviour
             CreateEntry(shopItem);
         }
 
-    }
-
-    private void SetSprite(Button button ,Sprite sprite)
-    {
-        button.style.backgroundImage = new StyleBackground(sprite);
     }
 
     private void CreateEntry(IShopItem shopItem)
@@ -183,8 +200,6 @@ public class ShopUI : MonoBehaviour
             var tabText = tabTemplate.Q<Label>("tabText");
             tabButton.clicked += () => ShowCategory(category);
             tabText.text = category.ToString();
-
-            SetSprite(tabButton, tabDefault);
 
             categoryButtons[category] = tabButton;
             tabsContainer.Add(tabTemplate);

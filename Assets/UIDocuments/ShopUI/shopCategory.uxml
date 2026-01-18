@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UIDocuments/ShopUI/category.uss?fileID=7433441132597879392&amp;guid=561055dadebbcb94da577e397909e2bc&amp;type=3#category" />
-    <ui:VisualElement style="width: 100%; height: 100%;">
+    <ui:VisualElement name="itemsBase" style="width: 100%; height: 122px;">
         <ui:Button name="itemsTab" class="categoryButtonStyle" style="flex-grow: 0; border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); height: 112px; width: 100%; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; flex-direction: row; -unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;);">
             <ui:VisualElement style="flex-grow: 0; width: 29%; padding-top: 23px; padding-right: 0; padding-bottom: 23px; padding-left: 27px;">
                 <ui:VisualElement style="flex-grow: 0; width: 64px; height: 64px; background-color: rgba(0, 0, 0, 0.67);" />

@@ -1,0 +1,31 @@
+:root {
+}
+
+.buttonStyle {
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("project://database/Assets/UIDocuments/BuildModeUI/buildItem.aseprite?fileID=-6097511860701750155&guid=38c9e0ebb2e910d43b8b2d8e62c0529f&type=3#Frame_0");
+    padding-top: 23px;
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    font-size: 20px;
+    color: rgb(83, 29, 4);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.buttonStyle:hover {
+    background-image: url("project://database/Assets/UIDocuments/BuildModeUI/buildItem.aseprite?fileID=-6684672637774625395&guid=38c9e0ebb2e910d43b8b2d8e62c0529f&type=3#Frame_1");
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.buttonStyle.selected {
+    background-image: url("project://database/Assets/UIDocuments/BuildModeUI/buildItem.aseprite?fileID=-6684672637774625395&guid=38c9e0ebb2e910d43b8b2d8e62c0529f&type=3#Frame_1");
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}

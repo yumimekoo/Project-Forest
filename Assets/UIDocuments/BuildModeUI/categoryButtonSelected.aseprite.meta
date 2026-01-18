@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 333b5311e7855ab4d99ea8e989183dd3
+guid: bb2ee093074715142bdae6c404f09645
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,7 +127,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: buildModeUI
+  - name: categoryButtonSelected
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 480
-      height: 270
-    spriteID: 10f599e065ec1d74e9b27d0a981dda22
+      width: 101
+      height: 22
+    spriteID: ab19077ad965c804fb15741bc94bec19
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 319450761
+      value0: 3302509711
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: buildModeUI
+    name: categoryButtonSelected
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: buildModeUI
+    - name: categoryButtonSelected
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 480
-        height: 270
-      spriteId: 10f599e065ec1d74e9b27d0a981dda22
+        width: 101
+        height: 22
+      spriteId: ab19077ad965c804fb15741bc94bec19
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -181,5 +181,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 480, y: 270}
-  previousTextureSize: {x: 512, y: 512}
+  canvasSize: {x: 101, y: 22}
+  previousTextureSize: {x: 128, y: 32}

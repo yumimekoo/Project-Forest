@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 333b5311e7855ab4d99ea8e989183dd3
+guid: 695ddd07a3e1e004185ab7751cb3a2ce
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,7 +127,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: buildModeUI
+  - name: Frame_0
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 480
-      height: 270
-    spriteID: 10f599e065ec1d74e9b27d0a981dda22
+      width: 56
+      height: 22
+    spriteID: 884cb0c4bf5d31546b10c6b66d13ec7c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -148,30 +148,60 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 34
+      width: 56
+      height: 22
+    spriteID: 505955f4595e63f4e9d33aa2c54ca072
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 34}
   spriteSheetImportData: []
   tileSetImportData: []
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 319450761
+      value0: 2101395935
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: buildModeUI
+    name: saveButton
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: buildModeUI
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 480
-        height: 270
-      spriteId: 10f599e065ec1d74e9b27d0a981dda22
+        width: 56
+        height: 22
+      spriteId: 884cb0c4bf5d31546b10c6b66d13ec7c
+    - name: Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 56
+        height: 22
+      spriteId: 505955f4595e63f4e9d33aa2c54ca072
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -181,5 +211,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 480, y: 270}
-  previousTextureSize: {x: 512, y: 512}
+  canvasSize: {x: 56, y: 22}
+  previousTextureSize: {x: 64, y: 64}

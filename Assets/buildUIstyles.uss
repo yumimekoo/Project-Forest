@@ -1,0 +1,96 @@
+:root {
+}
+
+.buttonCategory {
+    width: 404px;
+    height: 88px;
+    background-image: url("project://database/Assets/UIDocuments/BuildModeUI/categoryButton.aseprite?fileID=6999153074007060899&guid=26d687a8666d7f34ca109ef402f4803f&type=3#categoryButton");
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    font-size: 35px;
+    color: rgb(83, 29, 4);
+    letter-spacing: 5px;
+    text-shadow: 4px 4px 0 rgb(227, 164, 100);
+}
+
+.buttonCategory:hover {
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    font-size: 35px;
+    color: rgb(248, 189, 129);
+    text-shadow: 4px 4px 0 rgb(83, 29, 4);
+    letter-spacing: 5px;
+    background-image: url("project://database/Assets/UIDocuments/BuildModeUI/categoryButtonSelected.aseprite?fileID=-486790418246953743&guid=bb2ee093074715142bdae6c404f09645&type=3#categoryButtonSelected");
+}
+
+.deleteButton {
+    background-image: url("project://database/Assets/UIDocuments/BuildModeUI/deleteButton.aseprite?fileID=-6407545854860297990&guid=7117d659ddb360f4684cc3e2bac1dad9&type=3#Frame_0");
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    text-shadow: 3px 3px 0 rgb(197, 53, 53);
+    letter-spacing: 5px;
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    font-size: 30px;
+    color: rgb(83, 29, 4);
+}
+
+.deleteButton:hover {
+    background-image: url("project://database/Assets/UIDocuments/BuildModeUI/deleteButton.aseprite?fileID=-5916895461661481311&guid=7117d659ddb360f4684cc3e2bac1dad9&type=3#Frame_1");
+}
+
+.saveButton {
+    background-image: url("project://database/Assets/UIDocuments/BuildModeUI/saveButton.aseprite?fileID=-6581050388848733696&guid=695ddd07a3e1e004185ab7751cb3a2ce&type=3#Frame_0");
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    -unity-font-style: normal;
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    font-size: 30px;
+    color: rgb(83, 29, 4);
+    text-shadow: 3px 3px 0 rgb(227, 164, 100);
+    letter-spacing: 5px;
+}
+
+.saveButton:hover {
+    background-image: url("project://database/Assets/UIDocuments/BuildModeUI/saveButton.aseprite?fileID=6825130441241488816&guid=695ddd07a3e1e004185ab7751cb3a2ce&type=3#Frame_1");
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    font-size: 30px;
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    color: rgb(248, 189, 129);
+    text-shadow: 3px 3px 0 rgb(83, 29, 4);
+    letter-spacing: 5px;
+}
+
+.buttonCategory.selected {
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    font-size: 35px;
+    color: rgb(248, 189, 129);
+    text-shadow: 4px 4px 0 rgb(83, 29, 4);
+    letter-spacing: 5px;
+    background-image: url("project://database/Assets/UIDocuments/BuildModeUI/categoryButtonSelected.aseprite?fileID=-486790418246953743&guid=bb2ee093074715142bdae6c404f09645&type=3#categoryButtonSelected");
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.background {
+    background-image: url("project://database/Assets/UIDocuments/BuildModeUI/buildModeUI.aseprite?fileID=3144625532143195398&guid=333b5311e7855ab4d99ea8e989183dd3&type=3#buildModeUI");
+}
+
+.background.selected {
+    background-image: url("project://database/Assets/UIDocuments/BuildModeUI/deleteMode.aseprite?fileID=-4622046499248014274&guid=f39453a040b12914ba4cc44f0a5022ee&type=3#Frame_0");
+}
