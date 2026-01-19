@@ -7,8 +7,8 @@ public class FridgeUI : MonoBehaviour
 {
     public static FridgeUI Instance;
 
-    [SerializeField] UIDocument fridgeUIDoc;
-    [SerializeField] VisualTreeAsset buttonTemp;
+    [SerializeField] private UIDocument fridgeUIDoc;
+    [SerializeField] private VisualTreeAsset buttonTemp;
 
     private VisualElement 
         root,
@@ -28,7 +28,7 @@ public class FridgeUI : MonoBehaviour
 
     public void OpenFridge(
         List<ItemDataSO> items, 
-        String storageName,
+        string storageName,
         Func<ItemDataSO, bool> canSelectItem,
         Func<ItemDataSO, int> getAmount,
         Action<ItemDataSO> clickCallback)
@@ -66,11 +66,9 @@ public class FridgeUI : MonoBehaviour
     private void OnKeyDown(KeyDownEvent evt)
     {
         //Debug.Log($"Key pressed: {evt.keyCode}");
-        if (evt.keyCode == KeyCode.Escape)
-        {
-            CloseUI();
-            evt.StopPropagation();
-        }
+        if (evt.keyCode != KeyCode.Escape) return;
+        CloseUI();
+        evt.StopPropagation();
     }
 
     private void CloseUI()
