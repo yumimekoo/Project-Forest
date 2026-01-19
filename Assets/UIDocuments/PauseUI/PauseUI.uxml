@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UIDocuments/PauseUI/pauseUI.aseprite?fileID=-7841251454533711390&amp;guid=9a7eff230452f5948b7bfab0c42f501c&amp;type=3#Frame_1&quot;);">
+    <ui:VisualElement name="animation" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UIDocuments/PauseUI/pauseUI.aseprite?fileID=-7841251454533711390&amp;guid=9a7eff230452f5948b7bfab0c42f501c&amp;type=3#Frame_1&quot;);">
         <ui:VisualElement style="flex-grow: 1; align-self: center;">
             <ui:VisualElement style="flex-grow: 1; justify-content: center;">
                 <ui:Button text="Continue" name="continue" style="font-size: 35px; height: auto;" />
