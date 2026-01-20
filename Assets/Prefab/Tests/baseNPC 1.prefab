@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCController
   identity: {fileID: 11400000, guid: 5eb0689833e292f48b542971abcb9614, type: 2}
+  overheadUI: {fileID: 601667092469231679, guid: 74caffb751672d144b3c33fd584d740b, type: 3}
 --- !u!1 &8303468190589327077
 GameObject:
   m_ObjectHideFlags: 0
