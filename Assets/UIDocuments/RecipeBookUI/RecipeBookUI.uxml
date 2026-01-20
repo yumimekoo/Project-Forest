@@ -1,27 +1,26 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="recipeFinal" src="project://database/Assets/UIDocuments/RecipeBookUI/recipeFinal.uxml?fileID=9197481963319205126&amp;guid=eb4adcf45ca2d1d45ad93b07fcfd8239&amp;type=3#recipeFinal" />
-    <ui:VisualElement class="book-root" style="flex-direction: column; flex-grow: 1; background-color: rgba(255, 255, 255, 0.47);">
-        <ui:VisualElement name="bookHeader" style="flex-grow: 0; height: 5%; flex-direction: row; justify-content: space-between;">
-            <ui:Label text="Recipe Book" class="book-title" style="font-size: 30px;" />
-            <ui:Button name="exitButton" text="X" />
-            <ui:TextField label="Text Field" placeholder-text="filler text" name="searchField" />
-        </ui:VisualElement>
+    <ui:Template name="orderTemplate" src="project://database/Assets/UIDocuments/RecipeBookUI/orderTemplate.uxml?fileID=9197481963319205126&amp;guid=6885b24bcd83ae547adb1796b5a45e75&amp;type=3#orderTemplate" />
+    <ui:VisualElement name="VisualElement" class="book-root" style="flex-direction: column; flex-grow: 0; background-color: rgba(255, 255, 255, 0.47); width: 100%; height: 100%; background-image: url(&quot;project://database/Assets/UIDocuments/RecipeBookUI/Sprites/recipeBook.aseprite?fileID=-3721138739504423157&amp;guid=83b9e22f94bc26a418b8076cca8afac8&amp;type=3#recipeBook&quot;); padding-top: 100px; padding-right: 190px; padding-bottom: 100px; padding-left: 190px;">
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement name="leftPage" class="book-header" style="justify-content: space-between; width: 50%;">
-                <ui:VisualElement style="flex-grow: 1;">
-                    <ui:Label text="Current Orders" />
-                    <ui:VisualElement name="ordersContainer" style="flex-grow: 1;" />
+                <ui:VisualElement style="flex-grow: 1; align-self: stretch; align-items: center; padding-left: 50px; padding-right: 75px; padding-top: 95px;">
+                    <ui:Label text="Current Orders" style="-unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); font-size: 55px; letter-spacing: 5px; color: rgb(83, 29, 4); text-shadow: 3px 3px 0 rgb(227, 164, 100);" />
+                    <ui:ScrollView name="ordersContainer" style="width: 100%; height: 88%; padding-top: 25px; padding-bottom: 25px; align-items: center;">
+                        <ui:Instance template="orderTemplate" name="orderTemplate" style="width: 605px;" />
+                        <ui:Instance template="orderTemplate" name="orderTemplate" style="width: 605px;" />
+                        <ui:Instance template="orderTemplate" name="orderTemplate" style="width: 605px;" />
+                        <ui:Instance template="orderTemplate" name="orderTemplate" style="width: 605px;" />
+                        <ui:Instance template="orderTemplate" name="orderTemplate" style="width: 605px;" />
+                        <ui:Instance template="orderTemplate" name="orderTemplate" style="width: 605px;" />
+                    </ui:ScrollView>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="rightPage" class="book-content" style="width: 50%;">
-                <ui:Label text="(Recipes will appear here)" style="font-size: 20px;" />
-                <ui:VisualElement name="recipesContainer" style="flex-grow: 1; margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 15px;">
-                    <ui:Instance template="recipeFinal" name="recipeFinal" />
-                </ui:VisualElement>
+            <ui:VisualElement name="rightPage" class="book-content" style="width: 50%; justify-content: space-between; padding-bottom: 40px; padding-left: 70px; padding-right: 30px; padding-top: 65px;">
+                <ui:VisualElement name="recipesContainer" style="flex-grow: 0; margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 15px; height: auto; justify-content: center; align-items: center; align-self: stretch;" />
                 <ui:VisualElement name="pageControls" style="flex-grow: 0; flex-direction: row; height: 5%; justify-content: space-between; align-self: stretch; align-items: center;">
-                    <ui:Button text="&lt;-" name="prevPage" emoji-fallback-support="false" />
-                    <ui:Label text="0" name="pageLabel" />
-                    <ui:Button text="-&gt;" name="nextPage" />
+                    <ui:Button name="prevPage" emoji-fallback-support="false" style="background-color: rgba(188, 188, 188, 0); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); width: 40px; height: 40px;" />
+                    <ui:Label text="12" name="pageLabel" style="-unity-text-align: upper-center; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; -unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); font-size: 35px; word-spacing: 0; letter-spacing: 5px; color: rgb(83, 29, 4); text-shadow: 2px 2px 0 rgb(227, 164, 100);" />
+                    <ui:Button text="&#10;" name="nextPage" style="background-color: rgba(188, 188, 188, 0); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); width: 40px; height: 40px;" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

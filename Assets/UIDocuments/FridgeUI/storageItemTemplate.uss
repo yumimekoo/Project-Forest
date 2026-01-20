@@ -1,0 +1,28 @@
+:root {
+}
+
+.buttonStyle {
+    background-color: rgba(0, 0, 0, 0);
+    -unity-font-definition: initial;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    background-image: url("project://database/Assets/UIDocuments/FridgeUI/Sprites/storageItem.aseprite?fileID=5850455622435159149&guid=8788a1eecf80c3a498e755c61b7cf38a&type=3#storageItem");
+    color: rgb(83, 29, 4);
+    text-shadow: 2px 2px 0 rgb(227, 164, 100);
+    letter-spacing: 5px;
+}
+
+.buttonStyle:hover {
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("project://database/Assets/UIDocuments/FridgeUI/Sprites/storageItemHover.aseprite?fileID=7565956884245010364&guid=99dec37724ea705479a290dc0c72f910&type=3#storageItemHover");
+    -unity-font-definition: initial;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    color: rgb(248, 189, 129);
+    text-shadow: 2px 2px 0 rgb(83, 29, 4);
+    letter-spacing: 5px;
+}

@@ -1,26 +1,63 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement style="flex-grow: 1; margin-top: 180px; margin-right: 180px; margin-bottom: 180px; margin-left: 180px;">
-        <ui:VisualElement style="flex-grow: 1; background-color: rgb(207, 207, 207);">
-            <ui:Label text="Label" name="moneyEarnedLabel" />
-            <ui:VisualElement name="VisualElement" style="flex-grow: 0; flex-direction: row;">
-                <ui:Label text="Label" name="day" />
-                <ui:Label text="Label" name="weekday" />
-                <ui:Label text="Label" name="week" />
+    <Style src="project://database/Assets/UIDocuments/TimeUI/endofday.uss?fileID=7433441132597879392&amp;guid=bd378712c74758d4a94db8eb714ffa62&amp;type=3#endofday" />
+    <ui:VisualElement style="flex-grow: 1; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; background-image: none; align-self: stretch; justify-content: center; width: 100%; height: 100%; align-items: center; -unity-background-scale-mode: scale-to-fit;">
+        <ui:VisualElement name="VisualElement" style="flex-grow: 0; background-color: rgba(207, 207, 207, 0); background-image: url(&quot;project://database/Assets/UIDocuments/TimeUI/Sprites/dayRecapUI.aseprite?fileID=-5389863559987375068&amp;guid=d284357c8bcf1b342983521e181e3926&amp;type=3#dayRecapUI&quot;); width: 50%; height: 50%;">
+            <ui:VisualElement style="flex-grow: 0; height: 10%;" />
+            <ui:VisualElement name="VisualElement" style="flex-grow: 0; flex-direction: row; justify-content: center;">
+                <ui:Label text="Sunday" name="weekday" class="header-style" />
+                <ui:Label text="21," name="day" class="header-style" style="-unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); font-size: 50px; color: rgb(83, 29, 4); text-shadow: 2px 2px 0 rgb(227, 164, 100);" />
+                <ui:Label text="Week 1" name="week" class="header-style" />
             </ui:VisualElement>
-            <ui:VisualElement name="VisualElement" style="flex-grow: 0; flex-direction: row;">
-                <ui:Label text="Label" name="totalLabel" />
-                <ui:Label text="Label" name="acceptedLabel" />
-            </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
-                <ui:Label text="Label" name="completedLabel" />
-                <ui:Label text="Label" name="successLabel" />
-                <ui:Label text="Label" name="failedLabel" />
-            </ui:VisualElement>
-            <ui:Label text="Label" name="friendshipLabel" />
-            <ui:Label text="Label" name="friendshipXPLabel" />
-            <ui:VisualElement style="flex-grow: 1;">
-                <ui:Button text="Okay" name="okButton" />
-                <ui:Button text="Pay Rent" name="payRentButton" />
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                <ui:VisualElement style="flex-grow: 0; width: 50%;">
+                    <ui:VisualElement style="flex-grow: 0; height: 5%;" />
+                    <ui:VisualElement style="flex-grow: 0; flex-direction: row; justify-content: space-between; padding-left: 13%; padding-right: 1%;">
+                        <ui:Label text="Money Earned: " class="subheading-style" />
+                        <ui:VisualElement style="flex-grow: 0; align-self: center; flex-direction: row; align-items: center;">
+                            <ui:Label text="374" name="moneyEarnedLabel" class="subheading-style" style="-unity-text-align: upper-left;" />
+                            <ui:VisualElement focusable="false" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UIDocuments/OverlayUI/Sprites/nut_icon.aseprite?fileID=-7676717474986798981&amp;guid=c300f1e192aeb874dade7ff70c1ed55f&amp;type=3#nut_icon&quot;); background-position-x: right 0%; width: 25px; height: 25px; justify-content: space-around; align-items: center; align-self: center; background-position-y: bottom 0; -unity-background-scale-mode: scale-to-fit; margin-top: 5px;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 0; height: 5%;" />
+                    <ui:VisualElement name="VisualElement" style="flex-grow: 0; flex-direction: row; justify-content: space-between; padding-right: 1%; padding-left: 13%;">
+                        <ui:Label text="Orders Accepted:" class="subheading-style" />
+                        <ui:Label text="35/67" name="totalLabel" class="subheading-style" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 0; height: 5%;" />
+                    <ui:VisualElement style="flex-grow: 0; flex-direction: row; align-items: auto; justify-content: space-between; padding-left: 13%; padding-right: 1%;">
+                        <ui:Label text="Orders Completed:" class="subheading-style" />
+                        <ui:VisualElement tooltip="Total : (Sucessful/Failed)" focusable="false" style="flex-grow: 1; flex-direction: row; justify-content: flex-end;">
+                            <ui:Label text="10:" name="completedLabel" class="subheading-style" />
+                            <ui:Label text="(" class="subheading-style" style="margin-right: 0;" />
+                            <ui:Label text="7" name="successLabel" style="padding-right: 0; margin-right: 0; -unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); font-size: 25px; color: rgb(69, 176, 45); text-shadow: 1px 1px 0 rgb(19, 119, 21);" />
+                            <ui:Label text="/" class="subheading-style" style="margin-right: 2px; padding-right: 1px;" />
+                            <ui:Label text="3" name="failedLabel" style="margin-left: 0; padding-left: 0; -unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); font-size: 25px; color: rgb(220, 72, 72); text-shadow: 1px 1px 0 rgb(197, 53, 53); margin-right: 0;" />
+                            <ui:Label text=")" class="subheading-style" style="margin-right: 0;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 0; height: 5%;" />
+                    <ui:VisualElement style="flex-grow: 0; flex-direction: row; justify-content: space-between; padding-left: 13%; padding-right: 1%;">
+                        <ui:Label text="Rent Due: " class="subheading-style" />
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: flex-end;">
+                            <ui:Label text="300" name="rentPayPrice" class="subheading-style" />
+                            <ui:VisualElement focusable="false" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/UIDocuments/OverlayUI/Sprites/nut_icon.aseprite?fileID=-7676717474986798981&amp;guid=c300f1e192aeb874dade7ff70c1ed55f&amp;type=3#nut_icon&quot;); background-position-x: right 0%; width: 25px; height: 25px; justify-content: space-around; align-items: center; align-self: center; background-position-y: bottom 0; -unity-background-scale-mode: scale-to-fit; margin-top: 5px;" />
+                            <ui:Label text=" in 5 days." name="rentDueToLabel" class="subheading-style" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 0; height: 10%;" />
+                    <ui:VisualElement style="flex-grow: 1; height: auto; width: auto; align-self: center; justify-content: space-between; margin-left: 50px;">
+                        <ui:Button text="Okay" name="okButton" class="button-style" />
+                        <ui:Button text="Pay Rent" name="payRentButton" class="button-style" style="justify-content: center; -unity-text-align: middle-center;">
+                            <ui:VisualElement style="flex-grow: 0; background-image: url(&quot;project://database/Assets/UIDocuments/OverlayUI/Sprites/nut_icon.aseprite?fileID=-7676717474986798981&amp;guid=c300f1e192aeb874dade7ff70c1ed55f&amp;type=3#nut_icon&quot;); -unity-background-scale-mode: scale-to-fit; background-position-x: right 0%; height: 50px; margin-right: 40px;" />
+                        </ui:Button>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; width: 50%;">
+                    <ui:VisualElement style="flex-grow: 0; height: 6%;" />
+                    <ui:VisualElement style="flex-grow: 1; align-self: center;">
+                        <ui:Label text="Unlocks" class="subheading-style" style="-unity-text-align: upper-center; padding-left: 15px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

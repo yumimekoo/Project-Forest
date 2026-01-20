@@ -7,18 +7,6 @@ public class CurrencyManager : MonoBehaviour
     public int CurrentMoney { get; private set; }
     public event Action<int> OnMoneyChanged;
 
-    public void RegisterNPC(BasicNPCTest npc)
-    {
-        npc.OnCorrectOrderGiven += HandleCorrectOrder;
-        npc.OnWrongOrderGiven += HandleWrongOrder;
-    }
-
-    public void UnregisterNPC(BasicNPCTest npc)
-    {
-        npc.OnCorrectOrderGiven -= HandleCorrectOrder;
-        npc.OnWrongOrderGiven -= HandleWrongOrder;
-    }
-
     private void Awake()
     {
         if (Instance != null)
@@ -27,18 +15,6 @@ public class CurrencyManager : MonoBehaviour
             return;
         }
         Instance = this;
-    }
-
-    private void HandleCorrectOrder(int reward)
-    {
-        AddMoney(reward);
-        // Debug.Log($"Earned {reward} money for correct order! Current Money: {CurrentMoney}");
-    }
-    private void HandleWrongOrder(int penalty)
-    {
-        int finalPenalty = Mathf.RoundToInt(penalty / 2);
-        LoseMoney(finalPenalty);
-        // Debug.Log($"Lost {finalPenalty} money for wrong order! Current Money: {CurrentMoney}");
     }
     public void AddMoney(int amount)
     {

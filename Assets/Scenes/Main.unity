@@ -375,6 +375,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 461629892}
+  - component: {fileID: 461629893}
   m_Layer: 0
   m_Name: UIHandler
   m_TagString: Untagged
@@ -404,6 +405,37 @@ Transform:
   - {fileID: 2094637229}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &461629893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461629891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3897e43af2f44ae823e2a6365859cc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIManager
+  InputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  openPause:
+    m_Name: Open Pause
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 86d671f9-83ad-4ac9-acdd-128ff1b6a909
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  openBook:
+    m_Name: Open Book
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 863270ec-7084-423c-b5f0-1b8d175a8e3a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &483811079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1862,7 +1894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FridgeUI
   fridgeUIDoc: {fileID: 1260743378}
-  buttonTemp: {fileID: 0}
+  buttonTemp: {fileID: 9197481963319205126, guid: b68e2a7e0bb13a042ba61d1d0abc7b80, type: 3}
 --- !u!1001 &1270779080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1871,6 +1903,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4404452888316198897, guid: 5e3671b61bdebde4685d45d61b6c2ab6, type: 3}
+      propertyPath: storageName
+      value: Drawer
+      objectReference: {fileID: 0}
     - target: {fileID: 1862542262716857225, guid: 5e3671b61bdebde4685d45d61b6c2ab6, type: 3}
       propertyPath: m_Name
       value: storageDrawer
@@ -2634,6 +2670,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6743844899700203324, guid: eb0e4c81a2d30344e9e46c7b6eda8975, type: 3}
+      propertyPath: storageName
+      value: Fridge
+      objectReference: {fileID: 0}
     - target: {fileID: 1862542262716857225, guid: eb0e4c81a2d30344e9e46c7b6eda8975, type: 3}
       propertyPath: m_Name
       value: fridge
@@ -2868,6 +2908,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseUI
   pauseUI: {fileID: 1782886901}
+  pauseSprites:
+  - {fileID: 3474998474935278823, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: -7841251454533711390, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: 4288923215041121055, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: 8442399568690734875, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: 140853132526611552, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: -2140722375368309600, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: -8256334956382551864, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: -950931355991350946, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: 7660673159699414585, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: -3739456891373041876, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: 2954034183855971284, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: -856460364278285395, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  animationFPS: 12
   InputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   openPause:
     m_Name: Open Pause
@@ -3192,8 +3246,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RecipeBookController
   recipeBookUI: {fileID: 2127065693}
-  recipeFinalTemplate: {fileID: 9197481963319205126, guid: eb4adcf45ca2d1d45ad93b07fcfd8239, type: 3}
+  recipeFinalTemplate: {fileID: 9197481963319205126, guid: f636d336f4416074d80f45d31bf7fec8, type: 3}
   recipeStepTemplate: {fileID: 9197481963319205126, guid: b87e985c5d445ce4291b107821f0810d, type: 3}
+  recipeTemplate5: {fileID: 9197481963319205126, guid: c4b170e2f8ba3374aac348c01a68061d, type: 3}
+  recipeTemplate7: {fileID: 9197481963319205126, guid: eb4adcf45ca2d1d45ad93b07fcfd8239, type: 3}
+  orderTemplate: {fileID: 9197481963319205126, guid: 6885b24bcd83ae547adb1796b5a45e75, type: 3}
   InputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   bookInteract:
     m_Name: Book Interact
