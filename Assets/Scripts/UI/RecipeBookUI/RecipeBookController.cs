@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -20,8 +21,8 @@ public class RecipeBookController : MonoBehaviour
     private List<List<DrinkRuleSO>> pages = new();
     private bool isSinleRecipeView = false;
 
-    List<DrinkRuleSO> bookRecipes = new();
-    List<DrinkRuleSO> filteredRecipes = new();
+    private List<DrinkRuleSO> bookRecipes = new();
+    private List<DrinkRuleSO> filteredRecipes = new();
 
     private bool isBookOpen = false;
     private VisualElement
@@ -40,19 +41,29 @@ public class RecipeBookController : MonoBehaviour
     private void OnEnable()
     {
         InputActions.FindActionMap("Player").Enable();
-        OrderManager.Instance.OnOrderChanged += RefreshOrders;
+        if (OrderManager.Instance)
+            OrderManager.Instance.OnOrderChanged += RefreshOrders;
+        if(!UIManager.Instance) Debug.LogError("UIManager not found!");
+        UIManager.Instance.OnUIStateChanged += HandleState;
+        UIManager.Instance.OnEscapePressed += Close;
+        UIManager.Instance.OnRecipeBookPressed += HandleInput;
+
     }
     private void OnDisable()
     {
         InputActions.FindActionMap("Player").Disable();
-        if (OrderManager.Instance != null)
+        if (OrderManager.Instance)
             OrderManager.Instance.OnOrderChanged -= RefreshOrders;
+        if(!UIManager.Instance) Debug.LogError("UIManager not found!");
+        UIManager.Instance.OnUIStateChanged -= HandleState;
+        UIManager.Instance.OnEscapePressed -= Close;
+        UIManager.Instance.OnRecipeBookPressed -= HandleInput;
     }
     private void Awake()
     {
         bookInteract = InputSystem.actions.FindAction("BookInteract");
         root = recipeBookUI.rootVisualElement;
-        //////closeButton = root.Q<Button>("exitButton");
+        //closeButton = root.Q<Button>("exitButton");
         prevPageButton = root.Q<Button>("prevPage");
         nextPageButton = root.Q<Button>("nextPage");
         recipesContainer = root.Q<VisualElement>("recipesContainer");
@@ -113,13 +124,13 @@ public class RecipeBookController : MonoBehaviour
     {
         int count = 0;
         var rule = FindRuleFromResult(result);
-        if (rule == null)
+        if (!rule)
             return 0;
 
         void Recurse(ItemDataSO res)
         {
             var r = FindRuleFromResult(res);
-            if (r == null)
+            if (!r)
                 return;
 
             Recurse(r.requiredState);
@@ -129,6 +140,30 @@ public class RecipeBookController : MonoBehaviour
 
         Recurse(result);
         return count;
+    }
+
+    private void HandleState(UIState state)
+    {
+        switch (state)
+        {
+            case UIState.RecipeBook:
+                Open();
+                break;
+            case UIState.Tutorial:
+                // ölater
+                break;
+            default:
+                recipeBookUI.rootVisualElement.style.display = DisplayStyle.None;
+                break;
+        }
+    }
+
+    private void HandleInput()
+    {
+        if (isBookOpen)
+            Close();
+        else
+            UIManager.Instance.SetUIState(UIState.RecipeBook);
     }
 
     private VisualTreeAsset GetTemplateForRecipe(DrinkRuleSO recipe)
@@ -156,16 +191,6 @@ public class RecipeBookController : MonoBehaviour
         currentPage = Mathf.Clamp(currentPage, 0, pages.Count - 1);
     }
 
-    private void Update()
-    {
-        if (bookInteract.WasPressedThisFrame() && !GameState.isInConversation)
-        {
-            if(isBookOpen)
-                Close();
-            else
-                Open();
-        }
-    }
 
     private void ApplySearch(string search)
     {
@@ -352,6 +377,7 @@ public class RecipeBookController : MonoBehaviour
             TutorialManager.Instance.OnRecipeBookOpened();
         }
 
+        GameState.isInMenu = true;
         LoadRecipes();
         RefreshRecipesPage();
         RefreshOrders();
@@ -362,7 +388,9 @@ public class RecipeBookController : MonoBehaviour
 
     private void Close()
     {
+        GameState.isInMenu = false;
         isBookOpen = false;
+        UIManager.Instance.ResetState();
         root.style.display = DisplayStyle.None;
         GameTime.SetPaused(false);
 

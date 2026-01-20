@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -9,8 +8,7 @@ public class PauseUI : MonoBehaviour
     public Sprite[] pauseSprites;
 
     public float animationFPS = 12f;
-
-    private bool isOpen = false;
+    
     private Button
         continueButton,
        // exitButton,
@@ -28,11 +26,15 @@ public class PauseUI : MonoBehaviour
     private void OnEnable()
     {
         InputActions.FindActionMap("Player").Enable();
+        if(!UIManager.Instance) Debug.LogError("UIManager not found!");
+        UIManager.Instance.OnPausePressed += HandleInput;
     }
 
     private void OnDisable()
     {
         InputActions.FindActionMap("Player").Disable();
+        if(!UIManager.Instance) Debug.LogError("UIManager not found!");
+        UIManager.Instance.OnPausePressed -= HandleInput;
     }
 
     private void Awake()
@@ -57,24 +59,11 @@ public class PauseUI : MonoBehaviour
 
     private void Update()
     {
-
-        HandleInput();
         UpdateAnimation();
-
-        //if(openPause.WasPressedThisFrame() && isOpen && GameState.playerInteractionAllowed)
-        //{
-        //    HideUI();
-        //}
-        //else if(openPause.WasPressedThisFrame() && !isOpen && GameState.playerInteractionAllowed)
-        //{
-        //    ShowUI();
-        //}
     }
-
+    
     private void HandleInput()
     {
-        if(!openPause.WasPressedThisFrame()) return;
-
         switch (state)
         {
             case PauseState.Closed:
@@ -89,13 +78,15 @@ public class PauseUI : MonoBehaviour
             case PauseState.Closing:
                 StartOpening();
                 break;
+            default:
+                Debug.Log("PauseUI::HandleInput() called with invalid state");
+                break;
         }
     }
 
     private void StartOpening()
     {
-        Time.timeScale = 0f;
-        root.style.display = DisplayStyle.Flex;
+        ShowUI();
         SetButtons(false);
         state = PauseState.Opening;
     }
@@ -115,8 +106,7 @@ public class PauseUI : MonoBehaviour
     private void FinishClosing()
     {
         state = PauseState.Closed;
-        root.style.display = DisplayStyle.None;
-        Time.timeScale = 1f;
+        HideUI();
     }
 
     private void UpdateAnimation()
@@ -146,10 +136,10 @@ public class PauseUI : MonoBehaviour
         }
     }
 
-    private void SetButtons(bool enabled)
+    private void SetButtons(bool active)
     {
-        continueButton.SetEnabled(enabled);
-        saveExitButton.SetEnabled(enabled);
+        continueButton.SetEnabled(active);
+        saveExitButton.SetEnabled(active);
         //exitButton.SetEnabled(enabled);
     }
     private void OnSaveExitButtonClicked()
@@ -166,14 +156,18 @@ public class PauseUI : MonoBehaviour
 #endif
     }
 
-    public void ShowUI()
+    private void ShowUI()
     {
         pauseUI.rootVisualElement.style.display = DisplayStyle.Flex;
-        isOpen = true;
+        UIManager.Instance.SetUIState(UIState.Pause);
+        GameState.isInPauseMenu = true;
+        Time.timeScale = 0f;
     }
-    public void HideUI()
+    private void HideUI()
     {
+        Time.timeScale = 1f;
+        GameState.isInPauseMenu = false;
+        UIManager.Instance.ResetState();
         pauseUI.rootVisualElement.style.display = DisplayStyle.None;
-        isOpen = false;
     }
 }

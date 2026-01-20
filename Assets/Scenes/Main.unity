@@ -375,6 +375,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 461629892}
+  - component: {fileID: 461629893}
   m_Layer: 0
   m_Name: UIHandler
   m_TagString: Untagged
@@ -404,6 +405,37 @@ Transform:
   - {fileID: 2094637229}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &461629893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461629891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3897e43af2f44ae823e2a6365859cc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIManager
+  InputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  openPause:
+    m_Name: Open Pause
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 86d671f9-83ad-4ac9-acdd-128ff1b6a909
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  openBook:
+    m_Name: Open Book
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 863270ec-7084-423c-b5f0-1b8d175a8e3a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &483811079
 GameObject:
   m_ObjectHideFlags: 0

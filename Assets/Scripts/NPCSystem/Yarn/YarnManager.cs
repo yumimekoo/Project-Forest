@@ -26,15 +26,17 @@ public class YarnManager : MonoBehaviour
     void OnDialogueFinished()
     {
         dialogueObject.SetActive(false);
-        //Debug.Log("[Yarn] Dialogue finished");
         GameTime.SetPaused(false);
+        UIManager.Instance.ResetState();
     }
 
     public void StartDialogue(YarnProject project, string startNode)
     {
+        GameTime.SetPaused(true);
         dialogueObject.SetActive(true);
         dialogueRunner.SetProject(project);
         dialogueRunner.StartDialogue(startNode);
+        UIManager.Instance.SetUIState(UIState.YarnOverlay);
     }
 
     public void StopDialogue()

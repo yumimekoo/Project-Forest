@@ -1,12 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class ShopUI : MonoBehaviour
 {
-    public static ShopUI Instance;
+    //public static ShopUI Instance;
     public UIDocument shopUI;
     public VisualTreeAsset shopItemTemplate;
     public VisualTreeAsset shopCategoryTabTemplate;
@@ -25,7 +24,6 @@ public class ShopUI : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
         InitUI();
     }
 
@@ -38,12 +36,40 @@ public class ShopUI : MonoBehaviour
     {
         if (CurrencyManager.Instance != null)
             CurrencyManager.Instance.OnMoneyChanged += UpdateMoney;
+        if (UIManager.Instance)
+        {
+            UIManager.Instance.OnButtonsUpdated += UpdateButtons;
+            UIManager.Instance.OnUIStateChanged += HandleState;
+            UIManager.Instance.OnEscapePressed += OnExitButton;
+        }
     }
 
     private void OnDisable()
     {
         if (CurrencyManager.Instance != null)
             CurrencyManager.Instance.OnMoneyChanged -= UpdateMoney;
+        if (UIManager.Instance)
+        {
+            UIManager.Instance.OnButtonsUpdated -= UpdateButtons;
+            UIManager.Instance.OnUIStateChanged -= HandleState;
+            UIManager.Instance.OnEscapePressed -= OnExitButton;
+        }
+    }
+
+    private void HandleState(UIState state)
+    {
+        switch (state)
+        {
+            case UIState.Shop:
+                ShowUI();
+                break;
+            case UIState.Tutorial:
+                // later
+            default:
+                shopUI.rootVisualElement.style.display = DisplayStyle.None;
+                break;
+        }
+        
     }
     private void InitUI()
     {
@@ -65,27 +91,30 @@ public class ShopUI : MonoBehaviour
         HideUI();
     }
 
-    public void ShowUI()
+    private void ShowUI()
     {
         BuildShopItems();
         ShowCategory(currentCategory);
         shopUI.rootVisualElement.style.display = DisplayStyle.Flex;
         GameState.playerInteractionAllowed = false;
         GameState.playerMovementAllowed = false;
+        GameState.isInMenu = true;
     }
 
-    public void HideUI()
+    private void HideUI()
     {
         shopUI.rootVisualElement.style.display = DisplayStyle.None;
         GameState.playerInteractionAllowed = true;
         GameState.playerMovementAllowed = true;
+        GameState.isInMenu = false;
     }
 
     private void OnExitButton()
     {
+        UIManager.Instance.ResetState();
         HideUI();
 
-        if (GameState.inTutorial && TutorialManager.Instance != null)
+        if (GameState.inTutorial && TutorialManager.Instance)
         {
             TutorialManager.Instance.OnExitPressed();
         }

@@ -22,6 +22,11 @@ public static class GameState
 
     // --- Tutorial State ---
     public static bool inTutorial = true;
+    
+    // --- Menu --- 
+    public static bool isInMenu = false;
+    public static bool isInPauseMenu = false;
+    public static bool isInStorage = false;
 
     public static GameStateSaveData GetSaveData()
     {

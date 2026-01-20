@@ -54,6 +54,7 @@ public class DaySummaryUI : MonoBehaviour
 
     private void Show(DayStats stats, int day, Weekday weekday, int week, int nextRentPrice)
     {
+        GameState.isInMenu = true;
         dayLabel.text = $"{day}, ";
         weekdayLabel.text = weekday.ToString();
         weekLabel.text = $"Week {week}";

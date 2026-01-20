@@ -12,7 +12,6 @@ public class ItemUIRefs
 }
 public class BuildModeUI : MonoBehaviour
 {
-    public static BuildModeUI Instance { get; private set; }
     public CameraFollow cameraFollow;
     public BuildMode3D buildMode3D;
     public UIDocument buildModeUI;
@@ -38,6 +37,10 @@ public class BuildModeUI : MonoBehaviour
         if (FurnitureInventory.Instance != null)
             FurnitureInventory.Instance.OnInventoryChanged += UpdateItemQuantity;
         buildMode3D.deleteModeChanged += CheckDeletionMode;
+        if(!UIManager.Instance) Debug.LogError("UIManager not found!");
+        UIManager.Instance.OnButtonsUpdated += UpdateButtons;
+        UIManager.Instance.OnUIStateChanged += HandleState;
+        UIManager.Instance.OnEscapePressed += ExitBuildMode;
     }
 
     private void OnDisable()
@@ -45,18 +48,13 @@ public class BuildModeUI : MonoBehaviour
         if (FurnitureInventory.Instance != null)
             FurnitureInventory.Instance.OnInventoryChanged -= UpdateItemQuantity;
         buildMode3D.deleteModeChanged -= CheckDeletionMode;
+        if(!UIManager.Instance) Debug.LogError("UIManager not found!");
+        UIManager.Instance.OnButtonsUpdated -= UpdateButtons;
+        UIManager.Instance.OnUIStateChanged -= HandleState;
+        UIManager.Instance.OnEscapePressed -= ExitBuildMode;
     }
     private void Awake()
     {
-        // Safe Singleton
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-
         root = buildModeUI.rootVisualElement;
         rootBackground = root.Q<VisualElement>("rootBackground");
         itemContainer = root.Q<VisualElement>("itemContainer");
@@ -80,6 +78,22 @@ public class BuildModeUI : MonoBehaviour
         uiHideLeft.RegisterCallback<PointerLeaveEvent>(_ => SetPointerOverUI(false));
         UpdateButtons();
         HideUI();
+    }
+
+    private void HandleState(UIState state)
+    {
+        switch (state)
+        {
+            case UIState.BuildMode:
+                ShowUI();
+                break;
+            case UIState.Tutorial:
+                // TODO: make explicit tutorial handling
+                return;
+            default:
+                buildModeUI.rootVisualElement.style.display = DisplayStyle.None;
+                break;
+        }
     }
 
     public void SetPointerOverUI(bool isOverUI)
@@ -140,7 +154,7 @@ public class BuildModeUI : MonoBehaviour
         BuildItems(FurnitureDatabase.Instance.items.Where(item => item.buildCategory == category));
     }
 
-    public void CheckDeletionMode(bool isInDeleteMode)
+    private void CheckDeletionMode(bool isInDeleteMode)
     {
         if (isInDeleteMode)
         {
@@ -206,8 +220,10 @@ public class BuildModeUI : MonoBehaviour
     {
         GameState.playerInteractionAllowed = true;
         GameState.isInBuildMode = false;
+        GameState.isInMenu = false;
         buildMode3D.StopBuild();
         cameraFollow.ChangeFollowTarget(GameState.isInBuildMode);
+        UIManager.Instance.ResetState();
         HideUI();
 
         if(GameState.inTutorial && TutorialManager.Instance != null)
@@ -238,7 +254,13 @@ public class BuildModeUI : MonoBehaviour
                        TutorialManager.Instance.currentStep >= TutorialStep.ExitBuildMode);
     }
 
-    public void ShowUI() => buildModeUI.rootVisualElement.style.display = DisplayStyle.Flex;
+    public void ShowUI()
+    { 
+        buildModeUI.rootVisualElement.style.display = DisplayStyle.Flex;
+        GameState.isInMenu = true;
+        GameState.isInBuildMode = true;
+        GameState.isInMenu = true;
+    } 
     public void HideUI()
     {
         buildModeUI.rootVisualElement.style.display = DisplayStyle.None;

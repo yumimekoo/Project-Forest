@@ -26,6 +26,18 @@ public class FridgeUI : MonoBehaviour
         HideUI();
     }
 
+    private void OnEnable()
+    {
+        if(!UIManager.Instance) Debug.LogError("UIManager not found!");
+        UIManager.Instance.OnEscapePressed += CloseUI;
+    }
+    
+    private void OnDisable()
+    {
+        if(!UIManager.Instance) Debug.LogError("UIManager not found!");
+        UIManager.Instance.OnEscapePressed -= CloseUI;
+    }
+
     public void OpenFridge(
         List<ItemDataSO> items, 
         string storageName,
@@ -33,6 +45,8 @@ public class FridgeUI : MonoBehaviour
         Func<ItemDataSO, int> getAmount,
         Action<ItemDataSO> clickCallback)
     {
+        GameState.isInMenu = true;
+        GameState.isInStorage = true;
         titleLabel.text = storageName;
         onItemClicked = clickCallback;
 
@@ -54,7 +68,6 @@ public class FridgeUI : MonoBehaviour
         }
 
         focusCatcher.focusable = true;
-        focusCatcher.RegisterCallback<KeyDownEvent>(OnKeyDown);
 
         ShowUI();
         GameState.playerMovementAllowed = false;
@@ -63,21 +76,14 @@ public class FridgeUI : MonoBehaviour
         focusCatcher.Focus();
     }
 
-    private void OnKeyDown(KeyDownEvent evt)
-    {
-        //Debug.Log($"Key pressed: {evt.keyCode}");
-        if (evt.keyCode != KeyCode.Escape) return;
-        CloseUI();
-        evt.StopPropagation();
-    }
-
     private void CloseUI()
     {
-        focusCatcher.UnregisterCallback<KeyDownEvent>(OnKeyDown);
         HideUI();
 
         GameState.playerMovementAllowed = true;
         GameState.playerInteractionAllowed = true;
+        GameState.isInMenu = false;
+        GameState.isInStorage = false;
     }
 
     private void OnItemSelected(ItemDataSO selectedItem)

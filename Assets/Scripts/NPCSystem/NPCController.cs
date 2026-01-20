@@ -203,8 +203,6 @@ public class NPCController : MonoBehaviour, IInteractable
 
     public void StartConversation()
     {
-        //Debug.Log($"Starting conversation with {identity.npcName}...");
-        GameTime.SetPaused(true);
         hasTalked = true;
         YarnManager.Instance.StartDialogue(identity.dialogueProject, identity.startNode);
     }
