@@ -16,4 +16,8 @@ MonoBehaviour:
   itemName: Almond Caramel Latte
   itemType: 2
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: -2884424489944682769, guid: 91454abf63aec1a438d546e78980aeee, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
