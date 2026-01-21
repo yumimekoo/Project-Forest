@@ -235,7 +235,8 @@ public class RecipeBookController : MonoBehaviour
             orderNPCName.text = npcName;
             orderItemName.text = drinkName;
             
-            orderIcon.style.backgroundImage = drink.icon ? new StyleBackground(drink.icon) : null;
+            if(drink)
+                orderIcon.style.backgroundImage = drink.icon ? new StyleBackground(drink.icon) : null;
 
             orderItem.RegisterCallback<ClickEvent>(_ =>
             {
