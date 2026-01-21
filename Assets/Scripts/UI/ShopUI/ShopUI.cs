@@ -165,6 +165,7 @@ public class ShopUI : MonoBehaviour
         var buyAmountLabel = entry.Q<Label>("buyAmountLabel");
         var buyButton = entry.Q<Button>("buyButton");
         var totalPriceLabel = entry.Q<Label>("totalPrice");
+        var iconElement = entry.Q<VisualElement>("iconElement");
 
         int buyAmount = 1;
 
@@ -179,6 +180,7 @@ public class ShopUI : MonoBehaviour
 
         nameLabel.text = shopItem.Name;
         priceLabel.text = $"{shopItem.Price}";
+        iconElement.style.backgroundImage = shopItem.Icon ? new StyleBackground(shopItem.Icon) : null;
         Refresh();
 
         entry.Q<Button>("plusOne").clicked += () =>

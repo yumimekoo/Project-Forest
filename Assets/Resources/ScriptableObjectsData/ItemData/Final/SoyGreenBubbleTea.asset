@@ -16,4 +16,8 @@ MonoBehaviour:
   itemName: Soy Green Bubble Tea
   itemType: 2
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: 1988078482705109310, guid: c0ab7c8b1b7c671459a649b1e1993385, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0

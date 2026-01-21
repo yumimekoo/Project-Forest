@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public interface IShopItem
 {
     string Name { get; }
@@ -5,5 +7,6 @@ public interface IShopItem
     ShoppingCategory Category { get; }
     int CurrentAmount { get; }
 
+    Sprite Icon { get; }
     void Buy(int quantity = 1);
 }

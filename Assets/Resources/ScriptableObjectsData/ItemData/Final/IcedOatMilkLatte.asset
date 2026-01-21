@@ -16,4 +16,8 @@ MonoBehaviour:
   itemName: Iced Oat Milk Latte
   itemType: 2
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: -7761786969817428215, guid: 7c83059473555b74e891d6e4e8c57421, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0

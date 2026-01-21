@@ -16,4 +16,8 @@ MonoBehaviour:
   itemName: Soy Black Bubble Tea
   itemType: 2
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: -4492496313467998248, guid: 9da661eae71582d4c81adb118320ffcb, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0

@@ -11,6 +11,8 @@ public class ShopItem_Item : IShopItem
     public string Name => item.itemName;
     public int Price => item.price;
     public ShoppingCategory Category => item.shoppingCategory;
+    
+    public Sprite Icon => item.icon;
     public void Buy(int quantity = 1)
     {
         if (!CurrencyManager.Instance.SpendMoney(Price * quantity))

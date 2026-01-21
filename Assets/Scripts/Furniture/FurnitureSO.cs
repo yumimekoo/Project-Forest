@@ -25,9 +25,11 @@ public class FurnitureSO : ScriptableObject
     public GameObject furniturePrefab;
     public GameObject furniturePreview;
     public Vector2Int size;
+    public Sprite icon;
 
     [Header("Shopping Info")]
     public ShoppingCategory shoppingCategory = ShoppingCategory.None;
     public int price = 0;
     public bool isAvailableInShop = true;
+    
 }

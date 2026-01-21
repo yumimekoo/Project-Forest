@@ -1,10 +1,13 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UIDocuments/BuildModeUI/buttonStyle.uss?fileID=7433441132597879392&amp;guid=ea940160230891f49b5c3837eead4ad7&amp;type=3#buttonStyle" />
     <ui:VisualElement style="flex-grow: 0; width: 192px; height: 202px; min-width: auto; max-width: none; min-height: auto; max-height: none; flex-direction: row; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;">
-        <ui:Button text="Button" name="itemButton" class="buttonStyle" style="width: 192px; height: 192px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
-            <ui:VisualElement style="flex-grow: 1;">
+        <ui:Button name="itemButton" class="buttonStyle" style="width: 192px; height: 192px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
+            <ui:VisualElement style="flex-grow: 1; align-items: stretch;">
                 <ui:VisualElement style="flex-grow: 0; flex-direction: row; justify-content: flex-end; padding-right: 11px;">
                     <ui:Label text="0" name="quantityLabel" style="-unity-text-align: middle-center; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; letter-spacing: 5px; font-size: 25px; color: rgb(83, 29, 4); text-shadow: 2px 2px 0 rgb(227, 164, 100); width: 44px;" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; width: auto; height: auto; align-items: center; padding-top: 30px;">
+                    <ui:VisualElement name="itemIcon" style="flex-grow: 0; width: 96px; height: 96px; background-image: url(&quot;project://database/Assets/UIDocuments/OverlayUI/Sprites/nut_icon.aseprite?fileID=-7676717474986798981&amp;guid=c300f1e192aeb874dade7ff70c1ed55f&amp;type=3#nut_icon&quot;);" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:Button>

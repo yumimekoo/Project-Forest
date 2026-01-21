@@ -4,7 +4,7 @@
         <ui:VisualElement style="flex-grow: 1; flex-direction: row; background-image: url(&quot;project://database/Assets/UIDocuments/ShopUI/Sprites/shopUIItem.aseprite?fileID=-2734967352733324803&amp;guid=8696ed5d93d98844482474f63abd0812&amp;type=3#shopUIItem&quot;); justify-content: space-between;">
             <ui:VisualElement style="flex-grow: 0; justify-content: flex-start; width: 56%; padding-left: 15px; padding-top: 20px; background-image: none;">
                 <ui:VisualElement style="flex-grow: 0; background-color: rgba(188, 188, 188, 0); padding-top: 3px; padding-right: 0; padding-bottom: 0; padding-left: 13px; flex-direction: row; justify-content: flex-start; width: 100%;">
-                    <ui:VisualElement name="iconElement" style="flex-grow: 0; width: 64px; height: 64px; background-color: rgba(197, 0, 0, 0.43);" />
+                    <ui:VisualElement name="iconElement" style="flex-grow: 0; width: 64px; height: 64px; background-color: rgba(197, 0, 0, 0);" />
                     <ui:VisualElement style="flex-grow: 0; width: 39px;" />
                     <ui:Label text="Strawberry Syrup" name="nameLabel" style="font-size: 33px; -unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); -unity-text-align: lower-left; letter-spacing: 5px; color: rgb(83, 29, 4); text-shadow: 2px 2px 0 rgb(227, 164, 100); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 8px; padding-left: 0;" />
                 </ui:VisualElement>
