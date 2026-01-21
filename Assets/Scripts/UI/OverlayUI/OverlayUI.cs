@@ -176,8 +176,7 @@ public class OverlayUI : MonoBehaviour
         iconHeld.style.display = DisplayStyle.Flex;
         nameHeld.style.display = DisplayStyle.Flex;
         nameHeld.text = inv.heldItem.name;
-        if(inv.heldItem.icon)
-            iconHeld.style.backgroundImage = new StyleBackground(inv.heldItem.icon);
+        iconHeld.style.backgroundImage = inv.heldItem.icon ? new StyleBackground(inv.heldItem.icon) : null;
     }
 
     private void UpdateDate()

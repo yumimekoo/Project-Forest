@@ -4,7 +4,7 @@
         <ui:Button text="Button" name="itemButton" class="buttonStyle" style="height: 112px; width: 448px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; align-self: center;">
             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                 <ui:VisualElement style="flex-grow: 0; width: 26%; padding-top: 24px; padding-right: 24px; padding-bottom: 24px; padding-left: 24px;">
-                    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 136, 0, 0.45);" />
+                    <ui:VisualElement name="itemIcon" style="flex-grow: 1; background-color: rgba(0, 136, 0, 0);" />
                 </ui:VisualElement>
                 <ui:VisualElement style="flex-grow: 1; padding-left: 15px;">
                     <ui:VisualElement style="flex-grow: 0; height: 50%; justify-content: flex-end;">

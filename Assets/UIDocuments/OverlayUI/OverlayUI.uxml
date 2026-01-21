@@ -18,11 +18,11 @@
             </ui:VisualElement>
             <ui:VisualElement name="hideInRoom" style="flex-grow: 0; height: 192px; flex-direction: row; display: flex;">
                 <ui:VisualElement style="flex-grow: 0; width: 42px;" />
-                <ui:VisualElement name="iconHeld" style="flex-grow: 0; width: 128px; height: 128px; justify-content: space-around; align-items: center; align-self: center; background-color: rgba(0, 0, 0, 0.72);" />
+                <ui:VisualElement name="iconHeld" style="flex-grow: 0; width: 128px; height: 128px; justify-content: space-around; align-items: center; align-self: center; background-color: rgba(0, 0, 0, 0);" />
                 <ui:VisualElement style="flex-grow: 0; width: 48%;">
                     <ui:VisualElement style="flex-grow: 0; height: 58%;" />
                     <ui:VisualElement style="flex-grow: 0; padding-left: 20px;">
-                        <ui:Label text="Sweetened Matcha Iced Latte" name="nameHeld" style="font-size: 25px; -unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); color: rgb(83, 29, 4); text-shadow: 3px 3px 0 rgb(227, 164, 100); letter-spacing: 5px; display: flex;" />
+                        <ui:Label name="nameHeld" style="font-size: 25px; -unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); color: rgb(83, 29, 4); text-shadow: 3px 3px 0 rgb(227, 164, 100); letter-spacing: 5px; display: flex;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>

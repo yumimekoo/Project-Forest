@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ShopItem_Furniture : IShopItem
 {
-    FurnitureSO furniture;
+    public FurnitureSO furniture;
 
     public ShopItem_Furniture(FurnitureSO furnitureData)
     {
@@ -13,6 +13,7 @@ public class ShopItem_Furniture : IShopItem
     public int Price => furniture.price;
     public ShoppingCategory Category => furniture.shoppingCategory;
 
+    public Sprite Icon => furniture.icon;
     public void Buy(int quantity = 1)
     {
         if (!CurrencyManager.Instance.SpendMoney(Price * quantity))
