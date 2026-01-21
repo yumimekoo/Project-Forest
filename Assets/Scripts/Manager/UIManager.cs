@@ -72,6 +72,17 @@ public enum UIState { BuildMode, YarnOverlay, RecipeBook, Shop, Overlay, Pause, 
             Debug.LogWarning("Room:" + GameState.isInRoom + " Cafe:" + GameState.isInCafe);
         }
 
+        public void RecipeBookButtonPressed()
+        {
+            OnRecipeBookPressed?.Invoke();
+        }
+
+        public void PauseButtonPressed()
+        {
+            if (!GameState.isInMenu)
+            OnPausePressed?.Invoke();
+        }
+
         private void HandleInput()
         {
             if (openPause.WasPressedThisFrame())

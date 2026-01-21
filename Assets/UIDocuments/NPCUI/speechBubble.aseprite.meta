@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0ef239b10f75efd439bb9ba993fde394
+guid: 78319dc32506ea442aaede46a3b8c8a4
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: pauseButton
+  - name: speechBubble
     originalName: 
-    pivot: {x: 0.31034482, y: 0}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 29
-      height: 36
-    spriteID: 8e2693c300d3bff4195610a91e0aff76
+      width: 32
+      height: 32
+    spriteID: be79a47a465c2ba4c9c7d8f96fadfe5b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 1794007600
+      value0: 2206746478
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: pauseButton
+    name: speechBubble
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: pauseButton
+    - name: speechBubble
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 11
+        x: 0
         y: 0
-        width: 29
-        height: 36
-      spriteId: 8e2693c300d3bff4195610a91e0aff76
+        width: 32
+        height: 32
+      spriteId: be79a47a465c2ba4c9c7d8f96fadfe5b
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -181,5 +181,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 40, y: 40}
+  canvasSize: {x: 32, y: 32}
   previousTextureSize: {x: 64, y: 64}

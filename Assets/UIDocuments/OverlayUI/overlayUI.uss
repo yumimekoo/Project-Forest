@@ -26,3 +26,15 @@
 .pauseHover:hover {
     background-image: url("project://database/Assets/UIDocuments/OverlayUI/Sprites/pauseButtonHover.aseprite?fileID=8870205857236509917&guid=6c2c344190926a24daee1cc9ae43fa48&type=3#Frame_0");
 }
+
+.bg-room {
+    background-image: url("project://database/Assets/UIDocuments/OverlayUI/Sprites/uiOverlayRoom.aseprite?fileID=7329765467524617087&guid=98c7505a314058a40bd0232fddaf83ad&type=3#Frame_0");
+}
+
+.bg-day {
+    background-image: url("project://database/Assets/UIDocuments/OverlayUI/Sprites/uiOverlay.aseprite?fileID=-4143515702204376583&guid=06716243d88330c49942163d96d872ef&type=3#Frame_1");
+}
+
+.bg-night {
+    background-image: url("project://database/Assets/UIDocuments/OverlayUI/Sprites/uiOverlay.aseprite?fileID=737175068790913809&guid=06716243d88330c49942163d96d872ef&type=3#uiOverlay");
+}

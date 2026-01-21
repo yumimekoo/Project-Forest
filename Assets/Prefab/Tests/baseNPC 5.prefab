@@ -148,3 +148,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCController
   identity: {fileID: 11400000, guid: edf531285a39a6346aeb7e21b52f3ac8, type: 2}
+  overheadUI: {fileID: 601667092469231679, guid: 74caffb751672d144b3c33fd584d740b, type: 3}

@@ -58,7 +58,7 @@ public class TimeManager : MonoBehaviour
     public int baseRentAmount = 100;
 
     public event Action <DayStats, int, Weekday, int, int> OnDaySummaryReady;
-    public event Action <int, Weekday> OnNewDayStarted;
+    public event Action OnNewDayStarted;
     public event Action OnGameOver;
     public event Action OnTutorialComplete;
     private void Awake()
@@ -68,7 +68,7 @@ public class TimeManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-    Instance = this;
+        Instance = this;
     }
 
     private void FixedUpdate()
@@ -138,7 +138,7 @@ public class TimeManager : MonoBehaviour
     {
 
         Debug.Log($"Starting Day {currentDay} - {currentWeekday} : Current Week {currentWeek}");
-        OnNewDayStarted?.Invoke(currentDay, currentWeekday);
+        OnNewDayStarted?.Invoke();
     }
 
     private void ResetDay()
