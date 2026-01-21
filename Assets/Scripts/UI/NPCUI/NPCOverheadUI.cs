@@ -15,6 +15,9 @@ public class NPCOverheadUI : MonoBehaviour
     [SerializeField] private Sprite talkBubbleIcon;
     [SerializeField] private Sprite surpriseOrderIcon;
 
+    [SerializeField] private Color colorA;
+    [SerializeField] private Color colorB;
+
     [Header("Settings")] 
     [SerializeField] private int offset;
 
@@ -27,7 +30,7 @@ public class NPCOverheadUI : MonoBehaviour
         transform.SetParent(npc.transform);
         transform.localPosition = Vector3.up * offset;
         transform.localRotation = Quaternion.identity;
-        canvas.transform.localScale = Vector3.one * 0.02f;
+        canvas.transform.localScale = Vector3.one * 0.015f;
     }
 
     private void LateUpdate()
@@ -37,10 +40,13 @@ public class NPCOverheadUI : MonoBehaviour
         UpdateProgress();
         UpdateIcon();
         Vector3 direction = Camera.main.transform.position - transform.position;
-        direction.x = 0; // Y ignorieren, nur nach vorne drehen
+        direction.x = 0;
 
-        if (direction.sqrMagnitude > 0.001f) // Schutz vor Null-Vektor
+        if (direction.sqrMagnitude > 0.001f)
+        {
             transform.rotation = Quaternion.LookRotation(direction);
+            transform.Rotate(0f, 180f, 0f);
+        }
     }
     
     public void ResetUI()
@@ -60,8 +66,16 @@ public class NPCOverheadUI : MonoBehaviour
         if (maxStateTime <= 0f) return;
         
         float progress = npc.StateTimer / maxStateTime;
+
+        Color start = colorA; start.a = 1f;
+        Color end   = colorB; end.a = 1f;
+
+        float t = Mathf.InverseLerp(0.1f, 0.4f, progress);
+
+        Color resultColor = Color.Lerp(end.linear, start.linear, t).gamma;
+        
         radialFill.fillAmount = progress;
-        radialFill.color = Color.Lerp(Color.red, Color.green, progress);
+        radialFill.color = resultColor;
     }
 
     private void UpdateIcon()

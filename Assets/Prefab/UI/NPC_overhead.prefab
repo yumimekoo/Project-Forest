@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 64, y: 64}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6381597088919001800
 CanvasRenderer:
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &1349804268015308793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,11 +193,13 @@ MonoBehaviour:
   radialFill: {fileID: 4355344009446032587}
   centerIcon: {fileID: 2641874942420865494}
   canvas: {fileID: 342085258139166645}
-  takeOrderIcon: {fileID: -580945623846882630, guid: a7456885acb7d514ead0c16ab1a7e6d5, type: 3}
-  drinkingIcon: {fileID: -4622046499248014274, guid: f39453a040b12914ba4cc44f0a5022ee, type: 3}
-  talkBubbleIcon: {fileID: -5389863559987375068, guid: d284357c8bcf1b342983521e181e3926, type: 3}
-  surpriseOrderIcon: {fileID: 7565956884245010364, guid: 99dec37724ea705479a290dc0c72f910, type: 3}
-  offset: 1
+  takeOrderIcon: {fileID: -6148044780950891284, guid: 7261942a7fce47045915eb550f543e61, type: 3}
+  drinkingIcon: {fileID: 58064745785113049, guid: 1438a076fc4bf5646b47cd42905a1ae4, type: 3}
+  talkBubbleIcon: {fileID: 8337754951605125564, guid: 78319dc32506ea442aaede46a3b8c8a4, type: 3}
+  surpriseOrderIcon: {fileID: -5567482250411568583, guid: 1234d59f819e33f4eae25ca3e86a6ac2, type: 3}
+  colorA: {r: 0.32156864, g: 0.7490196, b: 0.34509805, a: 1}
+  colorB: {r: 0.8627451, g: 0.28235295, b: 0.28235295, a: 1}
+  offset: 2
 --- !u!1 &1732444321633888684
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +265,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -2583684274844368381, guid: 324958aea6ede2a4eb5d523006e0c3ef, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -338,13 +340,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 44933872577414157, guid: 324958aea6ede2a4eb5d523006e0c3ef, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
-  m_FillClockwise: 0
+  m_FillClockwise: 1
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
@@ -413,7 +415,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 4047019288653116985, guid: 324958aea6ede2a4eb5d523006e0c3ef, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
