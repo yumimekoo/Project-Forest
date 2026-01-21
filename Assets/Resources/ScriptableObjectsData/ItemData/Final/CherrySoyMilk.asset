@@ -16,4 +16,8 @@ MonoBehaviour:
   itemName: Cherry Soy Milk
   itemType: 2
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: 4570420623158522153, guid: 461efaad760a09d43873b8b888e43bd8, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0

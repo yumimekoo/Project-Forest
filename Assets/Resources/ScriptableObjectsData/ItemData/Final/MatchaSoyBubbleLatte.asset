@@ -16,4 +16,8 @@ MonoBehaviour:
   itemName: Matcha Soy Bubble Latte
   itemType: 2
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: 7265887818638391974, guid: c76937c3a708d214db5d8f41f494827e, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
