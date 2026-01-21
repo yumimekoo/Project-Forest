@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -6,19 +7,21 @@ using UnityEngine.UIElements;
 public class ItemUIRefs
 {
     public VisualElement root;
+    public Button button;
     public Label quantityLabel;
 }
 public class BuildModeUI : MonoBehaviour
 {
-    public static BuildModeUI Instance { get; private set; }
     public CameraFollow cameraFollow;
     public BuildMode3D buildMode3D;
     public UIDocument buildModeUI;
     public VisualTreeAsset itemTemplate;
 
     private Dictionary<int, ItemUIRefs> itemUI = new();
+    private int? selectedItemId = null;
     private VisualElement root;
     private VisualElement
+        rootBackground,
         itemContainer,
         uiHideLeft;
     private Button 
@@ -26,43 +29,48 @@ public class BuildModeUI : MonoBehaviour
         btnFurniture,
         btnDecor,
         btnUtility,
-        btnAll;
+        btnAll,
+        deleteButton;
 
     private void OnEnable()
     {
         if (FurnitureInventory.Instance != null)
             FurnitureInventory.Instance.OnInventoryChanged += UpdateItemQuantity;
+        buildMode3D.deleteModeChanged += CheckDeletionMode;
+        if(!UIManager.Instance) Debug.LogError("UIManager not found!");
+        UIManager.Instance.OnButtonsUpdated += UpdateButtons;
+        UIManager.Instance.OnUIStateChanged += HandleState;
+        UIManager.Instance.OnEscapePressed += ExitBuildMode;
     }
 
     private void OnDisable()
     {
         if (FurnitureInventory.Instance != null)
             FurnitureInventory.Instance.OnInventoryChanged -= UpdateItemQuantity;
+        buildMode3D.deleteModeChanged -= CheckDeletionMode;
+        if(!UIManager.Instance) Debug.LogError("UIManager not found!");
+        UIManager.Instance.OnButtonsUpdated -= UpdateButtons;
+        UIManager.Instance.OnUIStateChanged -= HandleState;
+        UIManager.Instance.OnEscapePressed -= ExitBuildMode;
     }
     private void Awake()
     {
-        // Safe Singleton
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-
         root = buildModeUI.rootVisualElement;
+        rootBackground = root.Q<VisualElement>("rootBackground");
         itemContainer = root.Q<VisualElement>("itemContainer");
         exitBuildMode = root.Q<Button>("exitButton");
         btnDecor = root.Q<Button>("btnDecor");
         btnFurniture = root.Q<Button>("btnFurniture");
         btnUtility = root.Q<Button>("btnUtility");
         btnAll = root.Q<Button>("btnAll");
+        deleteButton = root.Q<Button>("deleteButton");
         uiHideLeft = root.Q<VisualElement>("uiHideLeft");
         btnAll.clicked += () => ShowCategoryAll();
         btnDecor.clicked += () => ShowCategory(BuildCategory.Decorations);
         btnFurniture.clicked += () => ShowCategory(BuildCategory.Furniture);
         btnUtility.clicked += () => ShowCategory(BuildCategory.Utility);
         exitBuildMode.clicked += () => ExitBuildMode();
+        deleteButton.clicked += () => buildMode3D.HandleDeleteToggle();
 
         itemContainer.RegisterCallback<PointerEnterEvent>(_ => SetPointerOverUI(true));
         itemContainer.RegisterCallback<PointerLeaveEvent>(_ => SetPointerOverUI(false));
@@ -72,54 +80,122 @@ public class BuildModeUI : MonoBehaviour
         HideUI();
     }
 
+    private void HandleState(UIState state)
+    {
+        switch (state)
+        {
+            case UIState.BuildMode:
+                ShowUI();
+                break;
+            case UIState.Tutorial:
+                // TODO: make explicit tutorial handling
+                return;
+            default:
+                buildModeUI.rootVisualElement.style.display = DisplayStyle.None;
+                break;
+        }
+    }
+
     public void SetPointerOverUI(bool isOverUI)
     {
         buildMode3D.isPointerOverUI = isOverUI;
     }
 
-    public void ShowCategory(BuildCategory category)
+    private void BuildItems(IEnumerable<FurnitureSO> items)
     {
         itemContainer.Clear();
-        foreach (var item in FurnitureDatabase.Instance.items)
-        {
-            if (item.buildCategory != category) continue;
+        itemUI.Clear();
 
+        foreach (var item in items)
+        {
             var itemElement = itemTemplate.Instantiate();
             var button = itemElement.Q<Button>("itemButton");
             button.text = item.furnitureName;
-            button.clicked += () => buildMode3D.StartBuild(item);
+
+            int id = item.numericID;
+
+            button.clicked += () =>
+            {
+                SelectItem(id);
+                buildMode3D.StartBuild(item);
+            };
+
             var quantityLabel = itemElement.Q<Label>("quantityLabel");
-            int amount = FurnitureInventory.Instance.GetAmount(item.numericID);
+            int amount = FurnitureInventory.Instance.GetAmount(id);
             quantityLabel.text = amount.ToString();
-            itemUI[item.numericID] = new ItemUIRefs
+            itemUI[id] = new ItemUIRefs
             {
                 root = itemElement,
+                button = button,
                 quantityLabel = quantityLabel
             };
-            UpdateItemVisualState(item.numericID, amount);
+
+            UpdateItemVisualState(id, amount);
             itemContainer.Add(itemElement);
+        }
+    }
+
+    private void SelectItem(int id)
+    {
+        if(selectedItemId.HasValue && itemUI.TryGetValue(selectedItemId.Value, out var oldUI))
+        {
+            oldUI.button.RemoveFromClassList("selected");
+        }
+        if(itemUI.TryGetValue(id, out var newUI))
+        {
+            newUI.button.AddToClassList("selected");
+            selectedItemId = id;
+        }
+    }
+
+    public void ShowCategory(BuildCategory category)
+    {
+        CheckSelectedCategory(category);
+        BuildItems(FurnitureDatabase.Instance.items.Where(item => item.buildCategory == category));
+    }
+
+    private void CheckDeletionMode(bool isInDeleteMode)
+    {
+        if (isInDeleteMode)
+        {
+            rootBackground.AddToClassList("selected");
+            uiHideLeft.style.display = DisplayStyle.None;
+            itemContainer.style.display = DisplayStyle.None;
+        }
+        else
+        {
+            rootBackground.RemoveFromClassList("selected");
+            uiHideLeft.style.display = DisplayStyle.Flex;
+            itemContainer.style.display = DisplayStyle.Flex;
         }
     }
     // refactor this aswell man 
     public void ShowCategoryAll()
     {
-        itemContainer.Clear();
-        foreach (var item in FurnitureDatabase.Instance.items)
+        CheckSelectedCategory(BuildCategory.None);
+        BuildItems(FurnitureDatabase.Instance.items);
+    }
+
+    public void CheckSelectedCategory(BuildCategory category)
+    {
+        btnDecor.RemoveFromClassList("selected");
+        btnFurniture.RemoveFromClassList("selected");
+        btnUtility.RemoveFromClassList("selected");
+        btnAll.RemoveFromClassList("selected");
+        switch (category)
         {
-            var itemElement = itemTemplate.Instantiate();
-            var button = itemElement.Q<Button>("itemButton");
-            button.text = item.furnitureName;
-            button.clicked += () => buildMode3D.StartBuild(item);
-            var quantityLabel = itemElement.Q<Label>("quantityLabel");
-            int amount = FurnitureInventory.Instance.GetAmount(item.numericID);
-            quantityLabel.text = amount.ToString();
-            itemUI[item.numericID] = new ItemUIRefs
-            {
-                root = itemElement,
-                quantityLabel = quantityLabel
-            };
-            UpdateItemVisualState(item.numericID, amount);
-            itemContainer.Add(itemElement);
+            case BuildCategory.Decorations:
+                btnDecor.AddToClassList("selected");
+                break;
+            case BuildCategory.Furniture:
+                btnFurniture.AddToClassList("selected");
+                break;
+            case BuildCategory.Utility:
+                btnUtility.AddToClassList("selected");
+                break;
+            default:
+                btnAll.AddToClassList("selected");
+                break;
         }
     }
 
@@ -144,8 +220,10 @@ public class BuildModeUI : MonoBehaviour
     {
         GameState.playerInteractionAllowed = true;
         GameState.isInBuildMode = false;
+        GameState.isInMenu = false;
         buildMode3D.StopBuild();
         cameraFollow.ChangeFollowTarget(GameState.isInBuildMode);
+        UIManager.Instance.ResetState();
         HideUI();
 
         if(GameState.inTutorial && TutorialManager.Instance != null)
@@ -176,7 +254,24 @@ public class BuildModeUI : MonoBehaviour
                        TutorialManager.Instance.currentStep >= TutorialStep.ExitBuildMode);
     }
 
-    public void ShowUI() => buildModeUI.rootVisualElement.style.display = DisplayStyle.Flex;
-    public void HideUI() => buildModeUI.rootVisualElement.style.display = DisplayStyle.None;
+    public void ShowUI()
+    { 
+        buildModeUI.rootVisualElement.style.display = DisplayStyle.Flex;
+        GameState.isInMenu = true;
+        GameState.isInBuildMode = true;
+        GameState.isInMenu = true;
+    } 
+    public void HideUI()
+    {
+        buildModeUI.rootVisualElement.style.display = DisplayStyle.None;
+        rootBackground.RemoveFromClassList("selected");
+        uiHideLeft.style.display = DisplayStyle.Flex;
+        itemContainer.style.display = DisplayStyle.Flex;
+        btnDecor.RemoveFromClassList("selected");
+        btnFurniture.RemoveFromClassList("selected");
+        btnUtility.RemoveFromClassList("selected");
+        btnAll.RemoveFromClassList("selected");
+        itemContainer.Clear();
+    }
 
 }

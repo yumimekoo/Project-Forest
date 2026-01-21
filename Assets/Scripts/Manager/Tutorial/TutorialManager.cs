@@ -58,8 +58,8 @@ public class TutorialManager : MonoBehaviour
     private Coroutine uiAnimation;
 
     [Header("Presets")]
-    [SerializeField] int objectsToDeleteandPlace = 5; // check inspector
-    [SerializeField] int itemsToBuy = 10; // check inspector
+    [SerializeField] private int objectsToDeleteAndPlace = 5; // check inspector
+    [SerializeField] private int itemsToBuy = 10; // check inspector
 
     [Header("References")]
     [SerializeField] YarnManagerTutorial yarnManagerTutorial;
@@ -154,8 +154,7 @@ public class TutorialManager : MonoBehaviour
 
         if (!GameState.inTutorial && Instance != null)
         {
-            ShopUI.Instance.UpdateButtons();
-            BuildModeUI.Instance.UpdateButtons();
+            UIManager.Instance.UpdateButtons();
             Destroy(gameObject);
             return;
         }
@@ -195,8 +194,8 @@ public class TutorialManager : MonoBehaviour
         if(currentStep == TutorialStep.DeleteAllObjects) 
         {
             objectsDeleted++;
-            descriptionLabel.text = $"Delete {objectsToDeleteandPlace - objectsDeleted} more objects.";
-            if (objectsDeleted >= objectsToDeleteandPlace)
+            descriptionLabel.text = $"Delete {objectsToDeleteAndPlace - objectsDeleted} more objects.";
+            if (objectsDeleted >= objectsToDeleteAndPlace)
             {
                 Advance();
             }
@@ -208,11 +207,11 @@ public class TutorialManager : MonoBehaviour
         if(currentStep == TutorialStep.PlaceAllObjects) 
         {
             objectsPlaced++;
-            descriptionLabel.text = $"Place {objectsToDeleteandPlace - objectsPlaced} more objects.";
-            if (objectsPlaced >= objectsToDeleteandPlace)
+            descriptionLabel.text = $"Place {objectsToDeleteAndPlace - objectsPlaced} more objects.";
+            if (objectsPlaced >= objectsToDeleteAndPlace)
             {
                 Advance();
-                BuildModeUI.Instance.UpdateButtons();
+                UIManager.Instance.UpdateButtons();
             }
         }
     }
@@ -240,7 +239,7 @@ public class TutorialManager : MonoBehaviour
             if(objectBought >= itemsToBuy)
             {
                 Advance();
-                ShopUI.Instance.UpdateButtons();
+                UIManager.Instance.UpdateButtons();
             }
         }
     }
@@ -251,10 +250,12 @@ public class TutorialManager : MonoBehaviour
             Advance();
     }
 
-    public void OnNPCSpawned() { 
-        if(currentStep == TutorialStep.WaitingForNPCSpawn) 
+    public void OnNPCSpawned() {
+        if (currentStep == TutorialStep.WaitingForNPCSpawn)
+        {
             Advance();
             ReloadNPCGlow();
+        }
     }
     public void OnNPCSatDown() { 
         if(currentStep == TutorialStep.FirstNPCSpawned) 
@@ -303,7 +304,7 @@ public class TutorialManager : MonoBehaviour
         if(currentStep == TutorialStep.PlaceMonologue)
         {
             Advance();
-            BuildModeUI.Instance.UpdateButtons();
+            UIManager.Instance.UpdateButtons();
         }
 
         if (currentStep == TutorialStep.EndMonologue)
@@ -312,34 +313,32 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    void HandleGameStates(TutorialStep step)
+    private void HandleGameStates(TutorialStep step)
     {
-        if(step == TutorialStep.CloseRecipeBook || step == TutorialStep.OpenRecipeBook)
-        {
-            GameState.playerMovementAllowed = false;
-            GameState.playerInteractionAllowed = false;
-        }
+        if (step != TutorialStep.CloseRecipeBook && step != TutorialStep.OpenRecipeBook) return;
+        GameState.playerMovementAllowed = false;
+        GameState.playerInteractionAllowed = false;
 
     }
 
-    void HandleHighlight(TutorialStep step)
+    private void HandleHighlight(TutorialStep step)
     {
         //Debug.Log("Handling Highlight for step: " + step);
-        if (builderGlow != null)
+        if (builderGlow)
             builderGlow.SetActive(step == TutorialStep.PressEOnBuilder);
-        if (shopGlow != null)
+        if (shopGlow)
             shopGlow.SetActive(step == TutorialStep.PressEOnShop);
-        if (doorGlow != null)
+        if (doorGlow)
             doorGlow.SetActive(step == TutorialStep.PressEOnDoor);
-        if (npcGlow != null)
+        if (npcGlow)
             npcGlow.SetActive(step == TutorialStep.TakeOrder || step == TutorialStep.GiveCoffee);
-        if (coffeeMachineGlow != null)
+        if (coffeeMachineGlow)
             coffeeMachineGlow.SetActive(step == TutorialStep.MakeCoffee);
-        if (drawerGlow != null)
+        if (drawerGlow)
             drawerGlow.SetActive(step == TutorialStep.MakeCoffee);
     }
 
-        void HandleText(TutorialStep step)
+    private void HandleText(TutorialStep step)
     {
         switch (step)
         {
@@ -374,12 +373,12 @@ public class TutorialManager : MonoBehaviour
                 yarnManagerTutorial.StartDialogue("EndMonologue");
                 break;
             default:
-                //Debug.Log("No dialogue for this step: " + step);
+                //Debug.Log("No dialogue for this step:" + step);
                 break;
         }
     }
 
-    void HandleUI(TutorialStep step)
+    private void HandleUI(TutorialStep step)
     {
         switch (step)
         {
@@ -395,7 +394,7 @@ public class TutorialManager : MonoBehaviour
                 break;
             case TutorialStep.PressDeleteMode:
                 titleLabel.text = "Remove Objects";
-                descriptionLabel.text = "Press X to enter Remove Mode, then Left Click objects to remove them. Remove "+ objectsToDeleteandPlace +" more objects to continue.";
+                descriptionLabel.text = "Press X to enter Remove Mode, then Left Click objects to remove them. Remove "+ objectsToDeleteAndPlace +" more objects to continue.";
                 StartUIRoutine(ShowUIAnimated());
                 break;
             case TutorialStep.PlaceMonologue:
@@ -406,11 +405,11 @@ public class TutorialManager : MonoBehaviour
             case TutorialStep.PlaceAllObjects:
                 titleLabel.text = "Place Furniture";
                 descriptionLabel.text = "Press X again to leave Remove Mode." +
-                    "Select furniture and place " + objectsToDeleteandPlace+ " objects in your café.";
+                    "Select furniture and place " + objectsToDeleteAndPlace+ " objects in your cafï¿½.";
                 StartUIRoutine(ShowUIAnimated());
                 break;
             case TutorialStep.ExitBuildMode:
-                StartUIRoutine(SwapRoutine("Exit Build Mode", "When you’re done building, press Esc or click the Exit button."));
+                StartUIRoutine(SwapRoutine("Exit Build Mode", "When youï¿½re done building, press Esc or click the Exit button."));
                 break;
             case TutorialStep.BuyMonologue:
                 StartUIRoutine(HideUIAnimated());
@@ -434,8 +433,8 @@ public class TutorialManager : MonoBehaviour
                 descriptionLabel.text = "";
                 break;
             case TutorialStep.PressEOnDoor:
-                titleLabel.text = "Enter Café";
-                descriptionLabel.text = "Press E at the Door to enter your café and start the day.";
+                titleLabel.text = "Enter Cafï¿½";
+                descriptionLabel.text = "Press E at the Door to enter your cafï¿½ and start the day.";
                 StartUIRoutine(ShowUIAnimated());
                 break;
             case TutorialStep.CafeIntroMonologue:
@@ -492,24 +491,14 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    void StartUIRoutine(IEnumerator routine)
+    private void StartUIRoutine(IEnumerator routine)
     {
         if (uiAnimation != null)
             StopCoroutine(uiAnimation);
 
         uiAnimation = StartCoroutine(routine);
     }
-
-    void ShowUI()
-    {
-        root.style.display = DisplayStyle.Flex;
-    }
-
-    void HideUI()
-    {
-        root.style.display = DisplayStyle.None;
-    }
-
+    
     private IEnumerator WaitForTransition(VisualElement element)
     {
         bool finished = false;
@@ -527,7 +516,7 @@ public class TutorialManager : MonoBehaviour
         element.UnregisterCallback<TransitionEndEvent>(OnTransitionEnd);
     }
 
-    IEnumerator HideUIAnimated()
+    private IEnumerator HideUIAnimated()
     {
         root.RemoveFromClassList("tutorial-visible");
         root.AddToClassList("tutorial-hidden");
@@ -537,7 +526,7 @@ public class TutorialManager : MonoBehaviour
         root.style.display = DisplayStyle.None;
     }
 
-    IEnumerator ShowUIAnimated()
+    private IEnumerator ShowUIAnimated()
     {
         root.style.display = DisplayStyle.Flex;
 
@@ -550,7 +539,7 @@ public class TutorialManager : MonoBehaviour
         yield return WaitForTransition(root);
     }
 
-    IEnumerator SwapRoutine(string title, string description)
+    private IEnumerator SwapRoutine(string title, string description)
     {
         yield return HideUIAnimated();
 

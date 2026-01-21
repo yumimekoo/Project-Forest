@@ -1,0 +1,42 @@
+:root {
+}
+
+.header-style {
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    font-size: 50px;
+    color: rgb(83, 29, 4);
+    text-shadow: 2px 2px 0 rgb(227, 164, 100);
+    letter-spacing: 5px;
+    word-spacing: 0;
+}
+
+.subheading-style {
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    font-size: 25px;
+    letter-spacing: 5px;
+    color: rgb(83, 29, 4);
+    -unity-font-style: normal;
+    text-shadow: 2px 2px 0 rgb(227, 164, 100);
+}
+
+.button-style {
+    background-image: url("project://database/Assets/UIDocuments/TimeUI/Sprites/dayRecapButton.aseprite?fileID=6572865517455987561&guid=537e3625712cafa46be2f1e893d6fd8d&type=3#dayRecapButton");
+    width: 440px;
+    height: 120px;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    font-size: 50px;
+    color: rgb(83, 29, 4);
+    text-shadow: 3px 3px 0 rgb(227, 164, 100);
+}
+
+.button-style:hover {
+    background-image: url("project://database/Assets/UIDocuments/TimeUI/Sprites/dayRecapHover.aseprite?fileID=-7350645467663760837&guid=1fd203429c2b82740b0a966c9893957a&type=3#dayRecapHover");
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    font-size: 50px;
+    color: rgb(248, 189, 129);
+    text-shadow: 3px 3px 0 rgb(83, 29, 4);
+}

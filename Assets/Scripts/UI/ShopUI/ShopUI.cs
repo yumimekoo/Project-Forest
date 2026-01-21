@@ -5,15 +5,18 @@ using UnityEngine.UIElements;
 
 public class ShopUI : MonoBehaviour
 {
-    public static ShopUI Instance;
+    //public static ShopUI Instance;
     public UIDocument shopUI;
     public VisualTreeAsset shopItemTemplate;
+    public VisualTreeAsset shopCategoryTabTemplate;
+
 
     private VisualElement
         itemContainer,
         tabsContainer;
     private Button
         exitButton;
+    private Label moneyLabel;
     private ShoppingCategory currentCategory;
     List<IShopItem> allShopItems;
 
@@ -21,7 +24,6 @@ public class ShopUI : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
         InitUI();
     }
 
@@ -30,46 +32,97 @@ public class ShopUI : MonoBehaviour
         UpdateButtons();
     }
 
+    private void OnEnable()
+    {
+        if (CurrencyManager.Instance != null)
+            CurrencyManager.Instance.OnMoneyChanged += UpdateMoney;
+        if (UIManager.Instance)
+        {
+            UIManager.Instance.OnButtonsUpdated += UpdateButtons;
+            UIManager.Instance.OnUIStateChanged += HandleState;
+            UIManager.Instance.OnEscapePressed += OnExitButton;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (CurrencyManager.Instance != null)
+            CurrencyManager.Instance.OnMoneyChanged -= UpdateMoney;
+        if (UIManager.Instance)
+        {
+            UIManager.Instance.OnButtonsUpdated -= UpdateButtons;
+            UIManager.Instance.OnUIStateChanged -= HandleState;
+            UIManager.Instance.OnEscapePressed -= OnExitButton;
+        }
+    }
+
+    private void HandleState(UIState state)
+    {
+        switch (state)
+        {
+            case UIState.Shop:
+                ShowUI();
+                break;
+            case UIState.Tutorial:
+                // later
+            default:
+                shopUI.rootVisualElement.style.display = DisplayStyle.None;
+                break;
+        }
+        
+    }
     private void InitUI()
     {
         var root = shopUI.rootVisualElement;
         itemContainer = root.Q<VisualElement>("itemContainer");
         tabsContainer = root.Q<VisualElement>("tabsContainer");
         exitButton = root.Q<Button>("exitButton");
+        moneyLabel = root.Q<Label>("moneyLabel");
 
+        if(CurrencyManager.Instance != null)
+            moneyLabel.text = CurrencyManager.Instance.CurrentMoney.ToString();
         exitButton.clicked += OnExitButton;
 
         BuildShopItems();
         BuildCategoryTabs();
+        
 
         ShowCategory(ShoppingCategory.Items);
         HideUI();
     }
 
-    public void ShowUI()
+    private void ShowUI()
     {
         BuildShopItems();
         ShowCategory(currentCategory);
         shopUI.rootVisualElement.style.display = DisplayStyle.Flex;
         GameState.playerInteractionAllowed = false;
         GameState.playerMovementAllowed = false;
+        GameState.isInMenu = true;
     }
 
-    public void HideUI()
+    private void HideUI()
     {
         shopUI.rootVisualElement.style.display = DisplayStyle.None;
         GameState.playerInteractionAllowed = true;
         GameState.playerMovementAllowed = true;
+        GameState.isInMenu = false;
     }
 
     private void OnExitButton()
     {
+        UIManager.Instance.ResetState();
         HideUI();
 
-        if (GameState.inTutorial && TutorialManager.Instance != null)
+        if (GameState.inTutorial && TutorialManager.Instance)
         {
             TutorialManager.Instance.OnExitPressed();
         }
+    }
+
+    private void UpdateMoney(int newAmount)
+    {
+        moneyLabel.text = newAmount.ToString();
     }
 
     private void BuildShopItems()
@@ -86,6 +139,14 @@ public class ShopUI : MonoBehaviour
     private void ShowCategory(ShoppingCategory category)
     {
         currentCategory = category;
+
+        foreach (var kvp in categoryButtons)
+        {
+            kvp.Value.RemoveFromClassList("selected");
+        }
+
+        categoryButtons[category].AddToClassList("selected");
+
         itemContainer.Clear();
         foreach (var shopItem in allShopItems.Where(i => i.Category == category))
         {
@@ -109,15 +170,15 @@ public class ShopUI : MonoBehaviour
 
         void Refresh()
         {
-            ownedAmountLabel.text = $"Owned: {shopItem.CurrentAmount}";
-            buyAmountLabel.text = $"Buy Amount: {buyAmount}";
-            totalPriceLabel.text = $"{shopItem.Price * buyAmount} $";
+            ownedAmountLabel.text = $"{shopItem.CurrentAmount}";
+            buyAmountLabel.text = $"{buyAmount}";
+            totalPriceLabel.text = $"{shopItem.Price * buyAmount}";
 
             buyButton.SetEnabled(CurrencyManager.Instance.HasEnoughMoney(shopItem.Price * buyAmount));
         }
 
         nameLabel.text = shopItem.Name;
-        priceLabel.text = $"Price: {shopItem.Price}";
+        priceLabel.text = $"{shopItem.Price}";
         Refresh();
 
         entry.Q<Button>("plusOne").clicked += () =>
@@ -163,13 +224,14 @@ public class ShopUI : MonoBehaviour
             if (category == ShoppingCategory.None)
                 continue;
 
-            var tabButton = new Button(() => ShowCategory(category))
-            {
-                text = category.ToString()
-            };
+            var tabTemplate = shopCategoryTabTemplate.Instantiate();
+            var tabButton = tabTemplate.Q<Button>("itemsTab");
+            var tabText = tabTemplate.Q<Label>("tabText");
+            tabButton.clicked += () => ShowCategory(category);
+            tabText.text = category.ToString();
 
             categoryButtons[category] = tabButton;
-            tabsContainer.Add(tabButton);
+            tabsContainer.Add(tabTemplate);
         }
 
         UpdateButtons();

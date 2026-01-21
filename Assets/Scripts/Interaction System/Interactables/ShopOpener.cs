@@ -22,9 +22,9 @@ public class ShopOpener : MonoBehaviour, IInteractable
             if (TutorialManager.Instance.currentStep < TutorialStep.PressEOnShop)
                 return;
 
-                TutorialManager.Instance.OnShopUsed();
+            TutorialManager.Instance.OnShopUsed();
         }
 
-        ShopUI.Instance.ShowUI();
+        UIManager.Instance.SetUIState(UIState.Shop);
     }
 }

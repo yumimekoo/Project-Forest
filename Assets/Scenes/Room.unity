@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialManager
   currentStep: 0
-  objectsToDeleteandPlace: 7
+  objectsToDeleteAndPlace: 5
   itemsToBuy: 7
   yarnManagerTutorial: {fileID: 198460388}
   tutorialUI: {fileID: 1654874582}
@@ -1350,6 +1350,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseUI
   pauseUI: {fileID: 1065064660}
+  pauseSprites:
+  - {fileID: 3474998474935278823, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: -7841251454533711390, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: 4288923215041121055, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: 8442399568690734875, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: 140853132526611552, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: -2140722375368309600, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: -8256334956382551864, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: -950931355991350946, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: 7660673159699414585, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: -3739456891373041876, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: 2954034183855971284, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: -856460364278285395, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  animationFPS: 12
   InputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   openPause:
     m_Name: Open Pause
@@ -1783,6 +1797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShopUI
   shopUI: {fileID: 1264877438}
   shopItemTemplate: {fileID: 9197481963319205126, guid: 2f2f08eac76a42249b93cf204d7bbf4a, type: 3}
+  shopCategoryTabTemplate: {fileID: 9197481963319205126, guid: a75d93a0a7c1e9d468350c24cd092bc9, type: 3}
 --- !u!114 &1264877438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2601,6 +2616,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1968939810}
+  - component: {fileID: 1968939811}
   m_Layer: 0
   m_Name: UIHandler
   m_TagString: Untagged
@@ -2629,6 +2645,37 @@ Transform:
   - {fileID: 1264877436}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1968939811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968939809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3897e43af2f44ae823e2a6365859cc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIManager
+  InputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  openPause:
+    m_Name: Open Pause
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d9b9db09-3209-42fd-b82e-82cf2906be65
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  openBook:
+    m_Name: Open Book
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 5920a3e6-5056-4e8f-8aaf-d9959063a77d
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

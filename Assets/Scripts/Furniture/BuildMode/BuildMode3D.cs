@@ -20,6 +20,8 @@ public class BuildMode3D : MonoBehaviour
 
     private HashSet<Vector2Int> occupiedCells = new();
 
+    public event System.Action<bool> deleteModeChanged;
+
     public InputActionAsset InputActions;
     public InputAction rotateAction;
     public InputAction clickAction;
@@ -28,7 +30,7 @@ public class BuildMode3D : MonoBehaviour
     private void Awake()
     {
         clickAction = InputSystem.actions.FindAction("LeftClick");
-        rightClickAction = InputSystem.actions.FindAction("RightClick");
+        rightClickAction = InputSystem.actions.FindAction("DeleteMode");
         rotateAction = InputSystem.actions.FindAction("Rotate");
         pointerPos = InputSystem.actions.FindAction("PointerPos");
     }
@@ -75,8 +77,8 @@ public class BuildMode3D : MonoBehaviour
     {
         if(!GameState.isInBuildMode)
             return;
-
-        HandleDeleteToggle();
+        if(rightClickAction.WasPressedThisFrame())
+            HandleDeleteToggle();
 
         if (!isPlacing)
             return;
@@ -87,11 +89,10 @@ public class BuildMode3D : MonoBehaviour
         HandlePlacementOrDeletion();
     }
 
-    private void HandleDeleteToggle()
+    public void HandleDeleteToggle()
     {
-        if (rightClickAction.WasPressedThisFrame())
-        {
             deleteMode = !deleteMode;
+            deleteModeChanged?.Invoke(deleteMode);
 
             if (GameState.inTutorial)
             {
@@ -121,7 +122,6 @@ public class BuildMode3D : MonoBehaviour
                 isPlacing = false;
                 return;
             }
-        }
     }
 
     public int GetOccupiedCells()

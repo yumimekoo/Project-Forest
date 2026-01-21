@@ -6,6 +6,7 @@ using Yarn.Unity;
 public class NPCController : MonoBehaviour, IInteractable
 {
     public NPCIdentitySO identity;
+    private NPCOverheadUI overheadUI;
     private NavMeshAgent agent;
     private Chair targetChair;
     private NPCState state;
@@ -15,6 +16,9 @@ public class NPCController : MonoBehaviour, IInteractable
     private float navmeshSpeed = 1.5f;
     private float navmeshAcceleration = 3f;
 
+    public NPCState State => state;
+    public float StateTimer => stateTimer;
+    public bool HasTalked => hasTalked;
 
     public DrinkOrder currentOrder { get; private set; }
     public void Awake()
@@ -74,6 +78,9 @@ public class NPCController : MonoBehaviour, IInteractable
     {
         agent.enabled = true;
         FindChairAndGo();
+        
+        overheadUI = NPCUIManager.Instance.GetNPCUI();
+        overheadUI.Init(this);
     }
 
     private void OnStateTimerEnded()
@@ -100,16 +107,27 @@ public class NPCController : MonoBehaviour, IInteractable
         state = newState;
         stateTimer = timer;
         //Debug.Log($"{identity.npcName} state changed to {state}");
+
+        overheadUI?.OnStateChanged(timer);
     }
 
     private void Leave(string reason)
     {
         //Debug.Log($"{identity.npcName} leaving: {reason}");
-        if(targetChair != null)
+        if(targetChair)
         {
             targetChair.Free();
         }
+
         SetState(NPCState.Leaving);
+        
+        if (overheadUI)
+        {
+            overheadUI.ResetUI();
+            NPCUIManager.Instance.ReturnUI(overheadUI);
+            overheadUI = null;
+        }
+        
         agent.enabled = true;
         agent.SetDestination(ChairManager.Instance.GetExitPoint());
     }
@@ -203,8 +221,6 @@ public class NPCController : MonoBehaviour, IInteractable
 
     public void StartConversation()
     {
-        //Debug.Log($"Starting conversation with {identity.npcName}...");
-        GameTime.SetPaused(true);
         hasTalked = true;
         YarnManager.Instance.StartDialogue(identity.dialogueProject, identity.startNode);
     }

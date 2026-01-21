@@ -1,0 +1,40 @@
+:root {
+}
+
+.bookHover {
+    background-image: url("project://database/Assets/UIDocuments/OverlayUI/Sprites/bookButton.aseprite?fileID=-580945623846882630&guid=a7456885acb7d514ead0c16ab1a7e6d5&type=3#bookButton");
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.bookHover:hover {
+    background-image: url("project://database/Assets/UIDocuments/OverlayUI/Sprites/bookButtonHover.aseprite?fileID=-3794649356158202611&guid=fbdd653c03bbc4843a452c1154e74a6f&type=3#bookButtonHover");
+}
+
+.pauseHover {
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    background-image: url("project://database/Assets/UIDocuments/OverlayUI/Sprites/pauseButton.aseprite?fileID=-4204616034005297513&guid=0ef239b10f75efd439bb9ba993fde394&type=3#pauseButton");
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.pauseHover:hover {
+    background-image: url("project://database/Assets/UIDocuments/OverlayUI/Sprites/pauseButtonHover.aseprite?fileID=8870205857236509917&guid=6c2c344190926a24daee1cc9ae43fa48&type=3#Frame_0");
+}
+
+.bg-room {
+    background-image: url("project://database/Assets/UIDocuments/OverlayUI/Sprites/uiOverlayRoom.aseprite?fileID=7329765467524617087&guid=98c7505a314058a40bd0232fddaf83ad&type=3#Frame_0");
+}
+
+.bg-day {
+    background-image: url("project://database/Assets/UIDocuments/OverlayUI/Sprites/uiOverlay.aseprite?fileID=-4143515702204376583&guid=06716243d88330c49942163d96d872ef&type=3#Frame_1");
+}
+
+.bg-night {
+    background-image: url("project://database/Assets/UIDocuments/OverlayUI/Sprites/uiOverlay.aseprite?fileID=737175068790913809&guid=06716243d88330c49942163d96d872ef&type=3#uiOverlay");
+}

@@ -7,6 +7,7 @@ public class PlayerInventory : MonoBehaviour
     public Transform handSlot;
     public GameObject heldObjectInstance;
 
+    public event System.Action OnItemChanged;
     private void Awake()
     {
         Instance = this;
@@ -34,6 +35,7 @@ public class PlayerInventory : MonoBehaviour
         heldObjectInstance.transform.localPosition = Vector3.zero;
         heldObjectInstance.transform.localRotation = Quaternion.identity;
         //Debug.Log($"Picked up: {item.itemName}");
+        OnItemChanged?.Invoke();
     }
 
     public void PlaceDown(IPlacableSurface surface)
@@ -46,6 +48,7 @@ public class PlayerInventory : MonoBehaviour
         //Debug.Log($"Placed down: {heldItem.itemName}");
         heldItem = null;
         heldObjectInstance = null;
+        OnItemChanged?.Invoke();
     }
     private void SetLayer(GameObject obj, int newLayer)
     {
@@ -66,6 +69,8 @@ public class PlayerInventory : MonoBehaviour
             heldItem = null;
             if (heldObjectInstance != null)
                 Destroy(heldObjectInstance);
+            
+            OnItemChanged?.Invoke();
         }
     }
 }

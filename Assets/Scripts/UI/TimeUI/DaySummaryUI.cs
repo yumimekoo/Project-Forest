@@ -12,11 +12,10 @@ public class DaySummaryUI : MonoBehaviour
         weekLabel,
         totalLabel,
         rentDueToLabel,
+        rentPayPrice,
         completedLabel,
-        //successLabel,
-        //failedLabel,
-        friendshipLabel,
-        friendshipXPLabel;
+        successLabel,
+        failedLabel;
 
     private Button
         okButton,
@@ -30,12 +29,11 @@ public class DaySummaryUI : MonoBehaviour
         weekdayLabel = root.Q<Label>("weekday");
         weekLabel = root.Q<Label>("week");
         totalLabel = root.Q<Label>("totalLabel");
-        rentDueToLabel = root.Q<Label>("acceptedLabel");
+        rentDueToLabel = root.Q<Label>("rentDueToLabel");
+        rentPayPrice = root.Q<Label>("rentPayPrice");
+        successLabel = root.Q<Label>("successLabel");
+        failedLabel = root.Q<Label>("failedLabel");
         completedLabel = root.Q<Label>("completedLabel");
-        //successLabel = root.Q<Label>("successLabel");
-        //failedLabel = root.Q<Label>("failedLabel");
-        friendshipLabel = root.Q<Label>("friendshipLabel");
-        friendshipXPLabel = root.Q<Label>("friendshipXPLabel");
         okButton = root.Q<Button>("okButton");
         payRentButton = root.Q<Button>("payRentButton");
 
@@ -56,19 +54,23 @@ public class DaySummaryUI : MonoBehaviour
 
     private void Show(DayStats stats, int day, Weekday weekday, int week, int nextRentPrice)
     {
-        dayLabel.text = $"Day {day}";
+        GameState.isInMenu = true;
+        dayLabel.text = $"{day}, ";
         weekdayLabel.text = weekday.ToString();
         weekLabel.text = $"Week {week}";
 
-        moneyEarnedLabel.text = $"Money earned: {stats.moneyEarned}";
-        totalLabel.text = $"Customer Orders Accepted: {stats.ordersAcceped} / {stats.totalCustomers}";
-        completedLabel.text = $"Orders completed: {stats.ordersCompleted} with Success/Failed rate of {stats.ordersSuccess} / {stats.ordersFailed}";
+        moneyEarnedLabel.text = $"{stats.moneyEarned}";
+        totalLabel.text = $"{stats.ordersAcceped}/{stats.totalCustomers}";
+        successLabel.text = $"{stats.ordersSuccess}";
+        failedLabel.text = $"{stats.ordersFailed}";
+        completedLabel.text = $"{stats.ordersCompleted}: ";
         int daysUntilSunday = ((int)Weekday.Sunday - (int)weekday + 7) % 7;
-        rentDueToLabel.text = $"{nextRentPrice}$ due in: {daysUntilSunday}";
+        rentPayPrice.text = $"{nextRentPrice}";
+        rentDueToLabel.text = $"in {daysUntilSunday} days";
 
         bool isSunday = weekday == Weekday.Sunday;
 
-        payRentButton.text = $"Pay Rent: {nextRentPrice}";
+        payRentButton.text = $"Pay {nextRentPrice}";
 
         okButton.style.display = isSunday ? DisplayStyle.None : DisplayStyle.Flex;
         payRentButton.style.display = isSunday ? DisplayStyle.Flex : DisplayStyle.None;
