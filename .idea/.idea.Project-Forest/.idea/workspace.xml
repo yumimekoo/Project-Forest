@@ -5,28 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e5c7e10-a334-4465-a6a7-b4aee9a4c9c8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Project-Forest/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjectsData/ItemData/Base/CoffeeBeans.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjectsData/ItemData/Base/CoffeeBeans.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjectsData/ItemData/Base/Cup.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjectsData/ItemData/Base/Cup.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Furniture/FurnitureSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Furniture/FurnitureSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/BuildModeUI/BuildModeUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/BuildModeUI/BuildModeUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/FridgeUI/FridgeUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/FridgeUI/FridgeUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/OverlayUI/OverlayUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/OverlayUI/OverlayUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/RecipeBookUI/RecipeBookController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/RecipeBookUI/RecipeBookController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/ShopUI/IShopItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/ShopUI/IShopItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/ShopUI/ShopItem_Furniture.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/ShopUI/ShopItem_Furniture.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/ShopUI/ShopItem_Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/ShopUI/ShopItem_Item.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/ShopUI/ShopUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/ShopUI/ShopUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI Toolkit/PanelSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI Toolkit/PanelSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UIDocuments/BuildModeUI/frunitureItemTemplate.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UIDocuments/BuildModeUI/frunitureItemTemplate.uxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UIDocuments/FridgeUI/buttonTemplate.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UIDocuments/FridgeUI/buttonTemplate.uxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UIDocuments/OverlayUI/OverlayUI.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UIDocuments/OverlayUI/OverlayUI.uxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UIDocuments/RecipeBookUI/orderTemplate.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UIDocuments/RecipeBookUI/orderTemplate.uxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UIDocuments/RecipeBookUI/recipeFinal3.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UIDocuments/RecipeBookUI/recipeFinal3.uxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UIDocuments/RecipeBookUI/recipeFinal5.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UIDocuments/RecipeBookUI/recipeFinal5.uxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UIDocuments/RecipeBookUI/recipeFinal7.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UIDocuments/RecipeBookUI/recipeFinal7.uxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UIDocuments/ShopUI/shopCategory.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UIDocuments/ShopUI/shopCategory.uxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UIDocuments/TutorialUI/TutorialUI.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UIDocuments/TutorialUI/TutorialUI.uxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Project-Forest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project-Forest/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,29 +38,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "PF-100",
-    "last_opened_file_path": "/Users/user/Desktop/Project 2 - Cafe Forest/Project-Forest",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;PF-100&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/user/Desktop/Project 2 - Cafe Forest/Project-Forest&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../Builds\project_forest.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="X:\Unity Projects\Project 2 - Project Forest\Builds" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.2.6f2/Unity.app/Contents/MacOS/Unity" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.6f2\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath &quot;$PROJECT_DIR$&quot; -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -91,7 +80,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.2.6f2/Unity.app/Contents/MacOS/Unity" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.6f2\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;$PROJECT_DIR$&quot; -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
