@@ -16,4 +16,8 @@ MonoBehaviour:
   itemName: Taro Oat Latte
   itemType: 2
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: 4582961514402725031, guid: 97c6100d52935094692d79f0414ab342, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0

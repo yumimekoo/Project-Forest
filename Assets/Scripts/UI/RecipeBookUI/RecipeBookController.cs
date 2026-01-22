@@ -228,11 +228,15 @@ public class RecipeBookController : MonoBehaviour
             }
                 // hier dann template machen
             var orderItem = orderTemplate.Instantiate();
-            Label orderNPCName = orderItem.Q<Label>("npcName");
-            Label orderItemName = orderItem.Q<Label>("npcOrder");
+            var orderNPCName = orderItem.Q<Label>("npcName");
+            var orderItemName = orderItem.Q<Label>("npcOrder");
+            var orderIcon = orderItem.Q<VisualElement>("iconOrder");
 
             orderNPCName.text = npcName;
             orderItemName.text = drinkName;
+            
+            if(drink)
+                orderIcon.style.backgroundImage = drink.icon ? new StyleBackground(drink.icon) : null;
 
             orderItem.RegisterCallback<ClickEvent>(_ =>
             {
@@ -296,6 +300,9 @@ public class RecipeBookController : MonoBehaviour
 
         var headerLabel = recipeItem.Q<Label>("recipeHeaderTitle");
         var stepContainer = recipeItem.Q<VisualElement>("recipeStepContainer");
+        var recipeIcon = recipeItem.Q<VisualElement>("recipeIcon");
+        
+        recipeIcon.style.backgroundImage = recipe.resultingState.icon ? new StyleBackground(recipe.resultingState.icon) : null;
 
         stepContainer.Clear();
 

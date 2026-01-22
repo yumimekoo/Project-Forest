@@ -110,7 +110,9 @@ public class BuildModeUI : MonoBehaviour
         {
             var itemElement = itemTemplate.Instantiate();
             var button = itemElement.Q<Button>("itemButton");
-            button.text = item.furnitureName;
+            var icon = itemElement.Q<VisualElement>("itemIcon");
+            
+            icon.style.backgroundImage = item.icon ? new StyleBackground(item.icon) : null;
 
             int id = item.numericID;
 

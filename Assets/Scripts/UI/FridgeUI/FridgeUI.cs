@@ -58,8 +58,12 @@ public class FridgeUI : MonoBehaviour
             int amount = getAmount(item);
             var itemTemplate = buttonTemp.Instantiate();
             var button = itemTemplate.Q<Button>("itemButton");
+            var itemIcon = itemTemplate.Q<VisualElement>("itemIcon");
             itemTemplate.Q<Label>("nameLabel").text = $"{item.itemName}";
             itemTemplate.Q<Label>("quantityLabel").text = $"x {amount}";
+            
+            itemIcon.style.backgroundImage = item.icon ? new StyleBackground(item.icon) : null;
+            
             button.clicked += () => OnItemSelected(item);
 
             itemContainer.Add(itemTemplate);
