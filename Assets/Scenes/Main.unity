@@ -1076,6 +1076,7 @@ GameObject:
   m_Component:
   - component: {fileID: 874102844}
   - component: {fileID: 874102845}
+  - component: {fileID: 874102846}
   m_Layer: 0
   m_Name: TimeManager
   m_TagString: Untagged
@@ -1110,7 +1111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3ec3372101123f418c862c9c0642703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
-  dayDurationInSeconds: 100
+  dayDurationInSeconds: 3
+  dayUnlocker: {fileID: 874102846}
   currentDay: 1
   currentWeek: 1
   currentWeekday: 0
@@ -1122,6 +1124,19 @@ MonoBehaviour:
     ordersFailed: 0
     ordersSuccess: 0
   baseRentAmount: 0
+--- !u!114 &874102846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874102843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96f08cf04e9eaa48a56dc9508d081e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DayUnlocker
+  schedule: {fileID: 11400000, guid: 68efcbc8936eddd459c09ca83773d315, type: 2}
 --- !u!1 &881709037
 GameObject:
   m_ObjectHideFlags: 0
@@ -3046,6 +3061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DaySummaryUI
   daySummaryUI: {fileID: 2094637231}
+  unlockedTemplate: {fileID: 9197481963319205126, guid: 6ee857af4e84d4044a4df6c827ab3b7c, type: 3}
 --- !u!114 &2094637231
 MonoBehaviour:
   m_ObjectHideFlags: 0

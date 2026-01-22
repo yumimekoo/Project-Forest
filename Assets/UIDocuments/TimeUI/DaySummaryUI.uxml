@@ -1,4 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="unlockTemplate" src="project://database/Assets/UIDocuments/TimeUI/unlockTemplate.uxml?fileID=9197481963319205126&amp;guid=6ee857af4e84d4044a4df6c827ab3b7c&amp;type=3#unlockTemplate" />
     <Style src="project://database/Assets/UIDocuments/TimeUI/endofday.uss?fileID=7433441132597879392&amp;guid=bd378712c74758d4a94db8eb714ffa62&amp;type=3#endofday" />
     <ui:VisualElement style="flex-grow: 1; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; background-image: none; align-self: stretch; justify-content: center; width: 100%; height: 100%; align-items: center; -unity-background-scale-mode: scale-to-fit;">
         <ui:VisualElement name="VisualElement" style="flex-grow: 0; background-color: rgba(207, 207, 207, 0); background-image: url(&quot;project://database/Assets/UIDocuments/TimeUI/Sprites/dayRecapUI.aseprite?fileID=-5389863559987375068&amp;guid=d284357c8bcf1b342983521e181e3926&amp;type=3#dayRecapUI&quot;); width: 50%; height: 50%;">
@@ -52,11 +53,17 @@
                         </ui:Button>
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement style="flex-grow: 0; width: 50%;">
+                <ui:VisualElement style="flex-grow: 0; width: 50%; padding-left: 40px; padding-right: 40px; padding-bottom: 40px;">
                     <ui:VisualElement style="flex-grow: 0; height: 6%;" />
-                    <ui:VisualElement style="flex-grow: 1; align-self: center;">
-                        <ui:Label text="Unlocks" class="subheading-style" style="-unity-text-align: upper-center; padding-left: 15px;" />
+                    <ui:VisualElement name="VisualElement" style="flex-grow: 0; align-self: center;">
+                        <ui:Label text="Unlocks" class="subheading-style" style="-unity-text-align: upper-center; padding-left: 2px;" />
                     </ui:VisualElement>
+                    <ui:ScrollView name="unlockContainer" style="flex-grow: 1; flex-direction: column;">
+                        <ui:Instance template="unlockTemplate" />
+                        <ui:Instance template="unlockTemplate" />
+                        <ui:Instance template="unlockTemplate" />
+                        <ui:Instance template="unlockTemplate" />
+                    </ui:ScrollView>
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

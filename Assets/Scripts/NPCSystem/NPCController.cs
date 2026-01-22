@@ -180,7 +180,10 @@ public class NPCController : MonoBehaviour, IInteractable
             if (TutorialManager.Instance.currentStep == TutorialStep.GiveCoffee)
             {
                 TutorialManager.Instance.OnCoffeeGiven();
-
+                if(targetChair)
+                {
+                    targetChair.Free();
+                }
                 Destroy(gameObject);
             }
         }

@@ -4,6 +4,7 @@ using UnityEngine.UIElements;
 public class DaySummaryUI : MonoBehaviour
 {
     [SerializeField] private UIDocument daySummaryUI;
+    [SerializeField] private VisualTreeAsset unlockedTemplate;
 
     private Label
         moneyEarnedLabel,
@@ -20,6 +21,9 @@ public class DaySummaryUI : MonoBehaviour
     private Button
         okButton,
         payRentButton;
+    
+    private VisualElement 
+        unlockContainer;
 
     private void Awake()
     {
@@ -36,6 +40,7 @@ public class DaySummaryUI : MonoBehaviour
         completedLabel = root.Q<Label>("completedLabel");
         okButton = root.Q<Button>("okButton");
         payRentButton = root.Q<Button>("payRentButton");
+        unlockContainer = root.Q<VisualElement>("unlockContainer");
 
         root.style.display = DisplayStyle.None;
 
@@ -52,7 +57,7 @@ public class DaySummaryUI : MonoBehaviour
         TimeManager.Instance.OnDaySummaryReady -= Show;
     }
 
-    private void Show(DayStats stats, int day, Weekday weekday, int week, int nextRentPrice)
+    private void Show(DayStats stats, int day, Weekday weekday, int week, int nextRentPrice, UnlockReport report)
     {
         GameState.isInMenu = true;
         dayLabel.text = $"{day}, ";
@@ -71,6 +76,24 @@ public class DaySummaryUI : MonoBehaviour
         bool isSunday = weekday == Weekday.Sunday;
 
         payRentButton.text = $"Pay {nextRentPrice}";
+        
+        unlockContainer.Clear();
+
+        foreach (var item in report.unlockedItems)
+        {
+            var itemElement = unlockedTemplate.Instantiate();
+            itemElement.Q<Label>("nameLabel").text = item.name;
+            itemElement.Q<VisualElement>("itemIcon").style.backgroundImage = item.icon ? new StyleBackground(item.icon) : null;
+            unlockContainer.Add(itemElement);
+        }
+
+        foreach (var furniture in report.unlockedFurniture)
+        {
+            var furnitureElement = unlockedTemplate.Instantiate();
+            furnitureElement.Q<Label>("nameLabel").text = furniture.name;
+            furnitureElement.Q<VisualElement>("itemIcon").style.backgroundImage = furniture.icon ? new StyleBackground(furniture.icon) : null;
+            unlockContainer.Add(furnitureElement);
+        }
 
         okButton.style.display = isSunday ? DisplayStyle.None : DisplayStyle.Flex;
         payRentButton.style.display = isSunday ? DisplayStyle.Flex : DisplayStyle.None;

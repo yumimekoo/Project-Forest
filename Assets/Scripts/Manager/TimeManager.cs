@@ -43,7 +43,8 @@ public class TimeManager : MonoBehaviour
     [Header("Time Settings")]
     public float dayDurationInSeconds;
     private float timeElapsed = 0f;
-
+    
+    [SerializeField] private DayUnlocker dayUnlocker;
     private bool nightTriggered = false;
 
     public event Action OnNightTriggered;
@@ -57,7 +58,7 @@ public class TimeManager : MonoBehaviour
     public DayStats todayStats = new();
     public int baseRentAmount = 100;
 
-    public event Action <DayStats, int, Weekday, int, int> OnDaySummaryReady;
+    public event Action <DayStats, int, Weekday, int, int, UnlockReport> OnDaySummaryReady;
     public event Action OnNewDayStarted;
     public event Action OnGameOver;
     public event Action OnTutorialComplete;
@@ -154,7 +155,8 @@ public class TimeManager : MonoBehaviour
 
     public void ShowDaySummary()
     {
-        OnDaySummaryReady?.Invoke(todayStats, currentDay, currentWeekday, currentWeek, baseRentAmount*currentWeek);
+        UnlockReport report = dayUnlocker.ProcessUnlocksForDay(currentDay);
+        OnDaySummaryReady?.Invoke(todayStats, currentDay, currentWeekday, currentWeek, baseRentAmount*currentWeek, report);
     }
 
     public void ConfirmEndOfDay()

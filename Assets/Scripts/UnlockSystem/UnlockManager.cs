@@ -29,14 +29,16 @@ public class UnlockManager : MonoBehaviour
 
     // --- UNLOCK METHODS ---
 
-    public void UnlockItem(ItemDataSO item)
+    public bool UnlockItem(ItemDataSO item)
     {
         if (!runtimeDatabase.unlockedItems.Contains(item))
         {
             runtimeDatabase.unlockedItems.Add(item);
             //Debug.Log("[Unlock] item unlocked: " + item.name);
-        }
+        } else return false;
+        
         RecalculateUnlocks();
+        return true;
     }
 
     public void UnlockRecipe(DrinkRuleSO recipe)
@@ -59,13 +61,16 @@ public class UnlockManager : MonoBehaviour
         RecalculateUnlocks();
     }
 
-    public void UnlockFurniture(FurnitureSO furniture)
+    public bool UnlockFurniture(FurnitureSO furniture)
     {
         if (!runtimeDatabase.unlockedFurniture.Contains(furniture))
         {
             runtimeDatabase.unlockedFurniture.Add(furniture);
             //Debug.Log("[Unlock] Furniture unlocked: " + furniture.name);
-        }
+        } else return false;
+        
+        RecalculateUnlocks(); 
+        return true;
     }
 
     bool CanUnlockRule(DrinkRuleSO rule, List<ItemDataSO> unlocked)
