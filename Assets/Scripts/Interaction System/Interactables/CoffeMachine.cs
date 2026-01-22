@@ -19,7 +19,7 @@ public class CoffeMachine : MonoBehaviour, IInteractable
 
     public string GetInteractionPrompt()
     {
-        if (cupInMachine == null)
+        if (!cupInMachine)
         {
             return "Place a cup to brew coffee.";
         }
@@ -45,7 +45,7 @@ public class CoffeMachine : MonoBehaviour, IInteractable
         if (isBrewing)
             return;
 
-        if (player.HasItem() && player.heldItem.id == 8) // hier noch ändern maybe
+        if (player.HasItem() && player.heldItem.id == 8) // hier noch ï¿½ndern maybe
         {
             AddBeans(player);
             return;
