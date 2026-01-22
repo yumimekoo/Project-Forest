@@ -97,7 +97,4 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
-.idea/.idea.Project-Forest/.idea/discord.xml
-.idea/.idea.Project-Forest/.idea/indexLayout.xml
-.idea/.idea.Project-Forest/.idea/projectSettingsUpdater.xml
-.idea/.idea.Project-Forest/.idea/workspace.xml
+.idea/
