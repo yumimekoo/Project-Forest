@@ -20,16 +20,11 @@ public class Cup : MonoBehaviour, IInteractable
     {
         if (contents.Count == 0)
         {
-            return "Add contents to the Cup.";
+            return "Add contents";
         }
         else
         {
-            string contentNames = $"{currentItemData.itemName} contains: ";
-            foreach (var item in contents)
-            {
-                contentNames += item.itemName + ", ";
-            }
-            contentNames = contentNames.TrimEnd(',', ' ');
+            string contentNames = $"{currentItemData.itemName}";
             return contentNames;
         }
     }
@@ -39,13 +34,6 @@ public class Cup : MonoBehaviour, IInteractable
         if (player.HasItem())
         {
             AddIngredient(player.heldItem);
-            string contentNames = "Cup contains: ";
-            foreach (var item in contents)
-            {
-                contentNames += item.itemName + ", ";
-            }
-            contentNames = contentNames.TrimEnd(',', ' ');
-            //Debug.Log(contentNames);
             player.ClearItem();
         }
         else

@@ -9,7 +9,11 @@ public enum ItemType
 public enum StorageType
 {
     Fridge,
-    Drawer
+    Glass,
+    Drawer,
+    Syrup,
+    Tea,
+    None
 }
 
 public enum ShoppingCategory

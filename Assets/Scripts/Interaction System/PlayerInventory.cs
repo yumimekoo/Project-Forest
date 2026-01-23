@@ -59,6 +59,7 @@ public class PlayerInventory : MonoBehaviour
     {
         heldItem = null;
         heldObjectInstance = null;
+        OnItemChanged?.Invoke();
     }
 
     public void ClearItem()
