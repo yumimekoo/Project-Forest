@@ -44,7 +44,6 @@ public class ProcessingMachine : MonoBehaviour, IInteractable
         if (!player.HasItem() && cupInMachine)
         {
             ReturnCup(player);
-            return;
         }
     }
 

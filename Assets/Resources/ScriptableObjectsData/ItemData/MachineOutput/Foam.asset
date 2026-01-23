@@ -17,4 +17,7 @@ MonoBehaviour:
   itemType: 0
   contentVisualPrefab: {fileID: 0}
   icon: {fileID: 0}
+  storageType: 5
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
