@@ -2,20 +2,36 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+public enum FillLevel {Half, Full }
 public class Cup : MonoBehaviour, IInteractable
 {
     public List<ItemDataSO> contents = new List<ItemDataSO>();
     public ItemDataSO currentItemData;
     public GameObject pickupCup;
-    public Transform contentVisualRoot;
     public ItemDataSO suspiciousDrinkData;
-
+    
+    [Header("Roots")]
+    [SerializeField] private Transform visualRoot;
+    
+    [Header("Content Renderer")]
+    [SerializeField] private GameObject cupFullModel;
+    [SerializeField] private Renderer fullContentRenderer;
+    [SerializeField] private GameObject cupHalfModel;
+    [SerializeField] private Renderer halfContentRenderer;
+    
+    [Header("Standard content (color mode)")]
+    [SerializeField] private string colorProperty = "_BaseColor";
+    [SerializeField] private bool useMaterialPropertyBlock = true;
+    
+    private MaterialPropertyBlock mpb;
+    private Renderer activeContentRenderer;
     private GameObject currentContentVisual;
-
-    private void Start()
-    {
-        UpdateVisual(currentItemData);
-    }
+    
+    // private void Start()
+    // {
+    //     UpdateVisual(currentItemData);
+    // }
+    
     public string GetInteractionPrompt()
     {
         if (contents.Count == 0)
@@ -66,16 +82,126 @@ public class Cup : MonoBehaviour, IInteractable
     {
         return contents;
     }
-
+    
     public void UpdateVisual(ItemDataSO newItem)
     {
-        if(currentContentVisual != null)
-        {
-            Destroy(currentContentVisual);
-        }
+        if (newItem == null) return;
+
+        // 1) Special override?
         if (newItem.contentVisualPrefab != null)
         {
-            currentContentVisual = Instantiate(newItem.contentVisualPrefab, contentVisualRoot);
+            ShowSpecial(newItem.contentVisualPrefab);
+            return;
         }
+        HideSpecial();
+
+        // 2) FillLevel wählen (aus ItemDataSO ODER eigener Logik)
+        // Variante A: newItem.fillLevel (musst du ins ItemDataSO packen)
+        SetFillLevel(newItem.fillLevel);
+
+        // 3) Farbe setzen
+        ApplyColor(newItem.contentColor);
     }
+
+    private void SetFillLevel(FillLevel level)
+    {
+        bool full = level == FillLevel.Full;
+
+        if (cupFullModel) cupFullModel.SetActive(full);
+        if (cupHalfModel) cupHalfModel.SetActive(!full);
+
+        activeContentRenderer = full ? fullContentRenderer : halfContentRenderer;
+    }
+
+    private void ApplyColor(Color c)
+    {
+        if (activeContentRenderer == null) return;
+
+        if (!useMaterialPropertyBlock)
+        {
+            activeContentRenderer.material.SetColor(colorProperty, c);
+            return;
+        }
+
+        mpb ??= new MaterialPropertyBlock();
+        activeContentRenderer.GetPropertyBlock(mpb);
+        mpb.SetColor(colorProperty, c);
+        activeContentRenderer.SetPropertyBlock(mpb);
+    }
+
+    private void ShowSpecial(GameObject specialPrefab)
+    {
+        // Cup-Modelle ausblenden
+        if (cupFullModel) cupFullModel.SetActive(false);
+        if (cupHalfModel) cupHalfModel.SetActive(false);
+
+        if (currentContentVisual != null)
+            Destroy(currentContentVisual);
+
+        if (visualRoot != null)
+            currentContentVisual = Instantiate(specialPrefab, visualRoot);
+    }
+
+    private void HideSpecial()
+    {
+        if (currentContentVisual != null)
+        {
+            Destroy(currentContentVisual);
+            currentContentVisual = null;
+        }
+        // Modelle werden beim SetFillLevel wieder gesetzt
+    }
+
+    // public void UpdateVisual(ItemDataSO newItem)
+    // {
+    //     if (newItem == null) return;
+    //
+    //     bool hasSpecial = newItem.contentVisualPrefab != null;
+    //
+    //     if (hasSpecial)
+    //     {
+    //         // Cup weg, Special rein
+    //         SetCupVisible(false);
+    //
+    //         if (currentContentVisual != null)
+    //             Destroy(currentContentVisual);
+    //
+    //         currentContentVisual = Instantiate(newItem.contentVisualPrefab, visualRoot);
+    //         return;
+    //     }
+    //
+    //     // Normal: Special weg, Cup an
+    //     if (currentContentVisual != null)
+    //     {
+    //         Destroy(currentContentVisual);
+    //         currentContentVisual = null;
+    //     }
+    //
+    //     SetCupVisible(true);
+    //
+    //     if (contentRenderer == null) return;
+    //     ApplyColor(newItem.contentColor);
+    // }
+    //
+    // private void SetCupVisible(bool visible)
+    // {
+    //     if (cupModelRoot != null)
+    //         cupModelRoot.SetActive(visible);
+    // }
+    //
+    // private void ApplyColor(Color c)
+    // {
+    //     if (useMaterialPropertyBlock)
+    //     {
+    //         mpb ??= new MaterialPropertyBlock();
+    //         contentRenderer.GetPropertyBlock(mpb);
+    //         mpb.SetColor(colorProperty, c);
+    //         contentRenderer.SetPropertyBlock(mpb);
+    //     }
+    //     else
+    //     {
+    //         contentRenderer.material.SetColor(colorProperty, c);
+    //     }
+    // }
+
 }

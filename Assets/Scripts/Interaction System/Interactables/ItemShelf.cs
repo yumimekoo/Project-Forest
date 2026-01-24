@@ -37,6 +37,7 @@ public class ItemShelf : MonoBehaviour, IInteractable
                 {
                     GameObject itemInstance = Instantiate(selectedItem.itemPrefab);
                     var pickup = itemInstance.GetComponent<PickupItem>();
+                    Debug.LogWarning(pickup);
                     if(pickup) pickup.Initialize(selectedItem);
                     
                     player.PickUp(selectedItem, itemInstance);

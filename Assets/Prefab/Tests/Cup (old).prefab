@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1861745432992688238}
   - component: {fileID: 2213650389852325872}
   m_Layer: 6
-  m_Name: Cup
+  m_Name: Cup (old)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
