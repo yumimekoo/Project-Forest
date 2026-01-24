@@ -15,9 +15,11 @@ MonoBehaviour:
   id: 13
   itemName: Glass
   itemType: 0
-  contentVisualPrefab: {fileID: 8019389323391787378, guid: 6e5bcbb3d4237d444aa91b4666038ab5, type: 3}
+  contentVisualPrefab: {fileID: 0}
   icon: {fileID: 0}
   storageType: 1
-  itemPrefab: {fileID: 8037415141159388369, guid: 1333472ca73be9340ac68d15d534889f, type: 3}
+  itemPrefab: {fileID: 8037415141159388369, guid: 2c36f4cbc0488404cb07ee7b7dad7c29, type: 3}
   shoppingCategory: 0
   price: 0
+  contentColor: {r: 1, g: 1, b: 1, a: 1}
+  fillLevel: 1

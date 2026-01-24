@@ -86,26 +86,24 @@ public class Cup : MonoBehaviour, IInteractable
     public void UpdateVisual(ItemDataSO newItem)
     {
         if (newItem == null) return;
-
-        // 1) Special override?
+        
         if (newItem.contentVisualPrefab != null)
         {
             ShowSpecial(newItem.contentVisualPrefab);
             return;
         }
         HideSpecial();
-
-        // 2) FillLevel wählen (aus ItemDataSO ODER eigener Logik)
-        // Variante A: newItem.fillLevel (musst du ins ItemDataSO packen)
+        
         SetFillLevel(newItem.fillLevel);
-
-        // 3) Farbe setzen
+        
         ApplyColor(newItem.contentColor);
     }
 
     private void SetFillLevel(FillLevel level)
     {
-        bool full = level == FillLevel.Full;
+        bool hasHalf = cupHalfModel && halfContentRenderer;
+
+        bool full = level == FillLevel.Full || !hasHalf;
 
         if (cupFullModel) cupFullModel.SetActive(full);
         if (cupHalfModel) cupHalfModel.SetActive(!full);
@@ -115,7 +113,7 @@ public class Cup : MonoBehaviour, IInteractable
 
     private void ApplyColor(Color c)
     {
-        if (activeContentRenderer == null) return;
+        if (!activeContentRenderer) return;
 
         if (!useMaterialPropertyBlock)
         {
@@ -135,16 +133,16 @@ public class Cup : MonoBehaviour, IInteractable
         if (cupFullModel) cupFullModel.SetActive(false);
         if (cupHalfModel) cupHalfModel.SetActive(false);
 
-        if (currentContentVisual != null)
+        if (currentContentVisual)
             Destroy(currentContentVisual);
 
-        if (visualRoot != null)
+        if (visualRoot)
             currentContentVisual = Instantiate(specialPrefab, visualRoot);
     }
 
     private void HideSpecial()
     {
-        if (currentContentVisual != null)
+        if (currentContentVisual)
         {
             Destroy(currentContentVisual);
             currentContentVisual = null;

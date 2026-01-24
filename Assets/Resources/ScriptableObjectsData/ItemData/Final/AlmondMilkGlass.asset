@@ -15,9 +15,11 @@ MonoBehaviour:
   id: 210
   itemName: Almond Milk (Glass)
   itemType: 2
-  contentVisualPrefab: {fileID: 8037415141159388369, guid: 437e81fe418859a4daf3041ba449bc50, type: 3}
+  contentVisualPrefab: {fileID: 0}
   icon: {fileID: -5974568439330112230, guid: f7be4f52c413be546a474396525c7f67, type: 3}
   storageType: 0
   itemPrefab: {fileID: 0}
   shoppingCategory: 0
   price: 0
+  contentColor: {r: 0.9716981, g: 0.89401555, b: 0.70127267, a: 1}
+  fillLevel: 1
