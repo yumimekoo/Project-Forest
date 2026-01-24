@@ -16,4 +16,10 @@ MonoBehaviour:
   itemName: Hazelnut Coffee
   itemType: 2
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: 0}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
+  contentColor: {r: 0.3679245, g: 0.11585519, b: 0, a: 1}
+  fillLevel: 1
