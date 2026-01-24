@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Black Tea Leaves
   itemType: 0
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 7054151023485448023, guid: 146704c0589ff3243b02f2d42cfe9f55, type: 3}
   storageType: 4
   itemPrefab: {fileID: 8037415141159388369, guid: 0b9e4c3d982e32a4197ca80ff4a95cda, type: 3}
   shoppingCategory: 3

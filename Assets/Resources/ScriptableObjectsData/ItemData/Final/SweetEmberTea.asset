@@ -16,4 +16,8 @@ MonoBehaviour:
   itemName: Sweet Ember Tea
   itemType: 2
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: 6788375048184405089, guid: c2e74d2f3f66b5b4680516fbec5bba04, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0

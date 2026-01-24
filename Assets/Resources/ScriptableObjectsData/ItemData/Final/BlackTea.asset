@@ -16,4 +16,8 @@ MonoBehaviour:
   itemName: Black Tea
   itemType: 2
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: 6328336319271933816, guid: dd95f0fb55852a0458f4da9285c4de02, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0

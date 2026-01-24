@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Matcha Leaves
   itemType: 0
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: -5440300148012249495, guid: c2eb60b866d4cb54394ed8b14b5fe8dd, type: 3}
   storageType: 4
   itemPrefab: {fileID: 8037415141159388369, guid: 0b9e4c3d982e32a4197ca80ff4a95cda, type: 3}
   shoppingCategory: 3

@@ -16,4 +16,8 @@ MonoBehaviour:
   itemName: Almond Green Tea
   itemType: 2
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: 5348399920857902256, guid: 6903e305167ee474caef975fedfc757b, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
