@@ -16,4 +16,8 @@ MonoBehaviour:
   itemName: Spiced Tea
   itemType: 2
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: -3580298740529832869, guid: 0fb113ccce7bf8a40bab955b3dba15fb, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0

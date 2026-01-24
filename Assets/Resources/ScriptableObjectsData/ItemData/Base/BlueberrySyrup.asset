@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Blueberry Syrup
   itemType: 0
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: -6863709286341862778, guid: c064feb5e0e642e4eb953021cacf3406, type: 3}
   storageType: 3
   itemPrefab: {fileID: 0}
   shoppingCategory: 3

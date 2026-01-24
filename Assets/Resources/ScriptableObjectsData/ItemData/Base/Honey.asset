@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Honey
   itemType: 0
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: -1493987888150503921, guid: 069e653670063654e9ad5d77925ad284, type: 3}
   storageType: 2
   itemPrefab: {fileID: 0}
   shoppingCategory: 3

@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Espresso-Cup
   itemType: 0
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 1279157395149494594, guid: d3fb9d5443ff51147b68e9f2121fa973, type: 3}
   storageType: 1
   itemPrefab: {fileID: 8037415141159388369, guid: 4d54ca48da13c564a9a9d80014272c48, type: 3}
   shoppingCategory: 3

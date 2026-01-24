@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Dark Rum
   itemType: 0
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: -1890682894371647593, guid: 01673a42b44ca6a4690f2ea96285dafd, type: 3}
   storageType: 2
   itemPrefab: {fileID: 0}
   shoppingCategory: 3

@@ -16,4 +16,8 @@ MonoBehaviour:
   itemName: Golden Herbal Tea
   itemType: 2
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: 8274667665577951256, guid: b177b062e4ab4ad40bb0e7433b1d2e5f, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
