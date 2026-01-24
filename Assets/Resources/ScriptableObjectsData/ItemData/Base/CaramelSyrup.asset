@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Caramel Syrup
   itemType: 0
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 1573602155397373550, guid: 1e9fd6ead4b75ef478b35991d9500523, type: 3}
   storageType: 0
   itemPrefab: {fileID: 0}
   shoppingCategory: 3

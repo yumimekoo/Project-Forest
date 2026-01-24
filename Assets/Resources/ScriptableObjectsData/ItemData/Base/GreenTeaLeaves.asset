@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Green Tea Leaves
   itemType: 0
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: -5440300148012249495, guid: c2eb60b866d4cb54394ed8b14b5fe8dd, type: 3}
   storageType: 0
   itemPrefab: {fileID: 0}
   shoppingCategory: 3

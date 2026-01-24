@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Spiced Rum
   itemType: 0
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 6873551178976734682, guid: 7567eadea2d19e04791fe9a9f39f5fcb, type: 3}
   storageType: 0
   itemPrefab: {fileID: 0}
   shoppingCategory: 3

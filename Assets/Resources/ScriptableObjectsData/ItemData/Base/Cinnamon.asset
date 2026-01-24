@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Cinnamon
   itemType: 0
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: -6920763237551201788, guid: 46cb6785293fee94fae988bd717bb625, type: 3}
   storageType: 0
   itemPrefab: {fileID: 0}
   shoppingCategory: 3

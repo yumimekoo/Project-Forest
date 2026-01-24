@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Vanilla Syrup
   itemType: 0
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: -7666378468744711982, guid: 15940a17cda6bd449ad752287dbe60aa, type: 3}
   storageType: 0
   itemPrefab: {fileID: 0}
   shoppingCategory: 3

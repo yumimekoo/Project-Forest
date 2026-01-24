@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Pumpkin Syrup
   itemType: 0
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 1391854097206784697, guid: b0beb3c7f83ceda4dadc8289f8744934, type: 3}
   storageType: 0
   itemPrefab: {fileID: 0}
   shoppingCategory: 3

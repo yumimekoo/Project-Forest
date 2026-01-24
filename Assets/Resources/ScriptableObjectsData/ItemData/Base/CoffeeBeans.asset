@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Coffee Beans
   itemType: 0
   contentVisualPrefab: {fileID: 8037415141159388369, guid: dc62902aa11c4644e833e8461e83e92b, type: 3}
-  icon: {fileID: 0}
+  icon: {fileID: 5332528867823572996, guid: 344cdf0598dbfd14eb870bcf22675438, type: 3}
   storageType: 0
   itemPrefab: {fileID: 8037415141159388369, guid: 0b9e4c3d982e32a4197ca80ff4a95cda, type: 3}
   shoppingCategory: 3

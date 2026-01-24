@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Sakura Leaves
   itemType: 0
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: -5952357348464358897, guid: 926276b8e69831249b0ba7b3bf85e79a, type: 3}
   storageType: 0
   itemPrefab: {fileID: 0}
   shoppingCategory: 3

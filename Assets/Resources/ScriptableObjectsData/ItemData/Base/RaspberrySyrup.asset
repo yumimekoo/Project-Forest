@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Raspberry Syrup
   itemType: 0
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 4569663326926629573, guid: 85c309ee9a6fcf6418e63e045b6eb6b0, type: 3}
   storageType: 0
   itemPrefab: {fileID: 0}
   shoppingCategory: 3

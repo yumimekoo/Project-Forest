@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Hazelnut Syrup
   itemType: 0
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: -7695580047848179086, guid: 5dfde86531952424fb1d353c6fefa1c9, type: 3}
   storageType: 0
   itemPrefab: {fileID: 0}
   shoppingCategory: 3

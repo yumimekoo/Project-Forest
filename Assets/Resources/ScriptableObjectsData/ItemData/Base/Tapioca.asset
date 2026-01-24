@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Tapioca
   itemType: 0
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: -5102795116786560914, guid: 61d1b5c1de95c2146b4678be87359dde, type: 3}
   storageType: 0
   itemPrefab: {fileID: 0}
   shoppingCategory: 3
