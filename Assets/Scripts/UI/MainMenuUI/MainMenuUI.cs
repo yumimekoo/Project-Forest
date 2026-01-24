@@ -46,9 +46,10 @@ public class MainMenuUI : MonoBehaviour
         else
         {
             button.text =
-                $"{info.saveName}\n" +
+                $"{info.saveName}\n Money: {info.currentMoney}" +
                 $"Created: {info.createdDate}\n" +
-                $"Last Played: {info.lastModifiedDate}";
+                $"Last Played: {info.lastModifiedDate}\n" +
+                $"Current: {info.currentWeekday}, {info.currentDay}. Week {info.currentWeek}";
         }
     }
 
