@@ -1,10 +1,77 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement style="flex-grow: 1; align-self: stretch; flex-direction: column; justify-content: center;">
-        <ui:VisualElement style="flex-grow: 1; align-self: center; justify-content: center; width: 60%; align-items: center;">
-            <ui:Button text="Button" name="save1" style="font-size: 15px; width: 50%; height: 10%;" />
-            <ui:Button text="Button" name="save2" style="font-size: 15px; width: 50%; height: 10%;" />
-            <ui:Button text="Button" name="save3" style="font-size: 15px; width: 50%; height: 10%;" />
-            <ui:Button text="Exit" name="exit" />
+    <Style src="project://database/Assets/UIDocuments/MainMenu/mainScreen.uss?fileID=7433441132597879392&amp;guid=80e412a4b6608904d9fbadd5ebca3c7b&amp;type=3#mainScreen" />
+    <ui:VisualElement style="flex-grow: 1; align-self: stretch; flex-direction: column; justify-content: center; background-image: url(&quot;project://database/Assets/UIDocuments/MainMenu/mainMenu.aseprite?fileID=7786979374358968254&amp;guid=b679a8f43c798714abf60538d6b2c126&amp;type=3#mainMenu&quot;);">
+        <ui:VisualElement name="titleElement" style="flex-grow: 1; display: flex;">
+            <ui:VisualElement style="flex-grow: 1;">
+                <ui:VisualElement style="flex-grow: 0; height: 40%; align-self: center; justify-content: center;">
+                    <ui:Label text="Forest Cafe" name="title" class="titleLabel" style="rotate: 0rad;" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; height: 224px; align-items: center;">
+                    <ui:Button text="Play" name="savesScreen" class="selectButtons" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; height: 25px;" />
+                <ui:VisualElement style="flex-grow: 0; height: 224px; align-items: center;">
+                    <ui:Button text="Exit" name="exit" class="selectButtons" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="playElement" style="flex-grow: 1; display: none;">
+            <ui:VisualElement style="flex-grow: 1; padding-left: 0; align-items: center; justify-content: center;">
+                <ui:VisualElement name="savesElement" style="flex-grow: 0; width: 775px; height: 100%; justify-content: flex-start; align-self: center; align-items: stretch; padding-top: 200px;">
+                    <ui:VisualElement style="flex-grow: 0; height: 80px; flex-direction: row; justify-content: space-between;">
+                        <ui:Button text="Button" name="backButton" class="backButton" style="height: 80px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; width: 148px;" />
+                        <ui:Button text="Button" name="deleteMode" class="deleteModeButton" style="width: 148px; height: 80px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="empty" class="empty" style="flex-grow: 0;" />
+                    <ui:VisualElement style="flex-grow: 0; height: 164px; flex-direction: row;">
+                        <ui:VisualElement name="VisualElement" class="saves" style="flex-grow: 0; flex-direction: column; background-image: url(&quot;project://database/Assets/UIDocuments/MainMenu/saveButtons.aseprite?fileID=-5931754861468060178&amp;guid=27932253b8961274591f2dda371d80e5&amp;type=3#Frame_0&quot;); justify-content: center; align-items: auto;">
+                            <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                                <ui:Label text="Monday 25, Week 5 || 356" name="upperLabel1" />
+                                <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UIDocuments/OverlayUI/Sprites/nut_icon.aseprite?fileID=-7676717474986798981&amp;guid=c300f1e192aeb874dade7ff70c1ed55f&amp;type=3#nut_icon&quot;); width: 28px; height: 28px; justify-content: space-between; margin-top: 10px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="empty" style="flex-grow: 0;" />
+                            <ui:Label text="Created 13.07.26 || Last Played: 23.8.28" name="lowerLabel1" style="font-size: 25px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="empty" style="flex-grow: 0;" />
+                        <ui:Button text="Button" name="save1" class="saveButtons" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="empty" class="empty" style="flex-grow: 0;" />
+                    <ui:VisualElement style="flex-grow: 0; height: 164px; flex-direction: row;">
+                        <ui:VisualElement class="saves" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/UIDocuments/MainMenu/saveButtons.aseprite?fileID=8026297414785638905&amp;guid=27932253b8961274591f2dda371d80e5&amp;type=3#Frame_1&quot;); flex-direction: column; align-items: flex-end; justify-content: center;">
+                            <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                                <ui:Label text="Monday 25, Week 5 || 356" name="upperLabel2" />
+                                <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UIDocuments/OverlayUI/Sprites/nut_icon.aseprite?fileID=-7676717474986798981&amp;guid=c300f1e192aeb874dade7ff70c1ed55f&amp;type=3#nut_icon&quot;); width: 28px; height: 28px; justify-content: space-between; margin-top: 10px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="empty" style="flex-grow: 0;" />
+                            <ui:Label text="Label" name="lowerLabel2" style="font-size: 26px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="empty" style="flex-grow: 0;" />
+                        <ui:Button text="Button" name="save2" class="saveButtons" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="empty" class="empty" style="flex-grow: 0;" />
+                    <ui:VisualElement style="flex-grow: 0; height: 164px; flex-direction: row;">
+                        <ui:VisualElement class="saves" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/UIDocuments/MainMenu/saveButtons.aseprite?fileID=8743726519184170056&amp;guid=27932253b8961274591f2dda371d80e5&amp;type=3#Frame_2&quot;); justify-content: center; align-items: auto;">
+                            <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                                <ui:Label text="Monday 25, Week 5 || 356" name="upperLabel3" />
+                                <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UIDocuments/OverlayUI/Sprites/nut_icon.aseprite?fileID=-7676717474986798981&amp;guid=c300f1e192aeb874dade7ff70c1ed55f&amp;type=3#nut_icon&quot;); width: 28px; height: 28px; justify-content: space-between; margin-top: 10px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="empty" style="flex-grow: 0;" />
+                            <ui:Label text="Label" name="lowerLabel3" style="font-size: 25px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="empty" style="flex-grow: 0;" />
+                        <ui:Button text="Button" name="save3" class="saveButtons" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="areYouSure" style="flex-grow: 1; position: absolute; width: 100%; height: 100%; justify-content: space-around; align-self: center; align-items: center; background-color: rgba(0, 0, 0, 0.71); display: none;">
+                    <ui:VisualElement style="flex-grow: 0; background-image: url(&quot;project://database/Assets/UIDocuments/MainMenu/selectButton.aseprite?fileID=772625968921859919&amp;guid=a96724002032aaf438ca6ed159f882e6&amp;type=3#selectButton&quot;); width: 896px; height: 224px; padding-left: 75px; padding-right: 75px; padding-top: 50px;">
+                        <ui:Label text="Do you really want to Delete this save?" style="-unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); font-size: 40px; -unity-text-align: upper-center; color: rgb(83, 29, 4); text-shadow: 5px 5px 0 rgb(227, 164, 100);" />
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: space-evenly;">
+                            <ui:Button text="No" name="noButton" class="yesButton" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                            <ui:Button text="Yes" name="yesButton" class="noButton" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
