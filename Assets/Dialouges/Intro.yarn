@@ -17,7 +17,7 @@ Sophia: Hi Herbert! It's great to see you too.
 title : Choices
 position: 241,-126
 ---
-Herbert: Would you like to sit down and chat for a bit?
+Herbert: “I saw some delicious looking Forest Berries earlier... If only somebody here would care enough about me to get me some..."
 -> Yes, I'd love to!
     <<friendship "bear_herbert" 50>>
     Sophia: Hi Herbert! I'm doing well, thank you. I'd love to chat.
