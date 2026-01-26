@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -45,6 +46,8 @@ public class FridgeUI : MonoBehaviour
         Func<ItemDataSO, int> getAmount,
         Action<ItemDataSO> clickCallback)
     {
+
+        Debug.Log("fridge opened");
         GameState.isInMenu = true;
         GameState.isInStorage = true;
         titleLabel.text = storageName;
@@ -83,11 +86,21 @@ public class FridgeUI : MonoBehaviour
     private void CloseUI()
     {
         HideUI();
+        Debug.Log("fridge closed");
+        GameState.isInMenu = false;
+        GameState.isInStorage = false;
+        StartCoroutine(EnableInteractionNextFrame());
+    }
+
+    private IEnumerator EnableInteractionNextFrame()
+    {
+        GameState.playerMovementAllowed = false;
+        GameState.playerInteractionAllowed = false;
+
+        yield return null;
 
         GameState.playerMovementAllowed = true;
         GameState.playerInteractionAllowed = true;
-        GameState.isInMenu = false;
-        GameState.isInStorage = false;
     }
 
     private void OnItemSelected(ItemDataSO selectedItem)

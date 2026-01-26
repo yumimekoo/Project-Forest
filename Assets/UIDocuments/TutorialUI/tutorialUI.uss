@@ -8,7 +8,7 @@
 }
 
 .tutorial-hidden {
-    translate: 0px -300px;
+    translate: 500px 0px;
     opacity: 1;
 }
 

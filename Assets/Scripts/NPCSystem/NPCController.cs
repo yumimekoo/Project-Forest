@@ -205,13 +205,6 @@ public class NPCController : MonoBehaviour, IInteractable
 
         if (currentOrder != null)
         {
-            if(currentOrder.requestedDrink != null)
-            {
-                Debug.Log($"{identity.npcName} has ordered: {currentOrder}");
-            } else
-            {                 
-                Debug.Log($"{identity.npcName} ordered a special Drink");
-            }
             OrderManager.Instance.AddOrder(identity, currentOrder.requestedDrink);
             TimeManager.Instance.TrackOrderAccepted();
             SetState(NPCState.WaitingForDrink, identity.timeToGiveOrder);

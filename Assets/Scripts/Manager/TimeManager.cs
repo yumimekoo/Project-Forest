@@ -119,7 +119,6 @@ public class TimeManager : MonoBehaviour
         currentDay = 1;
         currentWeek = 1;
         currentWeekday = Weekday.Monday;
-        Debug.LogWarning($"Initializing First Day with {currentDay} + {currentWeekday} + week {currentWeek}");
     }
 
     private void AdvanceDay()
@@ -137,8 +136,6 @@ public class TimeManager : MonoBehaviour
 
     private void StartDay()
     {
-
-        Debug.Log($"Starting Day {currentDay} - {currentWeekday} : Current Week {currentWeek}");
         OnNewDayStarted?.Invoke();
     }
 

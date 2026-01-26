@@ -4,7 +4,7 @@
         <ui:VisualElement name="titleElement" style="flex-grow: 1; display: flex;">
             <ui:VisualElement style="flex-grow: 1;">
                 <ui:VisualElement style="flex-grow: 0; height: 40%; align-self: center; justify-content: center;">
-                    <ui:Label text="Forest Cafe" name="title" class="titleLabel" style="rotate: 0rad;" />
+                    <ui:Label text="Forest Cafe" name="title" class="titleLabel" style="rotate: 0rad; text-shadow: 10px 10px 6px rgb(123, 51, 18); -unity-text-outline-width: 0; -unity-font-style: normal; -unity-text-align: upper-left;" />
                 </ui:VisualElement>
                 <ui:VisualElement style="flex-grow: 0; height: 224px; align-items: center;">
                     <ui:Button text="Play" name="savesScreen" class="selectButtons" />

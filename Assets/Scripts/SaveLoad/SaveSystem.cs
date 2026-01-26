@@ -56,7 +56,7 @@ public static class SaveSystem
         string json = JsonUtility.ToJson(saveData);
         string encrypted = EncryptDecrypt(json);
         File.WriteAllText(savePath, encrypted);
-        Debug.Log($"Game saved to {savePath}");
+        //Debug.Log($"Game saved to {savePath}");
 
         SaveSlotInfo info = new SaveSlotInfo();
         info.exists = true;
@@ -75,7 +75,7 @@ public static class SaveSystem
         string infoJson = JsonUtility.ToJson(info, true);
         File.WriteAllText(GetInfoFilePath(slot), infoJson);
 
-        Debug.Log($"Slot info saved to {GetInfoFilePath(slot)}");
+        //Debug.Log($"Slot info saved to {GetInfoFilePath(slot)}");
     }
 
     public static void CreateNewSlotInfo(int slot, string saveName)
@@ -90,7 +90,7 @@ public static class SaveSystem
         string json = JsonUtility.ToJson(info, true);
         File.WriteAllText(GetInfoFilePath(slot), json);
 
-        Debug.Log($"Slot info created at {GetInfoFilePath(slot)}");
+        //Debug.Log($"Slot info created at {GetInfoFilePath(slot)}");
     }
 
     public static bool InfoExists(int slot)
@@ -115,12 +115,11 @@ public static class SaveSystem
 
         if (!File.Exists(savePath))
         {
-            Debug.LogWarning("No save file found. Creating New");
             return new GameSaveData();
         }
         string encrypted = File.ReadAllText(savePath);
         string decrypted = EncryptDecrypt(encrypted);
-        Debug.Log($"Game loaded from {savePath}");
+        //Debug.Log($"Game loaded from {savePath}");
         return JsonUtility.FromJson<GameSaveData>(decrypted);
     }
 

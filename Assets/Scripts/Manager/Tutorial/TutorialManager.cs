@@ -393,6 +393,7 @@ public class TutorialManager : MonoBehaviour
                 descriptionLabel.text = "";
                 break;
             case TutorialStep.PressDeleteMode:
+                UIManager.Instance.SetUIState(UIState.BuildMode);
                 titleLabel.text = "Remove Objects";
                 descriptionLabel.text = "Press X to enter Remove Mode, then Left Click objects to remove them. Remove "+ objectsToDeleteAndPlace +" more objects to continue.";
                 StartUIRoutine(ShowUIAnimated());
@@ -403,8 +404,9 @@ public class TutorialManager : MonoBehaviour
                 descriptionLabel.text = "";
                 break;
             case TutorialStep.PlaceAllObjects:
+                UIManager.Instance.SetUIState(UIState.BuildMode);
                 titleLabel.text = "Place Furniture";
-                descriptionLabel.text = "Press X again to leave Remove Mode." +
+                descriptionLabel.text = "Press 'All' to select a build category." +
                     "Select furniture and place " + objectsToDeleteAndPlace+ " objects in your caf�.";
                 StartUIRoutine(ShowUIAnimated());
                 break;

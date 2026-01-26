@@ -79,7 +79,6 @@ public class PauseUI : MonoBehaviour
                 StartOpening();
                 break;
             default:
-                Debug.Log("PauseUI::HandleInput() called with invalid state");
                 break;
         }
     }

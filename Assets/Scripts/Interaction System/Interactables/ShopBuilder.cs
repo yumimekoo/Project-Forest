@@ -19,6 +19,7 @@ public class ShopBuilder : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInventory player)
     {
+        UIManager.Instance.SetUIState(UIState.BuildMode);
         if(GameState.inTutorial)
         {
             TutorialManager.Instance.OnBuilderUsed();
@@ -26,8 +27,6 @@ public class ShopBuilder : MonoBehaviour, IInteractable
 
         GameState.playerInteractionAllowed = false;
         GameState.isInBuildMode = true;
-
-        UIManager.Instance.SetUIState(UIState.BuildMode);
         cameraFollow.ChangeFollowTarget(GameState.isInBuildMode);
     }
 }

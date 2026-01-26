@@ -95,6 +95,7 @@ public class MainMenuUI : MonoBehaviour
            SaveSystem.DeleteSave(pendingDeleteSlot);
 
            pendingDeleteSlot = -1;
+           ToggleDeletionMode();
            HideAreYouSure();
            UpdateSlotsUI();
        };

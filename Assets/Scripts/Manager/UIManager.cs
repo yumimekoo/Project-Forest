@@ -11,11 +11,13 @@ public enum UIState { BuildMode, YarnOverlay, RecipeBook, Shop, Overlay, Pause, 
         public InputActionAsset InputActions;
         public InputAction openPause;
         public InputAction openBook;
+        public InputAction ePress;
         public event Action<UIState> OnUIStateChanged;
         public event Action OnButtonsUpdated;
         public event Action OnEscapePressed;
         public event Action OnPausePressed;
         public event Action OnRecipeBookPressed;
+        
 
         private void Awake()
         {
@@ -29,6 +31,7 @@ public enum UIState { BuildMode, YarnOverlay, RecipeBook, Shop, Overlay, Pause, 
             
             openPause = InputSystem.actions.FindAction("OpenPause");
             openBook = InputSystem.actions.FindAction("BookInteract");
+            ePress = InputSystem.actions.FindAction("Interact");
         }
         
         private void OnEnable()
@@ -43,8 +46,13 @@ public enum UIState { BuildMode, YarnOverlay, RecipeBook, Shop, Overlay, Pause, 
         
         private void Start()
         {
+            if (GameState.inTutorial)
+            {
+                SetUIState(UIState.Tutorial);
+                return;
+            }
             SetUIState(UIState.Overlay);
-            Debug.Log("UI Started");
+            //Debug.Log("UI Started");
         }
 
         private void Update()
@@ -57,7 +65,7 @@ public enum UIState { BuildMode, YarnOverlay, RecipeBook, Shop, Overlay, Pause, 
             if(state == currentState) return;
             currentState = state;
             OnUIStateChanged?.Invoke(state);
-            Debug.Log($"UI State changed to {state}");
+            //Debug.Log($"UI State changed to {state}");
         }
         
         public void UpdateButtons()
@@ -68,8 +76,8 @@ public enum UIState { BuildMode, YarnOverlay, RecipeBook, Shop, Overlay, Pause, 
         public void ResetState()
         {
             SetUIState(UIState.Overlay);
-            Debug.Log("Resetting UI State");
-            Debug.LogWarning("Room:" + GameState.isInRoom + " Cafe:" + GameState.isInCafe);
+            //Debug.Log("Resetting UI State");
+            //Debug.LogWarning("Room:" + GameState.isInRoom + " Cafe:" + GameState.isInCafe);
         }
 
         public void RecipeBookButtonPressed()
@@ -85,17 +93,23 @@ public enum UIState { BuildMode, YarnOverlay, RecipeBook, Shop, Overlay, Pause, 
 
         private void HandleInput()
         {
+            if (ePress.WasPressedThisFrame() && GameState.isInStorage)
+            {
+                Debug.Log("Escape E Pressed");
+                OnEscapePressed?.Invoke();
+            }
+            
             if (openPause.WasPressedThisFrame())
             {
                 if (GameState.isInMenu)
                 {
                     OnEscapePressed?.Invoke();    
-                    Debug.Log("Escape Pressed");
+                    //Debug.Log("Escape Pressed");
                 }
                 else
                 {
                     OnPausePressed?.Invoke();
-                    Debug.Log("Pause Pressed");
+                    //Debug.Log("Pause Pressed");
                 }
             }
 
