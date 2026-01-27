@@ -5,6 +5,15 @@ public class FriendshipManager : MonoBehaviour
 {
     public static FriendshipManager Instance;
 
+    [Header("Friendship Level Settings")]
+    [SerializeField] private int minLevel = 1;
+    [SerializeField] private int maxLevel = 10;
+
+    [Tooltip("XP needed to go from one level to the next (Level 1->2, 2->3, ...).")]
+    [SerializeField] private int baseXpToNextLevel = 10;
+    
+    [SerializeField] private int xpIncreasePerLevel = 2;
+    
     private Dictionary<string, FriendshipSaveData> freindships = new Dictionary<string, FriendshipSaveData>();
     private Dictionary<string, NPCIdentitySO> npcLookup = new Dictionary<string, NPCIdentitySO>();
 
@@ -12,6 +21,14 @@ public class FriendshipManager : MonoBehaviour
     {
         Instance = this;
         LoadAllNPCs();
+    }
+    
+    public int GetXpToNextLevel(int currentLevel)
+    {
+        if (currentLevel >= maxLevel) return 0;
+        
+        int xp = baseXpToNextLevel + (currentLevel - minLevel) * xpIncreasePerLevel;
+        return Mathf.Max(1, xp);
     }
 
     void LoadAllNPCs()
@@ -23,6 +40,23 @@ public class FriendshipManager : MonoBehaviour
             //Debug.Log($"[FriendshipManager] Loaded NPC: {npc.npcName} with ID: {npc.npcID}");
             npcLookup[npc.npcID] = npc;
         }
+    }
+    
+    public FriendshipSaveData Get(string npcID)
+    {
+        if (!freindships.TryGetValue(npcID, out var data))
+        {
+            data = new FriendshipSaveData(npcID, minLevel, 0);
+            freindships[npcID] = data;
+        }
+        
+        data.level = Mathf.Clamp(data.level, minLevel, maxLevel);
+        data.xp = Mathf.Max(0, data.xp);
+        
+        if (data.level >= maxLevel)
+            data.xp = 0;
+
+        return data;
     }
 
     public Sprite GetSpriteFromNPC(string npcID, string emotion)
@@ -41,39 +75,43 @@ public class FriendshipManager : MonoBehaviour
         return emotionData.emotionSprite;
     }
 
-    public FriendshipSaveData Get(string npcID)
-    {
-        if(!freindships.TryGetValue(npcID, out var data))
-        {
-            data = new FriendshipSaveData(npcID, 0, 0);
-            freindships[npcID] = data;
-        }
-        return data;
-    }
-
     public void AddXP(string npcID, int amount)
     {
         var data = Get(npcID);
+        
+        if (data.level >= maxLevel)
+        {
+            data.level = maxLevel;
+            data.xp = 0;
+            return;
+        }
 
         data.xp += amount;
         data.xp = Mathf.Max(0, data.xp);
-
-        //Debug.Log($"[FriendshipManager] Added {amount} XP to {npcID}. Total XP: {data.xp}");
-
-        int newLevel = data.xp / 10;
-
-        //Debug.Log($"[FriendshipManager] Calculated new level for {npcID}: {newLevel}");
-
-        if (newLevel > data.level)
+        
+        while (data.level < maxLevel)
         {
-            data.level = newLevel;
-            //Debug.Log($"[FriendshipManager] {npcID} leveled up to level {data.level}!");
-            HandleLevelUp(npcID, newLevel);
-        }
-        else if (newLevel < data.level)
-        {
-            data.level = newLevel;
-            //Debug.Log($"[FriendshipManager] {npcID} leveled down to level {data.level}.");
+            int xpToNext = GetXpToNextLevel(data.level);
+            if (xpToNext <= 0) break;
+
+            if (data.xp >= xpToNext)
+            {
+                data.xp -= xpToNext; 
+                data.level++;
+
+                HandleLevelUp(npcID, data.level);
+
+                if (data.level >= maxLevel)
+                {
+                    data.level = maxLevel;
+                    data.xp = 0;
+                    break;
+                }
+            }
+            else
+            {
+                break;
+            }
         }
     }
 
@@ -111,7 +149,12 @@ public class FriendshipManager : MonoBehaviour
         freindships.Clear();
         foreach (var entry in data)
         {
-            //Debug.Log($"[FriendshipManager] Loaded friendship data for NPC ID: {entry.npcID}, Level: {entry.level}, XP: {entry.xp}");
+            entry.level = Mathf.Clamp(entry.level, minLevel, maxLevel);
+            entry.xp = Mathf.Max(0, entry.xp);
+
+            if (entry.level >= maxLevel)
+                entry.xp = 0;
+
             freindships[entry.npcID] = entry;
         }
     }
