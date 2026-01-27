@@ -1,0 +1,196 @@
+:root {
+}
+
+.selectButtons {
+    width: 896px;
+    height: 224px;
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    font-size: 100px;
+    color: rgb(83, 29, 4);
+    text-shadow: 5px 5px 0 rgb(227, 164, 100);
+    letter-spacing: 5px;
+    background-image: url("project://database/Assets/UIDocuments/MainMenu/selectButton.aseprite?fileID=772625968921859919&guid=a96724002032aaf438ca6ed159f882e6&type=3#selectButton");
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.titleLabel {
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    font-size: 300px;
+    color: rgb(248, 189, 129);
+    text-shadow: 7px 7px 0 rgb(123, 51, 18);
+    word-spacing: 0;
+    letter-spacing: 2px;
+    -unity-text-outline-color: rgba(0, 0, 0, 0);
+    -unity-text-outline-width: 0;
+}
+
+.selectButtons:hover {
+    background-image: url("project://database/Assets/UIDocuments/MainMenu/selectButton.aseprite?fileID=-4319484427691110932&guid=a96724002032aaf438ca6ed159f882e6&type=3#Frame_1");
+    font-size: 100px;
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    color: rgb(248, 189, 129);
+    text-shadow: 4px 4px 0 rgb(83, 29, 4);
+    letter-spacing: 5px;
+}
+
+.empty {
+    height: 20px;
+    width: 10px;
+}
+
+.backButton {
+    -unity-font-definition: initial;
+    background-image: url("project://database/Assets/UIDocuments/MainMenu/goBackButton.aseprite?fileID=-6753159634992961704&guid=720c5d466e2c44d42b57c5a110654152&type=3#Frame_0");
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.backButton:hover {
+    -unity-font-definition: initial;
+    background-image: url("project://database/Assets/UIDocuments/MainMenu/goBackButton.aseprite?fileID=-3748449089170208218&guid=720c5d466e2c44d42b57c5a110654152&type=3#Frame_1");
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.deleteModeButton {
+    background-image: url("project://database/Assets/UIDocuments/MainMenu/binButton.aseprite?fileID=-7188661040845705232&guid=f58fca13685ed7a4f8eb0fe9a1393a58&type=3#Frame_0");
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    -unity-font-definition: initial;
+}
+
+.deleteModeButton:hover {
+    -unity-font-definition: initial;
+    background-image: url("project://database/Assets/UIDocuments/MainMenu/binButton.aseprite?fileID=-8674026792268467621&guid=f58fca13685ed7a4f8eb0fe9a1393a58&type=3#Frame_1");
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.saves {
+    width: 612px;
+    height: 164px;
+    padding-right: 35px;
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    font-size: 30px;
+    color: rgb(83, 29, 4);
+    text-shadow: 3px 3px 0 rgb(227, 164, 100);
+    letter-spacing: 3px;
+}
+
+.saveButtons {
+    height: 164px;
+    width: 148px;
+    -unity-font-definition: initial;
+    background-image: url("project://database/Assets/UIDocuments/MainMenu/playButton.aseprite?fileID=8907377326965772043&guid=b9bc5305b4761fb44852b369d30284dc&type=3#Frame_0");
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.saveButtons:hover {
+    -unity-font-definition: initial;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("project://database/Assets/UIDocuments/MainMenu/playButton.aseprite?fileID=5078481300991723998&guid=b9bc5305b4761fb44852b369d30284dc&type=3#Frame_1");
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.deleteSelected {
+    -unity-font-definition: initial;
+    width: 148px;
+    height: 164px;
+    background-image: url("project://database/Assets/UIDocuments/MainMenu/playButton.aseprite?fileID=-2060651580735046662&guid=b9bc5305b4761fb44852b369d30284dc&type=3#Frame_2");
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.deleteSelected:hover {
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    -unity-font-definition: initial;
+    background-image: url("project://database/Assets/UIDocuments/MainMenu/playButton.aseprite?fileID=2662997977475073490&guid=b9bc5305b4761fb44852b369d30284dc&type=3#Frame_3");
+}
+
+.yesButton {
+    height: 80px;
+    width: 148px;
+    background-image: url("project://database/Assets/UIDocuments/MainMenu/goBackButton.aseprite?fileID=6516541509812302382&guid=720c5d466e2c44d42b57c5a110654152&type=3#Frame_2");
+    background-color: rgba(0, 0, 0, 0);
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    font-size: 35px;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    color: rgb(83, 29, 4);
+    text-shadow: 3px 3px 0 rgb(227, 164, 100);
+}
+
+.yesButton:hover {
+    height: 80px;
+    width: 148px;
+    font-size: 35px;
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    color: rgb(227, 164, 100);
+    text-shadow: 2px 2px 0 rgb(123, 51, 18);
+    background-image: url("project://database/Assets/UIDocuments/MainMenu/goBackButton.aseprite?fileID=4482912766319945594&guid=720c5d466e2c44d42b57c5a110654152&type=3#Frame_3");
+}
+
+.noButton {
+    width: 148px;
+    height: 80px;
+    font-size: 35px;
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    background-image: url("project://database/Assets/UIDocuments/MainMenu/binButton.aseprite?fileID=-8618049897917883247&guid=f58fca13685ed7a4f8eb0fe9a1393a58&type=3#Frame_2");
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    color: rgb(83, 29, 4);
+    text-shadow: 3px 3px 0 rgb(197, 53, 53);
+}
+
+.noButton:hover {
+    width: 148px;
+    height: 80px;
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    font-size: 35px;
+    color: rgb(248, 189, 129);
+    text-shadow: 2px 2px 0 rgb(227, 164, 100);
+}
+
+.loadingOverlay {
+    opacity: 0;
+    display: none;
+
+    transition-property: opacity;
+    transition-duration: 250ms;
+    transition-timing-function: ease-in-out;
+}

@@ -7,8 +7,8 @@ public class YarnCommands : MonoBehaviour
     [YarnCommand("friendship")]
     public static void IncreaseFriendship(string npcID, int amount)
     {
-        //Debug.Log($"[YarnCommands] Increasing friendship for {npcID} by {amount}");
         FriendshipManager.Instance.AddXP(npcID, amount);
+        YarnUIController.Instance.ApplyNpcUI(npcID);
     }
 
     [YarnFunction("get_level")]
@@ -21,5 +21,11 @@ public class YarnCommands : MonoBehaviour
     public static void SetEmotion(string npcID, string emotion)
     {
         YarnUIController.Instance.SetEmotion(npcID, emotion);
+    }
+
+    [YarnCommand("setUI")]
+    public static void SetFriendshipUI(string npcID)
+    {
+        YarnUIController.Instance.ApplyNpcUI(npcID);
     }
 }

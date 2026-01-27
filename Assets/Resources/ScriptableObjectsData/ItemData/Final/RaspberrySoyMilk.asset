@@ -16,4 +16,10 @@ MonoBehaviour:
   itemName: Raspberry Soy Milk
   itemType: 2
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: 0}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
+  contentColor: {r: 0.8509804, g: 0.47843137, b: 0.8156863, a: 1}
+  fillLevel: 1

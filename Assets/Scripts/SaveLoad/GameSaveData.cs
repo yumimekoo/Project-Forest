@@ -43,6 +43,10 @@ public class SaveSlotInfo
     public string saveName;
     public string createdDate;
     public string lastModifiedDate;
+    public int currentDay;
+    public string currentWeekday;
+    public int currentMoney;
+    public string currentWeek;
 }
 
 [System.Serializable]

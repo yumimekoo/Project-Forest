@@ -16,9 +16,10 @@ MonoBehaviour:
   itemName: Cup
   itemType: 0
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 4763121527372788244, guid: 69158748c6ec46a41a64401917a2076e, type: 3}
+  icon: {fileID: 6943436967422555874, guid: e4e670e1d2af7964dbf1025c87e8b0a5, type: 3}
   storageType: 1
   itemPrefab: {fileID: 8037415141159388369, guid: ab2d09dc7f78ac04e889018132e38cf3, type: 3}
   shoppingCategory: 0
   price: 0
   contentColor: {r: 1, g: 0, b: 0, a: 1}
+  fillLevel: 1

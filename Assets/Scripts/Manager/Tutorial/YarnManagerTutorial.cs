@@ -23,12 +23,14 @@ public class YarnManagerTutorial : MonoBehaviour
 
     void OnDialogueFinished()
     {
+        UIManager.Instance.ResetState();
         dialogueObject.SetActive(false);
         //Debug.Log("[Yarn] Dialogue finished");
         GameTime.SetPaused(false);
         GameState.playerMovementAllowed = true;
         GameState.playerInteractionAllowed = true;
         TutorialManager.Instance.OnDialogueFinished();
+        
     }
 
     public void StartDialogue(string startNode)
@@ -37,6 +39,7 @@ public class YarnManagerTutorial : MonoBehaviour
         dialogueRunner.StartDialogue(startNode);
         GameState.playerMovementAllowed = false;
         GameState.playerInteractionAllowed = false;
+        UIManager.Instance.SetUIState(UIState.YarnOverlay);
     }
 
     public void StopDialogue()

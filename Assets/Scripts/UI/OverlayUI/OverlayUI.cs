@@ -97,7 +97,7 @@ public class OverlayUI : MonoBehaviour
 
     private void UpdateMoney(int currentMoney)
     {
-        moneyLabel.text = $"${currentMoney}";
+        moneyLabel.text = $"{currentMoney}";
     }
 
     private void SetBackground(string className)
@@ -106,7 +106,7 @@ public class OverlayUI : MonoBehaviour
         backgroundElement.RemoveFromClassList("bg-night");
         backgroundElement.RemoveFromClassList("bg-day");
         backgroundElement.AddToClassList(className);
-        Debug.Log($"Set background to {className}");
+        //Debug.Log($"Set background to {className}");
     }
 
     private void HandleState(UIState state)
@@ -136,7 +136,7 @@ public class OverlayUI : MonoBehaviour
     
     private void EnterRoomUI()
     {
-        Debug.Log("Entered room UI");
+        //Debug.Log("Entered room UI");
         pauseButton.style.display = DisplayStyle.Flex;
         bookButton.style.display = DisplayStyle.None;
         hideInRoom.style.display = DisplayStyle.None;
@@ -145,7 +145,7 @@ public class OverlayUI : MonoBehaviour
         UpdateTime(TimeManager.Instance.GetDayProgress());
         UpdateDate();
         UpdateHeldItem();
-        Debug.Log("Exited room UI");
+        //Debug.Log("Exited room UI");
     }
     
     private void ApplyPauseModifier(bool isPaused)

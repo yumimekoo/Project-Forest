@@ -37,7 +37,6 @@ public class CameraFollow : MonoBehaviour
             smoothSpeed = 0.03f;
             return;
         }
-        Debug.LogError("Error changing camera follow target");
     }
 }
 

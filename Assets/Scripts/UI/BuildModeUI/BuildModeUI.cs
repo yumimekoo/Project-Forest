@@ -161,14 +161,14 @@ public class BuildModeUI : MonoBehaviour
         if (isInDeleteMode)
         {
             rootBackground.AddToClassList("selected");
-            uiHideLeft.style.display = DisplayStyle.None;
             itemContainer.style.display = DisplayStyle.None;
+            uiHideLeft.style.visibility = Visibility.Hidden;
         }
         else
         {
             rootBackground.RemoveFromClassList("selected");
-            uiHideLeft.style.display = DisplayStyle.Flex;
             itemContainer.style.display = DisplayStyle.Flex;
+            uiHideLeft.style.visibility = Visibility.Visible;
         }
     }
     // refactor this aswell man 

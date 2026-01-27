@@ -18,7 +18,7 @@
                     <ui:VisualElement style="flex-grow: 0; width: 24px; height: 24px; background-image: url(&quot;project://database/Assets/UIDocuments/OverlayUI/Sprites/nut_icon.aseprite?fileID=-7676717474986798981&amp;guid=c300f1e192aeb874dade7ff70c1ed55f&amp;type=3#nut_icon&quot;); justify-content: space-around; align-self: center; margin-top: 7px; margin-left: 5px;" />
                     <ui:VisualElement style="flex-grow: 0; justify-content: center; align-items: stretch; width: 49%; margin-right: 0;">
                         <ui:Label text="Buy:" name="asd" style="-unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); margin-top: 0; padding-top: 0; padding-bottom: 0; margin-bottom: 0; font-size: 20px; color: rgb(83, 29, 4); text-shadow: 2px 2px 0 rgb(227, 164, 100); letter-spacing: 5px; -unity-text-align: upper-right;" />
-                        <ui:Label text="x 1" name="buyAmountLabel" style="-unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); margin-top: 0; padding-top: 0; padding-bottom: 0; margin-bottom: 0; font-size: 20px; color: rgb(83, 29, 4); text-shadow: 2px 2px 0 rgb(227, 164, 100); letter-spacing: 5px; -unity-text-align: upper-right;" />
+                        <ui:Label text="x 10778" name="buyAmountLabel" style="-unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); margin-top: 0; padding-top: 0; padding-bottom: 0; margin-bottom: 0; font-size: 26px; color: rgb(83, 29, 4); text-shadow: 2px 2px 0 rgb(227, 164, 100); letter-spacing: 5px; -unity-text-align: upper-right;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
@@ -37,7 +37,10 @@
                 <ui:VisualElement style="flex-grow: 0;">
                     <ui:Button text="&#10;" name="buyButton" class="buttonBuy" style="height: 164px; width: 148px; background-color: rgba(188, 188, 188, 0); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); justify-content: space-between;">
                         <ui:Label text="Buy" style="padding-top: 40px;" />
-                        <ui:Label text="Label" name="totalPrice" style="padding-bottom: 32px;" />
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row; padding-left: 15px; align-items: center; justify-content: flex-end; padding-right: 30px;">
+                            <ui:Label text="889" name="totalPrice" style="padding-bottom: 4px; margin-top: 0; -unity-text-align: middle-right; padding-top: 0;" />
+                            <ui:VisualElement style="flex-grow: 0; width: 24px; height: 24px; background-image: url(&quot;project://database/Assets/UIDocuments/OverlayUI/Sprites/nut_icon.aseprite?fileID=-7676717474986798981&amp;guid=c300f1e192aeb874dade7ff70c1ed55f&amp;type=3#nut_icon&quot;);" />
+                        </ui:VisualElement>
                     </ui:Button>
                 </ui:VisualElement>
             </ui:VisualElement>
