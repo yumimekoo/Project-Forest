@@ -11,10 +11,13 @@ public class PauseUI : MonoBehaviour
     
     private Button
         continueButton,
-       // exitButton,
+        yesButton,
+        noButton,
         saveExitButton;
-    private VisualElement animationBackground,
-        root;
+    private VisualElement 
+        animationBackground,
+        root,
+        areYouSure;
 
     public InputActionAsset InputActions;
     public InputAction openPause;
@@ -48,10 +51,18 @@ public class PauseUI : MonoBehaviour
         continueButton = root.Q<Button>("continue");
         saveExitButton = root.Q<Button>("saveExit");
         animationBackground = root.Q<VisualElement>("animation");
-        // exitButton = root.Q<Button>("exit");
-        ////exitButton.clicked += ExitPlaymodeDevelopment;
+        
+        areYouSure = root.Q<VisualElement>("areYouSure");
+        yesButton = root.Q<Button>("yesButton");
+        noButton = root.Q<Button>("noButton");
+        
         continueButton.clicked += RequestClose;
         saveExitButton.clicked += OnSaveExitButtonClicked;
+
+        yesButton.clicked += OnConfirmYes;
+        noButton.clicked += OnConfirmNo;
+
+        HideConfirm();
 
         SetButtons(false);
         root.style.display = DisplayStyle.None;
@@ -64,6 +75,12 @@ public class PauseUI : MonoBehaviour
     
     private void HandleInput()
     {
+        if (IsConfirmVisible())
+        {
+            HideConfirm();
+            return;
+        }
+        
         switch (state)
         {
             case PauseState.Closed:
@@ -139,21 +156,60 @@ public class PauseUI : MonoBehaviour
     {
         continueButton.SetEnabled(active);
         saveExitButton.SetEnabled(active);
+        continueButton.style.display = active ? DisplayStyle.Flex : DisplayStyle.None;
+        saveExitButton.style.display = active ? DisplayStyle.Flex : DisplayStyle.None;
         //exitButton.SetEnabled(enabled);
     }
     private void OnSaveExitButtonClicked()
     {
+        if (GameState.isInCafe && !GameState.isInRoom)
+        {
+            ShowConfirm();
+            return;
+        }
+        
+        GoToMenu(withSave: true);
+    }
+
+    private void OnConfirmYes()
+    {
+        HideConfirm();
+        GoToMenu(withSave: false);
+    }
+
+    private void OnConfirmNo()
+    {
+        HideConfirm();
+        SetButtons(state == PauseState.Opened);
+    }
+
+    private void GoToMenu(bool withSave)
+    {
         Time.timeScale = 1f;
-        SaveManager.Instance.SaveGame();
+        
+        if(withSave && SaveManager.Instance) SaveManager.Instance.SaveGame();
+        
         UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
     }
 
-    private void ExitPlaymodeDevelopment()
+    private void ShowConfirm()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
+        SetButtons(false);
+        areYouSure.style.display = DisplayStyle.Flex;
+        yesButton?.SetEnabled(true);
+        noButton?.SetEnabled(true);
     }
+    
+    private void HideConfirm()
+    {
+        areYouSure.style.display = DisplayStyle.None;
+        yesButton?.SetEnabled(false);
+        noButton?.SetEnabled(false);
+        if(state == PauseState.Opened)
+            SetButtons(true);
+    }
+    
+    private bool IsConfirmVisible() => areYouSure.style.display == DisplayStyle.Flex;
 
     private void ShowUI()
     {

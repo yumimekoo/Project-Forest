@@ -1,0 +1,81 @@
+:root {
+}
+
+.continueButton {
+    -unity-font-definition: initial;
+    background-image: url("project://database/Assets/UIDocuments/PauseUI/pauseButton.aseprite?fileID=6077242166696579679&guid=ae162ca404391aa4b8842f115fb94c7c&type=3#Frame_0");
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.continueButton:hover {
+    background-image: url("project://database/Assets/UIDocuments/PauseUI/pauseButton.aseprite?fileID=8914581671530176620&guid=ae162ca404391aa4b8842f115fb94c7c&type=3#Frame_1");
+    scale: 1.1 1.1 1.1;
+}
+
+.saveButton {
+    -unity-font-definition: initial;
+    background-image: url("project://database/Assets/UIDocuments/PauseUI/pauseButton.aseprite?fileID=5531091256202936668&guid=ae162ca404391aa4b8842f115fb94c7c&type=3#Frame_2");
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.saveButton:hover {
+    background-image: url("project://database/Assets/UIDocuments/PauseUI/pauseButton.aseprite?fileID=-5596057933379662116&guid=ae162ca404391aa4b8842f115fb94c7c&type=3#Frame_3");
+    scale: 1.1 1.1 1.1;
+}
+
+.yesButton {
+    height: 80px;
+    width: 148px;
+    background-image: url("project://database/Assets/UIDocuments/MainMenu/goBackButton.aseprite?fileID=6516541509812302382&guid=720c5d466e2c44d42b57c5a110654152&type=3#Frame_2");
+    background-color: rgba(0, 0, 0, 0);
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    font-size: 35px;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    color: rgb(83, 29, 4);
+    text-shadow: 3px 3px 0 rgb(227, 164, 100);
+}
+
+.yesButton:hover {
+    height: 80px;
+    width: 148px;
+    font-size: 35px;
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    color: rgb(227, 164, 100);
+    text-shadow: 2px 2px 0 rgb(123, 51, 18);
+    background-image: url("project://database/Assets/UIDocuments/MainMenu/goBackButton.aseprite?fileID=4482912766319945594&guid=720c5d466e2c44d42b57c5a110654152&type=3#Frame_3");
+}
+
+.noButton {
+    width: 148px;
+    height: 80px;
+    font-size: 35px;
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    background-image: url("project://database/Assets/UIDocuments/MainMenu/binButton.aseprite?fileID=-8618049897917883247&guid=f58fca13685ed7a4f8eb0fe9a1393a58&type=3#Frame_2");
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    color: rgb(83, 29, 4);
+    text-shadow: 3px 3px 0 rgb(197, 53, 53);
+}
+
+.noButton:hover {
+    width: 148px;
+    height: 80px;
+    -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
+    font-size: 35px;
+    color: rgb(248, 189, 129);
+    text-shadow: 2px 2px 0 rgb(227, 164, 100);
+}

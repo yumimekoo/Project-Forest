@@ -97,7 +97,7 @@ public class OverlayUI : MonoBehaviour
 
     private void UpdateMoney(int currentMoney)
     {
-        moneyLabel.text = $"${currentMoney}";
+        moneyLabel.text = $"{currentMoney}";
     }
 
     private void SetBackground(string className)
