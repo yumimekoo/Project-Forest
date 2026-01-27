@@ -211,13 +211,17 @@ public class MainMenuUI : MonoBehaviour
     private IEnumerator LoadRoomRoutine()
     {
         ShowLoading();
-#if UNITY_EDITOR
         yield return null;
-#endif
-        yield return new WaitForSecondsRealtime(1.75f);
+        
+        float minTime = 1f;
+        float start = Time.realtimeSinceStartup;
         
         var op = SceneManager.LoadSceneAsync("Room");
         op.allowSceneActivation = false;
+        
+        float elapsed = Time.realtimeSinceStartup - start;
+        if (elapsed < minTime)
+            yield return new WaitForSecondsRealtime(minTime - elapsed);
         
         while (op.progress < 0.9f) yield return null;
         

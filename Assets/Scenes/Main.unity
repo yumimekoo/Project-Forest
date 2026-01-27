@@ -768,7 +768,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   ePress:
-    m_Name: 
+    m_Name: E Press
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 893d552f-9e29-45f0-ba95-9904c6d6af3c
