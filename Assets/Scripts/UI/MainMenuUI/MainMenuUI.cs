@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -6,13 +7,19 @@ public class MainMenuUI : MonoBehaviour
 {
     [Header("UI")]
     public UIDocument mainMenuUI;
+
+    [Header("Loading Animation")] 
+    public Sprite[] loadingFrames;
+    public float loadingFps = 12f;
     
     private VisualElement root;
 
     private VisualElement
         titleElement,
         playElement,
-        areYouSure;
+        areYouSure,
+        loadingOverlay,
+        loadingImage;
 
     private Button
         exitButton,
@@ -35,6 +42,7 @@ public class MainMenuUI : MonoBehaviour
 
     private bool inDeletionMode = false;
     private int pendingDeleteSlot = -1;
+    private Coroutine loadingAnimRoutine;
 
     private const string SaveButtonClass = "saveButtons";
     private const string DeleteSelectedClass = "deleteSelected";
@@ -46,6 +54,10 @@ public class MainMenuUI : MonoBehaviour
        titleElement = root.Q<VisualElement>("titleElement");
        playElement = root.Q<VisualElement>("playElement");
        areYouSure = root.Q<VisualElement>("areYouSure");
+       
+       loadingOverlay = root.Q<VisualElement>("loadingOverlay");
+       loadingImage = root.Q<VisualElement>("loadingImage");
+       HideLoadingInstant();
        
        exitButton = root.Q<Button>("exit");
        savesScreenButton = root.Q<Button>("savesScreen");
@@ -193,7 +205,93 @@ public class MainMenuUI : MonoBehaviour
         HideAreYouSure();
         
         SaveManager.Instance.SetActiveSaveSlot(slot);
-        SceneManager.LoadScene("Room");
+        StartCoroutine(LoadRoomRoutine());
+    }
+
+    private IEnumerator LoadRoomRoutine()
+    {
+        ShowLoading();
+#if UNITY_EDITOR
+        yield return null;
+#endif
+        yield return new WaitForSecondsRealtime(1.75f);
+        
+        var op = SceneManager.LoadSceneAsync("Room");
+        op.allowSceneActivation = false;
+        
+        while (op.progress < 0.9f) yield return null;
+        
+        yield return new WaitForSeconds(0.15f);
+        
+        op.allowSceneActivation = true;
+        
+        while(!op.isDone) yield return null;
+
+        HideLoading();
+    }
+
+    private void ShowLoading()
+    {
+        loadingOverlay.style.display = DisplayStyle.Flex;
+        loadingOverlay.SetEnabled(true);
+        loadingOverlay.pickingMode = PickingMode.Position;
+
+        loadingOverlay.style.opacity = 0f;
+        
+        if(loadingAnimRoutine != null) StopCoroutine(loadingAnimRoutine);
+        loadingAnimRoutine = StartCoroutine(PlayLoadingPingPong());
+        
+        StartCoroutine(SetOpacityNextFrame(1f));
+    }
+
+    private void HideLoading()
+    {
+        loadingOverlay.style.opacity = 0f;
+        loadingOverlay.pickingMode = PickingMode.Ignore;
+        
+        if(loadingAnimRoutine != null) StopCoroutine(loadingAnimRoutine);
+        loadingAnimRoutine = null;
+
+        StartCoroutine(HideAfterSeconds(0.25f));
+    }
+    
+    private IEnumerator SetOpacityNextFrame(float opacity)
+    {
+        yield return null;
+        loadingOverlay.style.opacity = opacity;
+    }
+    
+    private IEnumerator HideAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        HideLoadingInstant();
+    }
+
+    private void HideLoadingInstant()
+    {
+        loadingOverlay.style.display = DisplayStyle.None;
+        loadingOverlay.SetEnabled(false);
+    }
+
+    private IEnumerator PlayLoadingPingPong()
+    {
+        if (loadingFrames == null || loadingFrames.Length == 0) yield break;
+
+        int i = 0;
+        int dir = 1;
+        float delay = 1f / Mathf.Max(1f, loadingFps);
+        
+        while(true)
+        {
+            loadingImage.style.backgroundImage = new StyleBackground(loadingFrames[i]);
+            if (loadingFrames.Length > 1)
+            {
+                if(i == loadingFrames.Length - 1) dir = -1;
+                else if (i == 0) dir = 1;
+                i += dir;
+            }
+            yield return new WaitForSeconds(delay);
+        }
     }
 
     private void ShowAreYouSure()

@@ -48,6 +48,7 @@ public class FridgeUI : MonoBehaviour
     {
 
         Debug.Log("fridge opened");
+        GameTime.SetPaused(true);
         GameState.isInMenu = true;
         GameState.isInStorage = true;
         titleLabel.text = storageName;
@@ -89,6 +90,7 @@ public class FridgeUI : MonoBehaviour
         Debug.Log("fridge closed");
         GameState.isInMenu = false;
         GameState.isInStorage = false;
+        GameTime.SetPaused(false);
         StartCoroutine(EnableInteractionNextFrame());
     }
 

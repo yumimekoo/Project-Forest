@@ -185,3 +185,12 @@
     color: rgb(248, 189, 129);
     text-shadow: 2px 2px 0 rgb(227, 164, 100);
 }
+
+.loadingOverlay {
+    opacity: 0;
+    display: none;
+
+    transition-property: opacity;
+    transition-duration: 250ms;
+    transition-timing-function: ease-in-out;
+}

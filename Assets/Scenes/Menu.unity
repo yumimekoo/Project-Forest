@@ -188,6 +188,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuUI
   mainMenuUI: {fileID: 885325627}
+  loadingFrames:
+  - {fileID: 3474998474935278823, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: -7841251454533711390, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: 4288923215041121055, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: 8442399568690734875, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: 140853132526611552, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: -2140722375368309600, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: -8256334956382551864, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: -950931355991350946, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: 7660673159699414585, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: -3739456891373041876, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: 2954034183855971284, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  - {fileID: -856460364278285395, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  loadingFps: 12
 --- !u!1 &915575906
 GameObject:
   m_ObjectHideFlags: 0
