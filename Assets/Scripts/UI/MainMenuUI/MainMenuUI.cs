@@ -12,6 +12,12 @@ public class MainMenuUI : MonoBehaviour
     public Sprite[] loadingFrames;
     public float loadingFps = 12f;
     
+    [Header("Music and Sound")]
+    [SerializeField] private AudioClip mainMusic;
+    [SerializeField] private AudioClip roomMusic;
+    [SerializeField] private SoundSO hoverSound;
+    [SerializeField] private SoundSO clickSound;
+    
     private VisualElement root;
 
     private VisualElement
@@ -112,10 +118,28 @@ public class MainMenuUI : MonoBehaviour
            UpdateSlotsUI();
        };
        
+       foreach (var button in root.Query<Button>().ToList())
+       {
+           button.RegisterCallback<MouseEnterEvent>(_ =>
+           {
+               AudioManager.Instance.Play(hoverSound);
+           });
+
+           button.clicked += () =>
+           {
+               AudioManager.Instance.Play(clickSound);
+           };
+       }
+       
        ShowTitleScreen();
        SetDeletionMode(false);
        HideAreYouSure();
        UpdateSlotsUI();
+    }
+
+    private void Start()
+    {
+       if(AudioManager.Instance) AudioManager.Instance.CrossfadeMusic(mainMusic, fadeSeconds: 2f, syncWithCurrent: false);
     }
 
     private void ShowPlayScreen()
@@ -227,10 +251,12 @@ public class MainMenuUI : MonoBehaviour
         
         yield return new WaitForSeconds(0.15f);
         
+        AudioManager.Instance.CrossfadeMusic(roomMusic, fadeSeconds: 2f, syncWithCurrent: false);
+        
         op.allowSceneActivation = true;
         
         while(!op.isDone) yield return null;
-
+    
         HideLoading();
     }
 

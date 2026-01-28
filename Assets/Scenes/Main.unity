@@ -1332,6 +1332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
   dayDurationInSeconds: 30
   dayUnlocker: {fileID: 874102846}
+  nightMusic: {fileID: 8300000, guid: b4582e48d57f5f64a8f253580c83364f, type: 3}
   currentDay: 1
   currentWeek: 1
   currentWeekday: 0

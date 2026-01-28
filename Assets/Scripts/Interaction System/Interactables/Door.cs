@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Door : MonoBehaviour, IInteractable
 {
+    
+    [SerializeField] private AudioClip cafeDayMusic;
+    [SerializeField] private AudioClip roomMusic;
     public string GetInteractionPrompt()
     {
         if(GameState.inTutorial && TutorialManager.Instance != null)
@@ -56,6 +59,7 @@ public class Door : MonoBehaviour, IInteractable
             GameState.doorUnlocked = false;
             //Debug.Log("Player has exited the room to the cafe.");
             SaveManager.Instance.SaveGame();
+            AudioManager.Instance.CrossfadeMusic(cafeDayMusic, 1f);
             UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
         }
         else if (GameState.isInCafe && GameState.doorUnlocked)
@@ -64,6 +68,7 @@ public class Door : MonoBehaviour, IInteractable
             GameState.isInCafe = false;
             //Debug.Log("Player has entered the room from the cafe.");
             SaveManager.Instance.SaveGame();
+            AudioManager.Instance.CrossfadeMusic(roomMusic, 1f);
             UnityEngine.SceneManagement.SceneManager.LoadScene("Room");
         } else if (!GameState.doorUnlocked)
         { 

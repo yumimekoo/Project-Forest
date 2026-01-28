@@ -188,7 +188,6 @@ public class PauseUI : MonoBehaviour
         Time.timeScale = 1f;
         
         if(withSave && SaveManager.Instance) SaveManager.Instance.SaveGame();
-        
         UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
     }
 
