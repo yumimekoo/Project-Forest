@@ -32,8 +32,11 @@ public class ItemShelf : MonoBehaviour, IInteractable
                     Debug.LogWarning("Selected item has no prefab assigned.");
                     return;
                 }
-
-                if (ItemsInventory.Instance.TryRemove(selectedItem.id, 1))
+                bool canTake =
+                    selectedItem.isInfinite ||
+                    ItemsInventory.Instance.TryRemove(selectedItem.id, 1);
+                
+                if (canTake)
                 {
                     GameObject itemInstance = Instantiate(selectedItem.itemPrefab);
                     var pickup = itemInstance.GetComponent<PickupItem>();

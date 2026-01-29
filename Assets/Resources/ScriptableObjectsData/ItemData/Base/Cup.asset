@@ -21,5 +21,6 @@ MonoBehaviour:
   itemPrefab: {fileID: 8037415141159388369, guid: ab2d09dc7f78ac04e889018132e38cf3, type: 3}
   shoppingCategory: 0
   price: 0
+  isInfinite: 1
   contentColor: {r: 1, g: 0, b: 0, a: 1}
   fillLevel: 1
