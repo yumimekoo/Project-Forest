@@ -94,3 +94,6 @@
 .background.selected {
     background-image: url("project://database/Assets/UIDocuments/BuildModeUI/deleteMode.aseprite?fileID=-4622046499248014274&guid=f39453a040b12914ba4cc44f0a5022ee&type=3#Frame_0");
 }
+
+.clickSound {
+}

@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9211fe59e7f88d04dbfc22697cc682e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashCan
+  trashSound: {fileID: 11400000, guid: 230715805a50f2d48b7e7a692659f265, type: 2}
 --- !u!208 &6141661013576047615
 NavMeshObstacle:
   m_ObjectHideFlags: 0

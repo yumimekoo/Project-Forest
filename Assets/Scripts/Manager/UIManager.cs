@@ -82,6 +82,7 @@ public enum UIState { BuildMode, YarnOverlay, RecipeBook, Shop, Overlay, Pause, 
 
         public void RecipeBookButtonPressed()
         {
+            if (TutorialManager.Instance) return;
             OnRecipeBookPressed?.Invoke();
         }
 
@@ -112,7 +113,12 @@ public enum UIState { BuildMode, YarnOverlay, RecipeBook, Shop, Overlay, Pause, 
                     //Debug.Log("Pause Pressed");
                 }
             }
-
+            
+            if(TutorialManager.Instance)
+                if (TutorialManager.Instance.currentStep != TutorialStep.OpenRecipeBook &&
+                    TutorialManager.Instance.currentStep != TutorialStep.CloseRecipeBook)
+                    return; 
+            
             if (openBook.WasPressedThisFrame() && !GameState.isInRoom && !GameState.isInConversation && !GameState.isInPauseMenu && !GameState.isInStorage) OnRecipeBookPressed?.Invoke();
         }
         

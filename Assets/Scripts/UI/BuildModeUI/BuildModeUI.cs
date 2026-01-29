@@ -16,6 +16,11 @@ public class BuildModeUI : MonoBehaviour
     public BuildMode3D buildMode3D;
     public UIDocument buildModeUI;
     public VisualTreeAsset itemTemplate;
+    
+    public SoundSO buildOpenSound;
+    public SoundSO buildCloseSound;
+    public SoundSO hoverSound;
+    public SoundSO clickSound;
 
     private Dictionary<int, ItemUIRefs> itemUI = new();
     private int? selectedItemId = null;
@@ -31,7 +36,7 @@ public class BuildModeUI : MonoBehaviour
         btnUtility,
         btnAll,
         deleteButton;
-
+    
     private void OnEnable()
     {
         if (FurnitureInventory.Instance != null)
@@ -40,7 +45,7 @@ public class BuildModeUI : MonoBehaviour
         if(!UIManager.Instance) Debug.LogError("UIManager not found!");
         UIManager.Instance.OnButtonsUpdated += UpdateButtons;
         UIManager.Instance.OnUIStateChanged += HandleState;
-        UIManager.Instance.OnEscapePressed += ExitBuildMode;
+        UIManager.Instance.OnEscapePressed += EscapePressed;
     }
 
     private void OnDisable()
@@ -51,7 +56,7 @@ public class BuildModeUI : MonoBehaviour
         if(!UIManager.Instance) Debug.LogError("UIManager not found!");
         UIManager.Instance.OnButtonsUpdated -= UpdateButtons;
         UIManager.Instance.OnUIStateChanged -= HandleState;
-        UIManager.Instance.OnEscapePressed -= ExitBuildMode;
+        UIManager.Instance.OnEscapePressed -= EscapePressed;
     }
     private void Awake()
     {
@@ -71,13 +76,27 @@ public class BuildModeUI : MonoBehaviour
         btnUtility.clicked += () => ShowCategory(BuildCategory.Utility);
         exitBuildMode.clicked += () => ExitBuildMode();
         deleteButton.clicked += () => buildMode3D.HandleDeleteToggle();
+        
+        foreach (var button in root.Query<Button>().ToList())
+        {
+            button.RegisterCallback<MouseEnterEvent>(_ =>
+            {
+                AudioManager.Instance.Play(hoverSound);
+            });
+
+            button.clicked += () =>
+            {
+                if(button.ClassListContains("clickSound"))
+                    AudioManager.Instance.Play(clickSound);
+            };
+        }
 
         itemContainer.RegisterCallback<PointerEnterEvent>(_ => SetPointerOverUI(true));
         itemContainer.RegisterCallback<PointerLeaveEvent>(_ => SetPointerOverUI(false));
         uiHideLeft.RegisterCallback<PointerEnterEvent>(_ => SetPointerOverUI(true));
         uiHideLeft.RegisterCallback<PointerLeaveEvent>(_ => SetPointerOverUI(false));
         UpdateButtons();
-        HideUI();
+        //HideUI(false);
     }
 
     private void HandleState(UIState state)
@@ -88,10 +107,9 @@ public class BuildModeUI : MonoBehaviour
                 ShowUI();
                 break;
             case UIState.Tutorial:
-                // TODO: make explicit tutorial handling
                 return;
             default:
-                buildModeUI.rootVisualElement.style.display = DisplayStyle.None;
+                HideUI();
                 break;
         }
     }
@@ -118,6 +136,7 @@ public class BuildModeUI : MonoBehaviour
 
             button.clicked += () =>
             {
+                AudioManager.Instance.Play(clickSound);
                 SelectItem(id);
                 buildMode3D.StartBuild(item);
             };
@@ -218,15 +237,20 @@ public class BuildModeUI : MonoBehaviour
         }
     }
 
-    public void ExitBuildMode()
+    public void EscapePressed()
     {
+        ExitBuildMode(GameState.isInBuildMode);
+    }
+
+    public void ExitBuildMode(bool withSound = true)
+    {
+        if(withSound) AudioManager.Instance.Play(buildCloseSound);
         GameState.playerInteractionAllowed = true;
         GameState.isInBuildMode = false;
         GameState.isInMenu = false;
         buildMode3D.StopBuild();
         cameraFollow.ChangeFollowTarget(GameState.isInBuildMode);
         UIManager.Instance.ResetState();
-        HideUI();
 
         if(GameState.inTutorial && TutorialManager.Instance != null)
         {
@@ -258,6 +282,7 @@ public class BuildModeUI : MonoBehaviour
 
     public void ShowUI()
     { 
+        AudioManager.Instance.Play(buildOpenSound);
         buildModeUI.rootVisualElement.style.display = DisplayStyle.Flex;
         GameState.isInMenu = true;
         GameState.isInBuildMode = true;

@@ -142,6 +142,7 @@ MonoBehaviour:
   halfContentRenderer: {fileID: 0}
   colorProperty: _BaseColor
   useMaterialPropertyBlock: 1
+  addToCupSound: {fileID: 11400000, guid: bcd23802dd1fcfb478faa276c7e37b94, type: 2}
 --- !u!1 &8371453184926270012
 GameObject:
   m_ObjectHideFlags: 0

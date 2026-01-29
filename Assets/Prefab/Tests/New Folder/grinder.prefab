@@ -247,6 +247,7 @@ MonoBehaviour:
   itemPlacementPoint: {fileID: 2131582627028603309}
   machineName: Mortar and Pestle
   prompt: Insert to grind
+  placeSound: {fileID: 11400000, guid: 54927a15f923a1e4ca3ceace92436e0e, type: 2}
 --- !u!1 &7780233839181907977
 GameObject:
   m_ObjectHideFlags: 0

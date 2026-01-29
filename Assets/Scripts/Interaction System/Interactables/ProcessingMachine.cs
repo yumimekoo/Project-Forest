@@ -19,6 +19,11 @@ public class ProcessingMachine : MonoBehaviour, IInteractable
     [SerializeField] private string promptProcessing;
     [SerializeField] private string promptReady;
 
+    [Header("Sounds")] 
+    [SerializeField] private SoundSO placeSound;
+    [SerializeField] private SoundSO processingSound;
+    [SerializeField] private SoundSO finishedSound;
+
     private bool isProcessing;
     private bool cupReady;
     private Cup cupInMachine;
@@ -54,6 +59,8 @@ public class ProcessingMachine : MonoBehaviour, IInteractable
         cupInMachine = cup;
         cupReady = false;
         
+        AudioManager.Instance.PlayAt(placeSound, transform);
+        
         cupInMachine.transform.SetParent(cupPlacementPoint);
         cupInMachine.transform.localPosition = Vector3.zero;
         cupInMachine.transform.localRotation = Quaternion.identity;
@@ -81,6 +88,8 @@ public class ProcessingMachine : MonoBehaviour, IInteractable
         yield return new WaitForSeconds(processingTime);
         
         if(cupInMachine && ingredientToAdd) cupInMachine.AddIngredient(ingredientToAdd);
+        
+        AudioManager.Instance.PlayAt(finishedSound, transform);
         
         isProcessing = false;
         cupReady = true;

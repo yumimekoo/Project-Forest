@@ -160,9 +160,6 @@ public class RecipeBookController : MonoBehaviour
             case UIState.RecipeBook:
                 Open();
                 break;
-            case UIState.Tutorial:
-                // ölater
-                break;
             default:
                 recipeBookUI.rootVisualElement.style.display = DisplayStyle.None;
                 break;
@@ -419,7 +416,7 @@ public class RecipeBookController : MonoBehaviour
 
     private void CloseESC()
     {
-        Close();
+        if(isBookOpen) Close();
     }
 
     private void Close(bool withSound = true)

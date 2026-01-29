@@ -6,6 +6,12 @@ using Yarn.Unity;
 public class NPCController : MonoBehaviour, IInteractable
 {
     public NPCIdentitySO identity;
+
+    public SoundSO waitOrderSound;
+    public SoundSO takeOrderSound;
+    public SoundSO giveOrderSound;
+    public SoundSO startConversationSound;
+    
     private NPCOverheadUI overheadUI;
     private NavMeshAgent agent;
     private Chair targetChair;
@@ -140,6 +146,8 @@ public class NPCController : MonoBehaviour, IInteractable
         transform.position = targetChair.seatPoint.position;
         transform.rotation = targetChair.seatPoint.rotation;
 
+        AudioManager.Instance.PlayAt(waitOrderSound, transform);
+        
         if (GameState.inTutorial && TutorialManager.Instance != null)
         {
             if (TutorialManager.Instance.currentStep == TutorialStep.FirstNPCSpawned)
@@ -158,6 +166,7 @@ public class NPCController : MonoBehaviour, IInteractable
 
         //Debug.Log($"{identity.npcName} order result: {result.outcome}, Money: {result.moneyDelta}, Friendship: {result.friendshipDelta}");
         // insert ui feedback here
+        AudioManager.Instance.PlayAt(giveOrderSound, transform);
         OrderManager.Instance.RemoveOrder(identity);
         FriendshipManager.Instance.AddXP(identity.npcID, result.friendshipDelta);  
         CurrencyManager.Instance.AddMoney(result.moneyDelta);
@@ -194,6 +203,8 @@ public class NPCController : MonoBehaviour, IInteractable
     {
         currentOrder = NPCOrderGenerator.GenerateOrder(identity);
 
+        AudioManager.Instance.PlayAt(takeOrderSound, transform);
+        
         if(GameState.inTutorial && TutorialManager.Instance != null)
         {
             if (TutorialManager.Instance.currentStep == TutorialStep.TakeOrder)
@@ -217,6 +228,7 @@ public class NPCController : MonoBehaviour, IInteractable
 
     public void StartConversation()
     {
+        AudioManager.Instance.PlayAt(startConversationSound, transform);
         hasTalked = true;
         YarnManager.Instance.StartDialogue(identity.dialogueProject, identity.startNode);
     }

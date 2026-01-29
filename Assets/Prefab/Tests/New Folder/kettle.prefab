@@ -241,6 +241,9 @@ MonoBehaviour:
   promptPlaceCup: Place to boil
   promptProcessing: Boiling . . .
   promptReady: Ready!
+  placeSound: {fileID: 11400000, guid: 54927a15f923a1e4ca3ceace92436e0e, type: 2}
+  processingSound: {fileID: 0}
+  finishedSound: {fileID: 11400000, guid: e0e6273ad36f0cf44a1b0e3bca3937e2, type: 2}
 --- !u!1 &8569538602845710441
 GameObject:
   m_ObjectHideFlags: 0

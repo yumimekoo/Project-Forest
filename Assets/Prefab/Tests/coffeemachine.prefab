@@ -186,6 +186,9 @@ MonoBehaviour:
   beanVisual: {fileID: 3219721344506954704}
   brewingTime: 5
   ingredientToAdd: {fileID: 11400000, guid: f8f48e39ab3734b4cb5135b5091b974a, type: 2}
+  placeSound: {fileID: 11400000, guid: 54927a15f923a1e4ca3ceace92436e0e, type: 2}
+  workingSound: {fileID: 0}
+  finishedSound: {fileID: 11400000, guid: e0e6273ad36f0cf44a1b0e3bca3937e2, type: 2}
 --- !u!208 &-930094833198061142
 NavMeshObstacle:
   m_ObjectHideFlags: 0

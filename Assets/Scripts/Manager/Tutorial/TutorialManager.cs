@@ -64,6 +64,8 @@ public class TutorialManager : MonoBehaviour
     [Header("References")]
     [SerializeField] YarnManagerTutorial yarnManagerTutorial;
     [SerializeField] UIDocument tutorialUI;
+    [SerializeField] SoundSO showSound;
+    [SerializeField] SoundSO hideSound;
     private GameObject builderGlow;
     private GameObject shopGlow;
     private GameObject doorGlow;
@@ -520,6 +522,7 @@ public class TutorialManager : MonoBehaviour
 
     private IEnumerator HideUIAnimated()
     {
+        AudioManager.Instance.Play(hideSound);
         root.RemoveFromClassList("tutorial-visible");
         root.AddToClassList("tutorial-hidden");
 
@@ -530,6 +533,7 @@ public class TutorialManager : MonoBehaviour
 
     private IEnumerator ShowUIAnimated()
     {
+        AudioManager.Instance.Play(showSound);
         root.style.display = DisplayStyle.Flex;
 
         // 1 Frame warten, sonst triggert Transition nicht

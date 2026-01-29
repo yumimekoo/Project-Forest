@@ -23,6 +23,9 @@ public class Cup : MonoBehaviour, IInteractable
     [SerializeField] private string colorProperty = "_BaseColor";
     [SerializeField] private bool useMaterialPropertyBlock = true;
     
+    [Header("Sounds")]
+    [SerializeField] private SoundSO addToCupSound;
+    
     private MaterialPropertyBlock mpb;
     private Renderer activeContentRenderer;
     private GameObject currentContentVisual;
@@ -49,6 +52,7 @@ public class Cup : MonoBehaviour, IInteractable
     {
         if (player.HasItem())
         {
+            AudioManager.Instance.PlayAt(addToCupSound, transform);
             AddIngredient(player.heldItem);
             player.ClearItem();
         }

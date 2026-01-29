@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class Door : MonoBehaviour, IInteractable
 {
-    
     [SerializeField] private AudioClip cafeDayMusic;
     [SerializeField] private AudioClip roomMusic;
+    [SerializeField] private SoundSO doorSound;
+    [SerializeField] private SoundSO doorLockedSound;
     public string GetInteractionPrompt()
     {
         if(GameState.inTutorial && TutorialManager.Instance != null)
@@ -57,22 +58,22 @@ public class Door : MonoBehaviour, IInteractable
             GameState.isInRoom = false;
             GameState.isInCafe = true;
             GameState.doorUnlocked = false;
-            //Debug.Log("Player has exited the room to the cafe.");
             SaveManager.Instance.SaveGame();
-            AudioManager.Instance.CrossfadeMusic(cafeDayMusic, 1f);
+            AudioManager.Instance.CrossfadeMusic(cafeDayMusic, 3f);
+            AudioManager.Instance.Play(doorSound);
             UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
         }
         else if (GameState.isInCafe && GameState.doorUnlocked)
         {
             GameState.isInRoom = true;
             GameState.isInCafe = false;
-            //Debug.Log("Player has entered the room from the cafe.");
             SaveManager.Instance.SaveGame();
-            AudioManager.Instance.CrossfadeMusic(roomMusic, 1f);
+            AudioManager.Instance.CrossfadeMusic(roomMusic, 3f);
+            AudioManager.Instance.Play(doorSound);
             UnityEngine.SceneManagement.SceneManager.LoadScene("Room");
         } else if (!GameState.doorUnlocked)
         { 
-            //Debug.Log("The door is locked.");
+            AudioManager.Instance.Play(doorLockedSound);
         } else 
         {
             Debug.LogWarning("Player is not in a recognized location.");

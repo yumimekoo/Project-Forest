@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OverlayUI
   overlayUI: {fileID: 163160307}
-  hoverSound: {fileID: 0}
+  hoverSound: {fileID: 11400000, guid: d1562de23876bf64db7dd92af854b433, type: 2}
 --- !u!114 &163160307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,6 +410,8 @@ MonoBehaviour:
   itemsToBuy: 7
   yarnManagerTutorial: {fileID: 198460388}
   tutorialUI: {fileID: 1654874582}
+  showSound: {fileID: 11400000, guid: 767929fc7af70f9419b358198d92dda8, type: 2}
+  hideSound: {fileID: 11400000, guid: 08f2e88c2e440a94e8cdee31cdbe16ea, type: 2}
 --- !u!4 &198460387
 Transform:
   m_ObjectHideFlags: 0
@@ -930,6 +932,8 @@ MonoBehaviour:
   heldItem: {fileID: 0}
   handSlot: {fileID: 466871877}
   heldObjectInstance: {fileID: 0}
+  pickupSound: {fileID: 0}
+  dropSound: {fileID: 0}
 --- !u!114 &764172243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1217,6 +1221,10 @@ MonoBehaviour:
   buildMode3D: {fileID: 1603184434}
   buildModeUI: {fileID: 1059500210}
   itemTemplate: {fileID: 9197481963319205126, guid: ca7d3c0e47963994e916f1b6e1cce990, type: 3}
+  buildOpenSound: {fileID: 11400000, guid: a90cc69edbf61704bad53775b143b435, type: 2}
+  buildCloseSound: {fileID: 11400000, guid: fc75b3706d8fec44bb3459529e1fe1b2, type: 2}
+  hoverSound: {fileID: 11400000, guid: d1562de23876bf64db7dd92af854b433, type: 2}
+  clickSound: {fileID: 11400000, guid: bf819668cfb8a4f4aadbcb49f3a916d0, type: 2}
 --- !u!114 &1059500210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1740,6 +1748,11 @@ MonoBehaviour:
   shopUI: {fileID: 1264877438}
   shopItemTemplate: {fileID: 9197481963319205126, guid: 2f2f08eac76a42249b93cf204d7bbf4a, type: 3}
   shopCategoryTabTemplate: {fileID: 9197481963319205126, guid: a75d93a0a7c1e9d468350c24cd092bc9, type: 3}
+  menuOpenSound: {fileID: 11400000, guid: 84d6bfe93b48f194f9f95f8db39dc5d3, type: 2}
+  menuCloseSound: {fileID: 11400000, guid: 8fd249d4d68dafd4f8f2df7025e3a26d, type: 2}
+  hoverSound: {fileID: 11400000, guid: d1562de23876bf64db7dd92af854b433, type: 2}
+  clickSound: {fileID: 11400000, guid: bf819668cfb8a4f4aadbcb49f3a916d0, type: 2}
+  buySound: {fileID: 11400000, guid: af0b53c0b1fda75448590dc12581eb4a, type: 2}
 --- !u!114 &1264877438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2262,6 +2275,8 @@ MonoBehaviour:
   grid: {fileID: 691282002}
   mainCamera: {fileID: 1276157325}
   deletionPreviewPrefab: {fileID: 1789459280500734020, guid: f7bd6e50af2b3bc4997dae8e2e31b749, type: 3}
+  placeSound: {fileID: 11400000, guid: 09f508d5c1e9651479c76e362aec02f7, type: 2}
+  removeSound: {fileID: 11400000, guid: b975ea8490a88a24eb3c6f2a5e36adc7, type: 2}
   isPointerOverUI: 0
   InputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   rotateAction:

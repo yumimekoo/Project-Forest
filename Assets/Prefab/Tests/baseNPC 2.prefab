@@ -148,4 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCController
   identity: {fileID: 11400000, guid: ad3e8a9de3d67d14ab0e2d02480deaed, type: 2}
-  overheadUI: {fileID: 601667092469231679, guid: 74caffb751672d144b3c33fd584d740b, type: 3}
+  waitOrderSound: {fileID: 11400000, guid: 447417be550f4af418ef3e26427dd0c1, type: 2}
+  takeOrderSound: {fileID: 11400000, guid: 247c9b9966193e845a5ac009d6f0766e, type: 2}
+  giveOrderSound: {fileID: 11400000, guid: 953f6e85a89d1f44eb1a694199aa4e89, type: 2}
+  startConversationSound: {fileID: 11400000, guid: 767929fc7af70f9419b358198d92dda8, type: 2}

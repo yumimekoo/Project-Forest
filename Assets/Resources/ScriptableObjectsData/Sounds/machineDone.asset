@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: machineDone
   m_EditorClassIdentifier: Assembly-CSharp::SoundSO
   clips:
-  - {fileID: 8300000, guid: 56cef2b940d1eca41b6f668bd8ce4bad, type: 3}
+  - {fileID: 8300000, guid: b1706c3c56b35584b875941d1e44ac9d, type: 3}
   volume: 1
   pitchRange: {x: 1, y: 1}
   loop: 0
   spacial3D: 1
   minDistance: 1
-  maxDistance: 10
+  maxDistance: 5
   mixerGroup: {fileID: -4312999648410363981, guid: 1458c640a60594b4eacc7d94c902c57f, type: 2}
