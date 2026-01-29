@@ -16,4 +16,10 @@ MonoBehaviour:
   itemName: Doppio (Double Espresso)
   itemType: 2
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: 8386136758670928369, guid: 75aa6a8f69267c4408b99c24fd6c29a8, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
+  contentColor: {r: 1, g: 1, b: 1, a: 1}
+  fillLevel: 1

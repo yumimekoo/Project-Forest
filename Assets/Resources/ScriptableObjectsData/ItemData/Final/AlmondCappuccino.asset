@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Almond Cappuccino
   itemType: 2
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: -6259106133279224302, guid: 06c98acbc3b8b1b40baefc728ab1840d, type: 3}
   storageType: 0
   itemPrefab: {fileID: 0}
   shoppingCategory: 0

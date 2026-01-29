@@ -16,4 +16,10 @@ MonoBehaviour:
   itemName: Almond Forest Flatwhite
   itemType: 2
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: -6259106133279224302, guid: 06c98acbc3b8b1b40baefc728ab1840d, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
+  contentColor: {r: 1, g: 1, b: 1, a: 1}
+  fillLevel: 1
