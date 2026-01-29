@@ -60,7 +60,7 @@ public class NPCIdentitySO : ScriptableObject
     public NPCSpecies species;
     public Sprite portrait;
     public NPCDaytimeAvailability availability;
-    public GameObject npcPrefab;
+    public bool isTalkable;
 
     [Header("Timers")]
     [Tooltip("Timers are specific, can represent the tolerance of diverse npcs")]

@@ -89,7 +89,10 @@ public class NPCOverheadUI : MonoBehaviour
                 centerIcon.sprite = npc.currentOrder?.requestedDrink ? npc.currentOrder.requestedDrink.icon : surpriseOrderIcon;
                 break;
             case NPCState.Drinking:
-                centerIcon.sprite = npc.HasTalked ? drinkingIcon : talkBubbleIcon;
+                if(npc.identity.isTalkable)
+                    centerIcon.sprite = npc.HasTalked ? drinkingIcon : talkBubbleIcon;
+                else 
+                    centerIcon.sprite = drinkingIcon;
                 break;
             default:
                 centerIcon.sprite = null;

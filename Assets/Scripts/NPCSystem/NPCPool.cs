@@ -5,7 +5,18 @@ public class NPCPool : MonoBehaviour
 {
     public static NPCPool Instance;
 
+    [Header("NPC Prefabs")]
     public GameObject tutorialNPC;
+    public GameObject baseNPC;
+
+    [Header("NPCVisuals")] 
+    public GameObject wolfVisual;
+    public GameObject bearVisual;
+    public GameObject foxVisual;
+    public GameObject bunnyVisual;
+    public GameObject batVisual;
+    public GameObject deerVisual;
+    
     private Dictionary<NPCIdentitySO, GameObject> npcInstances = new();
     private List<NPCIdentitySO> availableNPCs = new();
 
@@ -28,12 +39,39 @@ public class NPCPool : MonoBehaviour
 
         foreach (var npc in npcs)
         {
-            var npcInstance = Instantiate(npc.npcPrefab);
+            var npcInstance = Instantiate(baseNPC);
             npcInstance.SetActive(false);
-            //Debug.Log($"NPC Pool: Created instance of {npc.npcName}");
+
+            ApplyNPCData(npc, npcInstance);
+            
             npcInstances[npc] = npcInstance;
             availableNPCs.Add(npc);
         }
+    }
+
+    private void ApplyNPCData(NPCIdentitySO identity, GameObject npcInstance)
+    {
+        var controller = npcInstance.GetComponent<NPCController>();
+        if(controller) controller.identity = identity;
+
+        var view = npcInstance.GetComponent<NPCView>();
+        if(!view) return;
+        
+        view.SetVisual(GetVisualPrefab(identity.species));
+    }
+
+    private GameObject GetVisualPrefab(NPCSpecies species)
+    {
+        return species switch
+        {
+            NPCSpecies.Bat => batVisual,
+            NPCSpecies.Bear => bearVisual,
+            NPCSpecies.Deer => deerVisual,
+            NPCSpecies.Fox => foxVisual,
+            NPCSpecies.Wolf => wolfVisual,
+            NPCSpecies.Bunny => bunnyVisual,
+            _ => null
+        };
     }
 
     public bool HasNPCs => availableNPCs.Count > 0;
