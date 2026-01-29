@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: bookClose
   m_EditorClassIdentifier: Assembly-CSharp::SoundSO
   clips:
-  - {fileID: 8300000, guid: 65ca3052fe6ace146b5605c00c279af8, type: 3}
+  - {fileID: 8300000, guid: 03fe3d880f4703c45a5a518ac2eb1392, type: 3}
   volume: 0.9
   pitchRange: {x: 0.8, y: 0.8}
   loop: 0

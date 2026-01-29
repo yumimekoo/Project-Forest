@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa7eef123f2c4ef41909aeb22883febb, type: 3}
-  m_Name: kettleMachine
+  m_Name: grinder
   m_EditorClassIdentifier: Assembly-CSharp::SoundSO
   clips:
-  - {fileID: 8300000, guid: 03744e9e6bb11314cbe642d7c2068fd4, type: 3}
+  - {fileID: 8300000, guid: 2737bbba7b15bd14cafa3f580e18c6bc, type: 3}
   volume: 1
-  pitchRange: {x: 1, y: 1}
-  loop: 1
+  pitchRange: {x: 3, y: 3}
+  loop: 0
   spacial3D: 1
   minDistance: 1
   maxDistance: 10

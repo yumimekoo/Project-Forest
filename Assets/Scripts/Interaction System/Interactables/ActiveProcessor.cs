@@ -105,7 +105,7 @@ public class ActiveProcessor : MonoBehaviour, IInteractable
     {
         if (player.HasItem())
             return;
-        
+        AudioManager.Instance.PlayAt(interactionSound, transform);
         currentInteractions++;
 
         if (currentInteractions >= activeRule.requiredInteractions) FinishProcessing(player);

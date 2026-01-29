@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: unpause
   m_EditorClassIdentifier: Assembly-CSharp::SoundSO
   clips:
-  - {fileID: 8300000, guid: b12201e09296a08468bcfb9dad813319, type: 3}
-  volume: 1
+  - {fileID: 8300000, guid: 51d8b0aa3c5c1884387d292b61ba9541, type: 3}
+  volume: 0.5
   pitchRange: {x: 1, y: 1}
   loop: 0
   spacial3D: 0

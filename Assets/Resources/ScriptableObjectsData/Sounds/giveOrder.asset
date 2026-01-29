@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: giveOrder
   m_EditorClassIdentifier: Assembly-CSharp::SoundSO
   clips:
-  - {fileID: 8300000, guid: 4f94ba4a864e1884da7f53e1625714a7, type: 3}
+  - {fileID: 8300000, guid: ea656dc78fe75854ba70baa6a448dd1b, type: 3}
   volume: 1
   pitchRange: {x: 1, y: 1}
   loop: 0

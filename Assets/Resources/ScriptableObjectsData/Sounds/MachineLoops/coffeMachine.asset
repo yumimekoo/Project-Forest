@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: coffeMachine
   m_EditorClassIdentifier: Assembly-CSharp::SoundSO
   clips:
-  - {fileID: 8300000, guid: 8961cae24921e9140b8f378f2dfbb6db, type: 3}
+  - {fileID: 8300000, guid: ffa68b4c66950e24e9aa7f7bd17578d8, type: 3}
   volume: 1
   pitchRange: {x: 1, y: 1}
   loop: 1

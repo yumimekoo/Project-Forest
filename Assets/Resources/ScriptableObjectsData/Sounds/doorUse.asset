@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: doorUse
   m_EditorClassIdentifier: Assembly-CSharp::SoundSO
   clips:
-  - {fileID: 8300000, guid: 23b40c2460fb54049ae9201931d7f1b3, type: 3}
-  volume: 1
+  - {fileID: 8300000, guid: 54dd42258f678bd429710f865752536d, type: 3}
+  volume: 0.25
   pitchRange: {x: 1, y: 1}
   loop: 0
   spacial3D: 1
