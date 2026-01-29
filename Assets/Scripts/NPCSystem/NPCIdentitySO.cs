@@ -6,9 +6,9 @@ public enum NPCSpecies
 {
     Bear,
     Fox,
-    Owl,
+    Wolf,
     Deer,
-    Raccoon,
+    Bunny,
     Bat,
 }
 
