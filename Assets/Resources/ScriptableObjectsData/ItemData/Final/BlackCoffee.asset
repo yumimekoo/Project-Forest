@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Black Coffee
   itemType: 2
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 1539108012533840698, guid: 6ae8e4ac8ebec2a44ba9d9cdc7cc2a56, type: 3}
+  icon: {fileID: 1336993021189973276, guid: fa3118f62c3669d47ae867a1055d0f05, type: 3}
   storageType: 0
   itemPrefab: {fileID: 0}
   shoppingCategory: 0

@@ -16,4 +16,10 @@ MonoBehaviour:
   itemName: Pumpkin Almond Milk
   itemType: 2
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: -4647876651271506643, guid: 07d7188afc579584fa7296409eace3a9, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
+  contentColor: {r: 1, g: 1, b: 1, a: 1}
+  fillLevel: 1
