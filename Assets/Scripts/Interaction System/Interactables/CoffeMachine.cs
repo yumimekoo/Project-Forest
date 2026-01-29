@@ -12,8 +12,9 @@ public class CoffeMachine : MonoBehaviour, IInteractable
     public float brewingTime = 5f;
     public ItemDataSO ingredientToAdd;
     public SoundSO placeSound;
-    public SoundSO workingSound;
     public SoundSO finishedSound;
+    [SerializeField] private LoopAudioController audioController;
+
 
     private bool isBrewing = false;
     private bool hasBeans = false;
@@ -122,8 +123,12 @@ public class CoffeMachine : MonoBehaviour, IInteractable
     {
         isBrewing = true;
 
+        audioController.StartLoop();
+        
         yield return new WaitForSeconds(brewingTime);
 
+        audioController.StopLoop();
+        
         cupInMachine.AddIngredient(ingredientToAdd);
         beanVisual.SetActive(false);
        // Debug.Log("Coffee is ready! You can now collect your cup.");

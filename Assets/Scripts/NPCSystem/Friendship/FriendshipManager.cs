@@ -14,6 +14,9 @@ public class FriendshipManager : MonoBehaviour
     
     [SerializeField] private int xpIncreasePerLevel = 2;
     
+    [SerializeField] private SoundSO levelUpSound;
+    [SerializeField] private SoundSO levelDownSound;
+    
     private Dictionary<string, FriendshipSaveData> freindships = new Dictionary<string, FriendshipSaveData>();
     private Dictionary<string, NPCIdentitySO> npcLookup = new Dictionary<string, NPCIdentitySO>();
 
@@ -77,6 +80,8 @@ public class FriendshipManager : MonoBehaviour
 
     public void AddXP(string npcID, int amount)
     {
+        if(amount < 0) AudioManager.Instance.Play(levelDownSound);
+        
         var data = Get(npcID);
         
         if (data.level >= maxLevel)
@@ -98,7 +103,9 @@ public class FriendshipManager : MonoBehaviour
             {
                 data.xp -= xpToNext; 
                 data.level++;
-
+                
+                AudioManager.Instance.Play(levelUpSound);
+                
                 HandleLevelUp(npcID, data.level);
 
                 if (data.level >= maxLevel)

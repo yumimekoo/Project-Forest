@@ -20,8 +20,8 @@ public class ProcessingMachine : MonoBehaviour, IInteractable
     [SerializeField] private string promptReady;
 
     [Header("Sounds")] 
+    [SerializeField] private LoopAudioController audioController;
     [SerializeField] private SoundSO placeSound;
-    [SerializeField] private SoundSO processingSound;
     [SerializeField] private SoundSO finishedSound;
 
     private bool isProcessing;
@@ -85,7 +85,11 @@ public class ProcessingMachine : MonoBehaviour, IInteractable
         if(processingVisual) processingVisual.SetActive(true);
         if(readyVisual) readyVisual.SetActive(false);
         
+        audioController.StartLoop();
+        
         yield return new WaitForSeconds(processingTime);
+        
+        audioController.StopLoop();
         
         if(cupInMachine && ingredientToAdd) cupInMachine.AddIngredient(ingredientToAdd);
         

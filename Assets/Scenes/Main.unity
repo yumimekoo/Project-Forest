@@ -1297,6 +1297,8 @@ MonoBehaviour:
   maxLevel: 10
   baseXpToNextLevel: 10
   xpIncreasePerLevel: 2
+  levelUpSound: {fileID: 11400000, guid: 5da6bb32457f7694384a213cc02cf412, type: 2}
+  levelDownSound: {fileID: 11400000, guid: 40075211edeee4a4eb387b17abfe5cc0, type: 2}
 --- !u!1 &874102843
 GameObject:
   m_ObjectHideFlags: 0
