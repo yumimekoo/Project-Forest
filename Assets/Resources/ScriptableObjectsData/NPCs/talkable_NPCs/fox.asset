@@ -17,7 +17,7 @@ MonoBehaviour:
   species: 1
   portrait: {fileID: -9190299373094165681, guid: 15c248bf7e8540943a24886c7609444b, type: 3}
   availability: 0
-  npcPrefab: {fileID: 1862542262716857225, guid: ff853ede2ee8394458e9e68cbebf552b, type: 3}
+  isTalkable: 1
   timeToAcceptOrder: 50
   timeToGiveOrder: 50
   timeDrinking: 10

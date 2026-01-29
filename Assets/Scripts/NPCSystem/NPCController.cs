@@ -245,7 +245,7 @@ public class NPCController : MonoBehaviour, IInteractable
                 else
                     return $"Serve drink to {identity.npcName}";
             case NPCState.Drinking:
-                if (hasTalked)
+                if (hasTalked || !identity.isTalkable)
                     return null;
                 return $"start conversation with {identity.npcName}";
             default:
@@ -275,7 +275,7 @@ public class NPCController : MonoBehaviour, IInteractable
                 Debug.LogWarning("something went wrong serving drink to NPC.");
                 break;
             case NPCState.Drinking:
-                if (hasTalked)
+                if (hasTalked || !identity.isTalkable)
                 {
                     Debug.LogWarning($"{identity.npcName} has already talked.");
                     break;
