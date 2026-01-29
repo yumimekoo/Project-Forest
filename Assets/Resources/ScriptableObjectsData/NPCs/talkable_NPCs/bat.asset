@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NPCIdentitySO
   npcID: 
   npcName: 
-  species: 0
+  species: 5
   portrait: {fileID: 0}
-  availability: 0
+  availability: 1
   npcPrefab: {fileID: 0}
   timeToAcceptOrder: 0
   timeToGiveOrder: 0

@@ -12,17 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd79a15c77b9434bb1ef54cf4de5c14, type: 3}
   m_Name: fox
   m_EditorClassIdentifier: Assembly-CSharp::NPCIdentitySO
-  npcID: 
-  npcName: 
-  species: 0
+  npcID: fox_1
+  npcName: Finn
+  species: 1
   portrait: {fileID: 0}
   availability: 0
   npcPrefab: {fileID: 0}
   timeToAcceptOrder: 0
   timeToGiveOrder: 0
   timeDrinking: 0
-  favDrinks: []
-  dislikedIngredients: []
+  favDrinks:
+  - {fileID: 11400000, guid: 664d5ac5a347dbc4ea83801313eb614d, type: 2}
+  dislikedIngredients:
+  - {fileID: 11400000, guid: cd4f234c49b03ed40b7582fc564865b0, type: 2}
   likedIngredients: []
   friendshipRewards: []
   dialogueProject: {fileID: 0}

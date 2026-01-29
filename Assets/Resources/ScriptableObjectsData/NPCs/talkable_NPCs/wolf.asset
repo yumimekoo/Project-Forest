@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd79a15c77b9434bb1ef54cf4de5c14, type: 3}
   m_Name: wolf
   m_EditorClassIdentifier: Assembly-CSharp::NPCIdentitySO
-  npcID: 
+  npcID: wolf_1
   npcName: 
-  species: 0
+  species: 2
   portrait: {fileID: 0}
-  availability: 0
+  availability: 1
   npcPrefab: {fileID: 0}
-  timeToAcceptOrder: 0
-  timeToGiveOrder: 0
-  timeDrinking: 0
+  timeToAcceptOrder: 10
+  timeToGiveOrder: 10
+  timeDrinking: 50
   favDrinks: []
   dislikedIngredients: []
   likedIngredients: []
