@@ -14,10 +14,12 @@ public class ItemDataSO : ScriptableObject
     [Header("World Prefab for Instantiating the Item")]
 
     public GameObject itemPrefab;
+    
 
     [Header("Shopping Info")]
     public ShoppingCategory shoppingCategory = ShoppingCategory.None;
     public int price = 0;
+    public bool isInfinite;
 
     public Color contentColor = Color.white;
     public FillLevel fillLevel = FillLevel.Full;

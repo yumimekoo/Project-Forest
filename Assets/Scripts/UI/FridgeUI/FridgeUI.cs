@@ -67,7 +67,7 @@ public class FridgeUI : MonoBehaviour
             var button = itemTemplate.Q<Button>("itemButton");
             var itemIcon = itemTemplate.Q<VisualElement>("itemIcon");
             itemTemplate.Q<Label>("nameLabel").text = $"{item.itemName}";
-            itemTemplate.Q<Label>("quantityLabel").text = $"x {amount}";
+            itemTemplate.Q<Label>("quantityLabel").text = item.isInfinite ? "∞" : $"x {amount}";
             
             itemIcon.style.backgroundImage = item.icon ? new StyleBackground(item.icon) : null;
             

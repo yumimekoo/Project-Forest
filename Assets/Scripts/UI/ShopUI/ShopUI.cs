@@ -178,6 +178,7 @@ public class ShopUI : MonoBehaviour
 
     private void CreateEntry(IShopItem shopItem)
     {
+        
         var entry = shopItemTemplate.Instantiate();
 
         var nameLabel = entry.Q<Label>("nameLabel");
