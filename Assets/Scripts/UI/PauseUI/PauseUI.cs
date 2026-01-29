@@ -7,6 +7,11 @@ public class PauseUI : MonoBehaviour
     public UIDocument pauseUI;
     public Sprite[] pauseSprites;
 
+    public SoundSO hoverSound;
+    public SoundSO clickSound;
+    public SoundSO closeSound;
+    public SoundSO openSound;
+
     public float animationFPS = 12f;
     
     private Button
@@ -62,6 +67,14 @@ public class PauseUI : MonoBehaviour
         yesButton.clicked += OnConfirmYes;
         noButton.clicked += OnConfirmNo;
 
+        foreach (var button in root.Query<Button>().ToList())
+        {
+            button.RegisterCallback<MouseEnterEvent>(_ =>
+            {
+                AudioManager.Instance.Play(hoverSound);
+            });
+        }
+        
         HideConfirm();
 
         SetButtons(false);
@@ -102,6 +115,7 @@ public class PauseUI : MonoBehaviour
 
     private void StartOpening()
     {
+        AudioManager.Instance.Play(openSound);
         ShowUI();
         SetButtons(false);
         state = PauseState.Opening;
@@ -109,6 +123,7 @@ public class PauseUI : MonoBehaviour
 
     private void StartClosing()
     {
+        AudioManager.Instance.Play(closeSound);
         SetButtons(false);
         state = PauseState.Closing;
     }
@@ -162,6 +177,7 @@ public class PauseUI : MonoBehaviour
     }
     private void OnSaveExitButtonClicked()
     {
+        AudioManager.Instance.Play(clickSound);
         if (GameState.isInCafe && !GameState.isInRoom)
         {
             ShowConfirm();
@@ -173,12 +189,14 @@ public class PauseUI : MonoBehaviour
 
     private void OnConfirmYes()
     {
+        AudioManager.Instance.Play(clickSound);
         HideConfirm();
         GoToMenu(withSave: false);
     }
 
     private void OnConfirmNo()
     {
+        AudioManager.Instance.Play(clickSound);
         HideConfirm();
         SetButtons(state == PauseState.Opened);
     }
@@ -188,7 +206,6 @@ public class PauseUI : MonoBehaviour
         Time.timeScale = 1f;
         
         if(withSave && SaveManager.Instance) SaveManager.Instance.SaveGame();
-        
         UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
     }
 

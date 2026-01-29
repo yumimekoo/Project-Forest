@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class TrashCan : MonoBehaviour, IInteractable
 {
+    [SerializeField] SoundSO trashSound;
     public string GetInteractionPrompt()
     {
         return "Trash item";
@@ -11,6 +12,7 @@ public class TrashCan : MonoBehaviour, IInteractable
     {
         if(player.HasItem())
         {
+            AudioManager.Instance.PlayAt(trashSound, transform);
             player.ClearItem();
             //Debug.Log("Item trashed.");
         }

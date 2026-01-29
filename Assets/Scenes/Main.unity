@@ -910,6 +910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OverlayUI
   overlayUI: {fileID: 563502363}
+  hoverSound: {fileID: 11400000, guid: d1562de23876bf64db7dd92af854b433, type: 2}
 --- !u!114 &563502363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1041,6 +1042,7 @@ GameObject:
   - component: {fileID: 719020535}
   - component: {fileID: 719020536}
   - component: {fileID: 719020537}
+  - component: {fileID: 719020538}
   m_Layer: 0
   m_Name: PlayerTest
   m_TagString: Untagged
@@ -1237,6 +1239,16 @@ MonoBehaviour:
   heldItem: {fileID: 0}
   handSlot: {fileID: 1491821400}
   heldObjectInstance: {fileID: 0}
+  pickupSound: {fileID: 11400000, guid: 617758e8dd3e5df488dc0a5ff4708c23, type: 2}
+  dropSound: {fileID: 11400000, guid: 54927a15f923a1e4ca3ceace92436e0e, type: 2}
+--- !u!81 &719020538
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719020529}
+  m_Enabled: 0
 --- !u!1 &744580250
 GameObject:
   m_ObjectHideFlags: 0
@@ -1285,6 +1297,8 @@ MonoBehaviour:
   maxLevel: 10
   baseXpToNextLevel: 10
   xpIncreasePerLevel: 2
+  levelUpSound: {fileID: 11400000, guid: 5da6bb32457f7694384a213cc02cf412, type: 2}
+  levelDownSound: {fileID: 11400000, guid: 40075211edeee4a4eb387b17abfe5cc0, type: 2}
 --- !u!1 &874102843
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,6 +1346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
   dayDurationInSeconds: 30
   dayUnlocker: {fileID: 874102846}
+  nightMusic: {fileID: 8300000, guid: b4582e48d57f5f64a8f253580c83364f, type: 3}
   currentDay: 1
   currentWeek: 1
   currentWeekday: 0
@@ -1542,6 +1557,8 @@ MonoBehaviour:
   grid: {fileID: 1198380526}
   mainCamera: {fileID: 926100322}
   deletionPreviewPrefab: {fileID: 0}
+  placeSound: {fileID: 0}
+  removeSound: {fileID: 0}
   isPointerOverUI: 0
   InputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   rotateAction:
@@ -2158,6 +2175,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FridgeUI
   fridgeUIDoc: {fileID: 1260743378}
   buttonTemp: {fileID: 9197481963319205126, guid: b68e2a7e0bb13a042ba61d1d0abc7b80, type: 3}
+  menuOpen: {fileID: 11400000, guid: 84d6bfe93b48f194f9f95f8db39dc5d3, type: 2}
+  menuClose: {fileID: 11400000, guid: 8fd249d4d68dafd4f8f2df7025e3a26d, type: 2}
+  hoverSound: {fileID: 11400000, guid: d1562de23876bf64db7dd92af854b433, type: 2}
 --- !u!1 &1290379495
 GameObject:
   m_ObjectHideFlags: 0
@@ -3062,6 +3082,10 @@ MonoBehaviour:
   - {fileID: -3739456891373041876, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
   - {fileID: 2954034183855971284, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
   - {fileID: -856460364278285395, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  hoverSound: {fileID: 11400000, guid: d1562de23876bf64db7dd92af854b433, type: 2}
+  clickSound: {fileID: 11400000, guid: bf819668cfb8a4f4aadbcb49f3a916d0, type: 2}
+  closeSound: {fileID: 11400000, guid: 08f2e88c2e440a94e8cdee31cdbe16ea, type: 2}
+  openSound: {fileID: 11400000, guid: 767929fc7af70f9419b358198d92dda8, type: 2}
   animationFPS: 12
   InputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   openPause:
@@ -3262,6 +3286,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DaySummaryUI
   daySummaryUI: {fileID: 2094637231}
   unlockedTemplate: {fileID: 9197481963319205126, guid: 6ee857af4e84d4044a4df6c827ab3b7c, type: 3}
+  closeSound: {fileID: 11400000, guid: 08f2e88c2e440a94e8cdee31cdbe16ea, type: 2}
+  openSound: {fileID: 11400000, guid: 767929fc7af70f9419b358198d92dda8, type: 2}
+  hoverSound: {fileID: 11400000, guid: d1562de23876bf64db7dd92af854b433, type: 2}
 --- !u!114 &2094637231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3346,6 +3373,10 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  bookOpenSound: {fileID: 11400000, guid: 0014f0f2915317c45807a00c190d6bc0, type: 2}
+  bookCloseSound: {fileID: 11400000, guid: e17047be8ead88b4caa54de62e6fe69f, type: 2}
+  buttonHoverSound: {fileID: 11400000, guid: d1562de23876bf64db7dd92af854b433, type: 2}
+  buttonClickSound: {fileID: 11400000, guid: bf819668cfb8a4f4aadbcb49f3a916d0, type: 2}
 --- !u!114 &2127065693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3537,6 +3568,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1724840199193139848, guid: b368d808cb0401b4c8385ef7265fe518, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4131466607536210656, guid: b368d808cb0401b4c8385ef7265fe518, type: 3}
       propertyPath: m_Name
       value: Main Camera

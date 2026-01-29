@@ -47,6 +47,8 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private DayUnlocker dayUnlocker;
     private bool nightTriggered = false;
 
+    [Header("Music")]
+    public AudioClip nightMusic;
     public event Action OnNightTriggered;
     public event Action<float> OnTimeChanged;
     public event Action<float> OnProgressChanged;
@@ -88,6 +90,7 @@ public class TimeManager : MonoBehaviour
             OnNightTriggered?.Invoke();
             GameState.isDay = false;
             GameState.isNight = true;
+            AudioManager.Instance.CrossfadeMusic(nightMusic, 4f, true);
         }
 
         if (!GameState.dayEnded && timeElapsed >= dayDurationInSeconds)

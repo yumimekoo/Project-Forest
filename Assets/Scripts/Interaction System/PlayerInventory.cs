@@ -6,6 +6,9 @@ public class PlayerInventory : MonoBehaviour
     public ItemDataSO heldItem;
     public Transform handSlot;
     public GameObject heldObjectInstance;
+    
+    [SerializeField] SoundSO pickupSound;
+    [SerializeField] SoundSO dropSound;
 
     public event System.Action OnItemChanged;
     private void Awake()
@@ -28,6 +31,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void PickUp(ItemDataSO item, GameObject obj)
     {
+        AudioManager.Instance.PlayAt(pickupSound, obj.transform);
         heldItem = item;
         heldObjectInstance = obj;
         heldObjectInstance.transform.SetParent(handSlot);
@@ -41,6 +45,7 @@ public class PlayerInventory : MonoBehaviour
     public void PlaceDown(IPlacableSurface surface)
     {
         Transform placementPoint = surface.GetPlacementPoint();
+        AudioManager.Instance.PlayAt(dropSound, placementPoint);
         SetLayer(heldObjectInstance, LayerMask.NameToLayer("Interactables"));
         heldObjectInstance.transform.SetParent(placementPoint);
         heldObjectInstance.transform.localPosition = Vector3.zero;

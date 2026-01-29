@@ -9,6 +9,9 @@ public class BuildMode3D : MonoBehaviour
     public Camera mainCamera;
     public GameObject deletionPreviewPrefab;
 
+    public SoundSO placeSound;
+    public SoundSO removeSound;
+
     private FurnitureSO currentItem;
     private int rotY = 0;
     private GameObject preview;
@@ -195,6 +198,7 @@ public class BuildMode3D : MonoBehaviour
         var go = Instantiate(currentItem.furniturePrefab, position, Quaternion.Euler(0, rotY, 0));
         go.AddComponent<FurnitureIdentifier>().so = currentItem;
         occupiedCells.Add(cell);
+        AudioManager.Instance.PlayAt(placeSound, position);
         FurniturePlacementManager.Instance.RegisterPlacement(currentItem.numericID, cell, rotY);
 
         if(GameState.inTutorial)
@@ -243,6 +247,7 @@ public class BuildMode3D : MonoBehaviour
                 FurnitureInventory.Instance.Add(soItem.numericID);
                 //Debug.Log($"Deleted furniture: {soItem.furnitureName} (ID: {soItem.numericID})");
                 Destroy(obj);
+                AudioManager.Instance.PlayAt(removeSound, obj.transform.position);
                 occupiedCells.Remove(cell);
                 FurniturePlacementManager.Instance.RemovePlacement(cell);
 

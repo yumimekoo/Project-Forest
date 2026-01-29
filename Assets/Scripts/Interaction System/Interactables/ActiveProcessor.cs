@@ -11,16 +11,23 @@ public class ActiveProcessor : MonoBehaviour, IInteractable
         public int requiredInteractions;
     }
 
-    [Header("Rules")] [SerializeField] private ProcessData[] rules;
+    [Header("Rules")] 
+    [SerializeField] private ProcessData[] rules;
 
-    [Header("Visuals (optional)")] [SerializeField]
-    private GameObject activeVisual;
+    [Header("Visuals (optional)")] 
+    [SerializeField] private GameObject activeVisual;
 
     [SerializeField] private Transform itemPlacementPoint;
 
-    [Header("Info")] [SerializeField] private string machineName;
+    [Header("Info")] 
+    [SerializeField] private string machineName;
     [SerializeField] private string prompt;
 
+    [Header("Soudns")]
+    [SerializeField] private SoundSO placeSound;
+    [SerializeField] private SoundSO interactionSound;
+    
+    
     private ProcessData activeRule;
     private int currentInteractions;
     private GameObject insertedInstance;
@@ -79,6 +86,7 @@ public class ActiveProcessor : MonoBehaviour, IInteractable
 
         if (player.heldObjectInstance)
         {
+            AudioManager.Instance.PlayAt(placeSound, transform);
             insertedInstance = player.heldObjectInstance;
             player.RemoveReference();
 
@@ -97,7 +105,7 @@ public class ActiveProcessor : MonoBehaviour, IInteractable
     {
         if (player.HasItem())
             return;
-        
+        AudioManager.Instance.PlayAt(interactionSound, transform);
         currentInteractions++;
 
         if (currentInteractions >= activeRule.requiredInteractions) FinishProcessing(player);

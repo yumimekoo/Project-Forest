@@ -4,6 +4,7 @@ using UnityEngine.UIElements;
 public class OverlayUI : MonoBehaviour
 {
     public UIDocument overlayUI;
+    public SoundSO hoverSound;
     private VisualElement 
         root,
         backgroundElement,
@@ -83,6 +84,14 @@ public class OverlayUI : MonoBehaviour
         
         pauseButton.clicked += OnPauseButtonClicked;
         bookButton.clicked += OnBookButtonClicked;
+        
+        foreach (var button in root.Query<Button>().ToList())
+        {
+            button.RegisterCallback<MouseEnterEvent>(_ =>
+            {
+                AudioManager.Instance.Play(hoverSound);
+            });
+        }
     }
 
     private void OnBookButtonClicked()

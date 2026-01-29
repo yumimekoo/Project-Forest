@@ -5,12 +5,15 @@ using UnityEngine.UIElements;
 
 public class ShopUI : MonoBehaviour
 {
-    //public static ShopUI Instance;
     public UIDocument shopUI;
     public VisualTreeAsset shopItemTemplate;
     public VisualTreeAsset shopCategoryTabTemplate;
-
-
+    public SoundSO menuOpenSound;
+    public SoundSO menuCloseSound;
+    public SoundSO hoverSound;
+    public SoundSO clickSound;
+    public SoundSO buySound;
+    
     private VisualElement
         itemContainer,
         tabsContainer;
@@ -19,6 +22,8 @@ public class ShopUI : MonoBehaviour
     private Label moneyLabel;
     private ShoppingCategory currentCategory;
     List<IShopItem> allShopItems;
+    
+    private bool inShop = false;
 
     private Dictionary<ShoppingCategory, Button> categoryButtons = new();
 
@@ -40,7 +45,7 @@ public class ShopUI : MonoBehaviour
         {
             UIManager.Instance.OnButtonsUpdated += UpdateButtons;
             UIManager.Instance.OnUIStateChanged += HandleState;
-            UIManager.Instance.OnEscapePressed += OnExitButton;
+            UIManager.Instance.OnEscapePressed += EscapePressed;
         }
     }
 
@@ -52,7 +57,7 @@ public class ShopUI : MonoBehaviour
         {
             UIManager.Instance.OnButtonsUpdated -= UpdateButtons;
             UIManager.Instance.OnUIStateChanged -= HandleState;
-            UIManager.Instance.OnEscapePressed -= OnExitButton;
+            UIManager.Instance.OnEscapePressed -= EscapePressed;
         }
     }
 
@@ -85,7 +90,14 @@ public class ShopUI : MonoBehaviour
 
         BuildShopItems();
         BuildCategoryTabs();
-        
+
+        foreach (var button in root.Query<Button>().ToList())
+        {
+            button.RegisterCallback<MouseEnterEvent>(_ =>
+            {
+                AudioManager.Instance.Play(hoverSound);
+            });
+        }
 
         ShowCategory(ShoppingCategory.Items);
         HideUI();
@@ -93,6 +105,8 @@ public class ShopUI : MonoBehaviour
 
     private void ShowUI()
     {
+        inShop = true;
+        AudioManager.Instance.Play(menuOpenSound);
         BuildShopItems();
         ShowCategory(currentCategory);
         shopUI.rootVisualElement.style.display = DisplayStyle.Flex;
@@ -103,14 +117,21 @@ public class ShopUI : MonoBehaviour
 
     private void HideUI()
     {
+        inShop = false;
         shopUI.rootVisualElement.style.display = DisplayStyle.None;
         GameState.playerInteractionAllowed = true;
         GameState.playerMovementAllowed = true;
         GameState.isInMenu = false;
     }
 
-    private void OnExitButton()
+    private void EscapePressed()
     {
+        if(inShop) OnExitButton();
+    }
+    
+    private void OnExitButton()
+    { 
+        AudioManager.Instance.Play(menuCloseSound);
         UIManager.Instance.ResetState();
         HideUI();
 
@@ -185,26 +206,31 @@ public class ShopUI : MonoBehaviour
 
         entry.Q<Button>("plusOne").clicked += () =>
         {
+            AudioManager.Instance.Play(clickSound);
             buyAmount = Mathf.Min(99, buyAmount + 1);
             Refresh();
         };
         entry.Q<Button>("minusOne").clicked += () =>
         {
+            AudioManager.Instance.Play(clickSound);
             buyAmount = Mathf.Max(1, buyAmount - 1);
             Refresh();
         };
         entry.Q<Button>("plusFive").clicked += () =>
         {
+            AudioManager.Instance.Play(clickSound);
             buyAmount = Mathf.Min(99, buyAmount + 5);
             Refresh();
         };
         entry.Q<Button>("minusFive").clicked += () =>
         {
+            AudioManager.Instance.Play(clickSound);
             buyAmount = Mathf.Max(1, buyAmount - 5);
             Refresh();
         };
         buyButton.clicked += () =>
         {
+            AudioManager.Instance.Play(buySound);
             shopItem.Buy(buyAmount);
 
             if (GameState.inTutorial && TutorialManager.Instance != null)
@@ -214,6 +240,12 @@ public class ShopUI : MonoBehaviour
 
             Refresh();
         };
+
+        foreach (var btn in entry.Query<Button>().ToList())
+        {
+            btn.RegisterCallback<MouseEnterEvent>(_ => AudioManager.Instance.Play(hoverSound));
+        }
+        
         itemContainer.Add(entry);
     }
 
@@ -231,6 +263,9 @@ public class ShopUI : MonoBehaviour
             var tabText = tabTemplate.Q<Label>("tabText");
             tabButton.clicked += () => ShowCategory(category);
             tabText.text = category.ToString();
+            
+            tabButton.clicked += () => AudioManager.Instance.Play(clickSound);
+            tabButton.RegisterCallback<MouseEnterEvent>(_ => AudioManager.Instance.Play(hoverSound));
 
             categoryButtons[category] = tabButton;
             tabsContainer.Add(tabTemplate);

@@ -6,8 +6,8 @@
     height: 224px;
     -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
     font-size: 100px;
-    color: rgb(83, 29, 4);
-    text-shadow: 5px 5px 0 rgb(227, 164, 100);
+    color: rgb(250, 103, 152);
+    text-shadow: 5px 5px 0 rgb(166, 8, 61);
     letter-spacing: 5px;
     background-image: url("project://database/Assets/UIDocuments/MainMenu/selectButton.aseprite?fileID=772625968921859919&guid=a96724002032aaf438ca6ed159f882e6&type=3#selectButton");
     background-color: rgba(0, 0, 0, 0);
@@ -20,8 +20,8 @@
 .titleLabel {
     -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
     font-size: 300px;
-    color: rgb(248, 189, 129);
-    text-shadow: 7px 7px 0 rgb(123, 51, 18);
+    color: rgb(250, 103, 152);
+    text-shadow: 7px 7px 0 rgb(166, 8, 61);
     word-spacing: 0;
     letter-spacing: 2px;
     -unity-text-outline-color: rgba(0, 0, 0, 0);
@@ -189,7 +189,6 @@
 .loadingOverlay {
     opacity: 0;
     display: none;
-
     transition-property: opacity;
     transition-duration: 250ms;
     transition-timing-function: ease-in-out;

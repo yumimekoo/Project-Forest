@@ -127,6 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e975fcff4135d0449610d7c6767d67c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Door
+  cafeDayMusic: {fileID: 8300000, guid: e51a8c916cadbcf49b0dd81226dbb1a9, type: 3}
+  roomMusic: {fileID: 8300000, guid: 8daf1751ae09c134dbaa428624b6f62f, type: 3}
+  doorSound: {fileID: 11400000, guid: 9477ba8bbdc2a864491b17b663ab77f3, type: 2}
+  doorLockedSound: {fileID: 11400000, guid: 3b25f6ecf8d61dd419540497c83d0ef3, type: 2}
 --- !u!208 &4100400562247353570
 NavMeshObstacle:
   m_ObjectHideFlags: 0

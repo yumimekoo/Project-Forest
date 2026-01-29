@@ -10,6 +10,9 @@ public class FridgeUI : MonoBehaviour
 
     [SerializeField] private UIDocument fridgeUIDoc;
     [SerializeField] private VisualTreeAsset buttonTemp;
+    [SerializeField] private SoundSO menuOpen;
+    [SerializeField] private SoundSO menuClose;
+    [SerializeField] private SoundSO hoverSound;
 
     private VisualElement 
         root,
@@ -30,13 +33,13 @@ public class FridgeUI : MonoBehaviour
     private void OnEnable()
     {
         if(!UIManager.Instance) Debug.LogError("UIManager not found!");
-        UIManager.Instance.OnEscapePressed += CloseUI;
+        UIManager.Instance.OnEscapePressed += EscapePressed;
     }
     
     private void OnDisable()
     {
         if(!UIManager.Instance) Debug.LogError("UIManager not found!");
-        UIManager.Instance.OnEscapePressed -= CloseUI;
+        UIManager.Instance.OnEscapePressed -= EscapePressed;
     }
 
     public void OpenFridge(
@@ -46,7 +49,7 @@ public class FridgeUI : MonoBehaviour
         Func<ItemDataSO, int> getAmount,
         Action<ItemDataSO> clickCallback)
     {
-
+        AudioManager.Instance.Play(menuOpen);
         Debug.Log("fridge opened");
         GameTime.SetPaused(true);
         GameState.isInMenu = true;
@@ -69,9 +72,15 @@ public class FridgeUI : MonoBehaviour
             itemIcon.style.backgroundImage = item.icon ? new StyleBackground(item.icon) : null;
             
             button.clicked += () => OnItemSelected(item);
-
             itemContainer.Add(itemTemplate);
             button.SetEnabled(canSelectItem(item));
+            
+            button.RegisterCallback<MouseEnterEvent>(_ =>
+            {
+                if(canSelectItem(item))
+                    AudioManager.Instance.Play(hoverSound);
+            });
+            
             itemTemplate.style.display = canSelectItem(item) ? DisplayStyle.Flex : DisplayStyle.None;
         }
 
@@ -83,9 +92,14 @@ public class FridgeUI : MonoBehaviour
 
         focusCatcher.Focus();
     }
+    
+    private void EscapePressed() {
+        if (GameState.isInStorage) CloseUI();
+    }
 
     private void CloseUI()
     {
+        AudioManager.Instance.Play(menuClose);
         HideUI();
         Debug.Log("fridge closed");
         GameState.isInMenu = false;

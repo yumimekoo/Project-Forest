@@ -73,3 +73,9 @@ VisualElement > VisualElement > #itemContainer > #unity-content-and-vertical-scr
     border-top-color: rgba(0, 0, 0, 0);
     border-bottom-color: rgba(0, 0, 0, 0);
 }
+
+.buyButton {
+}
+
+.exit {
+}

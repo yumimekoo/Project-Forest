@@ -11,6 +11,10 @@ public class CoffeMachine : MonoBehaviour, IInteractable
     [Header("Settings")]
     public float brewingTime = 5f;
     public ItemDataSO ingredientToAdd;
+    public SoundSO placeSound;
+    public SoundSO finishedSound;
+    [SerializeField] private LoopAudioController audioController;
+
 
     private bool isBrewing = false;
     private bool hasBeans = false;
@@ -76,6 +80,7 @@ public class CoffeMachine : MonoBehaviour, IInteractable
             //Debug.Log("Coffee beans are already added.");
             return;
         }
+        AudioManager.Instance.PlayAt(placeSound, transform);
         beanVisual.SetActive(true);
         hasBeans = true;
         player.ClearItem();
@@ -89,6 +94,7 @@ public class CoffeMachine : MonoBehaviour, IInteractable
             //Debug.Log("Cup is already in the machine.");
             return;
         }
+        AudioManager.Instance.PlayAt(placeSound, transform);
         cupInMachine = cup;
         cup.transform.SetParent(cupPlacementPoint);
         cup.transform.localPosition = Vector3.zero;
@@ -117,8 +123,12 @@ public class CoffeMachine : MonoBehaviour, IInteractable
     {
         isBrewing = true;
 
+        audioController.StartLoop();
+        
         yield return new WaitForSeconds(brewingTime);
 
+        audioController.StopLoop();
+        
         cupInMachine.AddIngredient(ingredientToAdd);
         beanVisual.SetActive(false);
        // Debug.Log("Coffee is ready! You can now collect your cup.");
@@ -126,6 +136,8 @@ public class CoffeMachine : MonoBehaviour, IInteractable
         cupReady = true;
         isBrewing = false;
         hasBeans = false;
+        
+        AudioManager.Instance.PlayAt(finishedSound, transform);
 
         if(GameState.inTutorial && TutorialManager.Instance != null)
         {

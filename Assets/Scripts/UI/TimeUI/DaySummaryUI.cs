@@ -5,6 +5,9 @@ public class DaySummaryUI : MonoBehaviour
 {
     [SerializeField] private UIDocument daySummaryUI;
     [SerializeField] private VisualTreeAsset unlockedTemplate;
+    [SerializeField] private SoundSO closeSound;
+    [SerializeField] private SoundSO openSound;
+    [SerializeField] private SoundSO hoverSound;
 
     private Label
         moneyEarnedLabel,
@@ -46,6 +49,14 @@ public class DaySummaryUI : MonoBehaviour
 
         okButton.clicked += OnOkClicked;
         payRentButton.clicked += OnPayRentClicked;
+        
+        foreach (var button in root.Query<Button>().ToList())
+        {
+            button.RegisterCallback<MouseEnterEvent>(_ =>
+            {
+                AudioManager.Instance.Play(hoverSound);
+            });
+        }
     }
 
     private void OnEnable()
@@ -59,6 +70,8 @@ public class DaySummaryUI : MonoBehaviour
 
     private void Show(DayStats stats, int day, Weekday weekday, int week, int nextRentPrice, UnlockReport report)
     {
+        AudioManager.Instance.Play(openSound);
+        
         GameState.isInMenu = true;
         dayLabel.text = $"{day}, ";
         weekdayLabel.text = weekday.ToString();
@@ -116,6 +129,7 @@ public class DaySummaryUI : MonoBehaviour
 
     private void Close()
     {
+        AudioManager.Instance.Play(closeSound);
         daySummaryUI.rootVisualElement.style.display= DisplayStyle.None;
         Time.timeScale = 1f;
     }
