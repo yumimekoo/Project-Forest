@@ -240,6 +240,9 @@ public class MainMenuUI : MonoBehaviour
         float minTime = 1f;
         float start = Time.realtimeSinceStartup;
         
+        GameState.isInCafe = false;
+        GameState.isInRoom = true;
+        
         var op = SceneManager.LoadSceneAsync("Room");
         op.allowSceneActivation = false;
         

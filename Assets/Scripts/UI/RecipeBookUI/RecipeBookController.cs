@@ -15,6 +15,12 @@ public class RecipeBookController : MonoBehaviour
     public VisualTreeAsset orderTemplate;
     public InputActionAsset InputActions;
     public InputAction bookInteract;
+    
+    [Header("Sounds")]
+    public SoundSO bookOpenSound;
+    public SoundSO bookCloseSound;
+    public SoundSO buttonHoverSound;
+    public SoundSO buttonClickSound;
 
     private int currentPage = 0;
     const int recipesPerPage = 2;
@@ -45,7 +51,7 @@ public class RecipeBookController : MonoBehaviour
             OrderManager.Instance.OnOrderChanged += RefreshOrders;
         if(!UIManager.Instance) Debug.LogError("UIManager not found!");
         UIManager.Instance.OnUIStateChanged += HandleState;
-        UIManager.Instance.OnEscapePressed += Close;
+        UIManager.Instance.OnEscapePressed += CloseESC;
         UIManager.Instance.OnRecipeBookPressed += HandleInput;
 
     }
@@ -56,7 +62,7 @@ public class RecipeBookController : MonoBehaviour
             OrderManager.Instance.OnOrderChanged -= RefreshOrders;
         if(!UIManager.Instance) Debug.LogError("UIManager not found!");
         UIManager.Instance.OnUIStateChanged -= HandleState;
-        UIManager.Instance.OnEscapePressed -= Close;
+        UIManager.Instance.OnEscapePressed -= CloseESC;
         UIManager.Instance.OnRecipeBookPressed -= HandleInput;
     }
     private void Awake()
@@ -73,15 +79,20 @@ public class RecipeBookController : MonoBehaviour
 
         prevPageButton.clicked += PrevPage;
         nextPageButton.clicked += NextPage;
-        ///closeButton.clicked += Close;
-        //searchField.RegisterValueChangedCallback(evt =>
-        //{
-        //    ApplySearch(evt.newValue);
-        //});
+        
+        prevPageButton.RegisterCallback<MouseEnterEvent>(_ =>
+        {
+            AudioManager.Instance.Play(buttonHoverSound);
+        });
+
+        nextPageButton.RegisterCallback<MouseEnterEvent>(_ =>
+        {
+            AudioManager.Instance.Play(buttonHoverSound);
+        });
 
         LoadRecipes();
         RefreshRecipesPage();
-        Close();
+        Close(false);
     }
 
     private void BuildPages(List<DrinkRuleSO> recipes)
@@ -244,10 +255,17 @@ public class RecipeBookController : MonoBehaviour
                 {
                     ShowSingleRecipe(drink);
                     isSinleRecipeView = true;
+                    AudioManager.Instance.Play(buttonClickSound);
                 }
 
             });
-
+            
+            orderItem.RegisterCallback<MouseEnterEvent>(_ =>
+            {
+                if(drink)
+                    AudioManager.Instance.Play(buttonHoverSound);
+            });
+            
             ordersContainer.Add(orderItem);
         }
     }
@@ -345,6 +363,8 @@ public class RecipeBookController : MonoBehaviour
 
     private void NextPage()
     {
+        AudioManager.Instance.Play(buttonClickSound);
+        
         if(isSinleRecipeView)
         {
             isSinleRecipeView = false;
@@ -361,6 +381,8 @@ public class RecipeBookController : MonoBehaviour
 
     private void PrevPage()
     {
+        AudioManager.Instance.Play(buttonClickSound);
+        
         if(isSinleRecipeView)
         {
             isSinleRecipeView = false;
@@ -377,6 +399,8 @@ public class RecipeBookController : MonoBehaviour
 
     private void Open()
     {
+        AudioManager.Instance.Play(bookOpenSound);
+        
         if(GameState.inTutorial && TutorialManager.Instance != null)
         {
             if (TutorialManager.Instance.currentStep != TutorialStep.OpenRecipeBook)
@@ -393,8 +417,16 @@ public class RecipeBookController : MonoBehaviour
         GameTime.SetPaused(true);
     }
 
-    private void Close()
+    private void CloseESC()
     {
+        Close();
+    }
+
+    private void Close(bool withSound = true)
+    {
+        if(withSound)
+            AudioManager.Instance.Play(bookCloseSound);
+        
         GameState.isInMenu = false;
         isBookOpen = false;
         UIManager.Instance.ResetState();

@@ -204,6 +204,8 @@ MonoBehaviour:
   loadingFps: 12
   mainMusic: {fileID: 8300000, guid: 847268ba82433614ab98c913c97a2fc3, type: 3}
   roomMusic: {fileID: 8300000, guid: 8daf1751ae09c134dbaa428624b6f62f, type: 3}
+  hoverSound: {fileID: 11400000, guid: d1562de23876bf64db7dd92af854b433, type: 2}
+  clickSound: {fileID: 11400000, guid: bf819668cfb8a4f4aadbcb49f3a916d0, type: 2}
 --- !u!1 &915575906
 GameObject:
   m_ObjectHideFlags: 0

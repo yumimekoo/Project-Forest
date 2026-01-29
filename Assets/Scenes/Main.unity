@@ -910,6 +910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OverlayUI
   overlayUI: {fileID: 563502363}
+  hoverSound: {fileID: 11400000, guid: d1562de23876bf64db7dd92af854b433, type: 2}
 --- !u!114 &563502363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3063,6 +3064,10 @@ MonoBehaviour:
   - {fileID: -3739456891373041876, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
   - {fileID: 2954034183855971284, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
   - {fileID: -856460364278285395, guid: 9a7eff230452f5948b7bfab0c42f501c, type: 3}
+  hoverSound: {fileID: 11400000, guid: d1562de23876bf64db7dd92af854b433, type: 2}
+  clickSound: {fileID: 11400000, guid: bf819668cfb8a4f4aadbcb49f3a916d0, type: 2}
+  closeSound: {fileID: 11400000, guid: 08f2e88c2e440a94e8cdee31cdbe16ea, type: 2}
+  openSound: {fileID: 11400000, guid: 767929fc7af70f9419b358198d92dda8, type: 2}
   animationFPS: 12
   InputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   openPause:
@@ -3347,6 +3352,10 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  bookOpenSound: {fileID: 11400000, guid: 0014f0f2915317c45807a00c190d6bc0, type: 2}
+  bookCloseSound: {fileID: 11400000, guid: e17047be8ead88b4caa54de62e6fe69f, type: 2}
+  buttonHoverSound: {fileID: 11400000, guid: d1562de23876bf64db7dd92af854b433, type: 2}
+  buttonClickSound: {fileID: 11400000, guid: bf819668cfb8a4f4aadbcb49f3a916d0, type: 2}
 --- !u!114 &2127065693
 MonoBehaviour:
   m_ObjectHideFlags: 0

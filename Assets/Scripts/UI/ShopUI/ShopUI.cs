@@ -9,8 +9,12 @@ public class ShopUI : MonoBehaviour
     public UIDocument shopUI;
     public VisualTreeAsset shopItemTemplate;
     public VisualTreeAsset shopCategoryTabTemplate;
-
-
+    public SoundSO menuOpenSound;
+    public SoundSO menuCloseSound;
+    public SoundSO hoverSound;
+    public SoundSO clickSound;
+    public SoundSO buySound;
+    
     private VisualElement
         itemContainer,
         tabsContainer;
