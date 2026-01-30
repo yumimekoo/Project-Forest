@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f48d42fec058148814680409a5c393, type: 3}
+  m_Name: NightProfile
+  m_EditorClassIdentifier: Assembly-CSharp::DayNightProfileSO
+  directionalColor: {r: 0.4625756, g: 0.51394635, b: 0.990566, a: 1}
+  directionalIntensity: 0.25
+  directionalEuler: {x: 50, y: -30, z: 0}
+  ambientSkyColor: {r: 0.10239409, g: 0.15089667, b: 0.3679245, a: 1}
+  ambientEquatorColor: {r: 0.111789115, g: 0.10588235, b: 0.35686275, a: 1}
+  ambientGroundColor: {r: 0.099575914, g: 0.082352936, b: 0.28235295, a: 1}
+  ambientIntensity: 1
+  useFog: 1
+  fogColor: {r: 0.5060075, g: 0.5684792, b: 0.7830189, a: 1}
+  fogDensity: 0.02
+  skyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  skyboxExposure: 0.35
+  postExposure: -0.5
