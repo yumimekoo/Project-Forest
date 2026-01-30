@@ -16,4 +16,10 @@ MonoBehaviour:
   itemName: Caramelized Nut
   itemType: 1
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: 7761416013465372574, guid: e1d4b1468778a4146b660edcc9a1bb6b, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
+  contentColor: {r: 0.7176471, g: 0.21176472, b: 0.07450981, a: 1}
+  fillLevel: 0

@@ -16,4 +16,10 @@ MonoBehaviour:
   itemName: Pirate Coffee Mix
   itemType: 1
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: -5018278543828045586, guid: 05579e0b2b2c37d448b48501ddc955bb, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
+  contentColor: {r: 0.18039216, g: 0.08235294, b: 0.007843138, a: 1}
+  fillLevel: 0

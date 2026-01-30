@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd79a15c77b9434bb1ef54cf4de5c14, type: 3}
   m_Name: bunny
   m_EditorClassIdentifier: Assembly-CSharp::NPCIdentitySO
-  npcID: 
-  npcName: 
-  species: 0
-  portrait: {fileID: 0}
+  npcID: bunny_1
+  npcName: Raleigh
+  species: 4
+  portrait: {fileID: -9190299373094165681, guid: 15c248bf7e8540943a24886c7609444b, type: 3}
   availability: 0
-  isTalkable: 0
-  timeToAcceptOrder: 0
-  timeToGiveOrder: 0
-  timeDrinking: 0
+  isTalkable: 1
+  timeToAcceptOrder: 20
+  timeToGiveOrder: 20
+  timeDrinking: 20
   favDrinks: []
   dislikedIngredients: []
   likedIngredients: []
   friendshipRewards: []
-  dialogueProject: {fileID: 0}
-  startNode: 
+  dialogueProject: {fileID: 7545569452688597077, guid: dfa0bd12f76271544b77c3480bbb4279, type: 3}
+  startNode: Bunny
   emotions: []

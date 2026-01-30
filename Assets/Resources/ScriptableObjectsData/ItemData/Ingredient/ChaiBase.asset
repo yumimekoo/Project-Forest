@@ -16,4 +16,10 @@ MonoBehaviour:
   itemName: Chai Base
   itemType: 1
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: -7831727979998167087, guid: f01a23b5d34b57b4c92fda175e479799, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
+  contentColor: {r: 0.5764706, g: 0.41176474, b: 0.14509805, a: 1}
+  fillLevel: 0

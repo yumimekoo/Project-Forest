@@ -12,19 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd79a15c77b9434bb1ef54cf4de5c14, type: 3}
   m_Name: bear
   m_EditorClassIdentifier: Assembly-CSharp::NPCIdentitySO
-  npcID: 
-  npcName: 
+  npcID: bear_1
+  npcName: Ted
   species: 0
   portrait: {fileID: 0}
   availability: 0
-  isTalkable: 0
-  timeToAcceptOrder: 0
-  timeToGiveOrder: 0
-  timeDrinking: 0
-  favDrinks: []
+  isTalkable: 1
+  timeToAcceptOrder: 10
+  timeToGiveOrder: 20
+  timeDrinking: 25
+  favDrinks:
+  - {fileID: 11400000, guid: 650e8d6a3334d0f4e8ce80ed7abf313b, type: 2}
   dislikedIngredients: []
   likedIngredients: []
   friendshipRewards: []
-  dialogueProject: {fileID: 0}
-  startNode: 
+  dialogueProject: {fileID: 7545569452688597077, guid: dfa0bd12f76271544b77c3480bbb4279, type: 3}
+  startNode: Bear
   emotions: []
