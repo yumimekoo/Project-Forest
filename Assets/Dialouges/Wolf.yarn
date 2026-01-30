@@ -1,0 +1,62 @@
+﻿title: Wolf
+position: -376,-1142
+---
+<<setUI "wolf_1">>
+
+<<if get_level("wolf_1") >= 2>>
+    <<jump Wolf_Lvl2>>
+<<elseif get_level("wolf_1") >=1>>
+    <<jump Wolf_Lvl1>>
+<<else>>
+    <<jump Wolf_Friendship_Intro>>
+<<endif>>
+Spike: ...
+<<jump Wolf_Lvl1>>
+===
+
+title : Wolf_Friendship_Intro
+position: -43,-1130
+---
+Spike: What do you want.
+<<jump Wolf_Lvl1>>
+===
+
+title: Wolf_Lvl1
+position: -304,-727
+---
+Spike: Ever heard about personal space? 
+-> You sat down in MY cafe by the way. 
+     <<jump Wolf_PositiveResponseLvl1>>
+-> I'm sorry, I'll leave you alone. 
+    Spike: Whatever. 
+===
+
+title: Wolf_PositiveResponseLvl1
+position: 109,-644
+---
+Spike: Oh you got some spice to you? Never expected that from the way you look.
+Spike: ...
+Spike: Now leave me alone you freak.
+===
+
+
+title: Wolf_Lvl2
+position: -745,-689
+---
+Spike: Oh my god, can a wolf not drink in peace?
+-> Aren't you just a ray of sunshine.
+    <<jump Wolf_PositiveResponseLvl2>>
+-> I'll leave you alone.
+
+===
+title: Wolf_PositiveResponseLvl2
+position: -741,-435
+---
+Spike: Oh, I am so incredibly sorry! Please please forgive me for my terrible manners.
+Spike: I will never ever act like this again if a random waiting staff keeps pestering me. 
+Spike: Seriously, do you have something wrong with you? 
+-> Ask yourself that. 
+    Sophia: Kill yourself.
+-> Complaining much?
+    Sophia: Go make yourself a drink at home then you giant CRYBABY.
+===

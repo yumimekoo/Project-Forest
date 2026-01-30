@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Honey Almond Milk
   itemType: 1
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: -4722947080476345565, guid: b89830eb68529c1469f7855bfc5a5c2f, type: 3}
   storageType: 0
   itemPrefab: {fileID: 0}
   shoppingCategory: 0

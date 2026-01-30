@@ -1,0 +1,76 @@
+﻿title: Deer
+position: -376,-1142
+---
+<<setUI "deer_1">>
+
+<<if get_level("deer_1") >= 2>>
+    <<jump Deer_Lvl2>>
+<<elseif get_level("deer_1") >=1>>
+    <<jump Deer_Lvl1>>
+<<else>>
+    <<jump Deer_Friendship_Intro>>
+<<endif>>
+Dee: Uhm, excuse me.
+<<jump Deer_Lvl1>>
+===
+
+title : Deer_Friendship_Intro
+position: -43,-1130
+---
+Dee: Hi...
+Sophia: Thank you.
+<<jump Deer_Lvl1>>
+===
+
+title: Deer_Lvl1
+position: -304,-727
+---
+Dee: Are you... busy right now?  
+-> No, not at all.
+    <<jump Deer_PositiveResponseLvl1>>
+-> A little, yeah.
+    Dee: Oh! That's... that's okay. Sorry for asking.  
+
+===
+
+title: Deer_PositiveResponseLvl1
+position: 109,-644
+---
+// <<set_emotion deer happy>>>
+Dee: Really? 
+//set emotion back to neutral
+Dee: Do you enjoy the quiet?
+-> I do.
+    <<friendship "deer_1" 10>>
+    Sophia: I really do, I get overwhelmed in loud spaces
+    Dee: Ah, really? Me too! There's a beautiful and quiet place in the forest, not far from here.
+    Dee: ...
+-> No I do not.
+    Sophia: I dont enjoy the quiet, it feels too lonely. 
+    Dee: Oh... I see.
+===
+
+
+title: Deer_Lvl2
+position: -745,-689
+---
+Dee: Oh... Hi!
+-> Up for a quick chat?
+    <<jump Deer_PositiveResponseLvl2>>
+-> Enjoy your drink!
+    Dee: Thank you. 
+===
+title: Deer_PositiveResponseLvl2
+position: -741,-435
+---
+Dee: ...
+Dee: ...
+Dee: Uhm... 
+-> How do you like the weather today?  
+    Sophia: How do you like the weather today? 
+    Dee: ... I guess it's alright?
+-> Well, back to work I go. 
+    Sophia: Well, back to work I go. Catch you later!
+    Dee: Oh... I'm sorry.
+
+===

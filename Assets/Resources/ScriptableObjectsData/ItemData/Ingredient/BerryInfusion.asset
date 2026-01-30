@@ -16,4 +16,10 @@ MonoBehaviour:
   itemName: Berry Infusion
   itemType: 1
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: 2997300167639768772, guid: cd029ca7d36b97448b630add2eac00a6, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
+  contentColor: {r: 0.5137255, g: 0.039215688, b: 0.09019608, a: 1}
+  fillLevel: 0

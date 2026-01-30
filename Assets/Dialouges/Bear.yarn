@@ -1,0 +1,70 @@
+﻿title: Bear
+position: -376,-1142
+---
+<<setUI "bear_1">>
+
+<<if get_level("bear_1") >= 2>>
+    <<jump Bear_Lvl2>>
+<<elseif get_level("bear_1") >=1>>
+    <<jump Bear_Lvl1>>
+<<else>>
+    <<jump Bear_Friendship_Intro>>
+<<endif>>
+Ted: Waiter...? WAITER- oh... Hi.
+<<jump Bear_Lvl1>>
+===
+
+title : Bear_Friendship_Intro
+position: -43,-1130
+---
+Ted: Oh my gosh, hi!!! You look amazing today.
+Sophia: Oh why thank you, you do too!!
+<<jump Bear_Lvl1>>
+===
+
+title: Bear_Lvl1
+position: -299,-823
+---
+
+Ted: Up for a quick chat? 
+-> Always!
+     <<jump Bear_PositiveResponseLvl1>>
+-> Actually I am a bit busy right now. 
+    Ted: Oh dont you worry honey, I'll be able to keep myself company.
+
+===
+
+title: Bear_PositiveResponseLvl1
+position: 109,-644
+---
+Ted: I'm meeting up with a friend later and we're going to a Hot Spring to relax.
+Ted: People always tell me I'm too passionate about self love...
+Ted: Do you think it's better to treat yourself or save it for later? 
+-> Life is too short to not enjoy the sweet stuff!
+    <<friendship "bear_1" 10>>
+    Sophia: Life is too short to not enjoy the sweet stuff!
+    Ted: Exactly! See, you're starting to get it!
+-> If you wait with your treat, it will feel even better! 
+    Sophia: If you wait with your treat, it will feel even better! 
+    Ted: That's fair. Balance is cute too, honestly.
+===
+
+
+title: Bear_Lvl2
+position: -745,-689
+---
+Ted: Hi, hi! I was hoping you'd be here, I have so much to tell you!
+-> What's up?
+    <<jump Bear_PositiveResponseLvl2>>
+-> Sorry, I'm a bit busy right now. 
+    Ted: Oh... That's alright. Hard working, as always!
+===
+title: Bear_PositiveResponseLvl2
+position: -745,-480
+---
+Ted: Guess what!
+Ted: I ... regretably... went to this other cafe the other day and saw they had a vanilla matcha.
+Ted: The idea sounded sooo delicious, but they totally butched it.
+Ted: But then again, maybe the barista was new to the job... I dont want to be too judgmental. 
+
+===

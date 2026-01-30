@@ -16,4 +16,10 @@ MonoBehaviour:
   itemName: Spiced Vanilla Base
   itemType: 1
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: -2018760290280080439, guid: cb1f3bf36755a8b43b61ed4ce405892b, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
+  contentColor: {r: 0.82745105, g: 0.47450984, b: 0.2627451, a: 1}
+  fillLevel: 0

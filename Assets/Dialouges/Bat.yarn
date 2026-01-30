@@ -1,0 +1,71 @@
+﻿title: Bat
+position: -376,-1142
+---
+<<setUI "bat_1">>
+
+<<if get_level("bat_1") >= 2>>
+    <<jump Bat_Lvl2>>
+<<elseif get_level("bat_1") >=1>>
+    <<jump Bat_Lvl1>>
+<<else>>
+    <<jump Bat_Friendship_Intro>>
+<<endif>>
+Beth: Hello?
+<<jump Bat_Lvl1>>
+===
+
+title : Bat_Friendship_Intro
+position: -43,-1130
+---
+Beth: Well well well, look who finally decided to show up.
+<<jump Bat_Lvl1>>
+===
+
+title: Bat_Lvl1
+position: -304,-727
+---
+
+Beth: So... Are you here to impress me, or just killing time?
+-> Maybe both?
+     <<jump Bat_PositiveResponseLvl1>>
+-> Just working.
+    Beth: Shame, I was hoping for better intentions.
+===
+
+title: Bat_PositiveResponseLvl1
+position: 109,-644
+---
+Beth: Cute answer. I'll allow it.
+Beth: So tell me about yourself. 
+Beth: Do you like to be challenged?
+-> Yes.
+    <<friendship "bat_1" 10>>
+    Sophia: I do enjoy a little challenge.
+    Beth: Good, agreement is like super boring. 
+-> No.
+    Sophia: I enjoy it more when people just agree with me.
+    Beth: Yikes.
+===
+
+
+title: Bat_Lvl2
+position: -745,-689
+---
+Beth: Awh missed me?
+-> Always.
+    <<jump Bat_PositiveResponseLvl2>>
+-> Sorry, I'm a bit busy right now. 
+    Beth: Rude. 
+===
+title: Bat_PositiveResponseLvl2
+position: -741,-435
+---
+Beth: Picture this.
+Beth: You die due to mysterious circumstances. Would you rather have cared more about being remembered or liked?
+-> Remembered.
+    Sophia: I would rather be remembered for ALL the things I've done, even if they werent all good.
+    Beth: Exactly, now you're starting to become interesting.
+-> Liked.
+    Sophia: I pride myself in spreading love and happiness and being liked by many.
+    Beth: Safe choice. Boring though.
+===

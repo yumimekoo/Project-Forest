@@ -16,5 +16,10 @@ MonoBehaviour:
   itemName: Cherry Base
   itemType: 1
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 5807791816127644353, guid: 4e0b1e473716ece428c0fc2ecab932da, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
+  contentColor: {r: 0.63529414, g: 0.21176472, b: 0.2627451, a: 1}
+  fillLevel: 0
