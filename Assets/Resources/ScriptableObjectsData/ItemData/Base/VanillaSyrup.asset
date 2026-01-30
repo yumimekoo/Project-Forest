@@ -18,6 +18,9 @@ MonoBehaviour:
   contentVisualPrefab: {fileID: 0}
   icon: {fileID: -7666378468744711982, guid: 15940a17cda6bd449ad752287dbe60aa, type: 3}
   storageType: 3
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 8037415141159388369, guid: 8c43c9b9934a2f94aaf5edc8cea09306, type: 3}
   shoppingCategory: 3
   price: 0
+  isInfinite: 0
+  contentColor: {r: 1, g: 1, b: 1, a: 1}
+  fillLevel: 1
