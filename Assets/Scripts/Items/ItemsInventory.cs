@@ -85,5 +85,7 @@ public class ItemsInventory : MonoBehaviour
               itemInventory[itemData.id] = itemData.amount;
               //Debug.Log($"[ItemsInventory] Load: ID {itemData.id} = {itemData.amount}");
         }
+        
+        
     }
 }

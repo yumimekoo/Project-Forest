@@ -37,6 +37,8 @@ public class DayUnlocker : MonoBehaviour
             if (!item) continue;
             
             if(unlockManager.UnlockItem(item)) report.unlockedItems.Add(item);
+            
+            if(item.isInfinite) ItemsInventory.Instance.Add(item.id, 1);
         }
         
         foreach (var furniture in entry.furniture)

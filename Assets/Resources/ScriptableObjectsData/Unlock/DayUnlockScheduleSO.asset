@@ -16,6 +16,58 @@ MonoBehaviour:
   - day: 1
     furniture: []
     items:
-    - {fileID: 11400000, guid: b7bad3d40804239408e54fdaae1cceec, type: 2}
-    - {fileID: 11400000, guid: df1b836b0dd42d84e97a0d3f5c767acb, type: 2}
+    - {fileID: 11400000, guid: cbabc5a54db390949932b40aa19fb748, type: 2}
+  - day: 2
+    furniture: []
+    items:
+    - {fileID: 11400000, guid: 37c1e8e3776d30d438fcddc0f7a9d295, type: 2}
     - {fileID: 11400000, guid: cd4f234c49b03ed40b7582fc564865b0, type: 2}
+    - {fileID: 11400000, guid: df1b836b0dd42d84e97a0d3f5c767acb, type: 2}
+    - {fileID: 11400000, guid: b7bad3d40804239408e54fdaae1cceec, type: 2}
+  - day: 3
+    furniture: []
+    items:
+    - {fileID: 11400000, guid: 86b472c18d7bc914aa7f105577fccc47, type: 2}
+  - day: 4
+    furniture: []
+    items:
+    - {fileID: 11400000, guid: 4689a93d966dbab428ce8cb3e1ebacca, type: 2}
+    - {fileID: 11400000, guid: 59746529ea54dfe48862f6d390043b68, type: 2}
+    - {fileID: 11400000, guid: b063ede63fcb3504e84d1fb3c4fc61cc, type: 2}
+    - {fileID: 11400000, guid: b6b240efda28647438d63c5a4ec4329e, type: 2}
+  - day: 5
+    furniture: []
+    items:
+    - {fileID: 11400000, guid: 51cc7b45e9069e947a91417d48910bd6, type: 2}
+  - day: 6
+    furniture: []
+    items:
+    - {fileID: 11400000, guid: 0df0fbb8ffd1f6e489f2df88ef31d78b, type: 2}
+    - {fileID: 11400000, guid: 5ae42d4976ef6ef45ab3c771de9884c4, type: 2}
+    - {fileID: 11400000, guid: b71c6a8b28dc30a4bbd88df4ff85a936, type: 2}
+    - {fileID: 11400000, guid: 49a6c738e1b740a44ae16e59372d9d3d, type: 2}
+  - day: 7
+    furniture: []
+    items:
+    - {fileID: 11400000, guid: 6ef4e777c2f04684da5e51f409a1e4bf, type: 2}
+    - {fileID: 11400000, guid: 5abc44d691031774cae103d8424d26f5, type: 2}
+    - {fileID: 11400000, guid: bb137c6ae2fa5064480fb13ae3fec5db, type: 2}
+  - day: 8
+    furniture: []
+    items:
+    - {fileID: 11400000, guid: 9e0020f3e898d5140aa8667cf846d989, type: 2}
+    - {fileID: 11400000, guid: cd3e93e3c0f31ed44a9dcf6f4e22664b, type: 2}
+    - {fileID: 11400000, guid: e39b465696a60e048a1db229563e075a, type: 2}
+    - {fileID: 11400000, guid: a71ea1902546cb6459c7be278c03eb70, type: 2}
+    - {fileID: 11400000, guid: 116907e71f4441945adf825cd0d67a58, type: 2}
+    - {fileID: 11400000, guid: 2b548b82c06e18249beb983f1f1ae06e, type: 2}
+    - {fileID: 11400000, guid: dc95f057c7a427b43b72510492e51c86, type: 2}
+    - {fileID: 11400000, guid: 1b7515bca1207b744848f5b5cd244b75, type: 2}
+    - {fileID: 11400000, guid: 2ee5fde3c6a7cd84382f8987c115f626, type: 2}
+    - {fileID: 11400000, guid: 4d9c7575538e66b469ef79969edf82d4, type: 2}
+  - day: 9
+    furniture: []
+    items:
+    - {fileID: 11400000, guid: 1b67c8f77381c4c4aaed8957011d739b, type: 2}
+    - {fileID: 11400000, guid: 140fa9c5f12644749bf8d73d041ade99, type: 2}
+    - {fileID: 11400000, guid: f836e5bdbe44f2248a8a23ee6409d1c5, type: 2}
