@@ -21,3 +21,5 @@ MonoBehaviour:
   itemPrefab: {fileID: 0}
   shoppingCategory: 0
   price: 0
+  contentColor: {r: 0.93333334, g: 0.5568628, b: 0.047058824, a: 1}
+  fillLevel: 1

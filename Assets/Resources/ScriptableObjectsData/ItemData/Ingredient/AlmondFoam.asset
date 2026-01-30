@@ -16,10 +16,10 @@ MonoBehaviour:
   itemName: Almond Foam
   itemType: 1
   contentVisualPrefab: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: -917576838868979117, guid: 4aead3479648ead4386e84b6669ad54d, type: 3}
   storageType: 0
   itemPrefab: {fileID: 0}
   shoppingCategory: 0
   price: 0
-  contentColor: {r: 0.10457456, g: 0.8867924, b: 0.64758354, a: 1}
+  contentColor: {r: 1, g: 0.9803922, b: 0.93725497, a: 1}
   fillLevel: 1
