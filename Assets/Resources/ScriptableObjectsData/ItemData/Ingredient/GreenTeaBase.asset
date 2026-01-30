@@ -16,4 +16,10 @@ MonoBehaviour:
   itemName: Green Tea Base
   itemType: 1
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: -7594767628889423026, guid: 14acbacf7c499de4385e936e8c36f14f, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
+  contentColor: {r: 0.3647059, g: 0.50980395, b: 0.18431373, a: 1}
+  fillLevel: 0

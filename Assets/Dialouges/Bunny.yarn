@@ -1,0 +1,67 @@
+﻿title: Bunny
+position: -376,-1142
+---
+<<setUI "bunny_1">>
+
+<<if get_level("bunny_1") >= 2>>
+    <<jump Bunny_Lvl2>>
+<<elseif get_level("bunny_1") >=1>>
+    <<jump Bunny_Lvl1>>
+<<else>>
+    <<jump Bunny_Friendship_Intro>>
+<<endif>>
+Raleigh: Uhm, excuse me.
+<<jump Bunny_Lvl1>>
+===
+
+title : Bunny_Friendship_Intro
+position: -43,-1130
+---
+Raleigh: Oh, hi. Welcome. I like your color palette today. It is very... harmonious. 
+Sophia: Thank you.
+<<jump Bunny_Lvl1>>
+===
+
+title: Bunny_Lvl1
+position: -304,-727
+---
+Raleigh: ...
+Raleigh: ...
+Raleigh: Oh, excuse my absence. I have just been thinking. 
+-> Thinking about what?
+     <<jump Bunny_PositiveResponseLvl1>>
+-> I'll come back later. 
+    Raleigh: That is perfectly fine.  
+===
+
+title: Bunny_PositiveResponseLvl1
+position: 109,-644
+---
+Raleigh: Do you enjoy a more tidy or lived in place?
+-> Tidy.
+    <<friendship "bunny_1" 10>>
+    Sophia: I make sure to keep my spaces clean and mess-free. Organisation is everything.
+    Raleigh: Me too, I do not understand how some can live like that.  
+-> Lived in.
+    Sophia: I feel like places need a bit of mess in them, or else they feel fake.
+    Raleigh: Mhm... I suppose so.
+===
+
+
+title: Bunny_Lvl2
+position: -745,-689
+---
+Raleigh: Good Evening, I have been meaning to talk to you. 
+-> How can I help?
+    <<jump Bunny_PositiveResponseLvl2>>
+-> Sorry, I'm a bit busy right now. 
+    Raleigh: I understand. 
+===
+title: Bunny_PositiveResponseLvl2
+position: -741,-435
+---
+Raleigh: I had some trouble with buying some fabric earlier. 
+Raleigh: And by trouble, I mean the casheer's outfit totally clashed with their accessories. 
+Raleigh: Obviously I did not tell them, but it sure has ruined my day. 
+Raleigh: Perhaps a nice warm cup of Herbal Tea could help me unwind. 
+===

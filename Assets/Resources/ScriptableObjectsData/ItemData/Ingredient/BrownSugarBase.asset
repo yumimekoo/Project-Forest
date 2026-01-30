@@ -16,4 +16,10 @@ MonoBehaviour:
   itemName: Brown Sugar Base
   itemType: 1
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: -6637496620180226247, guid: 1f483b97b6d019c42bde25a3295f4603, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
+  contentColor: {r: 0.6392157, g: 0.2901961, b: 0.03529412, a: 1}
+  fillLevel: 0

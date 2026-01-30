@@ -16,4 +16,10 @@ MonoBehaviour:
   itemName: Taro Base
   itemType: 1
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: -8380485388978087004, guid: 7c3641949eb2982498a799a8d2ef0b94, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
+  contentColor: {r: 0.078431375, g: 0.03137255, b: 0.003921569, a: 1}
+  fillLevel: 0
