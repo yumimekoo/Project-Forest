@@ -483,7 +483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc74c2042f197c45bf88b9bb6dd681a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemsInventory
-  baseInventory: {fileID: 11400000, guid: adb4d19f7c9d51f4a8fc6595f99766ba, type: 2}
+  baseInventory: {fileID: 11400000, guid: 18f0f074ccf5a1f48929d978eb84e5b3, type: 2}
 --- !u!1001 &178626026
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2475,7 +2475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FurnitureInventory
   buildMode3D: {fileID: 1050913549}
-  defaultInventory: []
+  baseInventory: {fileID: 11400000, guid: 18f0f074ccf5a1f48929d978eb84e5b3, type: 2}
 --- !u!1 &1314382293
 GameObject:
   m_ObjectHideFlags: 0
@@ -2964,7 +2964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 417ba2ec9a1ca0447800616d2a791831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCPool
-  tutorialNPC: {fileID: 1862542262716857225, guid: e8c4ae7b6791fb342bb5e6d19479954e, type: 3}
+  tutorialNPC: {fileID: 1862542262716857225, guid: 7c4d760471a00ef4c9e2e2b36dfa9b2b, type: 3}
   baseNPC: {fileID: 1862542262716857225, guid: e8c4ae7b6791fb342bb5e6d19479954e, type: 3}
   wolfVisual: {fileID: 2327099910776166301, guid: 15c46eef0dfb9e246aee98d7081e0110, type: 3}
   bearVisual: {fileID: 2327099910776166301, guid: 6ca9336b51d2d404eaeb90ae289d4636, type: 3}

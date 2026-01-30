@@ -6,15 +6,8 @@ public class FurnitureInventory : MonoBehaviour
 {
     public static FurnitureInventory Instance;
     public BuildMode3D buildMode3D;
+    public DefaultInventorySO baseInventory;
     private Dictionary<int,int> inventory = new Dictionary<int,int>();
-
-    [System.Serializable]
-    public class DefaultItem
-    {
-        public int id;
-        public int amount;
-    }
-    public List<DefaultItem> defaultInventory = new List<DefaultItem>();
 
     public event Action<int, int> OnInventoryChanged;
 
@@ -33,11 +26,14 @@ public class FurnitureInventory : MonoBehaviour
     public void InitDefaultInventory()
     {
         inventory.Clear();
-
-        foreach (var item in defaultInventory)
+        if (!baseInventory) return;
+        
+        foreach( var stack in baseInventory.defaultFurniture)
         {
-            inventory[item.id] = item.amount;
-            //Debug.Log($"[FurnitureInventory] Default: ID {item.id} = {item.amount}");
+            if (!stack.item|| stack.amount <= 0) continue;
+            
+            int id = stack.item.numericID;
+            inventory[id] = stack.amount;
         }
     }
 

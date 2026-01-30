@@ -22,6 +22,8 @@ public enum ShoppingCategory
     Resources,
     Furniture,
     Items,
-    Decoration,//and more
+    Decoration,
+    Machines,
+    //and more
 }
 

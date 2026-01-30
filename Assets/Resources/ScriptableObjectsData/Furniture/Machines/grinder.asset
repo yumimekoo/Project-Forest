@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6206092c6f5641d48b19f46ee8325c00, type: 3}
+  m_Name: grinder
+  m_EditorClassIdentifier: Assembly-CSharp::FurnitureSO
+  furnitureName: Grinder
+  id: grinder
+  numericID: 1013
+  buildCategory: 2
+  placementType: 0
+  furniturePrefab: {fileID: 1862542262716857225, guid: 1bd49299be0d58c40bce5079257cf1b9, type: 3}
+  furniturePreview: {fileID: 1862542262716857225, guid: 1bd49299be0d58c40bce5079257cf1b9, type: 3}
+  size: {x: 1, y: 1}
+  icon: {fileID: 0}
+  shoppingCategory: 5
+  price: 0
+  isAvailableInShop: 1
