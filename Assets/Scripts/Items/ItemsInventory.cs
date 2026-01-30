@@ -4,7 +4,7 @@ using UnityEngine;
 public class ItemsInventory : MonoBehaviour
 {
     public static ItemsInventory Instance;
-    public BaseItemInventorySO baseInventory;
+    public DefaultInventorySO baseInventory;
     private Dictionary<int, int> itemInventory = new();
     
 
@@ -20,15 +20,15 @@ public class ItemsInventory : MonoBehaviour
 
     public void InitializeIfEmpty()
     {
-        if (itemInventory.Count > 0 || baseInventory == null)
+        if (itemInventory.Count > 0 || !baseInventory)
             return;
 
-        foreach (var item in baseInventory.startItems)
+        foreach (var stack in baseInventory.defaultItems)
         {
-            if (item.amount > 0)
-                itemInventory[item.id] = item.amount;
+            if (!stack.item || stack.amount <= 0) continue;
 
-            //Debug.Log($"[ItemsInventory] Init: ID {item.id} = {item.amount}");
+            int id = stack.item.id;
+            itemInventory[id] = stack.amount;
         }
     }
 

@@ -164,13 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FurnitureInventory
   buildMode3D: {fileID: 1603184434}
-  defaultInventory:
-  - id: 10
-    amount: 5
-  - id: 11
-    amount: 5
-  - id: 12
-    amount: 5
+  baseInventory: {fileID: 11400000, guid: 18f0f074ccf5a1f48929d978eb84e5b3, type: 2}
 --- !u!1001 &162685251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1539,7 +1533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc74c2042f197c45bf88b9bb6dd681a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemsInventory
-  baseInventory: {fileID: 11400000, guid: adb4d19f7c9d51f4a8fc6595f99766ba, type: 2}
+  baseInventory: {fileID: 11400000, guid: 18f0f074ccf5a1f48929d978eb84e5b3, type: 2}
 --- !u!1001 &1259471913
 PrefabInstance:
   m_ObjectHideFlags: 0

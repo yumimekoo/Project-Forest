@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6206092c6f5641d48b19f46ee8325c00, type: 3}
-  m_Name: fridge_1
+  m_Name: grinder
   m_EditorClassIdentifier: Assembly-CSharp::FurnitureSO
-  furnitureName: Fridge
-  id: fridge_1
-  numericID: 10
-  buildCategory: 1
+  furnitureName: Grinder
+  id: grinder
+  numericID: 1013
+  buildCategory: 2
   placementType: 0
-  furniturePrefab: {fileID: 1862542262716857225, guid: 2a86fa2f8d6089d4fa09e5f89b9e646d, type: 3}
-  furniturePreview: {fileID: 1789459280500734020, guid: f7bd6e50af2b3bc4997dae8e2e31b749, type: 3}
+  furniturePrefab: {fileID: 1862542262716857225, guid: 1bd49299be0d58c40bce5079257cf1b9, type: 3}
+  furniturePreview: {fileID: 1862542262716857225, guid: 1bd49299be0d58c40bce5079257cf1b9, type: 3}
   size: {x: 1, y: 1}
   icon: {fileID: 0}
-  shoppingCategory: 0
+  shoppingCategory: 5
   price: 0
   isAvailableInShop: 1
