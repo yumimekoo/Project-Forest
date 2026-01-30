@@ -16,4 +16,11 @@ MonoBehaviour:
   itemName: Iced Hazelnut Almond Milk
   itemType: 1
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: 227818419303728431, guid: e8b054946b512094eaa450d1aaf9a3bc, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
+  isInfinite: 0
+  contentColor: {r: 0.8352941, g: 0.7372549, b: 0.5686275, a: 1}
+  fillLevel: 1

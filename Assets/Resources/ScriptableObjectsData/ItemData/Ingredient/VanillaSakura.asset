@@ -16,4 +16,11 @@ MonoBehaviour:
   itemName: Vanilla Sakura
   itemType: 1
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: -421035811796443525, guid: 28524db8dbcb6e947b43551e3bf36456, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
+  isInfinite: 0
+  contentColor: {r: 0.9176471, g: 0.7372549, b: 0.8235295, a: 1}
+  fillLevel: 0
