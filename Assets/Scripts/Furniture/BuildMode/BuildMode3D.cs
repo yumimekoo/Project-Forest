@@ -20,6 +20,7 @@ public class BuildMode3D : MonoBehaviour
     private bool placingMode = false;
     private bool deleteMode = false;
     public bool isPointerOverUI = false;
+    private bool previewVisible = true;
 
     private HashSet<Vector2Int> occupiedCells = new();
 
@@ -30,6 +31,11 @@ public class BuildMode3D : MonoBehaviour
     public InputAction clickAction;
     public InputAction rightClickAction;
     public InputAction pointerPos;
+    
+    private Renderer[] previewRenderers;
+    private MaterialPropertyBlock mpb;
+    private static readonly int BaseColorID = Shader.PropertyToID("_BaseColor");
+    
     private void Awake()
     {
         clickAction = InputSystem.actions.FindAction("LeftClick");
@@ -42,11 +48,13 @@ public class BuildMode3D : MonoBehaviour
     private void OnEnable()
     {
         InputActions.FindActionMap("Player").Enable();
+        if (FurnitureInventory.Instance) FurnitureInventory.Instance.OnInventoryChanged += HandleInventoryChanged;
     }
 
     private void OnDisable()
     {
         InputActions.FindActionMap("Player").Disable();
+        if (FurnitureInventory.Instance) FurnitureInventory.Instance.OnInventoryChanged -= HandleInventoryChanged;
     }
 
     public void StartBuild(FurnitureSO item)
@@ -66,6 +74,17 @@ public class BuildMode3D : MonoBehaviour
         isPlacing = false;
 
         SetPreview(null);
+    }
+
+    private void HandleInventoryChanged(int id, int newAmount)
+    {
+        if (!currentItem) return;
+        if (deleteMode) return;
+        if (currentItem.numericID != id) return;
+        if (newAmount <= 0)
+        {
+            StopBuild();
+        }
     }
 
     private void Update()
@@ -110,6 +129,14 @@ public class BuildMode3D : MonoBehaviour
             isPlacing = false;
             SetPreview(null);
     }
+    
+    private void SetPreviewVisible(bool visible)
+    {
+        previewVisible = visible;
+
+        if (preview != null)
+            preview.SetActive(visible);
+    }
 
     public int GetOccupiedCells()
     {
@@ -126,6 +153,7 @@ public class BuildMode3D : MonoBehaviour
         Ray ray = mainCamera.ScreenPointToRay(pointerPos.ReadValue<Vector2>());
         if(!Physics.Raycast(ray, out RaycastHit hitInfo))
         {
+            SetPreviewVisible(false);
             return;
         }
 
@@ -134,8 +162,13 @@ public class BuildMode3D : MonoBehaviour
         bool occupied = occupiedCells.Contains(cell);
 
         if (!inside)
+        {
+            SetPreviewVisible(false);
             return;
-
+        }
+            
+        SetPreviewVisible(true);
+        
         Vector3 snapPos = grid.GetWorldPosition(cell.x, cell.y);
 
         if (deleteMode)
@@ -168,11 +201,16 @@ public class BuildMode3D : MonoBehaviour
         {
             preview = Instantiate(prefab);
             preview.tag = "Untagged";
-
             preview.layer = LayerMask.NameToLayer("Ignore Raycast");
+            
+            previewRenderers = preview.GetComponentsInChildren<Renderer>(true);
+            if(mpb == null) mpb = new MaterialPropertyBlock();
         }
         else
+        {
             preview = null;
+            previewRenderers = null;
+        }
     }
 
     private void RefreshPreviewForCurrentMode()
@@ -204,19 +242,30 @@ public class BuildMode3D : MonoBehaviour
         preview.transform.rotation = Quaternion.Euler(0, rotY, 0);
         if (deleteMode)
         {
-            //preview.GetComponent<Renderer>().material.color = new Color(1, 0, 0, 0.3f);
             return;
         }
         
-        foreach (var r in preview.GetComponentsInChildren<Renderer>())
-            r.material.color = occupied ? new Color(1, 0, 0, 0.3f) : new Color(0, 1, 0, 0.3f);
+        SetPreviewColor(occupied
+            ? new Color(1, 0, 0, 0.3f)
+            : new Color(0, 1, 0, 0.3f));
         
     }
+    
+    private void SetPreviewColor(Color c)
+    {
+        if (previewRenderers == null) return;
+
+        mpb.Clear();
+        mpb.SetColor(BaseColorID, c);
+
+        foreach (var r in previewRenderers)
+            r.SetPropertyBlock(mpb);
+    }
+    
     private void PlaceFurniture(Vector2Int cell, Vector3 position)
     {
         if(!FurnitureInventory.Instance.Remove(currentItem.numericID))
         {
-            //Debug.Log("Not enough items in inventory to place furniture.");
             return;
         }
         var go = Instantiate(currentItem.furniturePrefab, position, Quaternion.Euler(0, rotY, 0));
