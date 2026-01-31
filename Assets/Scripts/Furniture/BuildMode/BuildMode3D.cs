@@ -11,6 +11,10 @@ public class BuildMode3D : MonoBehaviour
 
     public SoundSO placeSound;
     public SoundSO removeSound;
+    
+    [Header("Default blocked cells (always occupied)")]
+    [SerializeField] private List<Vector2Int> blockedCells = new();
+    private HashSet<Vector2Int> blocked = new();
 
     private FurnitureSO currentItem;
     private int rotY = 0;
@@ -42,6 +46,13 @@ public class BuildMode3D : MonoBehaviour
         rightClickAction = InputSystem.actions.FindAction("DeleteMode");
         rotateAction = InputSystem.actions.FindAction("Rotate");
         pointerPos = InputSystem.actions.FindAction("PointerPos");
+    }
+
+    public void Start()
+    {
+        blocked = new HashSet<Vector2Int>(blockedCells);
+        foreach (var c in blocked)
+            occupiedCells.Add(c);
     }
 
 
@@ -142,6 +153,14 @@ public class BuildMode3D : MonoBehaviour
     {
         return occupiedCells.Count;
     }
+    
+    private bool IsCellBlocked(Vector2Int cell) => blocked != null && blocked.Contains(cell);
+
+    private bool IsCellOccupied(Vector2Int cell)
+    {
+        return IsCellBlocked(cell) || occupiedCells.Contains(cell);
+    }
+
     private void HandlePlacementOrDeletion()
     {
         if(rotateAction.WasPressedThisFrame() && !deleteMode)
@@ -159,7 +178,8 @@ public class BuildMode3D : MonoBehaviour
 
         Vector2Int cell = grid.WorldToGrid(hitInfo.point);
         bool inside = grid.IsInsideGrid(cell.x, cell.y);
-        bool occupied = occupiedCells.Contains(cell);
+        bool blockedCell = IsCellBlocked(cell);
+        bool occupied = IsCellOccupied(cell);
 
         if (!inside)
         {
@@ -174,7 +194,7 @@ public class BuildMode3D : MonoBehaviour
         if (deleteMode)
         {
             Preview(cell, snapPos, occupied);
-            if (clickAction.WasPressedThisFrame())
+            if (clickAction.WasPressedThisFrame() && !blockedCell)
             {
                 TryDelete(cell);
             }
@@ -285,33 +305,39 @@ public class BuildMode3D : MonoBehaviour
     private void TryRandomPlace(FurnitureSO item)
     {
         List<Vector2Int> freeCells = new List<Vector2Int>();
+
         for (int x = 0; x < grid.width; x++)
         {
             for (int y = 0; y < grid.height; y++)
             {
                 Vector2Int cell = new Vector2Int(x, y);
-                if (!occupiedCells.Contains(cell))
-                {
-                    freeCells.Add(cell);
-                }
+                
+                if (IsCellOccupied(cell))
+                    continue;
+
+                freeCells.Add(cell);
             }
         }
+
         if (freeCells.Count == 0)
-        {
             return;
-        }
+
         Vector2Int randomCell = freeCells[Random.Range(0, freeCells.Count)];
         Vector3 position = grid.GetWorldPosition(randomCell.x, randomCell.y);
-        var go = Instantiate(item.furniturePrefab, position, Quaternion.Euler(0, 0, 0));
+
+        var go = Instantiate(item.furniturePrefab, position, Quaternion.identity);
         go.AddComponent<FurnitureIdentifier>().so = item;
+
         occupiedCells.Add(randomCell);
         FurniturePlacementManager.Instance.RegisterPlacement(item.numericID, randomCell, 0);
         FurnitureInventory.Instance.Remove(item.numericID);
-        //Debug.Log($"Randomly placed furniture: {item.furnitureName} (ID: {item.numericID}) at ({randomCell.x}, {randomCell.y})");
     }
+
 
     private void TryDelete(Vector2Int cell)
     {
+        if (IsCellBlocked(cell)) return;
+        
         foreach (var obj in GameObject.FindGameObjectsWithTag("Furniture"))
         {
             if (grid.WorldToGrid(obj.transform.position) != cell)
@@ -355,6 +381,8 @@ public class BuildMode3D : MonoBehaviour
             }
             Vector3 spawn = grid.GetWorldPosition(item.x, item.y);
             Quaternion rotation = Quaternion.Euler(0, item.rotY, 0);
+            var cell = new Vector2Int(item.x, item.y);
+            if(IsCellBlocked(cell)) continue;
             var go = Instantiate(so.furniturePrefab, spawn, rotation);
             go.AddComponent<FurnitureIdentifier>().so = so;
             occupiedCells.Add(new Vector2Int(item.x, item.y));

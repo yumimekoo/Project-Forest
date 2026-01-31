@@ -2273,6 +2273,8 @@ MonoBehaviour:
   deletionPreviewPrefab: {fileID: 1789459280500734020, guid: f7bd6e50af2b3bc4997dae8e2e31b749, type: 3}
   placeSound: {fileID: 11400000, guid: 09f508d5c1e9651479c76e362aec02f7, type: 2}
   removeSound: {fileID: 11400000, guid: b975ea8490a88a24eb3c6f2a5e36adc7, type: 2}
+  blockedCells:
+  - {x: 0, y: 0}
   isPointerOverUI: 0
   InputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   rotateAction:
