@@ -377,6 +377,9 @@ MonoBehaviour:
   uiGroup: {fileID: -4312999648410363981, guid: 1458c640a60594b4eacc7d94c902c57f, type: 2}
   defaultMusicFadeTime: 4
   defaultSFXPoolSize: 10
+  pauseMusicVolumeMultiplier: 0.75
+  pauseMusicPitchMultiplier: 0.8
+  pauseTransitionSeconds: 0.75
 --- !u!4 &989345778
 Transform:
   m_ObjectHideFlags: 0
@@ -548,6 +551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4c4454c6e948346b819cc2d08f97a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveManager
+  tutorialPrefab: {fileID: 3163656550637090667, guid: f82ebe75fa77f344095fd0f475ace7d2, type: 3}
 --- !u!4 &2020621260
 Transform:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance;
-
+    public GameObject tutorialPrefab;
     public int ActiveSaveSlot { get; private set; } = 0;
 
     private void Awake()
@@ -40,7 +40,6 @@ public class SaveManager : MonoBehaviour
     public void SetActiveSaveSlot(int slot)
     {
         ActiveSaveSlot = slot;
-        //Debug.Log($"Active save slot set to {slot}");
     }
 
     public void SaveGame()
@@ -64,6 +63,9 @@ public class SaveManager : MonoBehaviour
         if (!SaveSystem.InfoExists(ActiveSaveSlot))
         {
             SaveSystem.CreateNewSlotInfo(ActiveSaveSlot, "New Save");
+            GameState.Reset();
+            Instantiate(tutorialPrefab, Vector3.zero, Quaternion.identity);
+            if(TutorialManager.Instance != null) TutorialManager.Instance.Initialize();
         }
         GameSaveData saveData = SaveSystem.Load(ActiveSaveSlot);
         UnlockManager.Instance.ApplySaveData(saveData.unlocks);
@@ -74,9 +76,8 @@ public class SaveManager : MonoBehaviour
         FurnitureInventory.Instance.ApplySaveData(saveData.furnitureInventory);
         TimeManager.Instance.ApplySaveData(saveData.currentDay);
         GameState.ApplySaveData(saveData.gameState);
-        TutorialManager.Instance?.CheckDestroyment();
-
-        // maybe a UI refresher handler? 
+        //TutorialManager.Instance?.CheckDestroyment();
+        
 
         if (saveData.placedFurniture == null || saveData.placedFurniture.Count == 0)
         {

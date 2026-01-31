@@ -16,11 +16,21 @@ public class AudioManager : MonoBehaviour
     
     [Header("SFX Pool")]
     [SerializeField] private int defaultSFXPoolSize = 10;
+    
+    [Header("Pause Feel (Music)")]
+    [SerializeField] private float pauseMusicVolumeMultiplier = 0.75f; // z.B. 0.7 - 0.85
+    [SerializeField] private float pauseMusicPitchMultiplier = 0.6f;  // z.B. 0.88 - 0.95
+    [SerializeField] private float pauseTransitionSeconds = 1f;
+
+    private Coroutine pauseRoutine;
+    private float pauseBlend = 0f;
 
     private AudioSource musicA;
     private AudioSource musicB;
     private bool aIsActive = true;
     private Coroutine musicFadeRoutine;
+    private float musicABaseVol = 1f;
+    private float musicBBaseVol = 0f;
     
     private AudioSource[] sfxPool;
     private int sfxPoolIndex = 0;
@@ -50,6 +60,10 @@ public class AudioManager : MonoBehaviour
         
         musicA.volume = 1f;
         musicB.volume = 0f;
+        
+        musicABaseVol = 1f;
+        musicBBaseVol = 0f;
+        ApplyPauseToMusicSources();
     }
 
     private void ConfigureMusicSource(AudioSource src)
@@ -174,8 +188,9 @@ public class AudioManager : MonoBehaviour
     public void SetMusicBlend(float t)
     {
         t = Mathf.Clamp01(t);
-        musicA.volume = 1f - t;
-        musicB.volume = t;
+        musicABaseVol = 1f - t;
+        musicBBaseVol = t;
+        ApplyPauseToMusicSources();
         
         if(musicA.clip && !musicA.isPlaying) musicA.Play();
         if(musicB.clip && !musicB.isPlaying) musicB.Play();
@@ -191,8 +206,8 @@ public class AudioManager : MonoBehaviour
 
     private IEnumerator FadeRoutine(AudioSource from, AudioSource to, float seconds)
     {
-        float startFrom = from.volume;
-        float startTo = to.volume;
+        float startFrom = from == musicA ? musicABaseVol : musicBBaseVol;
+        float startTo   = to   == musicA ? musicABaseVol : musicBBaseVol;
 
         float time = 0f;
         while (time < seconds)
@@ -200,22 +215,27 @@ public class AudioManager : MonoBehaviour
             time += Time.unscaledDeltaTime;
             float a = seconds <= 0.0001f ? 1f : Mathf.Clamp01(time / seconds);
             
-            from.volume = Mathf.Lerp(startFrom, 0f, a);
-            to.volume = Mathf.Lerp(startTo, 1f, a);
+            float fromBase = Mathf.Lerp(startFrom, 0f, a);
+            float toBase = Mathf.Lerp(startTo, 1f, a);
             
+            if (from == musicA) musicABaseVol = fromBase; else musicBBaseVol = fromBase;
+            if (to   == musicA) musicABaseVol = toBase;   else musicBBaseVol = toBase;
+            
+            ApplyPauseToMusicSources();
             yield return null;
         }
 
-        from.volume = 0f;
-        to.volume = 1f;
+        if (from == musicA) musicABaseVol = 0f; else musicBBaseVol = 0f;
+        if (to   == musicA) musicABaseVol = 1f; else musicBBaseVol = 1f;
+        ApplyPauseToMusicSources();
         
         from.Stop();
     }
 
     private IEnumerator StopMusicRoutine(float seconds)
     {
-        float aStart = musicA.volume;
-        float bStart = musicB.volume;
+        float aStart = musicABaseVol;
+        float bStart = musicBBaseVol;
 
         float time = 0f;
         while (time < seconds)
@@ -223,16 +243,56 @@ public class AudioManager : MonoBehaviour
             time += Time.unscaledDeltaTime;
             float a = seconds <= 0.0001f ? 1f : Mathf.Clamp01(time / seconds);
             
-            musicA.volume = Mathf.Lerp(aStart, 0f, a);
-            musicB.volume = Mathf.Lerp(bStart, 0f, a);
+            musicABaseVol = Mathf.Lerp(aStart, 0f, a);
+            musicBBaseVol = Mathf.Lerp(bStart, 0f, a);
+            ApplyPauseToMusicSources();
             
             yield return null;
         }
         
         musicA.Stop();
         musicB.Stop();
-        musicA.volume = 0f;
-        musicB.volume = 0f;
+        musicABaseVol = 0f;
+        musicBBaseVol = 0f;
+        ApplyPauseToMusicSources();
+    }
+    
+    public void SetPausedAudio(bool paused, float seconds = -1f)
+    {
+        if (seconds < 0f) seconds = pauseTransitionSeconds;
+
+        if (pauseRoutine != null) StopCoroutine(pauseRoutine);
+        pauseRoutine = StartCoroutine(PauseMusicRoutine(paused ? 1f : 0f, seconds));
+    }
+    
+    private IEnumerator PauseMusicRoutine(float targetBlend, float seconds)
+    {
+        float start = pauseBlend;
+        float time = 0f;
+
+        while (time < seconds)
+        {
+            time += Time.unscaledDeltaTime;
+            float a = seconds <= 0.0001f ? 1f : Mathf.Clamp01(time / seconds);
+            pauseBlend = Mathf.Lerp(start, targetBlend, a);
+            ApplyPauseToMusicSources();
+            yield return null;
+        }
+
+        pauseBlend = targetBlend;
+        ApplyPauseToMusicSources();
+    }
+    
+    private void ApplyPauseToMusicSources()
+    {
+        float volMul = Mathf.Lerp(1f, pauseMusicVolumeMultiplier, pauseBlend);
+        float pitchMul = Mathf.Lerp(1f, pauseMusicPitchMultiplier, pauseBlend);
+        
+        musicA.volume = musicABaseVol * volMul;
+        musicB.volume = musicBBaseVol * volMul;
+
+        musicA.pitch = pitchMul;
+        musicB.pitch = pitchMul;
     }
 
 }

@@ -3,7 +3,7 @@
     <ui:VisualElement name="rootBackground" class="background" style="flex-grow: 0; flex-direction: column; width: 100%; height: 100%;">
         <ui:VisualElement style="font-size: 34px; -unity-font-style: bold; height: auto; flex-grow: 1;">
             <ui:VisualElement style="flex-grow: 1; justify-content: space-between; flex-direction: row;">
-                <ui:ScrollView name="itemContainer" style="width: 280px; align-items: center; padding-left: 40px; padding-top: 20px; display: flex;" />
+                <ui:ScrollView name="itemContainer" style="width: 310px; align-items: flex-start; padding-left: 40px; padding-top: 20px; display: flex; height: 810px; margin-left: 0;" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="VisualElement" style="flex-grow: 0; height: 100px; align-items: auto; display: flex;">

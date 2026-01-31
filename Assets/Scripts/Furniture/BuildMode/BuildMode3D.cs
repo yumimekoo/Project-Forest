@@ -11,6 +11,10 @@ public class BuildMode3D : MonoBehaviour
 
     public SoundSO placeSound;
     public SoundSO removeSound;
+    
+    [Header("Default blocked cells (always occupied)")]
+    [SerializeField] private List<Vector2Int> blockedCells = new();
+    private HashSet<Vector2Int> blocked = new();
 
     private FurnitureSO currentItem;
     private int rotY = 0;
@@ -20,6 +24,7 @@ public class BuildMode3D : MonoBehaviour
     private bool placingMode = false;
     private bool deleteMode = false;
     public bool isPointerOverUI = false;
+    private bool previewVisible = true;
 
     private HashSet<Vector2Int> occupiedCells = new();
 
@@ -30,6 +35,11 @@ public class BuildMode3D : MonoBehaviour
     public InputAction clickAction;
     public InputAction rightClickAction;
     public InputAction pointerPos;
+    
+    private Renderer[] previewRenderers;
+    private MaterialPropertyBlock mpb;
+    private static readonly int BaseColorID = Shader.PropertyToID("_BaseColor");
+    
     private void Awake()
     {
         clickAction = InputSystem.actions.FindAction("LeftClick");
@@ -38,30 +48,34 @@ public class BuildMode3D : MonoBehaviour
         pointerPos = InputSystem.actions.FindAction("PointerPos");
     }
 
+    public void Start()
+    {
+        blocked = new HashSet<Vector2Int>(blockedCells);
+        foreach (var c in blocked)
+            occupiedCells.Add(c);
+    }
+
 
     private void OnEnable()
     {
         InputActions.FindActionMap("Player").Enable();
+        if (FurnitureInventory.Instance) FurnitureInventory.Instance.OnInventoryChanged += HandleInventoryChanged;
     }
 
     private void OnDisable()
     {
         InputActions.FindActionMap("Player").Disable();
+        if (FurnitureInventory.Instance) FurnitureInventory.Instance.OnInventoryChanged -= HandleInventoryChanged;
     }
 
     public void StartBuild(FurnitureSO item)
     {
         deleteMode = false;
         placingMode = true;
-
-        if (preview != null)
-        {
-            Destroy(preview);
-        }
-
         currentItem = item;
         isPlacing = true;
-        preview = Instantiate(item.furniturePreview);
+        
+        RefreshPreviewForCurrentMode();
     }
 
     public void StopBuild()
@@ -70,9 +84,17 @@ public class BuildMode3D : MonoBehaviour
         deleteMode = false;
         isPlacing = false;
 
-        if (preview != null)
+        SetPreview(null);
+    }
+
+    private void HandleInventoryChanged(int id, int newAmount)
+    {
+        if (!currentItem) return;
+        if (deleteMode) return;
+        if (currentItem.numericID != id) return;
+        if (newAmount <= 0)
         {
-            Destroy(preview);
+            StopBuild();
         }
     }
 
@@ -99,38 +121,46 @@ public class BuildMode3D : MonoBehaviour
 
             if (GameState.inTutorial)
             {
-                if(TutorialManager.Instance != null)
+                if(TutorialManager.Instance)
                     TutorialManager.Instance.OnDeletionModePressed();
             }
 
-            if (!isPlacing)
+            if (deleteMode)
             {
-                //Debug.Log("Entering delete mode");
                 isPlacing = true;
-                deleteMode = true;
-                preview = Instantiate(deletionPreviewPrefab);
+                RefreshPreviewForCurrentMode();
                 return;
             }
-            if (deleteMode && preview != null)
+            if (placingMode && currentItem != null)
             {
-                Destroy(preview);
-                //Debug.Log("deleteMode && preview != null");
-                preview = Instantiate(deletionPreviewPrefab);
+                RefreshPreviewForCurrentMode();
                 return;
             }
-            if (!deleteMode && preview != null)
-            {
-                //Debug.Log("!deleteMode && preview != null");
-                Destroy(preview);
-                isPlacing = false;
-                return;
-            }
+            
+            isPlacing = false;
+            SetPreview(null);
+    }
+    
+    private void SetPreviewVisible(bool visible)
+    {
+        previewVisible = visible;
+
+        if (preview != null)
+            preview.SetActive(visible);
     }
 
     public int GetOccupiedCells()
     {
         return occupiedCells.Count;
     }
+    
+    private bool IsCellBlocked(Vector2Int cell) => blocked != null && blocked.Contains(cell);
+
+    private bool IsCellOccupied(Vector2Int cell)
+    {
+        return IsCellBlocked(cell) || occupiedCells.Contains(cell);
+    }
+
     private void HandlePlacementOrDeletion()
     {
         if(rotateAction.WasPressedThisFrame() && !deleteMode)
@@ -142,22 +172,29 @@ public class BuildMode3D : MonoBehaviour
         Ray ray = mainCamera.ScreenPointToRay(pointerPos.ReadValue<Vector2>());
         if(!Physics.Raycast(ray, out RaycastHit hitInfo))
         {
+            SetPreviewVisible(false);
             return;
         }
 
         Vector2Int cell = grid.WorldToGrid(hitInfo.point);
         bool inside = grid.IsInsideGrid(cell.x, cell.y);
-        bool occupied = occupiedCells.Contains(cell);
+        bool blockedCell = IsCellBlocked(cell);
+        bool occupied = IsCellOccupied(cell);
 
         if (!inside)
+        {
+            SetPreviewVisible(false);
             return;
-
+        }
+            
+        SetPreviewVisible(true);
+        
         Vector3 snapPos = grid.GetWorldPosition(cell.x, cell.y);
 
         if (deleteMode)
         {
             Preview(cell, snapPos, occupied);
-            if (clickAction.WasPressedThisFrame())
+            if (clickAction.WasPressedThisFrame() && !blockedCell)
             {
                 TryDelete(cell);
             }
@@ -174,6 +211,48 @@ public class BuildMode3D : MonoBehaviour
             }
         }
     }
+    
+    private void SetPreview(GameObject prefab)
+    {
+        if (preview != null)
+            Destroy(preview);
+
+        if (prefab != null)
+        {
+            preview = Instantiate(prefab);
+            preview.tag = "Untagged";
+            preview.layer = LayerMask.NameToLayer("Ignore Raycast");
+            
+            previewRenderers = preview.GetComponentsInChildren<Renderer>(true);
+            if(mpb == null) mpb = new MaterialPropertyBlock();
+        }
+        else
+        {
+            preview = null;
+            previewRenderers = null;
+        }
+    }
+
+    private void RefreshPreviewForCurrentMode()
+    {
+        // Delete Mode -> fixed prefab
+        if (deleteMode)
+        {
+            SetPreview(deletionPreviewPrefab);
+            return;
+        }
+
+        // Place Mode -> furniture preview vom ausgewählten Item
+        if (currentItem != null && currentItem.furniturePreview != null)
+        {
+            SetPreview(currentItem.furniturePreview);
+            return;
+        }
+
+        // Fallback: kein Preview
+        SetPreview(null);
+    }
+    
     private void Preview(Vector2Int cell, Vector3 snapPos, bool occupied)
     {
         if (preview == null)
@@ -183,16 +262,30 @@ public class BuildMode3D : MonoBehaviour
         preview.transform.rotation = Quaternion.Euler(0, rotY, 0);
         if (deleteMode)
         {
-            preview.GetComponent<Renderer>().material.color = Color.red;
             return;
         }
-        preview.GetComponent<Renderer>().material.color = occupied ? Color.red : Color.green;
+        
+        SetPreviewColor(occupied
+            ? new Color(1, 0, 0, 0.3f)
+            : new Color(0, 1, 0, 0.3f));
+        
     }
+    
+    private void SetPreviewColor(Color c)
+    {
+        if (previewRenderers == null) return;
+
+        mpb.Clear();
+        mpb.SetColor(BaseColorID, c);
+
+        foreach (var r in previewRenderers)
+            r.SetPropertyBlock(mpb);
+    }
+    
     private void PlaceFurniture(Vector2Int cell, Vector3 position)
     {
         if(!FurnitureInventory.Instance.Remove(currentItem.numericID))
         {
-            //Debug.Log("Not enough items in inventory to place furniture.");
             return;
         }
         var go = Instantiate(currentItem.furniturePrefab, position, Quaternion.Euler(0, rotY, 0));
@@ -212,53 +305,67 @@ public class BuildMode3D : MonoBehaviour
     private void TryRandomPlace(FurnitureSO item)
     {
         List<Vector2Int> freeCells = new List<Vector2Int>();
+
         for (int x = 0; x < grid.width; x++)
         {
             for (int y = 0; y < grid.height; y++)
             {
                 Vector2Int cell = new Vector2Int(x, y);
-                if (!occupiedCells.Contains(cell))
-                {
-                    freeCells.Add(cell);
-                }
+                
+                if (IsCellOccupied(cell))
+                    continue;
+
+                freeCells.Add(cell);
             }
         }
+
         if (freeCells.Count == 0)
-        {
             return;
-        }
+
         Vector2Int randomCell = freeCells[Random.Range(0, freeCells.Count)];
         Vector3 position = grid.GetWorldPosition(randomCell.x, randomCell.y);
-        var go = Instantiate(item.furniturePrefab, position, Quaternion.Euler(0, 0, 0));
+
+        var go = Instantiate(item.furniturePrefab, position, Quaternion.identity);
         go.AddComponent<FurnitureIdentifier>().so = item;
+
         occupiedCells.Add(randomCell);
         FurniturePlacementManager.Instance.RegisterPlacement(item.numericID, randomCell, 0);
         FurnitureInventory.Instance.Remove(item.numericID);
-        //Debug.Log($"Randomly placed furniture: {item.furnitureName} (ID: {item.numericID}) at ({randomCell.x}, {randomCell.y})");
     }
+
 
     private void TryDelete(Vector2Int cell)
     {
+        if (IsCellBlocked(cell)) return;
+        
         foreach (var obj in GameObject.FindGameObjectsWithTag("Furniture"))
         {
-            if (grid.WorldToGrid(obj.transform.position) == cell)
+            if (grid.WorldToGrid(obj.transform.position) != cell)
+                continue;
+
+            var ident = obj.GetComponent<FurnitureIdentifier>();
+            if (ident == null || ident.so == null)
             {
-                FurnitureSO soItem = obj.GetComponent<FurnitureIdentifier>().so;
-                FurnitureInventory.Instance.Add(soItem.numericID);
-                //Debug.Log($"Deleted furniture: {soItem.furnitureName} (ID: {soItem.numericID})");
-                Destroy(obj);
-                AudioManager.Instance.PlayAt(removeSound, obj.transform.position);
-                occupiedCells.Remove(cell);
-                FurniturePlacementManager.Instance.RemovePlacement(cell);
-
-                if(GameState.inTutorial)
-                {
-                    if(TutorialManager.Instance != null)
-                        TutorialManager.Instance.OnObjectDeleted();
-                }
-
-                return;
+                Debug.LogWarning($"[BuildMode3D] Objekt '{obj.name}' hat Tag 'Furniture', aber keinen FurnitureIdentifier/so.");
+                continue;
             }
+
+            var soItem = ident.so;
+
+            if (FurnitureInventory.Instance != null)
+                FurnitureInventory.Instance.Add(soItem.numericID);
+
+            AudioManager.Instance?.PlayAt(removeSound, obj.transform.position);
+
+            Destroy(obj);
+
+            occupiedCells.Remove(cell);
+            FurniturePlacementManager.Instance?.RemovePlacement(cell);
+
+            if (GameState.inTutorial && TutorialManager.Instance != null)
+                TutorialManager.Instance.OnObjectDeleted();
+
+            return;
         }
     }
     public IEnumerator RebuildFromSave(List<PlacedFurnitureData> items)
@@ -274,6 +381,8 @@ public class BuildMode3D : MonoBehaviour
             }
             Vector3 spawn = grid.GetWorldPosition(item.x, item.y);
             Quaternion rotation = Quaternion.Euler(0, item.rotY, 0);
+            var cell = new Vector2Int(item.x, item.y);
+            if(IsCellBlocked(cell)) continue;
             var go = Instantiate(so.furniturePrefab, spawn, rotation);
             go.AddComponent<FurnitureIdentifier>().so = so;
             occupiedCells.Add(new Vector2Int(item.x, item.y));
