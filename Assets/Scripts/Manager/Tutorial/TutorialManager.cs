@@ -75,11 +75,11 @@ public class TutorialManager : MonoBehaviour
 
     private void OnEnable()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;    
+        //SceneManager.sceneLoaded += OnSceneLoaded;    
     }
     private void OnDisable()
     {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
+        //SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -87,7 +87,7 @@ public class TutorialManager : MonoBehaviour
         ReloadReferences();
     }
 
-    private void ReloadReferences()
+    public void ReloadReferences()
     {
         builderGlow = Resources.FindObjectsOfTypeAll<GameObject>()
         .FirstOrDefault(go => go.CompareTag("BuilderGlow"));
@@ -136,8 +136,16 @@ public class TutorialManager : MonoBehaviour
         root.AddToClassList("tutorial-hidden");
 
         root.style.display = DisplayStyle.None;
-
+        
+        //ReloadReferences();
+        //SetStep(TutorialStep.StartMonologue);
         //Debug.Log("Tutorial Manager Initialized");
+    }
+
+    public void Initialize()
+    {
+        SetStep(TutorialStep.StartMonologue);
+        ReloadReferences();
     }
 
     private void SetStep(TutorialStep step)
@@ -268,6 +276,7 @@ public class TutorialManager : MonoBehaviour
         {
             GameState.playerMovementAllowed = false;
             GameState.playerInteractionAllowed = false;
+            ReloadReferences();
             Advance();
         }
     }

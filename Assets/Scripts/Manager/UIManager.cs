@@ -119,6 +119,7 @@ public enum UIState { BuildMode, YarnOverlay, RecipeBook, Shop, Overlay, Pause, 
                     TutorialManager.Instance.currentStep != TutorialStep.CloseRecipeBook)
                     return; 
             
+            if(openBook.WasPressedThisFrame()) Debug.Log("Book Pressed" + GameState.isInRoom + " " + GameState.isInConversation + " " + GameState.isInPauseMenu + " " + GameState.isInStorage + TutorialManager.Instance.currentStep);
             if (openBook.WasPressedThisFrame() && !GameState.isInRoom && !GameState.isInConversation && !GameState.isInPauseMenu && !GameState.isInStorage) OnRecipeBookPressed?.Invoke();
         }
         

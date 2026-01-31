@@ -14,14 +14,7 @@ public class Door : MonoBehaviour, IInteractable
                 return "The door is also not the GLOWING object";
         }
 
-        if (GameState.isInRoom)
-        {
-            return "Exit Room";
-        }
-        else
-        {
-            return "Enter Room";
-        }
+        return GameState.isInRoom ? "Exit Room" : "Enter Room";
     }
 
     public void Interact(PlayerInventory player)
@@ -51,7 +44,6 @@ public class Door : MonoBehaviour, IInteractable
             //Debug.Log("You need to have at least 5 pieces of furniture placed to enter the room.");
             return;
         }
-           
 
         if (GameState.isInRoom)
         {
@@ -62,6 +54,8 @@ public class Door : MonoBehaviour, IInteractable
             AudioManager.Instance.CrossfadeMusic(cafeDayMusic, 3f);
             AudioManager.Instance.Play(doorSound);
             UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
+            if(GameState.inTutorial && TutorialManager.Instance)
+                TutorialManager.Instance.ReloadReferences();
         }
         else if (GameState.isInCafe && GameState.doorUnlocked)
         {
