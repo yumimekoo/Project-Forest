@@ -406,7 +406,7 @@ public class TutorialManager : MonoBehaviour
                 descriptionLabel.text = "";
                 break;
             case TutorialStep.PlaceAllObjects:
-                UIManager.Instance.SetUIState(UIState.BuildMode);
+                UIManager.Instance.SetUIState(UIState.BuildModeDeleteMode);
                 titleLabel.text = "Place Furniture";
                 descriptionLabel.text = "Press 'All' to select a build category." +
                     "Select furniture and place " + objectsToDeleteAndPlace+ " objects in your caf�.";

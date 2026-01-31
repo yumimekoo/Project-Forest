@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public enum UIState { BuildMode, YarnOverlay, RecipeBook, Shop, Overlay, Pause, Tutorial }
+public enum UIState { BuildMode, YarnOverlay, RecipeBook, Shop, Overlay, Pause, Tutorial, BuildModeDeleteMode }
     public class UIManager: MonoBehaviour
     {
         public static UIManager Instance { get; private set; }

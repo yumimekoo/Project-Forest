@@ -183,10 +183,10 @@ public class BuildMode3D : MonoBehaviour
         preview.transform.rotation = Quaternion.Euler(0, rotY, 0);
         if (deleteMode)
         {
-            preview.GetComponent<Renderer>().material.color = Color.red;
+            preview.GetComponent<Renderer>().material.color = new Color(1, 0, 0, 0.3f);
             return;
         }
-        preview.GetComponent<Renderer>().material.color = occupied ? Color.red : Color.green;
+        preview.GetComponent<Renderer>().material.color = occupied ? new Color(1, 0, 0, 0.3f) : new Color(0, 1, 0, 0.3f);
     }
     private void PlaceFurniture(Vector2Int cell, Vector3 position)
     {

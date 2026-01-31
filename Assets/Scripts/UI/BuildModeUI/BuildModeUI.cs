@@ -106,7 +106,9 @@ public class BuildModeUI : MonoBehaviour
             case UIState.BuildMode:
                 ShowUI();
                 break;
-            case UIState.Tutorial:
+            case UIState.BuildModeDeleteMode:
+                ShowUI();
+                CheckDeletionMode(true);
                 return;
             default:
                 HideUI();
