@@ -88,6 +88,9 @@ public class PauseUI : MonoBehaviour
     
     private void HandleInput()
     {
+
+        if (GameState.inTutorial) return;
+        
         if (IsConfirmVisible())
         {
             HideConfirm();
