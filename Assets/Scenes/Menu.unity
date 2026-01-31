@@ -377,6 +377,9 @@ MonoBehaviour:
   uiGroup: {fileID: -4312999648410363981, guid: 1458c640a60594b4eacc7d94c902c57f, type: 2}
   defaultMusicFadeTime: 4
   defaultSFXPoolSize: 10
+  pauseMusicVolumeMultiplier: 0.75
+  pauseMusicPitchMultiplier: 0.8
+  pauseTransitionSeconds: 0.75
 --- !u!4 &989345778
 Transform:
   m_ObjectHideFlags: 0
