@@ -53,15 +53,10 @@ public class BuildMode3D : MonoBehaviour
     {
         deleteMode = false;
         placingMode = true;
-
-        if (preview != null)
-        {
-            Destroy(preview);
-        }
-
         currentItem = item;
         isPlacing = true;
-        preview = Instantiate(item.furniturePreview);
+        
+        RefreshPreviewForCurrentMode();
     }
 
     public void StopBuild()
@@ -70,10 +65,7 @@ public class BuildMode3D : MonoBehaviour
         deleteMode = false;
         isPlacing = false;
 
-        if (preview != null)
-        {
-            Destroy(preview);
-        }
+        SetPreview(null);
     }
 
     private void Update()
@@ -99,32 +91,24 @@ public class BuildMode3D : MonoBehaviour
 
             if (GameState.inTutorial)
             {
-                if(TutorialManager.Instance != null)
+                if(TutorialManager.Instance)
                     TutorialManager.Instance.OnDeletionModePressed();
             }
 
-            if (!isPlacing)
+            if (deleteMode)
             {
-                //Debug.Log("Entering delete mode");
                 isPlacing = true;
-                deleteMode = true;
-                preview = Instantiate(deletionPreviewPrefab);
+                RefreshPreviewForCurrentMode();
                 return;
             }
-            if (deleteMode && preview != null)
+            if (placingMode && currentItem != null)
             {
-                Destroy(preview);
-                //Debug.Log("deleteMode && preview != null");
-                preview = Instantiate(deletionPreviewPrefab);
+                RefreshPreviewForCurrentMode();
                 return;
             }
-            if (!deleteMode && preview != null)
-            {
-                //Debug.Log("!deleteMode && preview != null");
-                Destroy(preview);
-                isPlacing = false;
-                return;
-            }
+            
+            isPlacing = false;
+            SetPreview(null);
     }
 
     public int GetOccupiedCells()
@@ -174,6 +158,43 @@ public class BuildMode3D : MonoBehaviour
             }
         }
     }
+    
+    private void SetPreview(GameObject prefab)
+    {
+        if (preview != null)
+            Destroy(preview);
+
+        if (prefab != null)
+        {
+            preview = Instantiate(prefab);
+            preview.tag = "Untagged";
+
+            preview.layer = LayerMask.NameToLayer("Ignore Raycast");
+        }
+        else
+            preview = null;
+    }
+
+    private void RefreshPreviewForCurrentMode()
+    {
+        // Delete Mode -> fixed prefab
+        if (deleteMode)
+        {
+            SetPreview(deletionPreviewPrefab);
+            return;
+        }
+
+        // Place Mode -> furniture preview vom ausgewählten Item
+        if (currentItem != null && currentItem.furniturePreview != null)
+        {
+            SetPreview(currentItem.furniturePreview);
+            return;
+        }
+
+        // Fallback: kein Preview
+        SetPreview(null);
+    }
+    
     private void Preview(Vector2Int cell, Vector3 snapPos, bool occupied)
     {
         if (preview == null)
@@ -183,10 +204,13 @@ public class BuildMode3D : MonoBehaviour
         preview.transform.rotation = Quaternion.Euler(0, rotY, 0);
         if (deleteMode)
         {
-            preview.GetComponent<Renderer>().material.color = new Color(1, 0, 0, 0.3f);
+            //preview.GetComponent<Renderer>().material.color = new Color(1, 0, 0, 0.3f);
             return;
         }
-        preview.GetComponent<Renderer>().material.color = occupied ? new Color(1, 0, 0, 0.3f) : new Color(0, 1, 0, 0.3f);
+        
+        foreach (var r in preview.GetComponentsInChildren<Renderer>())
+            r.material.color = occupied ? new Color(1, 0, 0, 0.3f) : new Color(0, 1, 0, 0.3f);
+        
     }
     private void PlaceFurniture(Vector2Int cell, Vector3 position)
     {
@@ -241,24 +265,32 @@ public class BuildMode3D : MonoBehaviour
     {
         foreach (var obj in GameObject.FindGameObjectsWithTag("Furniture"))
         {
-            if (grid.WorldToGrid(obj.transform.position) == cell)
+            if (grid.WorldToGrid(obj.transform.position) != cell)
+                continue;
+
+            var ident = obj.GetComponent<FurnitureIdentifier>();
+            if (ident == null || ident.so == null)
             {
-                FurnitureSO soItem = obj.GetComponent<FurnitureIdentifier>().so;
-                FurnitureInventory.Instance.Add(soItem.numericID);
-                //Debug.Log($"Deleted furniture: {soItem.furnitureName} (ID: {soItem.numericID})");
-                Destroy(obj);
-                AudioManager.Instance.PlayAt(removeSound, obj.transform.position);
-                occupiedCells.Remove(cell);
-                FurniturePlacementManager.Instance.RemovePlacement(cell);
-
-                if(GameState.inTutorial)
-                {
-                    if(TutorialManager.Instance != null)
-                        TutorialManager.Instance.OnObjectDeleted();
-                }
-
-                return;
+                Debug.LogWarning($"[BuildMode3D] Objekt '{obj.name}' hat Tag 'Furniture', aber keinen FurnitureIdentifier/so.");
+                continue;
             }
+
+            var soItem = ident.so;
+
+            if (FurnitureInventory.Instance != null)
+                FurnitureInventory.Instance.Add(soItem.numericID);
+
+            AudioManager.Instance?.PlayAt(removeSound, obj.transform.position);
+
+            Destroy(obj);
+
+            occupiedCells.Remove(cell);
+            FurniturePlacementManager.Instance?.RemovePlacement(cell);
+
+            if (GameState.inTutorial && TutorialManager.Instance != null)
+                TutorialManager.Instance.OnObjectDeleted();
+
+            return;
         }
     }
     public IEnumerator RebuildFromSave(List<PlacedFurnitureData> items)

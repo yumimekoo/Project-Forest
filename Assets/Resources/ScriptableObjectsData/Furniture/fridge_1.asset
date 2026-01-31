@@ -18,7 +18,7 @@ MonoBehaviour:
   buildCategory: 1
   placementType: 0
   furniturePrefab: {fileID: 1862542262716857225, guid: 2a86fa2f8d6089d4fa09e5f89b9e646d, type: 3}
-  furniturePreview: {fileID: 1789459280500734020, guid: f7bd6e50af2b3bc4997dae8e2e31b749, type: 3}
+  furniturePreview: {fileID: 1862542262716857225, guid: 2a86fa2f8d6089d4fa09e5f89b9e646d, type: 3}
   size: {x: 1, y: 1}
   icon: {fileID: 0}
   shoppingCategory: 0

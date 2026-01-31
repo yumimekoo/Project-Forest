@@ -271,6 +271,7 @@ public class BuildModeUI : MonoBehaviour
 
     public void ExitBuildMode(bool withSound = true)
     {
+        CheckDeletionMode(false);
         if(withSound) AudioManager.Instance.Play(buildCloseSound);
         GameState.playerInteractionAllowed = true;
         GameState.isInBuildMode = false;
