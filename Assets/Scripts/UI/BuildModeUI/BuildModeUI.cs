@@ -106,7 +106,9 @@ public class BuildModeUI : MonoBehaviour
             case UIState.BuildMode:
                 ShowUI();
                 break;
-            case UIState.Tutorial:
+            case UIState.BuildModeDeleteMode:
+                ShowUI();
+                CheckDeletionMode(true);
                 return;
             default:
                 HideUI();
@@ -269,6 +271,7 @@ public class BuildModeUI : MonoBehaviour
 
     public void ExitBuildMode(bool withSound = true)
     {
+        CheckDeletionMode(false);
         if(withSound) AudioManager.Instance.Play(buildCloseSound);
         GameState.playerInteractionAllowed = true;
         GameState.isInBuildMode = false;

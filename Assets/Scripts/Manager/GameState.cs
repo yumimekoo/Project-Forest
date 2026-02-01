@@ -21,7 +21,7 @@ public static class GameState
     public static bool isInBuildMode = false;
 
     // --- Tutorial State ---
-    public static bool inTutorial = true;
+    public static bool inTutorial = false;
     
     // --- Menu --- 
     public static bool isInMenu = false;
@@ -39,12 +39,30 @@ public static class GameState
     {
         if(saveData == null)
         {
+            Reset();
+            SetToDefault();
             Debug.LogWarning("No GameStateSaveData found to apply.");
             return;
         }
 
         inTutorial = saveData.inTutorial;
-
+        SetToDefault();
         //Debug.Log(GetSaveData());
+    }
+
+    public static void SetToDefault()
+    {
+        isInMenu = false;
+        isInPauseMenu = false;
+        isInStorage = false;
+        isInBuildMode = false;
+        playerMovementAllowed = true;
+        playerInteractionAllowed = true;
+        isInConversation = false;
+    }
+    
+    public static void Reset()
+    {
+        inTutorial = true;
     }
 }

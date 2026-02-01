@@ -29,13 +29,16 @@ public class CameraFollow : MonoBehaviour
         {
             currentTargetFollow = buildFollowObject;
             smoothSpeed = 0.05f;
-            return;
+            var e = followCamera.transform.eulerAngles;
+            followCamera.transform.rotation = Quaternion.Euler(e.x, 0f, e.z);
         }
         else if (!buildModeActive)
         {
             currentTargetFollow = playerFollowObject;
             smoothSpeed = 0.03f;
-            return;
+            
+            var e = followCamera.transform.eulerAngles;
+            followCamera.transform.rotation = Quaternion.Euler(e.x, -45f, e.z);
         }
     }
 }
