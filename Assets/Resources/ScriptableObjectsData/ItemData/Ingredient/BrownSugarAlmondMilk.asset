@@ -16,4 +16,11 @@ MonoBehaviour:
   itemName: Brown Sugar Almond Milk
   itemType: 1
   contentVisualPrefab: {fileID: 0}
+  icon: {fileID: 7989693277445967302, guid: 95cc5443d62d1f54f9ad681f75cc7ba7, type: 3}
+  storageType: 0
   itemPrefab: {fileID: 0}
+  shoppingCategory: 0
+  price: 0
+  isInfinite: 0
+  contentColor: {r: 0.86666673, g: 0.50980395, b: 0.10588236, a: 1}
+  fillLevel: 1
