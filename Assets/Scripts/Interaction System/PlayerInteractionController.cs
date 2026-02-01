@@ -61,8 +61,8 @@ public class PlayerInteractionController : MonoBehaviour
 
     private void CheckForInteractable()
     {
-        Vector3 center = transform.position + transform.forward * 0.2f + Vector3.up * 0.2f;
-        Vector3 extends = new Vector3(0.2f, 2f, 0.2f);
+        Vector3 center = transform.position + transform.forward * 1f + Vector3.up * 1.2f;
+        Vector3 extends = new Vector3(0.3f, 1f, 0.3f);
         Quaternion orientation = transform.rotation;
         Collider[] hits = Physics.OverlapBox(center, extends, transform.rotation, interactableLayer);
         DrawBox(center, extends, orientation, Color.cyan);

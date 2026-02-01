@@ -17,10 +17,10 @@ MonoBehaviour:
   numericID: 1012
   buildCategory: 2
   placementType: 0
-  furniturePrefab: {fileID: 1862542262716857225, guid: c7a548f7c86b6da4cad6ba2d11a7be2d, type: 3}
-  furniturePreview: {fileID: 1862542262716857225, guid: c7a548f7c86b6da4cad6ba2d11a7be2d, type: 3}
+  furniturePrefab: {fileID: 1862542262716857225, guid: c3bf495d80a10ab4e9056abe9d5f6649, type: 3}
+  furniturePreview: {fileID: 1862542262716857225, guid: c3bf495d80a10ab4e9056abe9d5f6649, type: 3}
   size: {x: 1, y: 1}
-  icon: {fileID: 0}
+  icon: {fileID: -1375141032302913854, guid: 0438a38b768559b41b5af8068c6cb78c, type: 3}
   shoppingCategory: 5
   price: 0
   isAvailableInShop: 1

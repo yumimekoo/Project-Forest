@@ -83,6 +83,16 @@ public class NPCController : MonoBehaviour, IInteractable
     public void Initialize()
     {
         agent.enabled = true;
+        
+        if (NavMesh.SamplePosition(transform.position, out var hit, 2f, NavMesh.AllAreas))
+        {
+            agent.Warp(hit.position);
+        }
+        else
+        {
+            Debug.LogWarning($"NPC {name} konnte keinen NavMesh unter sich finden.");
+        }
+        
         FindChairAndGo();
         
         overheadUI = NPCUIManager.Instance.GetNPCUI();

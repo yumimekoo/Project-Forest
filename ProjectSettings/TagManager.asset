@@ -11,6 +11,7 @@ TagManager:
   - NPCGlow
   - CoffeeMachineGlow
   - DrawerGlow
+  - CupGlow
   layers:
   - Default
   - TransparentFX
