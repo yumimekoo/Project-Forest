@@ -21,9 +21,14 @@ MonoBehaviour:
   timeToAcceptOrder: 10
   timeToGiveOrder: 30
   timeDrinking: 10
-  favDrinks: []
-  dislikedIngredients: []
-  likedIngredients: []
+  favDrinks:
+  - {fileID: 11400000, guid: 2192f3407dca36845a25ca19661c42ae, type: 2}
+  dislikedIngredients:
+  - {fileID: 11400000, guid: 6a60e1500521fcc4092fada4cd1afd8f, type: 2}
+  likedIngredients:
+  - {fileID: 11400000, guid: 34baa30f65e9b7549ba1536fc82917dd, type: 2}
+  - {fileID: 11400000, guid: 9e1b963ef75701642be6691d520a6dc3, type: 2}
+  - {fileID: 11400000, guid: 5e5e903e816cd084ebe0c494abf290e7, type: 2}
   friendshipRewards: []
   dialogueProject: {fileID: 7545569452688597077, guid: dfa0bd12f76271544b77c3480bbb4279, type: 3}
   startNode: Bat

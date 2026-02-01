@@ -25,7 +25,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 664d5ac5a347dbc4ea83801313eb614d, type: 2}
   dislikedIngredients:
   - {fileID: 11400000, guid: cd4f234c49b03ed40b7582fc564865b0, type: 2}
-  likedIngredients: []
+  - {fileID: 11400000, guid: 19843ab09ca377b479de77dc19c7e190, type: 2}
+  - {fileID: 11400000, guid: b25d8fa123875b843adfd70c70933619, type: 2}
+  likedIngredients:
+  - {fileID: 11400000, guid: b7bad3d40804239408e54fdaae1cceec, type: 2}
   friendshipRewards: []
   dialogueProject: {fileID: 7545569452688597077, guid: dfa0bd12f76271544b77c3480bbb4279, type: 3}
   startNode: Fox

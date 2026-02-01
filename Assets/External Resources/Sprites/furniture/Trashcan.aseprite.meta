@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3bf0b9ab1507664409b82f156f1a905b
+guid: b92a2e97e41a81948804a89439f6c489
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,7 +127,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: raleigh_default
+  - name: Trashcan
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 256
-      height: 256
-    spriteID: 73708ece240606b4f99103d82148bf64
+      width: 64
+      height: 64
+    spriteID: 85cf727f4ea70a04cb126f771e53ce34
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 3289356046
+      value0: 938481638
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: raleigh_default
+    name: Trashcan
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: raleigh_default
+    - name: Trashcan
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 256
-        height: 256
-      spriteId: 73708ece240606b4f99103d82148bf64
+        width: 64
+        height: 64
+      spriteId: 85cf727f4ea70a04cb126f771e53ce34
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -181,5 +181,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 256, y: 256}
-  previousTextureSize: {x: 512, y: 512}
+  canvasSize: {x: 64, y: 64}
+  previousTextureSize: {x: 128, y: 128}
