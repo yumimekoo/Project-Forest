@@ -8,6 +8,11 @@ public class Door : MonoBehaviour, IInteractable
     [SerializeField] private SoundSO doorLockedSound;
     public string GetInteractionPrompt()
     {
+        if (FurnitureInventory.Instance.GetOccupiedCellsCount() < 16 && GameState.isInRoom)
+        {
+            return "Not enough furniture placed (10 needed)";
+        }
+        
         if(GameState.inTutorial && TutorialManager.Instance != null)
         {
             if (TutorialManager.Instance.currentStep < TutorialStep.PressEOnDoor)
@@ -19,6 +24,9 @@ public class Door : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInventory player)
     {
+        if (FurnitureInventory.Instance.GetOccupiedCellsCount() < 16 && GameState.isInRoom)
+            return; 
+        
         if(GameState.inTutorial && TutorialManager.Instance != null)
         {
             if (TutorialManager.Instance.currentStep < TutorialStep.PressEOnDoor)
@@ -39,9 +47,8 @@ public class Door : MonoBehaviour, IInteractable
 
     public void ChangeScene()
     {
-        if (FurnitureInventory.Instance.GetOccupiedCellsCount() < 5) // chnage that here please
+        if (FurnitureInventory.Instance.GetOccupiedCellsCount() < 16 && GameState.isInRoom)
         {
-            //Debug.Log("You need to have at least 5 pieces of furniture placed to enter the room.");
             return;
         }
 

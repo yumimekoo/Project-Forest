@@ -22,5 +22,5 @@ MonoBehaviour:
   size: {x: 1, y: 1}
   icon: {fileID: 4782178279973203947, guid: 43c4e2b6677da134cb73e9bb6b325bd3, type: 3}
   shoppingCategory: 5
-  price: 0
+  price: 250
   isAvailableInShop: 1

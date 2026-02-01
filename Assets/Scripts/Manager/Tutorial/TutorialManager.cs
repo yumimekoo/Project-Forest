@@ -72,6 +72,7 @@ public class TutorialManager : MonoBehaviour
     private GameObject npcGlow;
     private GameObject coffeeMachineGlow;
     private GameObject drawerGlow;
+    private GameObject cupGlow;
 
     private void OnEnable()
     {
@@ -101,6 +102,8 @@ public class TutorialManager : MonoBehaviour
         .FirstOrDefault(go => go.CompareTag("CoffeeMachineGlow"));
         drawerGlow = Resources.FindObjectsOfTypeAll<GameObject>()
         .FirstOrDefault(go => go.CompareTag("DrawerGlow"));
+        cupGlow = Resources.FindObjectsOfTypeAll<GameObject>()
+        .FirstOrDefault(go => go.CompareTag("CupGlow"));
 
         HandleHighlight(TutorialStep.StartMonologue);
 
@@ -355,6 +358,8 @@ public class TutorialManager : MonoBehaviour
             coffeeMachineGlow.SetActive(step == TutorialStep.MakeCoffee);
         if (drawerGlow)
             drawerGlow.SetActive(step == TutorialStep.MakeCoffee);
+        if(cupGlow)
+            cupGlow.SetActive(step == TutorialStep.MakeCoffee);
     }
 
     private void HandleText(TutorialStep step)

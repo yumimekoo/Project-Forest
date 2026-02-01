@@ -19,7 +19,7 @@
 
 .titleLabel {
     -unity-font-definition: url("project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&guid=fa4523bbd3ac7b249b34392fe074b277&type=3#RetroByte");
-    font-size: 300px;
+    font-size: 220px;
     color: rgb(250, 103, 152);
     text-shadow: 7px 7px 0 rgb(166, 8, 61);
     word-spacing: 0;

@@ -30,7 +30,8 @@ public class CameraFollow : MonoBehaviour
             currentTargetFollow = buildFollowObject;
             smoothSpeed = 0.05f;
             var e = followCamera.transform.eulerAngles;
-            followCamera.transform.rotation = Quaternion.Euler(e.x, 0f, e.z);
+            followCamera.transform.rotation = Quaternion.Euler(70, 0f, e.z);
+            offset = new Vector3(0, 14, 0);
         }
         else if (!buildModeActive)
         {
@@ -38,7 +39,8 @@ public class CameraFollow : MonoBehaviour
             smoothSpeed = 0.03f;
             
             var e = followCamera.transform.eulerAngles;
-            followCamera.transform.rotation = Quaternion.Euler(e.x, -45f, e.z);
+            followCamera.transform.rotation = Quaternion.Euler(50, -45f, e.z);
+            offset = new Vector3(3, 7, -3);
         }
     }
 }

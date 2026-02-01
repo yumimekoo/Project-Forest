@@ -5,6 +5,7 @@ public class NPCSpawner : MonoBehaviour
     private float spawnInterval = 5f;
     private float timeSinceLastSpawn = 0f;
     private bool allnpcretunred = false;
+    private bool firstStartup = true;
 
     private void Update()
     {
@@ -40,6 +41,12 @@ public class NPCSpawner : MonoBehaviour
     }
     public void Spawn()
     {
+        if (firstStartup)
+        {
+            ChairManager.Instance.Initiate();
+            firstStartup = false;
+        }
+            
         var npc = NPCPool.Instance.GetNPC();
         if (npc == null) 
             return;
@@ -51,6 +58,7 @@ public class NPCSpawner : MonoBehaviour
 
     public void SpawnTutorialNPC()
     {
+        ChairManager.Instance.Initiate();
         var npc = NPCPool.Instance.GetTutorialNPC();
         if (npc == null) 
             return;

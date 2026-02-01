@@ -9,7 +9,12 @@ public class ChairManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+
+    public void Initiate()
+    {
         chairs.AddRange(FindObjectsByType<Chair>(FindObjectsSortMode.None));
+        Debug.Log("Chairs: " + chairs.Count + "");
     }
 
     public Chair GetFreeChair()

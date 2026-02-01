@@ -19,7 +19,7 @@ public class NPCOverheadUI : MonoBehaviour
     [SerializeField] private Color colorB;
 
     [Header("Settings")] 
-    [SerializeField] private int offset;
+    private int offset = 5;
 
     private NPCController npc;
     private float maxStateTime;
@@ -30,7 +30,7 @@ public class NPCOverheadUI : MonoBehaviour
         transform.SetParent(npc.transform);
         transform.localPosition = Vector3.up * offset;
         transform.localRotation = Quaternion.identity;
-        canvas.transform.localScale = Vector3.one * 0.015f;
+        canvas.transform.localScale = Vector3.one * 0.008f;
     }
 
     private void LateUpdate()

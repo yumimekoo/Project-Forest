@@ -129,6 +129,7 @@ public class NPCController : MonoBehaviour, IInteractable
 
     private void Leave(string reason)
     {
+        transform.SetParent(null);
         //Debug.Log($"{identity.npcName} leaving: {reason}");
         if(targetChair)
         {
@@ -153,8 +154,9 @@ public class NPCController : MonoBehaviour, IInteractable
         SetState(NPCState.Sitting, identity.timeToAcceptOrder); // 30 seconds to take order
         agent.enabled = false;
 
-        transform.position = targetChair.seatPoint.position;
-        transform.rotation = targetChair.seatPoint.rotation;
+        transform.SetParent(targetChair.seatPoint, worldPositionStays: false);
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
 
         AudioManager.Instance.PlayAt(waitOrderSound, transform);
         
@@ -201,6 +203,7 @@ public class NPCController : MonoBehaviour, IInteractable
                 TutorialManager.Instance.OnCoffeeGiven();
                 if(targetChair)
                 {
+                    transform.SetParent(null);
                     targetChair.Free();
                 }
                 Destroy(gameObject);

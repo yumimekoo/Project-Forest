@@ -39,6 +39,7 @@ public class BuildMode3D : MonoBehaviour
     private Renderer[] previewRenderers;
     private MaterialPropertyBlock mpb;
     private static readonly int BaseColorID = Shader.PropertyToID("_BaseColor");
+    private static readonly int ColorID = Shader.PropertyToID("_Color");
     
     private void Awake()
     {
@@ -225,6 +226,7 @@ public class BuildMode3D : MonoBehaviour
             
             previewRenderers = preview.GetComponentsInChildren<Renderer>(true);
             if(mpb == null) mpb = new MaterialPropertyBlock();
+
         }
         else
         {
@@ -235,21 +237,21 @@ public class BuildMode3D : MonoBehaviour
 
     private void RefreshPreviewForCurrentMode()
     {
-        // Delete Mode -> fixed prefab
+
         if (deleteMode)
         {
             SetPreview(deletionPreviewPrefab);
             return;
         }
 
-        // Place Mode -> furniture preview vom ausgewählten Item
+
         if (currentItem != null && currentItem.furniturePreview != null)
         {
             SetPreview(currentItem.furniturePreview);
             return;
         }
 
-        // Fallback: kein Preview
+
         SetPreview(null);
     }
     
@@ -266,20 +268,28 @@ public class BuildMode3D : MonoBehaviour
         }
         
         SetPreviewColor(occupied
-            ? new Color(1, 0, 0, 0.3f)
-            : new Color(0, 1, 0, 0.3f));
+            ? new Color(1, 0, 0, 0.6f)
+            : new Color(0, 1, 0, 0.6f));
         
     }
     
     private void SetPreviewColor(Color c)
     {
         if (previewRenderers == null) return;
+        if (mpb == null) mpb = new MaterialPropertyBlock();
 
         mpb.Clear();
-        mpb.SetColor(BaseColorID, c);
 
         foreach (var r in previewRenderers)
+        {
+            var mat = r.sharedMaterial;
+            if (mat == null) continue;
+            
+            if (mat.HasProperty(BaseColorID)) mpb.SetColor(BaseColorID, c);
+            if (mat.HasProperty(ColorID))     mpb.SetColor(ColorID, c);
+
             r.SetPropertyBlock(mpb);
+        }
     }
     
     private void PlaceFurniture(Vector2Int cell, Vector3 position)
