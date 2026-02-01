@@ -19,7 +19,7 @@ MonoBehaviour:
   availability: 0
   isTalkable: 1
   timeToAcceptOrder: 30
-  timeToGiveOrder: 20
+  timeToGiveOrder: 30
   timeDrinking: 10
   favDrinks: []
   dislikedIngredients: []
@@ -27,4 +27,8 @@ MonoBehaviour:
   friendshipRewards: []
   dialogueProject: {fileID: 7545569452688597077, guid: dfa0bd12f76271544b77c3480bbb4279, type: 3}
   startNode: Deer
-  emotions: []
+  emotions:
+  - emotion: default
+    emotionSprite: {fileID: -5507382655539451759, guid: 70c947baa19f05a4c90292f3d1237fc1, type: 3}
+  - emotion: happy
+    emotionSprite: {fileID: -378606128215772784, guid: 0efb58ca9d7acec43b6980a801b6001c, type: 3}

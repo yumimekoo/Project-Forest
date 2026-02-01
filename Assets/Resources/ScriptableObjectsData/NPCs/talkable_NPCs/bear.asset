@@ -19,7 +19,7 @@ MonoBehaviour:
   availability: 0
   isTalkable: 1
   timeToAcceptOrder: 10
-  timeToGiveOrder: 20
+  timeToGiveOrder: 30
   timeDrinking: 25
   favDrinks:
   - {fileID: 11400000, guid: 650e8d6a3334d0f4e8ce80ed7abf313b, type: 2}
@@ -28,4 +28,6 @@ MonoBehaviour:
   friendshipRewards: []
   dialogueProject: {fileID: 7545569452688597077, guid: dfa0bd12f76271544b77c3480bbb4279, type: 3}
   startNode: Bear
-  emotions: []
+  emotions:
+  - emotion: default
+    emotionSprite: {fileID: -2164517109653227464, guid: 1dffbf689d6b3234d89110124448d8ff, type: 3}

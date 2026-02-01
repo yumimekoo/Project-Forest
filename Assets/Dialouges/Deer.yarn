@@ -2,10 +2,10 @@
 position: -376,-1142
 ---
 <<setUI "deer_1">>
-
-<<if get_level("deer_1") >= 2>>
+<<set_emotion deer_1 default>>
+<<if get_level("deer_1") >= 3>>
     <<jump Deer_Lvl2>>
-<<elseif get_level("deer_1") >=1>>
+<<elseif get_level("deer_1") >=2>>
     <<jump Deer_Lvl1>>
 <<else>>
     <<jump Deer_Friendship_Intro>>
@@ -18,7 +18,6 @@ title : Deer_Friendship_Intro
 position: -43,-1130
 ---
 Dee: Hi...
-Sophia: Thank you.
 <<jump Deer_Lvl1>>
 ===
 
@@ -36,9 +35,9 @@ Dee: Are you... busy right now?
 title: Deer_PositiveResponseLvl1
 position: 109,-644
 ---
-// <<set_emotion deer happy>>>
+<<set_emotion deer_1 happy>>
 Dee: Really? 
-//set emotion back to neutral
+<<set_emotion deer_1 default>>
 Dee: Do you enjoy the quiet?
 -> I do.
     <<friendship "deer_1" 10>>
@@ -65,10 +64,12 @@ position: -741,-435
 ---
 Dee: ...
 Dee: ...
+<<set_emotion deer_1 happy>>
 Dee: Uhm... 
 -> How do you like the weather today?  
     Sophia: How do you like the weather today? 
     Dee: ... I guess it's alright?
+    <<set_emotion deer_1 default>>
 -> Well, back to work I go. 
     Sophia: Well, back to work I go. Catch you later!
     Dee: Oh... I'm sorry.
