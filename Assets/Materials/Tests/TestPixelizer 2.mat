@@ -119,7 +119,7 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _PixelSize: 1
+    - _PixelSize: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
@@ -135,8 +135,8 @@ Material:
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - _AmbientLight: {r: 0.5188676, g: 0.5188676, b: 0.5188676, a: 1}
-    - _BaseColor: {r: 0.030215396, g: 0.9150943, b: 0.78298014, a: 1}
+    - _AmbientLight: {r: 1, g: 0.9764151, b: 0.9764151, a: 1}
+    - _BaseColor: {r: 0.031372562, g: 0.9137255, b: 0.79972845, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EdgeHighlightColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5058824}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}

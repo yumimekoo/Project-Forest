@@ -25,13 +25,14 @@ public class InteractionUI : MonoBehaviour
         if (root.style.display == DisplayStyle.Flex)
         {
             Vector3 dir = transform.position - Camera.main.transform.position;
-            dir.x = 0;
+            if(!GameState.isInRoom) dir.x = 0;
             transform.rotation = Quaternion.LookRotation(dir);
         }
     }
 
     public void Show(string text, Vector3 position)
     {
+        if(text == null) return;
         interactionLabel.text = text;
         transform.position = position;
         ShowUI();

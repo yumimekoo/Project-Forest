@@ -144,6 +144,7 @@ public class TutorialManager : MonoBehaviour
 
     public void Initialize()
     {
+        GameState.inTutorial = true;
         SetStep(TutorialStep.StartMonologue);
         ReloadReferences();
     }
@@ -189,8 +190,12 @@ public class TutorialManager : MonoBehaviour
     }
     public void OnBuilderUsed()
     {
-        if(currentStep == TutorialStep.PressEOnBuilder) 
+        if (currentStep == TutorialStep.PressEOnBuilder)
+        {
+            UIManager.Instance.UpdateButtons();
             Advance();
+        }
+            
     }
 
     public void OnDeletionModePressed()

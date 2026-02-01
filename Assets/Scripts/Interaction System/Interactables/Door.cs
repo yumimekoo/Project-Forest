@@ -14,7 +14,7 @@ public class Door : MonoBehaviour, IInteractable
                 return "The door is also not the GLOWING object";
         }
 
-        return GameState.isInRoom ? "Exit Room" : "Enter Room";
+        return GameState.isInRoom ? null : "Enter Room";
     }
 
     public void Interact(PlayerInventory player)
