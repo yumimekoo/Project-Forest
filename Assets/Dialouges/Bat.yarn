@@ -2,10 +2,10 @@
 position: -376,-1142
 ---
 <<setUI "bat_1">>
-
-<<if get_level("bat_1") >= 2>>
+<<set_emotion bat_1 default>>
+<<if get_level("bat_1") >= 3>>
     <<jump Bat_Lvl2>>
-<<elseif get_level("bat_1") >=1>>
+<<elseif get_level("bat_1") >=2>>
     <<jump Bat_Lvl1>>
 <<else>>
     <<jump Bat_Friendship_Intro>>
@@ -27,8 +27,8 @@ position: -304,-727
 
 Beth: So... Are you here to impress me, or just killing time?
 -> Maybe both?
+    <<set_emotion bat_1 happy>>
      <<jump Bat_PositiveResponseLvl1>>
-     <<set_emotion bat_1 happy>>
 -> Just working.
     Beth: Shame, I was hoping for better intentions.
 ===
@@ -43,8 +43,9 @@ Beth: Do you like to be challenged?
 -> Yes.
     <<friendship "bat_1" 10>>
     Sophia: I do enjoy a little challenge.
-    Beth: Good, agreement is like super boring. 
     <<set_emotion bat_1 happy>>
+    Beth: Good, agreement is like super boring. 
+    <<set_emotion deer_1 default>>
 -> No.
     Sophia: I enjoy it more when people just agree with me.
     Beth: Yikes.
@@ -67,8 +68,10 @@ position: -741,-435
 Beth: Picture this.
 Beth: You die due to mysterious circumstances. Would you rather have cared more about being remembered or liked?
 -> Remembered.
+    <<set_emotion bat_1 happy>>
     Sophia: I would rather be remembered for ALL the things I've done, even if they werent all good.
     Beth: Exactly, now you're starting to become interesting.
+    <<set_emotion deer_1 default>>
 -> Liked.
     Sophia: I pride myself in spreading love and happiness and being liked by many.
     Beth: Safe choice. Boring though.

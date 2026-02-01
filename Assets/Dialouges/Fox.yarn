@@ -1,11 +1,11 @@
-﻿title: Fox
+title: Fox
 position: -376,-1142
 ---
 <<setUI "fox_1">>
-
-<<if get_level("fox_1") >= 2>>
+<<set_emotion fox_1 default>>
+<<if get_level("fox_1") >= 3>>
     <<jump Fox_Lvl2>>
-<<elseif get_level("fox_1") >=1>>
+<<elseif get_level("fox_1") >=2>>
     <<jump Fox_Lvl1>>
 <<else>>
     <<jump Fox_Friendship_Intro>>
@@ -29,13 +29,13 @@ position: -304,-727
 Finn: Are you busy right now? 
 Finn: Let's be honest, you could never be too busy for me HAHA
 -> What's up?
-     <<jump PositiveResponseLvl1>>
+     <<jump Fox_PositiveResponseLvl1>>
 -> Actually I am busy right now. 
     Finn: OH WOW. Mrs. Fancypants over here.  
 
 ===
 
-title: PositiveResponseLvl1
+title: Fox_PositiveResponseLvl1
 position: 109,-644
 ---
 Finn: You know... I outsmarted three Squirrels on my way here, but I'm still in a bad mood.
@@ -56,12 +56,12 @@ position: -745,-689
 ---
 Finn: Plleeassee entertain me, I am SO BORED.
 -> How can I help?
-    <<jump PositiveResponseLvl2>>
+    <<jump Fox_PositiveResponseLvl2>>
 -> Sorry, I'm a bit busy right now. 
     Finn: Why do you hate me?
 ===
-title: PositiveResponseLvl2
-position: -745,-480
+title: Fox_PositiveResponseLvl2
+position: -741,-435
 ---
 Finn: What a blessed day!
 Finn: Do you like sour candy?

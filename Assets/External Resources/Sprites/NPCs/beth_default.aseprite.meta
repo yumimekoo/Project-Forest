@@ -129,7 +129,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: beth_default
     originalName: 
-    pivot: {x: 0.5, y: 0.02238806}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -138,7 +138,7 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 256
-      height: 268
+      height: 256
     spriteID: 7730fda03208f9a4890bf6deb5bca04f
     spriteBone: []
     spriteOutline: []
@@ -168,9 +168,9 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -6
+        y: 0
         width: 256
-        height: 268
+        height: 256
       spriteId: 7730fda03208f9a4890bf6deb5bca04f
     linkedCells: []
     tileCells: []

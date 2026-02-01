@@ -129,7 +129,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: dee_happy
     originalName: 
-    pivot: {x: 0.5467626, y: 0}
+    pivot: {x: 0.49803925, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,8 +137,8 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 139
-      height: 249
+      width: 255
+      height: 256
     spriteID: 46353ded10a7aae42b969359c7ff9bd8
     spriteBone: []
     spriteOutline: []
@@ -167,10 +167,10 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 52
+        x: 1
         y: 0
-        width: 139
-        height: 249
+        width: 255
+        height: 256
       spriteId: 46353ded10a7aae42b969359c7ff9bd8
     linkedCells: []
     tileCells: []
@@ -182,4 +182,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 256, y: 256}
-  previousTextureSize: {x: 256, y: 512}
+  previousTextureSize: {x: 512, y: 512}

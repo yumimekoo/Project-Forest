@@ -2,10 +2,10 @@
 position: -376,-1142
 ---
 <<setUI "wolf_1">>
-
-<<if get_level("wolf_1") >= 2>>
+<<set_emotion wolf_1 default>>
+<<if get_level("wolf_1") >= 3>>
     <<jump Wolf_Lvl2>>
-<<elseif get_level("wolf_1") >=1>>
+<<elseif get_level("wolf_1") >=2>>
     <<jump Wolf_Lvl1>>
 <<else>>
     <<jump Wolf_Friendship_Intro>>

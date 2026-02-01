@@ -19,7 +19,7 @@ MonoBehaviour:
   availability: 0
   isTalkable: 1
   timeToAcceptOrder: 30
-  timeToGiveOrder: 20
+  timeToGiveOrder: 30
   timeDrinking: 10
   favDrinks: []
   dislikedIngredients: []
