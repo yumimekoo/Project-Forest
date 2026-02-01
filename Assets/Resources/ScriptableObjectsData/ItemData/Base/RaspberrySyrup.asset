@@ -20,7 +20,7 @@ MonoBehaviour:
   storageType: 3
   itemPrefab: {fileID: 8037415141159388369, guid: 2105aadce4efbdd42a6fe1f0fadfa0b2, type: 3}
   shoppingCategory: 3
-  price: 0
+  price: 6
   isInfinite: 0
   contentColor: {r: 1, g: 1, b: 1, a: 1}
   fillLevel: 1

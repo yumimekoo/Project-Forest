@@ -47,6 +47,8 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private DayUnlocker dayUnlocker;
     private bool nightTriggered = false;
 
+    [SerializeField] private GameObject doorGlow;
+    
     [Header("Music")]
     public AudioClip nightMusic;
     public event Action OnNightTriggered;
@@ -140,6 +142,7 @@ public class TimeManager : MonoBehaviour
     private void StartDay()
     {
         OnNewDayStarted?.Invoke();
+        doorGlow.SetActive(false);
     }
 
     private void ResetDay()
@@ -162,6 +165,7 @@ public class TimeManager : MonoBehaviour
     public void ConfirmEndOfDay()
     {
         GameState.doorUnlocked = true;
+        doorGlow.SetActive(true);
     }
 
     public void PayRent()

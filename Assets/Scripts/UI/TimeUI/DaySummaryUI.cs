@@ -8,6 +8,7 @@ public class DaySummaryUI : MonoBehaviour
     [SerializeField] private SoundSO closeSound;
     [SerializeField] private SoundSO openSound;
     [SerializeField] private SoundSO hoverSound;
+    
 
     private Label
         moneyEarnedLabel,
