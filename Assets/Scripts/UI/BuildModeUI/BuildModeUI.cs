@@ -137,6 +137,9 @@ public class BuildModeUI : MonoBehaviour
             var itemElement = itemTemplate.Instantiate();
             var button = itemElement.Q<Button>("itemButton");
             var icon = itemElement.Q<VisualElement>("itemIcon");
+            var name = itemElement.Q<Label>("nameLabel");
+
+            name.text = item.furnitureName;
             
             icon.style.backgroundImage = item.icon ? new StyleBackground(item.icon) : null;
 
