@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6206092c6f5641d48b19f46ee8325c00, type: 3}
+  m_Name: frothering_machine
+  m_EditorClassIdentifier: Assembly-CSharp::FurnitureSO
+  furnitureName: Frothering Machine
+  id: frothering_machine
+  numericID: 1001
+  buildCategory: 2
+  placementType: 0
+  furniturePrefab: {fileID: 1862542262716857225, guid: a4d19a8e4e644c24d81fc3b8a4b6b7e4, type: 3}
+  furniturePreview: {fileID: 1862542262716857225, guid: a4d19a8e4e644c24d81fc3b8a4b6b7e4, type: 3}
+  size: {x: 1, y: 1}
+  icon: {fileID: 0}
+  shoppingCategory: 5
+  price: 0
+  isAvailableInShop: 1

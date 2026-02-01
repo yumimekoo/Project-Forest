@@ -18,3 +18,19 @@
     color: rgb(40, 14, 2);
     text-shadow: 2px 2px 0 rgb(227, 164, 100);
 }
+
+.machine-action--kettle {
+    color: rgb(26, 113, 202);
+}
+
+.machine-action--coffee {
+    color: rgb(166, 60, 32);
+}
+
+.machine-action--grinder {
+    color: rgb(117, 48, 140);
+}
+
+.machine-action--frother {
+    color: rgb(166, 88, 4);
+}

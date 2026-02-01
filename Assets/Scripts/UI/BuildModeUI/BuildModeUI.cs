@@ -106,7 +106,9 @@ public class BuildModeUI : MonoBehaviour
             case UIState.BuildMode:
                 ShowUI();
                 break;
-            case UIState.Tutorial:
+            case UIState.BuildModeDeleteMode:
+                ShowUI();
+                CheckDeletionMode(true);
                 return;
             default:
                 HideUI();
@@ -126,13 +128,17 @@ public class BuildModeUI : MonoBehaviour
 
         foreach (var item in items)
         {
+            int id = item.numericID;
+            int amount = FurnitureInventory.Instance.GetAmount(id);
+
+            if (amount <= 0)
+                continue;
+            
             var itemElement = itemTemplate.Instantiate();
             var button = itemElement.Q<Button>("itemButton");
             var icon = itemElement.Q<VisualElement>("itemIcon");
             
             icon.style.backgroundImage = item.icon ? new StyleBackground(item.icon) : null;
-
-            int id = item.numericID;
 
             button.clicked += () =>
             {
@@ -142,7 +148,7 @@ public class BuildModeUI : MonoBehaviour
             };
 
             var quantityLabel = itemElement.Q<Label>("quantityLabel");
-            int amount = FurnitureInventory.Instance.GetAmount(id);
+
             quantityLabel.text = amount.ToString();
             itemUI[id] = new ItemUIRefs
             {
@@ -172,7 +178,7 @@ public class BuildModeUI : MonoBehaviour
     public void ShowCategory(BuildCategory category)
     {
         CheckSelectedCategory(category);
-        BuildItems(FurnitureDatabase.Instance.items.Where(item => item.buildCategory == category));
+        BuildItems(GetVisibleFurniture());
     }
 
     private void CheckDeletionMode(bool isInDeleteMode)
@@ -190,11 +196,19 @@ public class BuildModeUI : MonoBehaviour
             uiHideLeft.style.visibility = Visibility.Visible;
         }
     }
+
+    private IEnumerable<FurnitureSO> GetVisibleFurniture()
+    {
+        if(!UnlockManager.Instance || !FurnitureInventory.Instance) return Enumerable.Empty<FurnitureSO>();
+        
+        return UnlockManager.Instance.runtimeDatabase.GetUnlockedFurniture()
+            .Where(f => FurnitureInventory.Instance.GetAmount(f.numericID) > 0);
+    }
     // refactor this aswell man 
     public void ShowCategoryAll()
     {
         CheckSelectedCategory(BuildCategory.None);
-        BuildItems(FurnitureDatabase.Instance.items);
+        BuildItems(GetVisibleFurniture());
     }
 
     public void CheckSelectedCategory(BuildCategory category)
@@ -222,9 +236,22 @@ public class BuildModeUI : MonoBehaviour
 
     private void UpdateItemQuantity(int id, int newQuantity)
     {
-        if (itemUI.TryGetValue(id, out var ui))
+        if (newQuantity <= 0)
         {
-            ui.quantityLabel.text = newQuantity.ToString();
+            if (itemUI.TryGetValue(id, out var ui))
+            {
+                ui.root.RemoveFromHierarchy();
+                itemUI.Remove(id);
+
+                if (selectedItemId == id)
+                    selectedItemId = null;
+            }
+            return;
+        }
+        
+        if (itemUI.TryGetValue(id, out var uiRefs))
+        {
+            uiRefs.quantityLabel.text = newQuantity.ToString();
             UpdateItemVisualState(id, newQuantity);
         }
     }
@@ -244,6 +271,7 @@ public class BuildModeUI : MonoBehaviour
 
     public void ExitBuildMode(bool withSound = true)
     {
+        CheckDeletionMode(false);
         if(withSound) AudioManager.Instance.Play(buildCloseSound);
         GameState.playerInteractionAllowed = true;
         GameState.isInBuildMode = false;

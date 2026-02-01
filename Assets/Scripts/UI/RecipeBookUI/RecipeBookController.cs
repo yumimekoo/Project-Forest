@@ -43,6 +43,19 @@ public class RecipeBookController : MonoBehaviour
         pageNumberLabel;
     private TextField
         searchField;
+    
+    private const int ID_HOTWATER = 1000;
+    private const int ID_FOAM     = 1001;
+    private const int ID_POWDER   = 1002;
+    private const int ID_COFFEE   = 114;
+
+    private static readonly Dictionary<int, string> MachineActionTextById = new()
+    {
+        { ID_HOTWATER, "Put in Kettle" },
+        { ID_COFFEE,   "Put in Coffee Machine" },
+        { ID_POWDER,   "Put in Grinder" },
+        { ID_FOAM,     "Put in Frother" },
+    };
 
     private void OnEnable()
     {
@@ -345,10 +358,45 @@ public class RecipeBookController : MonoBehaviour
     {
         var step = recipeStepTemplate.Instantiate();
         step.Q<Label>("left").text = rule.requiredState.itemName;
-        step.Q<Label>("right").text = rule.addedIngredient.itemName;
+        
+        var rightLabel = step.Q<Label>("right");
+        rightLabel.text = rule.addedIngredient.itemName;
+        
+        rightLabel.RemoveFromClassList("machine-action--kettle");
+        rightLabel.RemoveFromClassList("machine-action--coffee");
+        rightLabel.RemoveFromClassList("machine-action--grinder");
+        rightLabel.RemoveFromClassList("machine-action--frother");
+        
+        int ingredientId = rule.addedIngredient.id;
+        
+        if (MachineActionTextById.TryGetValue(ingredientId, out var actionText))
+        {
+            rightLabel.text = actionText;
+            switch (ingredientId)
+            {
+                case ID_HOTWATER: rightLabel.AddToClassList("machine-action--kettle"); break;
+                case ID_COFFEE:   rightLabel.AddToClassList("machine-action--coffee"); break;
+                case ID_POWDER:   rightLabel.AddToClassList("machine-action--grinder"); break;
+                case ID_FOAM:     rightLabel.AddToClassList("machine-action--frother"); break;
+            }
+        }
+        
         step.Q<Label>("result").text = rule.resultingState.itemName;
         step.Q<Label>("stepNumber").text = $"{stepIndex}.";
 
+        var leftVisual = step.Q<VisualElement>("leftVisual");
+        var rightVisual = step.Q<VisualElement>("rightVisual");
+        var resultVisual = step.Q<VisualElement>("resultVisual");
+
+        leftVisual.style.backgroundImage = rule.requiredState.icon ? new StyleBackground(rule.requiredState.icon) : null;
+        if (!rule.requiredState.icon) leftVisual.style.display = DisplayStyle.None;
+        
+        rightVisual.style.backgroundImage = rule.addedIngredient.icon ? new StyleBackground(rule.addedIngredient.icon) : null;
+        if (!rule.addedIngredient.icon) rightVisual.style.display = DisplayStyle.None;
+        
+        resultVisual.style.backgroundImage = rule.resultingState.icon ? new StyleBackground(rule.resultingState.icon) : null;
+        if (!rule.resultingState.icon) resultVisual.style.display = DisplayStyle.None;
+        
         stepContainer.Add(step);
         stepIndex++;
     }

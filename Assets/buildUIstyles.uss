@@ -97,3 +97,53 @@
 
 .clickSound {
 }
+
+#rootBackground > VisualElement > VisualElement > #itemContainer > #unity-content-and-vertical-scroll-container > .unity-scroll-view__vertical-scroller > #unity-low-button {
+    background-color: rgba(0, 0, 0, 0);
+    background-image: none;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+#rootBackground > VisualElement > VisualElement > #itemContainer > #unity-content-and-vertical-scroll-container > .unity-scroll-view__vertical-scroller > #unity-high-button {
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    background-image: none;
+}
+
+#rootBackground > VisualElement > VisualElement > #itemContainer > #unity-content-and-vertical-scroll-container > .unity-scroll-view__vertical-scroller > #unity-slider {
+    background-color: rgba(55, 55, 55, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+#rootBackground > VisualElement > VisualElement > #itemContainer > #unity-content-and-vertical-scroll-container > .unity-scroll-view__vertical-scroller > #unity-slider > .unity-slider__input > #unity-drag-container {
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#rootBackground > VisualElement > VisualElement > #itemContainer > #unity-content-and-vertical-scroll-container > .unity-scroll-view__vertical-scroller > #unity-slider > .unity-slider__input > #unity-drag-container > #unity-tracker {
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+#rootBackground > VisualElement > VisualElement > #itemContainer > #unity-content-and-vertical-scroll-container > .unity-scroll-view__vertical-scroller > #unity-slider > .unity-slider__input > #unity-drag-container > #unity-dragger {
+    background-color: rgb(83, 29, 4);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+}

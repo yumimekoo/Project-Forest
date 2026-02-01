@@ -88,6 +88,9 @@ public class PauseUI : MonoBehaviour
     
     private void HandleInput()
     {
+
+        if (GameState.inTutorial) return;
+        
         if (IsConfirmVisible())
         {
             HideConfirm();
@@ -204,6 +207,7 @@ public class PauseUI : MonoBehaviour
     private void GoToMenu(bool withSave)
     {
         Time.timeScale = 1f;
+        AudioManager.Instance.SetPausedAudio(false);
         
         if(withSave && SaveManager.Instance) SaveManager.Instance.SaveGame();
         UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
@@ -233,11 +237,13 @@ public class PauseUI : MonoBehaviour
         pauseUI.rootVisualElement.style.display = DisplayStyle.Flex;
         UIManager.Instance.SetUIState(UIState.Pause);
         GameState.isInPauseMenu = true;
+        AudioManager.Instance.SetPausedAudio(true);
         Time.timeScale = 0f;
     }
     private void HideUI()
     {
         Time.timeScale = 1f;
+        AudioManager.Instance.SetPausedAudio(false);
         GameState.isInPauseMenu = false;
         UIManager.Instance.ResetState();
         pauseUI.rootVisualElement.style.display = DisplayStyle.None;
