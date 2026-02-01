@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialManager
   currentStep: 0
-  objectsToDeleteAndPlace: 4
-  itemsToBuy: 10
+  objectsToDeleteAndPlace: 10
+  itemsToBuy: 20
   yarnManagerTutorial: {fileID: 8949552133221171948}
   tutorialUI: {fileID: 6440017344581554985}
   showSound: {fileID: 11400000, guid: 767929fc7af70f9419b358198d92dda8, type: 2}
