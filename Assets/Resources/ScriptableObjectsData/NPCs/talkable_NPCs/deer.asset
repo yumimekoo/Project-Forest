@@ -18,12 +18,18 @@ MonoBehaviour:
   portrait: {fileID: 0}
   availability: 0
   isTalkable: 1
-  timeToAcceptOrder: 30
+  timeToAcceptOrder: 20
   timeToGiveOrder: 30
   timeDrinking: 10
-  favDrinks: []
-  dislikedIngredients: []
-  likedIngredients: []
+  favDrinks:
+  - {fileID: 11400000, guid: 2af1775b0c8aed245a6b84e3740bcde2, type: 2}
+  dislikedIngredients:
+  - {fileID: 11400000, guid: 140fa9c5f12644749bf8d73d041ade99, type: 2}
+  - {fileID: 11400000, guid: 1b67c8f77381c4c4aaed8957011d739b, type: 2}
+  - {fileID: 11400000, guid: fb924d7cb6041664ca2286b80602276d, type: 2}
+  likedIngredients:
+  - {fileID: 11400000, guid: dc95f057c7a427b43b72510492e51c86, type: 2}
+  - {fileID: 11400000, guid: ec21068cfab8208499095a469d209d0f, type: 2}
   friendshipRewards: []
   dialogueProject: {fileID: 7545569452688597077, guid: dfa0bd12f76271544b77c3480bbb4279, type: 3}
   startNode: Deer

@@ -21,9 +21,14 @@ MonoBehaviour:
   timeToAcceptOrder: 20
   timeToGiveOrder: 30
   timeDrinking: 20
-  favDrinks: []
-  dislikedIngredients: []
-  likedIngredients: []
+  favDrinks:
+  - {fileID: 11400000, guid: c00a8f9ee72363e4cbe034d99d31dac6, type: 2}
+  - {fileID: 11400000, guid: 620b1a348dfd5624d894831c8828fde6, type: 2}
+  dislikedIngredients:
+  - {fileID: 11400000, guid: 422620e33b2e1064cbcfa638d7b55204, type: 2}
+  likedIngredients:
+  - {fileID: 11400000, guid: 6ef4e777c2f04684da5e51f409a1e4bf, type: 2}
+  - {fileID: 11400000, guid: b7bad3d40804239408e54fdaae1cceec, type: 2}
   friendshipRewards: []
   dialogueProject: {fileID: 7545569452688597077, guid: dfa0bd12f76271544b77c3480bbb4279, type: 3}
   startNode: Bunny
