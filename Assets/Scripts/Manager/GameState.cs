@@ -21,7 +21,7 @@ public static class GameState
     public static bool isInBuildMode = false;
 
     // --- Tutorial State ---
-    public static bool inTutorial = true;
+    public static bool inTutorial = false;
     
     // --- Menu --- 
     public static bool isInMenu = false;
