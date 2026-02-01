@@ -40,8 +40,10 @@ position: 109,-644
 Raleigh: Do you enjoy a more tidy or lived in place?
 -> Tidy.
     <<friendship "bunny_1" 10>>
+    <<set_emotion bunny_1 happy>>
     Sophia: I make sure to keep my spaces clean and mess-free. Organisation is everything.
     Raleigh: Me too, I do not understand how some can live like that.  
+    <<set_emotion bunny_1 default>>
 -> Lived in.
     Sophia: I feel like places need a bit of mess in them, or else they feel fake.
     Raleigh: Mhm... I suppose so.
@@ -62,6 +64,8 @@ position: -741,-435
 ---
 Raleigh: I had some trouble with buying some fabric earlier. 
 Raleigh: And by trouble, I mean the casheer's outfit totally clashed with their accessories. 
+<<set_emotion bunny_1 happy>>
 Raleigh: Obviously I did not tell them, but it sure has ruined my day. 
 Raleigh: Perhaps a nice warm cup of Herbal Tea could help me unwind. 
+<<set_emotion bunny_1 default>>
 ===

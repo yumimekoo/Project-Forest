@@ -28,6 +28,7 @@ position: -304,-727
 Beth: So... Are you here to impress me, or just killing time?
 -> Maybe both?
      <<jump Bat_PositiveResponseLvl1>>
+     <<set_emotion bat_1 happy>>
 -> Just working.
     Beth: Shame, I was hoping for better intentions.
 ===
@@ -36,15 +37,18 @@ title: Bat_PositiveResponseLvl1
 position: 109,-644
 ---
 Beth: Cute answer. I'll allow it.
+<<set_emotion bat_1 default>>
 Beth: So tell me about yourself. 
 Beth: Do you like to be challenged?
 -> Yes.
     <<friendship "bat_1" 10>>
     Sophia: I do enjoy a little challenge.
     Beth: Good, agreement is like super boring. 
+    <<set_emotion bat_1 happy>>
 -> No.
     Sophia: I enjoy it more when people just agree with me.
     Beth: Yikes.
+<<set_emotion deer_1 default>>
 ===
 
 

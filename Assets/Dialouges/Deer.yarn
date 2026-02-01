@@ -36,9 +36,9 @@ Dee: Are you... busy right now?
 title: Deer_PositiveResponseLvl1
 position: 109,-644
 ---
-// <<set_emotion deer happy>>>
+<<set_emotion deer_1 happy>>
 Dee: Really? 
-//set emotion back to neutral
+<<set_emotion deer_1 default>>
 Dee: Do you enjoy the quiet?
 -> I do.
     <<friendship "deer_1" 10>>
@@ -65,10 +65,12 @@ position: -741,-435
 ---
 Dee: ...
 Dee: ...
+<<set_emotion deer_1 happy>>
 Dee: Uhm... 
 -> How do you like the weather today?  
     Sophia: How do you like the weather today? 
     Dee: ... I guess it's alright?
+    <<set_emotion deer_1 default>>
 -> Well, back to work I go. 
     Sophia: Well, back to work I go. Catch you later!
     Dee: Oh... I'm sorry.

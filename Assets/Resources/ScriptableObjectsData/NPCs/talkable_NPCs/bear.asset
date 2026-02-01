@@ -28,4 +28,6 @@ MonoBehaviour:
   friendshipRewards: []
   dialogueProject: {fileID: 7545569452688597077, guid: dfa0bd12f76271544b77c3480bbb4279, type: 3}
   startNode: Bear
-  emotions: []
+  emotions:
+  - emotion: default
+    emotionSprite: {fileID: -2164517109653227464, guid: 1dffbf689d6b3234d89110124448d8ff, type: 3}
