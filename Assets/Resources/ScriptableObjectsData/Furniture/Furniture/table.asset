@@ -20,7 +20,7 @@ MonoBehaviour:
   furniturePrefab: {fileID: 1789459280500734020, guid: f7bd6e50af2b3bc4997dae8e2e31b749, type: 3}
   furniturePreview: {fileID: 1789459280500734020, guid: f7bd6e50af2b3bc4997dae8e2e31b749, type: 3}
   size: {x: 1, y: 1}
-  icon: {fileID: 0}
+  icon: {fileID: 4000916753294049061, guid: e90ed1138cab67843b577dd32a5e215b, type: 3}
   shoppingCategory: 2
   price: 0
   isAvailableInShop: 1
