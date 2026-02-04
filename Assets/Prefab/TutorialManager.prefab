@@ -78,6 +78,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6477496619397706409}
   - component: {fileID: 6440017344581554985}
+  - component: {fileID: 7288529615326755055}
   m_Layer: 0
   m_Name: TutorialUI
   m_TagString: Untagged
@@ -123,6 +124,20 @@ MonoBehaviour:
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}
+--- !u!114 &7288529615326755055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6621794208621776826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb1f9d76ce7024de9ba035ac7972c32f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIRatio
+  targetCamera: {fileID: 0}
+  viewportRootName: rooti
 --- !u!1001 &73096018681740903
 PrefabInstance:
   m_ObjectHideFlags: 0

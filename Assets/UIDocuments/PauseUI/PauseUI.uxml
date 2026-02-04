@@ -1,21 +1,23 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UIDocuments/PauseUI/puaseMenu.uss?fileID=7433441132597879392&amp;guid=1b172b6468bce124fbf038075bc6aa8e&amp;type=3#puaseMenu" />
-    <ui:VisualElement name="animation" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UIDocuments/PauseUI/pauseUI.aseprite?fileID=3474998474935278823&amp;guid=9a7eff230452f5948b7bfab0c42f501c&amp;type=3#Frame_0&quot;); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
-        <ui:VisualElement style="flex-grow: 0; align-self: stretch;">
-            <ui:VisualElement style="flex-grow: 0; justify-content: center; align-self: flex-end;">
-                <ui:Button text="Continue" name="continue" class="continueButton" style="height: 96px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; width: 72px; position: absolute; top: 564px; left: -693px; display: none;" />
-                <ui:Button text="Save and Exit" name="saveExit" class="saveButton" style="font-size: 35px; height: 96px; -unity-text-align: middle-center; width: 72px; position: absolute; top: 669px; left: -451px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; display: none;">
-                    <ui:Label text="do not use when game wasnt started from the main menu" style="-unity-text-align: lower-center; -unity-font-style: italic; font-size: 20px;" />
-                </ui:Button>
+    <ui:VisualElement name="rooti" style="flex-grow: 1;">
+        <ui:VisualElement name="animation" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UIDocuments/PauseUI/pauseUI.aseprite?fileID=3474998474935278823&amp;guid=9a7eff230452f5948b7bfab0c42f501c&amp;type=3#Frame_0&quot;); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
+            <ui:VisualElement style="flex-grow: 0; align-self: stretch;">
+                <ui:VisualElement style="flex-grow: 0; justify-content: center; align-self: flex-end;">
+                    <ui:Button text="Continue" name="continue" class="continueButton" style="height: 96px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; width: 72px; position: absolute; top: 564px; left: -693px; display: none;" />
+                    <ui:Button text="Save and Exit" name="saveExit" class="saveButton" style="font-size: 35px; height: 96px; -unity-text-align: middle-center; width: 72px; position: absolute; top: 669px; left: -451px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; display: none;">
+                        <ui:Label text="do not use when game wasnt started from the main menu" style="-unity-text-align: lower-center; -unity-font-style: italic; font-size: 20px;" />
+                    </ui:Button>
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-    </ui:VisualElement>
-    <ui:VisualElement name="areYouSure" style="flex-grow: 1; position: absolute; width: 100%; height: 100%; justify-content: space-around; align-self: center; align-items: center; background-color: rgba(0, 0, 0, 0.71); display: none;">
-        <ui:VisualElement style="flex-grow: 0; background-image: url(&quot;project://database/Assets/UIDocuments/MainMenu/selectButton.aseprite?fileID=772625968921859919&amp;guid=a96724002032aaf438ca6ed159f882e6&amp;type=3#selectButton&quot;); width: 896px; height: 224px; padding-left: 75px; padding-right: 75px; padding-top: 50px;">
-            <ui:Label text="Do you want to exit WITHOUT saving?" style="-unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); font-size: 40px; -unity-text-align: upper-center; color: rgb(83, 29, 4); text-shadow: 5px 5px 0 rgb(227, 164, 100);" />
-            <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: space-evenly;">
-                <ui:Button text="No" name="noButton" class="yesButton" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
-                <ui:Button text="Yes" name="yesButton" class="noButton" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+        <ui:VisualElement name="areYouSure" style="flex-grow: 1; position: absolute; width: 100%; height: 100%; justify-content: space-around; align-self: center; align-items: center; background-color: rgba(0, 0, 0, 0.71); display: none;">
+            <ui:VisualElement style="flex-grow: 0; background-image: url(&quot;project://database/Assets/UIDocuments/MainMenu/selectButton.aseprite?fileID=772625968921859919&amp;guid=a96724002032aaf438ca6ed159f882e6&amp;type=3#selectButton&quot;); width: 896px; height: 224px; padding-left: 75px; padding-right: 75px; padding-top: 50px;">
+                <ui:Label text="Do you want to exit WITHOUT saving?" style="-unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;); font-size: 40px; -unity-text-align: upper-center; color: rgb(83, 29, 4); text-shadow: 5px 5px 0 rgb(227, 164, 100);" />
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: space-evenly;">
+                    <ui:Button text="No" name="noButton" class="yesButton" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    <ui:Button text="Yes" name="yesButton" class="noButton" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

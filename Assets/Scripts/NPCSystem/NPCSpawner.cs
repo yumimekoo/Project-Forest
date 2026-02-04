@@ -41,6 +41,7 @@ public class NPCSpawner : MonoBehaviour
     }
     public void Spawn()
     {
+        Debug.LogError("NPC attempt spawning");
         if (firstStartup)
         {
             ChairManager.Instance.Initiate();

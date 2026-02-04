@@ -322,6 +322,7 @@ GameObject:
   - component: {fileID: 163160305}
   - component: {fileID: 163160307}
   - component: {fileID: 163160306}
+  - component: {fileID: 163160308}
   m_Layer: 0
   m_Name: OverlayUI
   m_TagString: Untagged
@@ -381,6 +382,20 @@ MonoBehaviour:
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}
+--- !u!114 &163160308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163160304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb1f9d76ce7024de9ba035ac7972c32f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIRatio
+  targetCamera: {fileID: 1276157325}
+  viewportRootName: rooti
 --- !u!1 &178809019
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,6 +407,7 @@ GameObject:
   - component: {fileID: 178809020}
   - component: {fileID: 178809022}
   - component: {fileID: 178809021}
+  - component: {fileID: 178809023}
   m_Layer: 0
   m_Name: InteractionUI
   m_TagString: Untagged
@@ -450,6 +466,20 @@ MonoBehaviour:
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}
+--- !u!114 &178809023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178809019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb1f9d76ce7024de9ba035ac7972c32f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIRatio
+  targetCamera: {fileID: 1276157325}
+  viewportRootName: rooti
 --- !u!1 &180150764 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 197958423845036301, guid: 24c95dda04c97ce4c9be0b4d329346b5, type: 3}
@@ -3003,6 +3033,7 @@ GameObject:
   - component: {fileID: 1059500208}
   - component: {fileID: 1059500210}
   - component: {fileID: 1059500209}
+  - component: {fileID: 1059500211}
   m_Layer: 0
   m_Name: BuildModeUI
   m_TagString: Untagged
@@ -3068,6 +3099,20 @@ MonoBehaviour:
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}
+--- !u!114 &1059500211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059500207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb1f9d76ce7024de9ba035ac7972c32f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIRatio
+  targetCamera: {fileID: 1276157325}
+  viewportRootName: rooti
 --- !u!1001 &1062731363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3150,6 +3195,7 @@ GameObject:
   - component: {fileID: 1065064658}
   - component: {fileID: 1065064660}
   - component: {fileID: 1065064659}
+  - component: {fileID: 1065064661}
   m_Layer: 0
   m_Name: PauseUI
   m_TagString: Untagged
@@ -3236,6 +3282,20 @@ MonoBehaviour:
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}
+--- !u!114 &1065064661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065064657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb1f9d76ce7024de9ba035ac7972c32f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIRatio
+  targetCamera: {fileID: 1276157325}
+  viewportRootName: rooti
 --- !u!1001 &1071802052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4224,6 +4284,7 @@ GameObject:
   - component: {fileID: 1264877436}
   - component: {fileID: 1264877438}
   - component: {fileID: 1264877437}
+  - component: {fileID: 1264877439}
   m_Layer: 0
   m_Name: ShopUI
   m_TagString: Untagged
@@ -4289,6 +4350,20 @@ MonoBehaviour:
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}
+--- !u!114 &1264877439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264877435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb1f9d76ce7024de9ba035ac7972c32f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIRatio
+  targetCamera: {fileID: 1276157325}
+  viewportRootName: rooti
 --- !u!1 &1276157320
 GameObject:
   m_ObjectHideFlags: 0
@@ -4303,6 +4378,7 @@ GameObject:
   - component: {fileID: 1276157323}
   - component: {fileID: 1276157322}
   - component: {fileID: 1276157321}
+  - component: {fileID: 1276157327}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4472,6 +4548,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -45, z: 0}
+--- !u!114 &1276157327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276157320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb46aa9a3efdc4d9ebd3718315be96f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AspectRatio
 --- !u!1001 &1283414088
 PrefabInstance:
   m_ObjectHideFlags: 0
