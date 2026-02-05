@@ -41,11 +41,11 @@ Dee: Really?
 Dee: Do you enjoy the quiet?
 -> I do.
     <<friendship "deer_1" 10>>
-    Sophia: I really do, I get overwhelmed in loud spaces
+    You: I really do, I get overwhelmed in loud spaces
     Dee: Ah, really? Me too! There's a beautiful and quiet place in the forest, not far from here.
     Dee: ...
 -> No I do not.
-    Sophia: I dont enjoy the quiet, it feels too lonely. 
+    You: I dont enjoy the quiet, it feels too lonely. 
     Dee: Oh... I see.
 ===
 
@@ -67,11 +67,11 @@ Dee: ...
 <<set_emotion deer_1 happy>>
 Dee: Uhm... 
 -> How do you like the weather today?  
-    Sophia: How do you like the weather today? 
+    You: How do you like the weather today? 
     Dee: ... I guess it's alright?
     <<set_emotion deer_1 default>>
 -> Well, back to work I go. 
-    Sophia: Well, back to work I go. Catch you later!
+    You: Well, back to work I go. Catch you later!
     Dee: Oh... I'm sorry.
 
 ===

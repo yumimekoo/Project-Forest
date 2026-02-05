@@ -42,12 +42,12 @@ Beth: So tell me about yourself.
 Beth: Do you like to be challenged?
 -> Yes.
     <<friendship "bat_1" 10>>
-    Sophia: I do enjoy a little challenge.
+    You: I do enjoy a little challenge.
     <<set_emotion bat_1 happy>>
     Beth: Good, agreement is like super boring. 
     <<set_emotion deer_1 default>>
 -> No.
-    Sophia: I enjoy it more when people just agree with me.
+    You: I enjoy it more when people just agree with me.
     Beth: Yikes.
 <<set_emotion deer_1 default>>
 ===
@@ -69,10 +69,10 @@ Beth: Picture this.
 Beth: You die due to mysterious circumstances. Would you rather have cared more about being remembered or liked?
 -> Remembered.
     <<set_emotion bat_1 happy>>
-    Sophia: I would rather be remembered for ALL the things I've done, even if they werent all good.
+    You: I would rather be remembered for ALL the things I've done, even if they werent all good.
     Beth: Exactly, now you're starting to become interesting.
     <<set_emotion deer_1 default>>
 -> Liked.
-    Sophia: I pride myself in spreading love and happiness and being liked by many.
+    You: I pride myself in spreading love and happiness and being liked by many.
     Beth: Safe choice. Boring though.
 ===

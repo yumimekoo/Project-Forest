@@ -18,7 +18,7 @@ title : Bear_Friendship_Intro
 position: -43,-1130
 ---
 Ted: Oh my gosh, hi!!! You look amazing today.
-Sophia: Oh why thank you, you do too!!
+You: Oh why thank you, you do too!!
 <<jump Bear_Lvl1>>
 ===
 
@@ -42,10 +42,10 @@ Ted: People always tell me I'm too passionate about self love...
 Ted: Do you think it's better to treat yourself or save it for later? 
 -> Life is too short to not enjoy the sweet stuff!
     <<friendship "bear_1" 10>>
-    Sophia: Life is too short to not enjoy the sweet stuff!
+    You: Life is too short to not enjoy the sweet stuff!
     Ted: Exactly! See, you're starting to get it!
 -> If you wait with your treat, it will feel even better! 
-    Sophia: If you wait with your treat, it will feel even better! 
+    You: If you wait with your treat, it will feel even better! 
     Ted: That's fair. Balance is cute too, honestly.
 ===
 

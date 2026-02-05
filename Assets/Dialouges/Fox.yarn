@@ -18,7 +18,7 @@ title : Fox_Friendship_Intro
 position: -43,-1130
 ---
 Finn: Sup Big Dawg! 
-Sophia: Hi!
+You: Hi!
 <<jump Fox_Lvl1>>
 ===
 
@@ -42,10 +42,10 @@ Finn: You know... I outsmarted three Squirrels on my way here, but I'm still in 
 Finn: ...Is it weird that I wanted them to put up more of a fight?
 -> A little challenge never hurt anyone.
     <<friendship "fox_1" 10>>
-    Sophia: A little challenge never hurt anyone, right?
+    You: A little challenge never hurt anyone, right?
     Finn: Exactly! See, you're starting to get it!
 -> That's kind of mean...
-    Sophia: That's kind of mean... You know, they were probably just trying to gather food for the winter.
+    You: That's kind of mean... You know, they were probably just trying to gather food for the winter.
     Finn: Nah, it's just how the world works. Survival of the fittest and all.
     Finn: But hey, I get it. Not everyone has my... unique perspective.
 ===
@@ -66,9 +66,9 @@ position: -741,-435
 Finn: What a blessed day!
 Finn: Do you like sour candy?
 -> Yes I do.
-    Sophia: I could go for some sour candy right now. 
+    You: I could go for some sour candy right now. 
     Finn: Too bad, I ate them all by myelf. 
 -> No I dont. 
-    Sophia: God no, I dont like the way it makes my mouth feel.
+    You: God no, I dont like the way it makes my mouth feel.
     Finn: Boring.
 ===

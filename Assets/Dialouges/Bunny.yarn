@@ -18,7 +18,7 @@ title : Bunny_Friendship_Intro
 position: -43,-1130
 ---
 Raleigh: Oh, hi. Welcome. I like your color palette today. It is very... harmonious. 
-Sophia: Thank you.
+You: Thank you.
 <<jump Bunny_Lvl1>>
 ===
 
@@ -41,11 +41,11 @@ Raleigh: Do you enjoy a more tidy or lived in place?
 -> Tidy.
     <<friendship "bunny_1" 10>>
     <<set_emotion bunny_1 happy>>
-    Sophia: I make sure to keep my spaces clean and mess-free. Organisation is everything.
+    You: I make sure to keep my spaces clean and mess-free. Organisation is everything.
     Raleigh: Me too, I do not understand how some can live like that.  
     <<set_emotion bunny_1 default>>
 -> Lived in.
-    Sophia: I feel like places need a bit of mess in them, or else they feel fake.
+    You: I feel like places need a bit of mess in them, or else they feel fake.
     Raleigh: Mhm... I suppose so.
 ===
 
