@@ -99,7 +99,7 @@ public class ShopUI : MonoBehaviour
             });
         }
 
-        ShowCategory(ShoppingCategory.Items);
+        ShowCategory(ShoppingCategory.Resources);
         HideUI();
     }
 
@@ -220,7 +220,8 @@ public class ShopUI : MonoBehaviour
         entry.Q<Button>("plusFive").clicked += () =>
         {
             AudioManager.Instance.Play(clickSound);
-            buyAmount = Mathf.Min(99, buyAmount + 5);
+            int toAdd = buyAmount == 1 ? 4 : 5;
+            buyAmount = Mathf.Min(99, buyAmount + toAdd);
             Refresh();
         };
         entry.Q<Button>("minusFive").clicked += () =>
@@ -239,6 +240,7 @@ public class ShopUI : MonoBehaviour
                 TutorialManager.Instance.OnItemBought(buyAmount);
             }
 
+            buyAmount = 1;
             Refresh();
         };
 
@@ -256,7 +258,7 @@ public class ShopUI : MonoBehaviour
 
         foreach (ShoppingCategory category in System.Enum.GetValues(typeof(ShoppingCategory)))
         {
-            if (category == ShoppingCategory.None)
+            if (category == ShoppingCategory.None || category == ShoppingCategory.Items)
                 continue;
 
             var tabTemplate = shopCategoryTabTemplate.Instantiate();
@@ -292,7 +294,7 @@ public class ShopUI : MonoBehaviour
 
         foreach (var kvp in categoryButtons)
         {
-            bool allowed = kvp.Key == ShoppingCategory.Items;
+            bool allowed = kvp.Key == ShoppingCategory.Resources;
             kvp.Value.SetEnabled(allowed);
         }
     }

@@ -19,7 +19,7 @@ MonoBehaviour:
   icon: {fileID: -5440300148012249495, guid: c2eb60b866d4cb54394ed8b14b5fe8dd, type: 3}
   storageType: 4
   itemPrefab: {fileID: 8037415141159388369, guid: 100a11eda749c654981d52293ca58c90, type: 3}
-  shoppingCategory: 3
+  shoppingCategory: 2
   price: 3
   isInfinite: 0
   contentColor: {r: 1, g: 1, b: 1, a: 1}

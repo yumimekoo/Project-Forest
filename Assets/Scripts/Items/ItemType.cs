@@ -20,6 +20,8 @@ public enum ShoppingCategory
 {
     None,
     Resources,
+    Teas,
+    Syrups,
     Furniture,
     Items,
     Decoration,
