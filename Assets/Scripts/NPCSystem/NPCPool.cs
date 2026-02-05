@@ -39,7 +39,7 @@ public class NPCPool : MonoBehaviour
 
         foreach (var npc in npcs)
         {
-            var npcInstance = Instantiate(baseNPC);
+            var npcInstance = Instantiate(baseNPC, transform);
             npcInstance.SetActive(false);
 
             ApplyNPCData(npc, npcInstance);
@@ -109,7 +109,7 @@ public class NPCPool : MonoBehaviour
 
     public GameObject GetTutorialNPC()
     {
-        var npcInstance = Instantiate(tutorialNPC);
+        var npcInstance = Instantiate(tutorialNPC, transform);
         npcInstance.SetActive(true);
         return npcInstance;
     }

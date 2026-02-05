@@ -2695,7 +2695,7 @@ Transform:
   m_GameObject: {fileID: 483811079}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.67, y: 0, z: 35.22}
+  m_LocalPosition: {x: -15.36, y: 0, z: 34.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5033,7 +5033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3ec3372101123f418c862c9c0642703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
-  dayDurationInSeconds: 300
+  dayDurationInSeconds: 20
   dayUnlocker: {fileID: 874102846}
   doorGlow: {fileID: 1447512048}
   nightMusic: {fileID: 8300000, guid: b4582e48d57f5f64a8f253580c83364f, type: 3}
@@ -8834,7 +8834,7 @@ Transform:
   m_GameObject: {fileID: 1500263021}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -22.79, y: 0, z: 34.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

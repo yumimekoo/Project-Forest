@@ -58,7 +58,12 @@ public class NPCSpawner : MonoBehaviour
 
     public void SpawnTutorialNPC()
     {
-        ChairManager.Instance.Initiate();
+        if (firstStartup)
+        {
+            ChairManager.Instance.Initiate();
+            firstStartup = false;
+        }
+        
         var npc = NPCPool.Instance.GetTutorialNPC();
         if (npc == null) 
             return;
