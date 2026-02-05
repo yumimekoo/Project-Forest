@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd79a15c77b9434bb1ef54cf4de5c14, type: 3}
+  m_Name: nell
+  m_EditorClassIdentifier: Assembly-CSharp::NPCIdentitySO
+  npcID: nell
+  npcName: 'Nell '
+  species: 5
+  portrait: {fileID: 0}
+  availability: 0
+  isTalkable: 0
+  timeToAcceptOrder: 30
+  timeToGiveOrder: 90
+  timeDrinking: 10
+  favDrinks:
+  - {fileID: 11400000, guid: 2192f3407dca36845a25ca19661c42ae, type: 2}
+  dislikedIngredients:
+  - {fileID: 11400000, guid: 6a60e1500521fcc4092fada4cd1afd8f, type: 2}
+  likedIngredients:
+  - {fileID: 11400000, guid: 34baa30f65e9b7549ba1536fc82917dd, type: 2}
+  - {fileID: 11400000, guid: 9e1b963ef75701642be6691d520a6dc3, type: 2}
+  - {fileID: 11400000, guid: 5e5e903e816cd084ebe0c494abf290e7, type: 2}
+  friendshipRewards: []
+  dialogueProject: {fileID: 7545569452688597077, guid: dfa0bd12f76271544b77c3480bbb4279, type: 3}
+  startNode: Bat
+  emotions:
+  - emotion: default
+    emotionSprite: {fileID: -4371704998614673362, guid: a2adc3518fc21c342bb28dc3a73c674b, type: 3}
+  - emotion: happy
+    emotionSprite: {fileID: 4440123103644887108, guid: f3b2d8772a9915e4386658d4ae713e37, type: 3}
