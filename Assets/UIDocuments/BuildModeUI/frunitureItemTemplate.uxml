@@ -3,8 +3,8 @@
     <ui:VisualElement style="flex-grow: 0; width: 192px; height: 202px; min-width: auto; max-width: none; min-height: auto; max-height: none; flex-direction: row; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;">
         <ui:Button name="itemButton" class="buttonStyle" style="width: 192px; height: 192px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
             <ui:VisualElement style="flex-grow: 1; align-items: stretch;">
-                <ui:VisualElement style="flex-grow: 0; flex-direction: row; justify-content: space-between; padding-right: 11px; padding-left: 16px;">
-                    <ui:Label text="Label" name="nameLabel" style="padding-bottom: 0; margin-bottom: 0;" />
+                <ui:VisualElement style="flex-grow: 0; flex-direction: row; justify-content: space-between; padding-right: 11px; padding-left: 16px; max-height: 25px;">
+                    <ui:Label text="Coffee Machine" name="nameLabel" style="padding-bottom: 0; margin-bottom: 0; white-space: normal; width: 100px; text-overflow: clip; -unity-text-align: upper-center;" />
                     <ui:Label text="0" name="quantityLabel" style="-unity-text-align: middle-center; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; letter-spacing: 5px; font-size: 25px; color: rgb(83, 29, 4); text-shadow: 2px 2px 0 rgb(227, 164, 100); width: 44px;" />
                 </ui:VisualElement>
                 <ui:VisualElement style="flex-grow: 1; width: auto; height: auto; align-items: center; padding-top: 30px;">

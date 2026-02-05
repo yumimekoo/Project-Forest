@@ -70,7 +70,7 @@ public class BuildModeUI : MonoBehaviour
         btnAll = root.Q<Button>("btnAll");
         deleteButton = root.Q<Button>("deleteButton");
         uiHideLeft = root.Q<VisualElement>("uiHideLeft");
-        btnAll.clicked += () => ShowCategoryAll();
+        btnAll.clicked += () => ShowCategory(BuildCategory.None);
         btnDecor.clicked += () => ShowCategory(BuildCategory.Decorations);
         btnFurniture.clicked += () => ShowCategory(BuildCategory.Furniture);
         btnUtility.clicked += () => ShowCategory(BuildCategory.Utility);
@@ -105,6 +105,7 @@ public class BuildModeUI : MonoBehaviour
         {
             case UIState.BuildMode:
                 ShowUI();
+                DeselectButton();
                 break;
             case UIState.BuildModeDeleteMode:
                 ShowUI();
@@ -181,7 +182,7 @@ public class BuildModeUI : MonoBehaviour
     public void ShowCategory(BuildCategory category)
     {
         CheckSelectedCategory(category);
-        BuildItems(GetVisibleFurniture());
+        BuildItems(GetVisibleFurniture(category));
     }
 
     private void CheckDeletionMode(bool isInDeleteMode)
@@ -200,22 +201,22 @@ public class BuildModeUI : MonoBehaviour
         }
     }
 
-    private IEnumerable<FurnitureSO> GetVisibleFurniture()
+    private IEnumerable<FurnitureSO> GetVisibleFurniture(BuildCategory category)
     {
         if(!UnlockManager.Instance || !FurnitureInventory.Instance) return Enumerable.Empty<FurnitureSO>();
+
+        IEnumerable<FurnitureSO> unlocked = UnlockManager.Instance.runtimeDatabase.GetUnlockedFurniture();
+
+        if (category != BuildCategory.None)
+            unlocked = unlocked.Where(f => f.buildCategory == category);
         
-        return UnlockManager.Instance.runtimeDatabase.GetUnlockedFurniture()
-            .Where(f => FurnitureInventory.Instance.GetAmount(f.numericID) > 0);
+        return unlocked.Where(f => FurnitureInventory.Instance.GetAmount(f.numericID) > 0);
     }
     // refactor this aswell man 
-    public void ShowCategoryAll()
-    {
-        CheckSelectedCategory(BuildCategory.None);
-        BuildItems(GetVisibleFurniture());
-    }
 
     public void CheckSelectedCategory(BuildCategory category)
     {
+        itemContainer.style.display = DisplayStyle.Flex;
         btnDecor.RemoveFromClassList("selected");
         btnFurniture.RemoveFromClassList("selected");
         btnUtility.RemoveFromClassList("selected");
@@ -235,6 +236,11 @@ public class BuildModeUI : MonoBehaviour
                 btnAll.AddToClassList("selected");
                 break;
         }
+    }
+
+    public void DeselectButton()
+    {
+        itemContainer.style.display = DisplayStyle.None;
     }
 
     private void UpdateItemQuantity(int id, int newQuantity)
