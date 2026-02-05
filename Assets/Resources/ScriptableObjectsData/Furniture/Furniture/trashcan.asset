@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FurnitureSO
   furnitureName: Trashcan
   id: 1020
-  numericID: 96567
+  numericID: 9667
   buildCategory: 2
   placementType: 0
   furniturePrefab: {fileID: 1862542262716857225, guid: 2a86fa2f8d6089d4fa09e5f89b9e646d, type: 3}
@@ -22,5 +22,5 @@ MonoBehaviour:
   size: {x: 1, y: 1}
   icon: {fileID: -7257384309096747850, guid: b92a2e97e41a81948804a89439f6c489, type: 3}
   shoppingCategory: 4
-  price: 20
+  price: 10
   isAvailableInShop: 1
