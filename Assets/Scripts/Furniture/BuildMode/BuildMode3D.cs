@@ -11,6 +11,8 @@ public class BuildMode3D : MonoBehaviour
 
     public SoundSO placeSound;
     public SoundSO removeSound;
+
+    [SerializeField] private DayNightController dayNight;
     
     [Header("Default blocked cells (always occupied)")]
     [SerializeField] private List<Vector2Int> blockedCells = new();
@@ -400,6 +402,7 @@ public class BuildMode3D : MonoBehaviour
         }
         
         if(ChairManager.Instance) ChairManager.Instance.Initiate();
+        if(dayNight) dayNight.RebuildLampList();
     }
     public void RandomizeGrid()
     {

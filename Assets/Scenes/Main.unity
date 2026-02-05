@@ -604,9 +604,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 2
-  m_Color: {r: 0.9056604, g: 0.65431815, b: 0.14951938, a: 1}
+  m_Color: {r: 1, g: 0.85153395, b: 0.4292453, a: 1}
   m_Intensity: 1.3
-  m_Range: 10
+  m_Range: 100
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -2313,7 +2313,7 @@ MonoBehaviour:
   - {fileID: 0}
   emissionProperty: _EmissionColor
   dayEmissionColor: {r: 0, g: 0, b: 0, a: 1}
-  nightEmissionColor: {r: 0.9150943, g: 0.6165711, b: 0.06474723, a: 2.5}
+  nightEmissionColor: {r: 1, g: 0.8190951, b: 0.48584908, a: 2.5}
   emissionIntensity: 5
 --- !u!114 &398115512
 MonoBehaviour:
@@ -2354,7 +2354,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 0
-  m_Color: {r: 0.9056604, g: 0.65431815, b: 0.14951938, a: 1}
+  m_Color: {r: 1, g: 0.8196079, b: 0.48627454, a: 1}
   m_Intensity: 1
   m_Range: 100
   m_SpotAngle: 150
@@ -6074,6 +6074,7 @@ MonoBehaviour:
   deletionPreviewPrefab: {fileID: 0}
   placeSound: {fileID: 0}
   removeSound: {fileID: 0}
+  dayNight: {fileID: 858974391}
   blockedCells: []
   isPointerOverUI: 0
   InputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
@@ -7931,7 +7932,7 @@ MonoBehaviour:
   - {fileID: 1608116973}
   emissionProperty: _EmissionColor
   dayEmissionColor: {r: 0, g: 0, b: 0, a: 1}
-  nightEmissionColor: {r: 0.9137255, g: 0.72804475, b: 0.066666685, a: 2.5}
+  nightEmissionColor: {r: 0.9137255, g: 0.6216364, b: 0.066666685, a: 2.5}
   emissionIntensity: 6
 --- !u!114 &1372498173
 MonoBehaviour:
@@ -7972,9 +7973,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 2
-  m_Color: {r: 0.9056604, g: 0.65431815, b: 0.14951938, a: 1}
+  m_Color: {r: 1, g: 0.8741541, b: 0.4764151, a: 1}
   m_Intensity: 1.3
-  m_Range: 10
+  m_Range: 100
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -12372,9 +12373,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 2
-  m_Color: {r: 0.9056604, g: 0.65431815, b: 0.14951938, a: 1}
+  m_Color: {r: 1, g: 0.8821116, b: 0.4764151, a: 1}
   m_Intensity: 1
-  m_Range: 11.56
+  m_Range: 100
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
