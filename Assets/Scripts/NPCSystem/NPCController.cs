@@ -46,6 +46,7 @@ public class NPCController : MonoBehaviour, IInteractable
 
         targetChair.Occupy();
         SetState(NPCState.Walking);
+        agent.stoppingDistance = 0.2f;
         agent.SetDestination(targetChair.seatPoint.position);
     }
 
@@ -146,6 +147,7 @@ public class NPCController : MonoBehaviour, IInteractable
         }
         
         agent.enabled = true;
+        agent.stoppingDistance = 1f;
         agent.SetDestination(ChairManager.Instance.GetExitPoint());
     }
 
