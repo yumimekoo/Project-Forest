@@ -21,6 +21,6 @@ MonoBehaviour:
   furniturePreview: {fileID: 1862542262716857225, guid: 2a86fa2f8d6089d4fa09e5f89b9e646d, type: 3}
   size: {x: 1, y: 1}
   icon: {fileID: -7257384309096747850, guid: b92a2e97e41a81948804a89439f6c489, type: 3}
-  shoppingCategory: 2
+  shoppingCategory: 4
   price: 20
   isAvailableInShop: 1
