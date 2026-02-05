@@ -430,7 +430,7 @@ public class TutorialManager : MonoBehaviour
             case TutorialStep.PlaceAllObjects:
                 UIManager.Instance.SetUIState(UIState.BuildModeDeleteMode);
                 titleLabel.text = "Place Furniture";
-                descriptionLabel.text = "Press 'X' to exit Delete Mode\nPress 'All'-Tab to select a category\nSelect furniture and place " + objectsToDeleteAndPlace+ " objects in your cafe";
+                descriptionLabel.text = "Press 'X' to exit Delete Mode\nPress 'All'-Tab and select Furniture\nPlace " + objectsToDeleteAndPlace+ " objects in your cafe";
                 StartUIRoutine(ShowUIAnimated());
                 break;
             case TutorialStep.ExitBuildMode:
@@ -502,7 +502,7 @@ public class TutorialManager : MonoBehaviour
                 break;
             case TutorialStep.MakeCoffee:
                 titleLabel.text = "Make Coffee";
-                descriptionLabel.text = "Use the Coffee Machine to prepare the ordered drink\nAdd a mug and the required ingredients";
+                descriptionLabel.text = "Use the Coffee Machine to prepare the ordered drink\n(Add a mug and the required ingredients)";
                 StartUIRoutine(ShowUIAnimated());
                 break;
             case TutorialStep.GiveCoffee:
