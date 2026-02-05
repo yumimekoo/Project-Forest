@@ -14,7 +14,7 @@ public class ShopBuilder : MonoBehaviour, IInteractable
     }
     public string GetInteractionPrompt()
     {
-        return "Open Shop-Editor";
+        return "Open Cafe-Builder";
     }
 
     public void Interact(PlayerInventory player)
