@@ -5,8 +5,7 @@ public class NPCSpawner : MonoBehaviour
     private float spawnInterval = 5f;
     private float timeSinceLastSpawn = 0f;
     private bool allnpcretunred = false;
-    private bool firstStartup = true;
-
+    
     private void Update()
     {
         if(GameState.inTutorial && TutorialManager.Instance != null)
@@ -33,6 +32,8 @@ public class NPCSpawner : MonoBehaviour
         }
 
         timeSinceLastSpawn += Time.deltaTime;
+        if (timeSinceLastSpawn >= spawnInterval + 0.5f) timeSinceLastSpawn = 0;
+        
         if (timeSinceLastSpawn >= spawnInterval && ChairManager.Instance.GetFreeChair() != null && NPCPool.Instance.HasNPCs)
         {
             Spawn();
@@ -41,12 +42,6 @@ public class NPCSpawner : MonoBehaviour
     }
     public void Spawn()
     {
-        if (firstStartup)
-        {
-            ChairManager.Instance.Initiate();
-            firstStartup = false;
-        }
-            
         var npc = NPCPool.Instance.GetNPC();
         if (npc == null) 
             return;
@@ -58,12 +53,6 @@ public class NPCSpawner : MonoBehaviour
 
     public void SpawnTutorialNPC()
     {
-        if (firstStartup)
-        {
-            ChairManager.Instance.Initiate();
-            firstStartup = false;
-        }
-        
         var npc = NPCPool.Instance.GetTutorialNPC();
         if (npc == null) 
             return;

@@ -19,6 +19,7 @@ public class ChairManager : MonoBehaviour
 
     public Chair GetFreeChair()
     {
+        Debug.Log("Getting Chaitr");
         foreach (var chair in chairs)
         {
             if (!chair.isOccupied)

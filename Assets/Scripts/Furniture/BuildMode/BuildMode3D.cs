@@ -398,6 +398,8 @@ public class BuildMode3D : MonoBehaviour
             occupiedCells.Add(new Vector2Int(item.x, item.y));
             //Debug.Log($"Rebuilt furniture: {so.furnitureName} (ID: {so.numericID}) at ({item.x}, {item.y}) with rotation {item.rotY}");
         }
+        
+        if(ChairManager.Instance) ChairManager.Instance.Initiate();
     }
     public void RandomizeGrid()
     {
