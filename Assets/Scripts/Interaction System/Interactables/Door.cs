@@ -68,6 +68,7 @@ public class Door : MonoBehaviour, IInteractable
         {
             GameState.isInRoom = true;
             GameState.isInCafe = false;
+            TimeManager.Instance.AdvanceDay();
             SaveManager.Instance.SaveGame();
             AudioManager.Instance.CrossfadeMusic(roomMusic, 3f);
             AudioManager.Instance.Play(doorSound);

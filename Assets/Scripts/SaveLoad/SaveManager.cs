@@ -42,6 +42,11 @@ public class SaveManager : MonoBehaviour
         ActiveSaveSlot = slot;
     }
 
+    public void DeleteSaveSlot()
+    {
+        SaveSystem.DeleteSave(ActiveSaveSlot);
+    }
+
     public void SaveGame()
     {
         GameSaveData saveData = new GameSaveData

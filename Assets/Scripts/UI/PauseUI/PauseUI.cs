@@ -194,6 +194,7 @@ public class PauseUI : MonoBehaviour
     {
         AudioManager.Instance.Play(clickSound);
         HideConfirm();
+        if(TimeManager.Instance.currentDay <= 1) SaveManager.Instance.DeleteSaveSlot();
         GoToMenu(withSave: false);
     }
 

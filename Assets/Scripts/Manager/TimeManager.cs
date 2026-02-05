@@ -108,8 +108,7 @@ public class TimeManager : MonoBehaviour
     {
         if (GameState.isInRoom)
             return;
-
-        AdvanceDay();
+        
         ResetDay();
         StartDay();
     }
@@ -126,7 +125,7 @@ public class TimeManager : MonoBehaviour
         currentWeekday = Weekday.Monday;
     }
 
-    private void AdvanceDay()
+    public void AdvanceDay()
     {
         if(GameState.inTutorial)
             return;
