@@ -8,11 +8,21 @@ public class ShopUI : MonoBehaviour
     public UIDocument shopUI;
     public VisualTreeAsset shopItemTemplate;
     public VisualTreeAsset shopCategoryTabTemplate;
+    
+    [Header("Sounds")]
     public SoundSO menuOpenSound;
     public SoundSO menuCloseSound;
     public SoundSO hoverSound;
     public SoundSO clickSound;
     public SoundSO buySound;
+
+    [Header("Icons")]
+    [SerializeField] private Sprite furnitureIcon;
+    [SerializeField] private Sprite resourceIcon;
+    [SerializeField] private Sprite decorationIcon;
+    [SerializeField] private Sprite machineIcon;
+    [SerializeField] private Sprite syrupIcon;
+    [SerializeField] private Sprite teaIcon;
     
     private VisualElement
         itemContainer,
@@ -264,8 +274,11 @@ public class ShopUI : MonoBehaviour
             var tabTemplate = shopCategoryTabTemplate.Instantiate();
             var tabButton = tabTemplate.Q<Button>("itemsTab");
             var tabText = tabTemplate.Q<Label>("tabText");
+            var tabIcon = tabTemplate.Q<VisualElement>("categoryIcon");
             tabButton.clicked += () => ShowCategory(category);
             tabText.text = category.ToString();
+            
+            tabIcon.style.backgroundImage = new StyleBackground(GetIconForCategory(category)); 
             
             tabButton.clicked += () => AudioManager.Instance.Play(clickSound);
             tabButton.RegisterCallback<MouseEnterEvent>(_ => AudioManager.Instance.Play(hoverSound));
@@ -275,6 +288,20 @@ public class ShopUI : MonoBehaviour
         }
 
         UpdateButtons();
+    }
+
+    private Sprite GetIconForCategory(ShoppingCategory category)
+    {
+        switch (category)
+        {
+            case ShoppingCategory.Furniture: return furnitureIcon;
+            case ShoppingCategory.Resources: return resourceIcon;
+            case ShoppingCategory.Decoration: return decorationIcon;
+            case ShoppingCategory.Machines: return machineIcon;
+            case ShoppingCategory.Syrups: return syrupIcon;
+            case ShoppingCategory.Teas: return teaIcon;
+            default: return null;
+        }
     }
 
     public void UpdateButtons()

@@ -3,7 +3,7 @@
     <ui:VisualElement name="itemsBase" style="width: 100%; height: 122px;">
         <ui:Button name="itemsTab" class="categoryButtonStyle" style="flex-grow: 0; border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); height: 112px; width: 100%; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; flex-direction: row; -unity-font-definition: url(&quot;project://database/Assets/External%20Resources/Fonts/RetroByte.ttf?fileID=12800000&amp;guid=fa4523bbd3ac7b249b34392fe074b277&amp;type=3#RetroByte&quot;);">
             <ui:VisualElement style="flex-grow: 0; width: 29%; padding-top: 23px; padding-right: 0; padding-bottom: 23px; padding-left: 27px;">
-                <ui:VisualElement name="categoryIcon" style="flex-grow: 0; width: 64px; height: 64px; background-color: rgba(0, 0, 0, 0.67);" />
+                <ui:VisualElement name="categoryIcon" style="flex-grow: 0; width: 52px; height: 52px; background-color: rgba(0, 0, 0, 0); margin-top: 6px; margin-left: 6px;" />
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; justify-content: center; align-self: stretch; align-items: flex-start;">
                 <ui:Label text="Label" name="tabText" />

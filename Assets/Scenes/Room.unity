@@ -4320,6 +4320,12 @@ MonoBehaviour:
   hoverSound: {fileID: 11400000, guid: d1562de23876bf64db7dd92af854b433, type: 2}
   clickSound: {fileID: 11400000, guid: bf819668cfb8a4f4aadbcb49f3a916d0, type: 2}
   buySound: {fileID: 11400000, guid: af0b53c0b1fda75448590dc12581eb4a, type: 2}
+  furnitureIcon: {fileID: -8726681666670857876, guid: 6af39f96a45e35246b9c35236dd08052, type: 3}
+  resourceIcon: {fileID: 5332528867823572996, guid: 344cdf0598dbfd14eb870bcf22675438, type: 3}
+  decorationIcon: {fileID: -9135945016569531723, guid: 4fdd504ef01d48d48bde3a06af18b4b5, type: 3}
+  machineIcon: {fileID: 4782178279973203947, guid: 43c4e2b6677da134cb73e9bb6b325bd3, type: 3}
+  syrupIcon: {fileID: -6863709286341862778, guid: c064feb5e0e642e4eb953021cacf3406, type: 3}
+  teaIcon: {fileID: -2911173810137076184, guid: 9f977fc6359ca0f46be065ab8b27dfa8, type: 3}
 --- !u!114 &1264877438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6044,6 +6050,7 @@ MonoBehaviour:
   deletionPreviewPrefab: {fileID: 1789459280500734020, guid: f7bd6e50af2b3bc4997dae8e2e31b749, type: 3}
   placeSound: {fileID: 11400000, guid: 09f508d5c1e9651479c76e362aec02f7, type: 2}
   removeSound: {fileID: 11400000, guid: b975ea8490a88a24eb3c6f2a5e36adc7, type: 2}
+  dayNight: {fileID: 0}
   blockedCells:
   - {x: 4, y: 14}
   - {x: 5, y: 14}
