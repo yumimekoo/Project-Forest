@@ -18,9 +18,9 @@ MonoBehaviour:
   portrait: {fileID: 0}
   availability: 0
   isTalkable: 1
-  timeToAcceptOrder: 30
-  timeToGiveOrder: 90
-  timeDrinking: 60
+  timeToAcceptOrder: 15
+  timeToGiveOrder: 30
+  timeDrinking: 14
   favDrinks:
   - {fileID: 11400000, guid: 650e8d6a3334d0f4e8ce80ed7abf313b, type: 2}
   dislikedIngredients: []

@@ -19,8 +19,8 @@ MonoBehaviour:
   availability: 0
   isTalkable: 1
   timeToAcceptOrder: 7
-  timeToGiveOrder: 80
-  timeDrinking: 30
+  timeToGiveOrder: 22
+  timeDrinking: 6
   favDrinks:
   - {fileID: 11400000, guid: fe8c803cdcdd5aa49bcdb329e08f2e77, type: 2}
   - {fileID: 11400000, guid: a23081050bc294f409e48625df9e9dd4, type: 2}

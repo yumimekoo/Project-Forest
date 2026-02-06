@@ -5033,7 +5033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3ec3372101123f418c862c9c0642703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
-  dayDurationInSeconds: 20
+  dayDurationInSeconds: 150
   dayUnlocker: {fileID: 874102846}
   doorGlow: {fileID: 1447512048}
   nightMusic: {fileID: 8300000, guid: b4582e48d57f5f64a8f253580c83364f, type: 3}
@@ -5047,7 +5047,7 @@ MonoBehaviour:
     ordersCompleted: 0
     ordersFailed: 0
     ordersSuccess: 0
-  baseRentAmount: 0
+  baseRentAmount: 75
 --- !u!114 &874102846
 MonoBehaviour:
   m_ObjectHideFlags: 0
