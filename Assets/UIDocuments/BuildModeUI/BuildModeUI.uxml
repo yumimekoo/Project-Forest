@@ -1,30 +1,32 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/buildUIstyles.uss?fileID=7433441132597879392&amp;guid=e2aa36cb8153d8940a2761ffa1698181&amp;type=3#buildUIstyles" />
-    <ui:VisualElement name="rootBackground" class="background" style="flex-grow: 0; flex-direction: column; width: 100%; height: 100%;">
-        <ui:VisualElement style="font-size: 34px; -unity-font-style: bold; height: auto; flex-grow: 1;">
-            <ui:VisualElement style="flex-grow: 1; justify-content: space-between; flex-direction: row;">
-                <ui:ScrollView name="itemContainer" style="width: 310px; align-items: flex-start; padding-left: 40px; padding-top: 20px; display: flex; height: 810px; margin-left: 0;" />
-            </ui:VisualElement>
-        </ui:VisualElement>
-        <ui:VisualElement name="VisualElement" style="flex-grow: 0; height: 100px; align-items: auto; display: flex;">
-            <ui:VisualElement name="saveDelete" style="flex-grow: 1; flex-direction: row; width: 600px; justify-content: center; align-items: center; align-self: flex-end;">
-                <ui:VisualElement name="delete" style="flex-grow: 0;">
-                    <ui:Button text="Delete Mode" name="deleteButton" class="deleteButton clickSound" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; width: 224px; height: 88px;" />
-                </ui:VisualElement>
-                <ui:VisualElement style="flex-grow: 0; width: 10px;" />
-                <ui:VisualElement name="save" style="flex-grow: 0;">
-                    <ui:Button text="Save &amp; Exit" name="exitButton" class="saveButton" style="width: 224px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; height: 88px;" />
+    <ui:VisualElement name="rootScale" style="flex-grow: 1;">
+        <ui:VisualElement name="rootBackground" class="background" style="flex-grow: 0; flex-direction: column; width: 100%; height: 100%;">
+            <ui:VisualElement style="font-size: 34px; -unity-font-style: bold; height: auto; flex-grow: 1;">
+                <ui:VisualElement style="flex-grow: 1; justify-content: space-between; flex-direction: row;">
+                    <ui:ScrollView name="itemContainer" style="width: 310px; align-items: flex-start; padding-left: 40px; padding-top: 20px; display: flex; height: 810px; margin-left: 0;" />
                 </ui:VisualElement>
             </ui:VisualElement>
-        </ui:VisualElement>
-        <ui:VisualElement name="uiHideLeft" enabled="true" style="flex-grow: 0; width: auto; flex-direction: row; align-self: stretch; justify-content: center; align-items: stretch; height: 170px; padding-top: 35px; display: flex; visibility: visible;">
-            <ui:Button text="All" name="btnAll" class="buttonCategory clickSound" style="-unity-font-style: bold; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
-            <ui:VisualElement style="flex-grow: 0; width: 30px;" />
-            <ui:Button text="Utility" name="btnUtility" class="buttonCategory clickSound" style="-unity-font-style: bold; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
-            <ui:VisualElement style="flex-grow: 0; width: 30px;" />
-            <ui:Button text="Furniture" name="btnFurniture" class="buttonCategory clickSound" style="-unity-font-style: bold; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
-            <ui:VisualElement style="flex-grow: 0; width: 30px;" />
-            <ui:Button text="Decoration" name="btnDecor" class="buttonCategory clickSound" style="-unity-font-style: bold; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+            <ui:VisualElement name="VisualElement" style="flex-grow: 0; height: 100px; align-items: auto; display: flex;">
+                <ui:VisualElement name="saveDelete" style="flex-grow: 1; flex-direction: row; width: 600px; justify-content: center; align-items: center; align-self: flex-end;">
+                    <ui:VisualElement name="delete" style="flex-grow: 0;">
+                        <ui:Button text="Delete Mode" name="deleteButton" class="deleteButton clickSound" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; width: 224px; height: 88px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 0; width: 10px;" />
+                    <ui:VisualElement name="save" style="flex-grow: 0;">
+                        <ui:Button text="Save &amp; Exit" name="exitButton" class="saveButton" style="width: 224px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; height: 88px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="uiHideLeft" enabled="true" style="flex-grow: 0; width: auto; flex-direction: row; align-self: stretch; justify-content: center; align-items: stretch; height: 170px; padding-top: 35px; display: flex; visibility: visible;">
+                <ui:Button text="All" name="btnAll" class="buttonCategory clickSound" style="-unity-font-style: bold; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                <ui:VisualElement style="flex-grow: 0; width: 30px;" />
+                <ui:Button text="Utility" name="btnUtility" class="buttonCategory clickSound" style="-unity-font-style: bold; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                <ui:VisualElement style="flex-grow: 0; width: 30px;" />
+                <ui:Button text="Furniture" name="btnFurniture" class="buttonCategory clickSound" style="-unity-font-style: bold; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                <ui:VisualElement style="flex-grow: 0; width: 30px;" />
+                <ui:Button text="Decoration" name="btnDecor" class="buttonCategory clickSound" style="-unity-font-style: bold; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

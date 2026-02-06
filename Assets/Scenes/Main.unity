@@ -3059,6 +3059,7 @@ GameObject:
   - component: {fileID: 563502361}
   - component: {fileID: 563502363}
   - component: {fileID: 563502362}
+  - component: {fileID: 563502364}
   m_Layer: 0
   m_Name: OverlayUI
   m_TagString: Untagged
@@ -3118,6 +3119,20 @@ MonoBehaviour:
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}
+--- !u!114 &563502364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563502360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ece934fd85bb34e88503c73aefc57f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIRatio
+  targetCamera: {fileID: 926100322}
+  viewportRootName: rootScale
 --- !u!1 &563540361
 GameObject:
   m_ObjectHideFlags: 0
@@ -6946,6 +6961,7 @@ GameObject:
   - component: {fileID: 1260743377}
   - component: {fileID: 1260743378}
   - component: {fileID: 1260743379}
+  - component: {fileID: 1260743380}
   m_Layer: 0
   m_Name: FridgeUI
   m_TagString: Untagged
@@ -7008,6 +7024,20 @@ MonoBehaviour:
   menuOpen: {fileID: 11400000, guid: 84d6bfe93b48f194f9f95f8db39dc5d3, type: 2}
   menuClose: {fileID: 11400000, guid: 8fd249d4d68dafd4f8f2df7025e3a26d, type: 2}
   hoverSound: {fileID: 11400000, guid: d1562de23876bf64db7dd92af854b433, type: 2}
+--- !u!114 &1260743380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260743376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ece934fd85bb34e88503c73aefc57f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIRatio
+  targetCamera: {fileID: 926100322}
+  viewportRootName: rootScale
 --- !u!1001 &1265945249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7444,6 +7474,7 @@ GameObject:
   - component: {fileID: 1314382294}
   - component: {fileID: 1314382296}
   - component: {fileID: 1314382295}
+  - component: {fileID: 1314382297}
   m_Layer: 0
   m_Name: InteractionUI
   m_TagString: Untagged
@@ -7502,6 +7533,20 @@ MonoBehaviour:
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}
+--- !u!114 &1314382297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314382293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ece934fd85bb34e88503c73aefc57f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIRatio
+  targetCamera: {fileID: 926100322}
+  viewportRootName: rootScale
 --- !u!1 &1345092711
 GameObject:
   m_ObjectHideFlags: 0
@@ -10197,6 +10242,7 @@ GameObject:
   - component: {fileID: 1782886899}
   - component: {fileID: 1782886901}
   - component: {fileID: 1782886900}
+  - component: {fileID: 1782886902}
   m_Layer: 0
   m_Name: PauseUI
   m_TagString: Untagged
@@ -10283,6 +10329,20 @@ MonoBehaviour:
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}
+--- !u!114 &1782886902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782886898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ece934fd85bb34e88503c73aefc57f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIRatio
+  targetCamera: {fileID: 926100322}
+  viewportRootName: rootScale
 --- !u!1001 &1787836841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11615,6 +11675,7 @@ GameObject:
   - component: {fileID: 2094637229}
   - component: {fileID: 2094637231}
   - component: {fileID: 2094637230}
+  - component: {fileID: 2094637232}
   m_Layer: 0
   m_Name: DaySummaryUI
   m_TagString: Untagged
@@ -11677,6 +11738,20 @@ MonoBehaviour:
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}
+--- !u!114 &2094637232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094637228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ece934fd85bb34e88503c73aefc57f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIRatio
+  targetCamera: {fileID: 926100322}
+  viewportRootName: rootScale
 --- !u!1 &2116244425
 GameObject:
   m_ObjectHideFlags: 0
@@ -11730,6 +11805,7 @@ GameObject:
   - component: {fileID: 2127065691}
   - component: {fileID: 2127065693}
   - component: {fileID: 2127065692}
+  - component: {fileID: 2127065694}
   m_Layer: 0
   m_Name: RecipeBookUI
   m_TagString: Untagged
@@ -11807,6 +11883,20 @@ MonoBehaviour:
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}
+--- !u!114 &2127065694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127065690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ece934fd85bb34e88503c73aefc57f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIRatio
+  targetCamera: {fileID: 926100322}
+  viewportRootName: rootScale
 --- !u!1 &2145585664
 GameObject:
   m_ObjectHideFlags: 0
@@ -12499,8 +12589,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4131466607536210656, guid: b368d808cb0401b4c8385ef7265fe518, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7731879015472695302}
   m_SourcePrefab: {fileID: 100100000, guid: b368d808cb0401b4c8385ef7265fe518, type: 3}
+--- !u!1 &7731879015472695301 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4131466607536210656, guid: b368d808cb0401b4c8385ef7265fe518, type: 3}
+  m_PrefabInstance: {fileID: 7731879015472695300}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7731879015472695302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7731879015472695301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11b9c2fe511ffae47b3ea2000c687fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AspectRatio
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

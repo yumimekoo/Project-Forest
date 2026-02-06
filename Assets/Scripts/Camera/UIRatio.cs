@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class UIRatio : MonoBehaviour
@@ -21,9 +22,21 @@ public class UIRatio : MonoBehaviour
         doc = GetComponent<UIDocument>();
         if (!targetCamera) targetCamera = Camera.main;
     }
+    
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if(GameState.inTutorial)
+            targetCamera = Camera.main;
+    }
 
     private void OnEnable()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;   
         StartCoroutine(InitWhenPanelReady());
     }
 
