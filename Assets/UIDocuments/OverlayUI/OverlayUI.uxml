@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UIDocuments/OverlayUI/overlayUI.uss?fileID=7433441132597879392&amp;guid=dfc253340f92595408ac33ee8c32eda4&amp;type=3#overlayUI" />
-    <ui:VisualElement name="rootScale" style="flex-grow: 1;">
+    <ui:VisualElement name="rootScale" picking-mode="Ignore" style="flex-grow: 1;">
         <ui:VisualElement picking-mode="Ignore" name="backgroundElement" class="bg-room" style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement picking-mode="Ignore" style="width: 50%; flex-grow: 1; justify-content: space-between;">
                 <ui:VisualElement name="VisualElement" style="flex-grow: 0; height: 18%; flex-direction: row;">

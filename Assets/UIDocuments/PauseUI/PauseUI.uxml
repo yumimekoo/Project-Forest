@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UIDocuments/PauseUI/puaseMenu.uss?fileID=7433441132597879392&amp;guid=1b172b6468bce124fbf038075bc6aa8e&amp;type=3#puaseMenu" />
-    <ui:VisualElement name="rootScale" style="flex-grow: 1;">
+    <ui:VisualElement name="rootScale" picking-mode="Ignore" style="flex-grow: 1;">
         <ui:VisualElement name="animation" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UIDocuments/PauseUI/pauseUI.aseprite?fileID=3474998474935278823&amp;guid=9a7eff230452f5948b7bfab0c42f501c&amp;type=3#Frame_0&quot;); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
             <ui:VisualElement style="flex-grow: 0; align-self: stretch;">
                 <ui:VisualElement style="flex-grow: 0; justify-content: center; align-self: flex-end;">

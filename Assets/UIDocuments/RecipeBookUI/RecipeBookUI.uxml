@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="orderTemplate" src="project://database/Assets/UIDocuments/RecipeBookUI/orderTemplate.uxml?fileID=9197481963319205126&amp;guid=6885b24bcd83ae547adb1796b5a45e75&amp;type=3#orderTemplate" />
-    <ui:VisualElement name="rootScale" style="flex-grow: 1;">
+    <ui:VisualElement name="rootScale" picking-mode="Ignore" style="flex-grow: 1;">
         <ui:VisualElement name="VisualElement" class="book-root" style="flex-direction: column; flex-grow: 0; background-color: rgba(255, 255, 255, 0); width: 100%; height: 100%; background-image: url(&quot;project://database/Assets/UIDocuments/RecipeBookUI/Sprites/recipeBook.aseprite?fileID=-3721138739504423157&amp;guid=83b9e22f94bc26a418b8076cca8afac8&amp;type=3#recipeBook&quot;); padding-top: 100px; padding-right: 190px; padding-bottom: 100px; padding-left: 190px;">
             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                 <ui:VisualElement name="leftPage" class="book-header" style="justify-content: space-between; width: 50%;">

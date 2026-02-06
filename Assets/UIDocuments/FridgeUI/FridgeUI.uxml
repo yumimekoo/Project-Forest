@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="buttonTemplate" src="project://database/Assets/UIDocuments/FridgeUI/buttonTemplate.uxml?fileID=9197481963319205126&amp;guid=b68e2a7e0bb13a042ba61d1d0abc7b80&amp;type=3#buttonTemplate" />
-    <ui:VisualElement name="rootScale" style="flex-grow: 1;">
+    <ui:VisualElement name="rootScale" picking-mode="Ignore" style="flex-grow: 1;">
         <ui:VisualElement focusable="true" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UIDocuments/FridgeUI/Sprites/storageUI.aseprite?fileID=-2646889554517976256&amp;guid=01668d0c332c6c2469131bd1fe7958f6&amp;type=3#storageUI&quot;);">
             <ui:VisualElement style="flex-grow: 0; height: 19%; justify-content: center; align-self: center;">
                 <ui:VisualElement style="flex-grow: 1;">

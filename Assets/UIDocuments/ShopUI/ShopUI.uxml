@@ -2,7 +2,7 @@
     <ui:Template name="shopCategory" src="project://database/Assets/UIDocuments/ShopUI/shopCategory.uxml?fileID=9197481963319205126&amp;guid=a75d93a0a7c1e9d468350c24cd092bc9&amp;type=3#shopCategory" />
     <ui:Template name="ShopItemElement" src="project://database/Assets/UIDocuments/ShopUI/ShopItemElement.uxml?fileID=9197481963319205126&amp;guid=2f2f08eac76a42249b93cf204d7bbf4a&amp;type=3#ShopItemElement" />
     <Style src="project://database/Assets/UIDocuments/ShopUI/shopi.uss?fileID=7433441132597879392&amp;guid=7025b02a58431c940b5e0c4900438144&amp;type=3#shopi" />
-    <ui:VisualElement name="rootScale" style="flex-grow: 1;">
+    <ui:VisualElement name="rootScale" picking-mode="Ignore" style="flex-grow: 1;">
         <ui:VisualElement style="flex-grow: 1; flex-direction: row; background-image: url(&quot;project://database/Assets/UIDocuments/ShopUI/shopUI.aseprite?fileID=1460826678955456181&amp;guid=bd515e3fa119a524284f8758d5628c79&amp;type=3#shopUI&quot;);">
             <ui:VisualElement style="flex-grow: 0; width: 30%; align-self: stretch; align-items: center; padding-left: 47px;">
                 <ui:VisualElement style="flex-grow: 0; height: 20%; justify-content: center; padding-top: 40px;">

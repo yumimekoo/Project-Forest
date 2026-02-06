@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/buildUIstyles.uss?fileID=7433441132597879392&amp;guid=e2aa36cb8153d8940a2761ffa1698181&amp;type=3#buildUIstyles" />
-    <ui:VisualElement name="rootScale" style="flex-grow: 1;">
+    <ui:VisualElement name="rootScale" picking-mode="Ignore" style="flex-grow: 1;">
         <ui:VisualElement name="rootBackground" class="background" style="flex-grow: 0; flex-direction: column; width: 100%; height: 100%;">
             <ui:VisualElement style="font-size: 34px; -unity-font-style: bold; height: auto; flex-grow: 1;">
                 <ui:VisualElement style="flex-grow: 1; justify-content: space-between; flex-direction: row;">
