@@ -15,12 +15,12 @@ MonoBehaviour:
   id: 30
   itemName: Almond Milk
   itemType: 0
-  contentVisualPrefab: {fileID: 8037415141159388369, guid: 45b9520f33d89d74f9dca52c14185495, type: 3}
+  contentVisualPrefab: {fileID: 0}
   icon: {fileID: -9190299373094165681, guid: 15c248bf7e8540943a24886c7609444b, type: 3}
   storageType: 0
   itemPrefab: {fileID: 8037415141159388369, guid: 7f7767cbeddc32c4987298b54da4505f, type: 3}
   shoppingCategory: 1
-  price: 3
+  price: 1
   isInfinite: 0
   contentColor: {r: 1, g: 1, b: 1, a: 1}
   fillLevel: 1

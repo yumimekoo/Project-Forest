@@ -15,11 +15,12 @@ MonoBehaviour:
   id: 307
   itemName: Oat Milk (Glass)
   itemType: 2
-  contentVisualPrefab: {fileID: 8037415141159388369, guid: 48aa9c988a2a1e648b2546a4d6fa04d6, type: 3}
+  contentVisualPrefab: {fileID: 0}
   icon: {fileID: -5974568439330112230, guid: f7be4f52c413be546a474396525c7f67, type: 3}
   storageType: 0
   itemPrefab: {fileID: 0}
   shoppingCategory: 0
   price: 0
+  isInfinite: 0
   contentColor: {r: 0.9843137, g: 0.9843137, b: 0.9019608, a: 1}
   fillLevel: 1

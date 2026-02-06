@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public enum OrderOutcome
 {
@@ -39,21 +41,21 @@ public static class NPCOrderResolver
 
                 if (isFavorite)
                 {
-                    money = 20; // later in the npc thingy? 
-                    friendship = 5;
+                    money = Random.Range(35, 55); // later in the npc thingy? 
+                    friendship = Random.Range(5, 15);
                     return Result(OrderOutcome.Perfect, money, friendship);
                 }
                 else
                 {
-                    money = 15;
-                    friendship = 10;
+                    money = Random.Range(15, 35);
+                    friendship = Random.Range(1,3);
                     return Result(OrderOutcome.Correct, money, friendship);
                 }
             }
             else
             {
-                money = 3;
-                friendship = -10;
+                money = Random.Range(5, 15);
+                friendship = Random.Range(-5, -1);
                 return Result(OrderOutcome.Wrong, money, friendship);
             }
         }
@@ -62,8 +64,8 @@ public static class NPCOrderResolver
 
         if (ingredientMatches > 0)
         {
-            money = 10 + (ingredientMatches * 2);
-            friendship = 1 + ingredientMatches;
+            money = Random.Range(15, 25) + (ingredientMatches * Random.Range(2, 4));
+            friendship = 2 + ingredientMatches;
             return Result(OrderOutcome.Correct, money, friendship);
         }
 
@@ -74,7 +76,7 @@ public static class NPCOrderResolver
             return Result(OrderOutcome.Wrong, money, friendship);
         }
 
-        money = 5;
+        money = 10;
         friendship = 0;
         return Result(OrderOutcome.Correct, money, friendship);
     }

@@ -15,12 +15,12 @@ MonoBehaviour:
   id: 29
   itemName: Soy Milk
   itemType: 0
-  contentVisualPrefab: {fileID: 8037415141159388369, guid: 437e81fe418859a4daf3041ba449bc50, type: 3}
+  contentVisualPrefab: {fileID: 0}
   icon: {fileID: -8189283263509698738, guid: ea6eab5578be9f64b906811df024db0b, type: 3}
   storageType: 0
   itemPrefab: {fileID: 8037415141159388369, guid: 86b95466ea510c043b293cf483b6edee, type: 3}
   shoppingCategory: 1
-  price: 3
+  price: 1
   isInfinite: 0
   contentColor: {r: 1, g: 1, b: 1, a: 1}
   fillLevel: 1
